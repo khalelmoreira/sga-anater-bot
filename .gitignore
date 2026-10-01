@@ -7,3 +7,6 @@ venv/
 !examples/*.docx
 node_modules/
 .pytest_cache/
+data/acoes_potenciais/*
+!data/acoes_potenciais/README.md
+!data/acoes_potenciais/.gitkeep
