@@ -10,3 +10,4 @@ node_modules/
 data/acoes_potenciais/*
 !data/acoes_potenciais/README.md
 !data/acoes_potenciais/.gitkeep
+logs/

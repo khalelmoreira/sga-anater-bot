@@ -21,6 +21,12 @@ Ações Potenciais panel is then left for a low-confidence pause instead).
 
 Doesn't submit by default -- review the filled page, then confirm with
 Enter, or pass --auto-submit to skip the prompt.
+
+Every state-changing action on the real site (click/fill/select) pauses
+for an explicit allow/deny/quit and is logged -- sanitized, personal data
+redacted -- to logs/run-<timestamp>.jsonl, so a live run can be reviewed
+afterward. Pass --auto-allow to skip the per-action prompts (still
+logged); there is no way to skip the logging itself.
 """
 
 import argparse
@@ -31,6 +37,7 @@ from playwright.sync_api import sync_playwright
 
 from src.extract import extract_docx, load_whatsapp_text
 from src.fill import register_ufpa
+from src.fill.action_gate import AbortRun, ActionGate
 from src.fill.site import submit
 from src.schema.gate import MissingKeyDataError
 
@@ -55,9 +62,12 @@ def main():
     parser.add_argument("--no-whatsapp", action="store_true", help="skip the Ações Potenciais WhatsApp template lookup")
     parser.add_argument("--auto-submit", action="store_true", help="click Salvar automatically instead of pausing for review")
     parser.add_argument("--headless", action="store_true", help="run the browser headless (default: visible, recommended for the first real runs)")
+    parser.add_argument("--auto-allow", action="store_true", help="don't prompt before each action (still logged) -- NOT recommended for a first live run")
     args = parser.parse_args()
 
     load_dotenv()
+    gate = ActionGate(auto_allow=args.auto_allow)
+    print(f"Action log: {gate.path}")
 
     whatsapp_text = None
     if not args.no_whatsapp:
@@ -78,17 +88,28 @@ def main():
                 municipio=args.municipio,
                 whatsapp_text=whatsapp_text,
                 auto_submit=args.auto_submit,
+                gate=gate,
             )
         except MissingKeyDataError as e:
             print(f"Pre-flight gate failed -- fix the .docx before trying again:\n{e}", file=sys.stderr)
             browser.close()
             sys.exit(1)
+        except AbortRun as e:
+            print(f"\nRun aborted by user at: {e}\nSee {gate.path} for the full action log.", file=sys.stderr)
+            browser.close()
+            sys.exit(1)
 
         if not args.auto_submit:
             input("\nReview the filled page in the browser, then press Enter to Salvar (Ctrl+C to abort without submitting): ")
-            submit(page)
+            try:
+                submit(page, gate)
+            except AbortRun as e:
+                print(f"\nSubmit denied/aborted: {e}\nSee {gate.path} for the full action log.", file=sys.stderr)
+                browser.close()
+                sys.exit(1)
 
         browser.close()
+        print(f"\nDone. Full action log: {gate.path}")
 
 
 if __name__ == "__main__":
