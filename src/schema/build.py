@@ -322,6 +322,10 @@ def build_integrantes(records, option_catalogs=None):
     option_catalogs = option_catalogs or {}
     out = []
     people = sorted({r["section"] for r in records if r["section"].startswith("integrantes[")})
+    num_people = sum(
+        1 for pnl in people
+        if any(v not in (None, "") for v in {r["field"]: r["value"] for r in records if r["section"] == pnl}.values())
+    )
 
     for panel in people:
         p = {r["field"]: r["value"] for r in records if r["section"] == panel}
@@ -345,11 +349,22 @@ def build_integrantes(records, option_catalogs=None):
             out.append(_f(panel, label, site_id, v, conf, reason, field_type=field_type))
 
         estado_civil_raw = p.get("Estado Civil")
-        estado_civil, conf, reason = dropdown_match(
-            estado_civil_raw, option_catalogs.get("idEstadoCivilIntegrante"),
-            known_transforms={"Casado": "Casado(a)"},
-        )
-        out.append(_f(panel, "Estado Civil", "idEstadoCivilIntegrante", estado_civil, conf, reason, field_type="select"))
+        casado_like = bool(estado_civil_raw) and any(w in estado_civil_raw for w in ("Casado", "União", "Uniao"))
+        # confirmed by Khalel: if marital status is Casado/União but the spouse isn't
+        # registered as a separate Integrante in the .docx, leave Estado Civil (and
+        # its dependents, Regime de Bens / Data da União) completely unfilled — don't
+        # select Casado(a) with no partner on record
+        spouse_missing = casado_like and num_people < 2
+
+        if not spouse_missing:
+            # confirmed by Khalel: Estado Civil always needs human review before
+            # filling, even when the .docx value looks like a clean dropdown match
+            # (e.g. "Casado" -> "Casado(a)") — never auto-resolved to high confidence
+            out.append(_f(
+                panel, "Estado Civil", "idEstadoCivilIntegrante", estado_civil_raw, "low",
+                "always needs human review before filling, per Khalel — even a clean-looking match isn't auto-filled",
+                field_type="select",
+            ))
 
         classificacao, conf, reason = dropdown_match(
             p.get("Classificação da pessoa"), option_catalogs.get("idClassificacaoBeneficiario"),
@@ -373,10 +388,10 @@ def build_integrantes(records, option_catalogs=None):
         out.append(_f(panel, "Orientação sexual", "idOrientacaoSexual", "Heterossexual", "high", origin="fixed", field_type="select"))
         out.append(_f(panel, "Identidade de gênero", "idIdentidadeGenero", "Cysgênero", "high", origin="fixed", field_type="select"))
 
-        if estado_civil_raw and "Casado" in estado_civil_raw:
+        if not spouse_missing and estado_civil_raw and "Casado" in estado_civil_raw:
             out.append(_f(panel, "Regime de Bens", "idRegimeBensIntegrante", "Comunhão parcial de bens", "high", origin="fixed", field_type="select"))
 
-        if estado_civil_raw in _ESTADO_CIVIL_UNIAO:
+        if not spouse_missing and estado_civil_raw in _ESTADO_CIVIL_UNIAO:
             v, conf, reason = required_text(p.get("Data do Casamento/União"), "Data da União")
             out.append(_f(panel, "Data da União", "idDataCasamentoIntegrante", v, conf, reason))
 

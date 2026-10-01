@@ -104,6 +104,22 @@ Three layers, so that a new data source (the user still has to investigate other
    - `confidence: high` → fills in and keeps going on its own.
    - `confidence: low` → **pauses**, flags the field, and waits for a human decision, then continues. At the end, shows a summary of what was automatic vs. manually reviewed before final submission.
 
+### Pre-flight gate (added after real-world use revealed a gap)
+
+Not every missing value is a quick pause-and-continue — some mean the
+source `.docx` itself is incomplete for that person, and there's no point
+burning a login session only to get stuck 80 fields in. **Confirmed by
+Khalel: CPF, Nome, and Data de Nascimento** (per Integrante) are the only
+fields that block the **whole run** when missing — everything else stays
+a normal per-field pause.
+
+Implemented as `src.schema.gate.check_blocking()`, run right after the
+canonical schema is built and **before the browser ever opens**
+(`src.fill.register_ufpa()`). A non-empty result raises
+`MissingKeyDataError` listing every missing field across every Integrante
+at once, so the person can fix the `.docx` in one pass instead of
+discovering issues one login at a time.
+
 ## Open points and next steps
 
 - [x] Map field by field (real names/ids, input type, validations) each of the 8 fillable panels of the registration — **done**: UFPA, Atividade Produtiva, Diversos, Patrimônio, Plantel, Tipo Área, Integrantes, and Ações Potenciais are all mapped below, with real field ids pulled from saved HTML captures (see each panel's section)
@@ -658,6 +674,25 @@ the same underlying data (`.docx` "Data do Casamento", e.g. `30/07/2001`)
 The site wires this via `idPanelDataCasamentoIntegrante`
 (`onchange` on `idEstadoCivilIntegrante`). Real field id confirmed by
 Khalel: **`idDataCasamentoIntegrante`** (text, "Data da União").
+
+### Peculiarity — spouse not registered in the `.docx`
+
+**Confirmed by Khalel:** if a person's Estado Civil is Casado/União
+Estável but their spouse was never registered as a separate Integrante in
+the `.docx` (the common real-world case — only one person's table is
+filled in, the other is blank), **the bot must leave Estado Civil
+completely unfilled** — don't select "Casado(a)" with no partner on
+record. This cascades: Regime de Bens and Data da União (both dependent
+on Estado Civil) are skipped too, since the site only reveals/accepts
+them once Estado Civil is actually set.
+
+Implemented in `src/schema/build.py:build_integrantes()` — counts how
+many non-blank Integrantes the `.docx` actually has; if the person's
+marital status looks like Casado/União and that count is less than 2, the
+three fields (Estado Civil, Regime de Bens, Data da União) are dropped
+from the canonical schema entirely rather than flagged low-confidence —
+there's nothing for a human to resolve here, it's a clean "don't fill"
+rule, not an ambiguous one.
 
 ## No source in the `.docx` (both required — need low-confidence handling)
 
