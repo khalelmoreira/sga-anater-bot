@@ -6,13 +6,18 @@ Grounding, honestly stated:
   - Filling the 8 panels of "Cadastrar UFPA" (locators.py + fill_field()
     below) is grounded directly in the saved HTML captures in examples/
     (real ids, real radio/select structure) — see locators.py's docstring.
-  - Login (`login()`), the "Consultar UFPA" filter screen
-    (`open_cadastrar_ufpa()`), and the Diagnóstico T0 search/questionnaire
-    screens are NOT in any saved capture — docs/mapeamento.md describes
-    their flow in prose but no real ids were ever pulled from a live page
-    for them. Those three are implemented with best-effort, text-based
-    locators and clearly marked below; they need a supervised first run
-    against the real site to confirm (or correct) the selectors.
+  - Login (`login()`) is grounded in examples/ANATER-login.html: a plain
+    HTML form (not JSF) posting to /sgaLogin, not an xhtml page under
+    /pages/ as originally assumed in docs/mapeamento.md.
+  - The "Consultar UFPA" filter screen (`open_cadastrar_ufpa()`) is
+    grounded in examples/ANATER -ufpa-cadastro.html (blank) and
+    examples/ANATER -ufpa-cadastro-filled.html (filters set, Cadastrar
+    button revealed) — real ids for Entidade/Projeto/Instrumento/Estado/
+    Município and the real Cadastrar button. The one inferred (not
+    directly captured) part is the sidebar's "UFPA" item expand — see
+    that function's docstring.
+  - Diagnóstico T0 (search + the ~140-question page) is NOT in any saved
+    capture yet — no ids exist for it anywhere in this module.
 """
 
 from src.fill import locators as loc
@@ -40,29 +45,67 @@ _REPEATABLE_ROW_PANEL = {
 
 
 # --------------------------------------------------------------- navigation
-# NOT grounded in a saved capture — best-effort text locators, needs a
-# supervised live run to confirm.
 
 def login(page, usuario, senha):
+    """Grounded in examples/ANATER-login.html. Plain HTML form (no JSF
+    viewstate), posts to /sgaLogin. `usuario` is the CPF — the page's own
+    JS mask strips dots/dashes from #j_username before submit, so it's
+    safest to pass raw digits directly rather than a formatted CPF
+    string (the mask plugin only reformats on real keystroke events,
+    which Playwright's .fill() doesn't trigger)."""
     page.goto(f"{BASE_URL}/pages/login.xhtml")
-    page.get_by_label("Usuário").fill(usuario)
-    page.get_by_label("Senha").fill(senha)
-    page.get_by_role("button", name="Entrar").click()
+    page.fill("#j_username", usuario)
+    page.fill("#j_password", senha)
+    page.locator("#loginform button[type=submit]").click()
     page.wait_for_load_state("networkidle")
 
 
-def open_cadastrar_ufpa(page, *, entidade, estado, municipio):
-    """Sidebar UFPA -> Cadastro -> Consultar UFPA -> select filters ->
-    Cadastrar. Per docs/mapeamento.md: Entidade is the user's only real
-    option; Projeto/Instrumento auto-populate as the single option once
-    Entidade is picked (and are filled as fixed values on the Cadastrar
-    UFPA page itself, not here)."""
-    page.get_by_role("link", name="UFPA").click()
-    page.get_by_role("link", name="Cadastro").click()
-    page.get_by_label("Entidade").select_option(label=entidade)
-    page.get_by_label("Estado").select_option(label=estado)
-    page.get_by_label("Município").select_option(label=municipio)
-    page.get_by_role("button", name="Cadastrar").click()
+# Fixed, single-option values on the Consultar UFPA filter screen,
+# confirmed in examples/ANATER -ufpa-cadastro-filled.html — same
+# real-world values as the Cadastrar UFPA page's own fixed fields
+# (src/schema/build.py), just a different page/DOM.
+_PROJETO_LABEL = "UNIÃO COM MUNICÍPIOS"
+_INSTRUMENTO_LABEL = "CTR.GTI.ASS.667.26"
+_ESTADO_LABEL = "Mato Grosso"
+
+
+def open_cadastrar_ufpa(page, *, municipio):
+    """Sidebar UFPA -> Cadastro -> Consultar UFPA filter screen -> Cadastrar.
+
+    Grounded in examples/ANATER -ufpa-cadastro.html and
+    -ufpa-cadastro-filled.html. Confirmed by Khalel: Entidade, Projeto,
+    Instrumento and Estado are each a single real option in this account
+    (Entidade is already pre-selected on page load; Projeto/Instrumento/
+    Estado still need an explicit .select_option() to fire their AJAX
+    cascade) — Município is the one real per-family choice, and Tipo de
+    Público always stays empty. Then click "Cadastrar", not
+    "Pré-Cadastro" — both render inside the same AJAX-updated
+    `idPanelCadastroUpf` span, so they're disambiguated by visible text,
+    not DOM scope.
+
+    The sidebar's top-level "UFPA" `<a>` has no href/onclick of its own in
+    examples/ANATER -home.html — it's a pure client-side toggle (standard
+    admin-template pattern) that reveals the "Cadastro"/"Diagnóstico ..."
+    submenu underneath. That toggle behavior itself was never directly
+    observed in a captured DOM event, so this one step is inferred, not
+    confirmed, and is the most likely thing to need correcting on a first
+    live run.
+    """
+    ufpa_item = page.locator("#sidebar-menu li").filter(has_text="UFPA").first
+    ufpa_item.locator("> a").first.click()
+    ufpa_item.get_by_text("Cadastro", exact=True).click()
+    page.wait_for_load_state("networkidle")
+
+    page.locator(r"#formularioUpf\:idProjeto").select_option(label=_PROJETO_LABEL)
+    page.wait_for_timeout(300)
+    page.locator(r"#formularioUpf\:idInstrumento").select_option(label=_INSTRUMENTO_LABEL)
+    page.wait_for_timeout(300)
+    page.locator(r"#formularioUpf\:idUf").select_option(label=_ESTADO_LABEL)
+    page.wait_for_timeout(300)
+    page.locator(r"#formularioUpf\:idMunicipio").select_option(label=municipio)
+    page.wait_for_timeout(300)
+
+    page.locator(r"#formularioUpf\:idPanelCadastroUpf").get_by_text("Cadastrar", exact=True).click()
     page.wait_for_load_state("networkidle")
 
 

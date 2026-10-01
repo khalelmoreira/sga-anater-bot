@@ -4,8 +4,9 @@ Khalel: automated login with stored credentials, not manual handoff).
 
 Read from environment variables so nothing secret is ever committed:
 
-    SGA_USUARIO   the SGA login (CPF/e-mail/username — exact field TBD,
-                  see Site.login())
+    SGA_USUARIO   the SGA login — a CPF (see examples/ANATER-login.html:
+                  #j_username, masked 999.999.999-99 in the UI). Pass raw
+                  digits only (no dots/dashes) — see src/fill/site.py:login()
     SGA_SENHA     the SGA password
 
 A `.env` file (untracked, see .gitignore) is the expected way to set

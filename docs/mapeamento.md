@@ -114,7 +114,7 @@ Three layers, so that a new data source (the user still has to investigate other
 - [x] Confirm browser automation tool: **Playwright, confirmed by Khalel**
 - [x] Extraction layer (`src/extract/`) implemented and verified against `examples/example.docx` — both `docx_source.py` (10-table walker) and `whatsapp_source.py` (4-paragraph parser)
 - [x] Schema layer (`src/schema/`) implemented and verified — `build.py` turns raw records into per-panel `CanonicalField`s (+ `IndicadorAnswer` for Diagnóstico T0), applying every confidence rule documented above. Dropdown-heavy fields (Atividade, Unidade de Medida, Município, Comunidade/Grupo, Estado Civil, Classificação da Pessoa, Escolaridade) accept an optional live option catalog from `src/fill/` to upgrade low→high confidence just-in-time; without one they default to low rather than guessing
-- [x] `src/fill/` (Playwright) implemented for the 8 Cadastrar UFPA panels — locators and fill logic are grounded directly in `examples/anater-signup-page-1.html` (real stable ids, real radio/select DOM structure, real "Adicionar"/"Salvar"/modal button behavior) and smoke-tested with a mock page against the full canonical schema (correct accordion/panel/row ordering, correct number of "Adicionar" clicks per repeatable panel, low-confidence fields correctly held for review instead of blindly filled). **Not yet verified against the live site**: login (`src/fill/site.py:login()`), the "Consultar UFPA" filter screen (`open_cadastrar_ufpa()`), and all of Diagnóstico T0 (search screen + the ~140-question page) — no saved HTML capture exists for any of these three, so their selectors are best-effort placeholders. Needs a supervised first run to confirm/correct
+- [x] `src/fill/` (Playwright) implemented for the 8 Cadastrar UFPA panels — locators and fill logic are grounded directly in `examples/anater-signup-page-1.html` (real stable ids, real radio/select DOM structure, real "Adicionar"/"Salvar"/modal button behavior) and smoke-tested with a mock page against the full canonical schema (correct accordion/panel/row ordering, correct number of "Adicionar" clicks per repeatable panel, low-confidence fields correctly held for review instead of blindly filled). Login (`examples/ANATER-login.html`), the UFPA sidebar menu (`examples/ANATER -home.html`), and the "Consultar UFPA" filter screen + its Cadastrar button (`examples/ANATER -ufpa-cadastro.html` / `...-ufpa-cadastro-filled.html`) are all mapped and now also implemented in `src/fill/site.py` (`login()`, `open_cadastrar_ufpa()`) with the real, confirmed ids. The one inferred (not directly captured) step is the sidebar's "UFPA" item expand, flagged in `open_cadastrar_ufpa()`'s docstring. **Still not grounded or implemented**: Diagnóstico T0 (search screen + the ~140-question page) — no saved HTML capture exists yet
 - [ ] Diagnóstico T0 fill-in (the ~140 Indicador questions, already mapped into `IndicadorAnswer` by the schema layer) — not implemented in `src/fill/` yet, only the 8 Cadastrar UFPA panels
 
 ---
@@ -240,6 +240,116 @@ implementation whenever we get to it.
 Same format for the remaining panels: pull real field ids/types/options
 straight from the saved HTML, cross-check against the `.docx`, and only
 flag genuinely open points — no need to describe fields verbally.
+
+---
+
+# Login page + sidebar menu (Home) — navigation mapping
+
+## Login
+
+Pulled from `examples/ANATER-login.html` (full page, small enough not to
+need block markers). **Plain HTML form, not JSF** — no viewstate, posts
+directly to `/sgaLogin`.
+
+| Field | Site field id | Type | Notes |
+| --- | --- | --- | --- |
+| CPF (login) | `j_username` | text | JS-masked as `999.999.999-99` in the UI; the page's own submit handler strips dots/dashes before posting. Safest for `src/fill/` to fill with raw digits directly (no punctuation), since the jQuery mask plugin only reformats on real keystrokes, not on a programmatic `.fill()` |
+| Senha | `j_password` | password | — |
+| — | `j_codSistema` | hidden, fixed `1` | already set in the page, nothing to fill |
+| Submit | `button[type=submit]` inside `#loginform` | button, text "ENTRAR" | no stable id, locate by form scope |
+
+Login page URL in `docs/mapeamento.md`'s "SGA/ANATER site screen flow"
+section above (`/pages/login.xhtml`) is confirmed correct — that's the
+page containing this form; the form's own `action` (`/sgaLogin`) is just
+the POST target, not a page to navigate to.
+
+## Sidebar menu — UFPA
+
+Pulled from `examples/ANATER -home.html`, from the HTML comment `Se
+existir permissão "MMET" para o usuário logado, mostrará o menu` to
+`Início Implementação Planejamento` (the next top-level sidebar item
+after Empreendimentos). Confirms the step-2/3 navigation described in
+"SGA/ANATER site screen flow" above with real ids.
+
+- The whole **UFPA** sidebar item (and its submenu) is gated behind the
+  **"MMET"** permission for the logged-in user, per the HTML comment —
+  relevant if login ever succeeds but the UFPA menu doesn't appear.
+- Menu form id is `menu` (separate from the Cadastrar UFPA page's
+  `formularioUpf`). Links are plain JSF `jsfcljs` form submits (full
+  page reload, not AJAX) — same submit pattern as the Cadastrar UFPA
+  page's main Salvar button, not the `mojarra.ab` AJAX calls used
+  everywhere else on that page.
+- Two commented-out (dead) links exist in the source — "Beneficiário" and
+  "Alocar Beneficiário" — not real menu items, ignore.
+
+| Visible link text | Site field id (`menu:...`) | Rule |
+| --- | --- | --- |
+| Cadastro | `j_idt66` (auto-generated, unstable) | **Consultar UFPA** screen — this is step 2/3 of the flow |
+| Diagnóstico T0 | `j_idt69` (auto-generated, unstable) | step 4 of the flow |
+| Diagnóstico T1 | `j_idt71` (auto-generated, unstable) | out of scope — process ends at Diagnóstico T0 per "SGA/ANATER site screen flow" |
+| Diagnóstico T2 | `j_idt73` (auto-generated, unstable) | out of scope, same as T1 |
+
+Same caveat as every other `j_idtNNN` in this document: these numbers
+aren't stable across page loads — `src/fill/` should locate the
+"Cadastro" and "Diagnóstico T0" links by their **visible text**, scoped
+to the `<ul class="nav child_menu">` under the UFPA `<li>` (distinguishes
+them from the near-identical "Cadastro"/"Diagnóstico ..." links under the
+sibling **Empreendimentos** menu, which use the same label text for a
+different, out-of-scope flow).
+
+## Open points
+
+- [x] "Consultar UFPA" filter screen — mapped below
+- [ ] Diagnóstico T0 search screen and the ~140-question page — not yet
+      captured
+
+---
+
+# Consultar UFPA — filter screen mapping
+
+Pulled from `examples/ANATER -ufpa-cadastro.html` (full page, blank/
+freshly opened — nothing selected yet). This is the page the sidebar's
+"Cadastro" link opens (step 2/3 of the flow). Form is `formularioUpf`,
+action `/pages/manterUPF/consultarUPF.xhtml`.
+
+| Field | Site field id | Type | Notes |
+| --- | --- | --- | --- |
+| Entidade | `j_idt172` (auto-generated, **not** a stable id — locate by the "Entidade" label instead) | select | Single real option in this account, value `18047` = "MUNARINI AGRIMENSURA", pre-selected. `onchange` fires an AJAX update (its render-target string names `formularioUpf:idEstado`, but the real `<select>` id on this page is `idUf` — a naming mismatch in the site's own code, noted here so `src/fill/` targets the real id, `idUf`, not the string from the onchange handler) |
+| Projeto | `idProjeto` | select | Same single option confirmed in the UFPA panel mapping: value `47` = "UNIÃO COM MUNICÍPIOS". `onchange` cascades `idPanelInstrumento`, `idUf`, and `idPanelCadastroUpf` |
+| Instrumento | `idInstrumento` (inside span `idPanelInstrumento`) | select | **Disabled, only "--Selecione--"** until Projeto is picked — cascades from Projeto, consistent with the UFPA panel mapping's single real option (`CTR.GTI.ASS.667.26`), just not rendered yet in this blank capture |
+| Estado | `idUf` | select | Here it's a real, editable `<select>` (unlike the Cadastrar UFPA page, where it renders as a read-only `<span>` once set) — this is where Estado actually gets chosen. Single real option in this account: value `51` = "Mato Grosso". `onchange` cascades `idMunicipio` |
+| Município | `idMunicipio` | select | Disabled until Estado is picked. Confirms the 7 real options already listed in the UFPA panel mapping (`Bom Jesus Do Araguaia` `6980`, `Claudia` `6992`, `Feliz Natal` `7005`, `Nova Ubiratã` `7040`, `Peixoto De Azevedo` `7049`, `Querencia` `7061`, `São Jose Do Xingu` `7071`) |
+| Tipo de Público | `name="formularioUpf:j_idt192"` (no `id` attribute at all — locate by the "Tipo de Público" label) | select | ~60 options. **Confirmed by Khalel: always leave empty** — not part of the automated flow |
+| Limpar | `j_idt198` (auto-generated, AJAX) | button | clears the filters — **ignore**, not part of the automated flow |
+| Pesquisar | `j_idt200` (auto-generated, AJAX) | button | **ignore** — confirmed by Khalel: the flow does *not* search/filter a results list at all |
+
+**Confirmed by Khalel — the actual flow on this screen:** Entidade
+(standard, doesn't change), Projeto (single option), Instrumento (single
+option), Estado (single option) are all just confirmed/auto-selected as
+already mapped above; **Município** is the one real choice (must match
+the family being registered); **Tipo de Público stays empty**; then click
+**Cadastrar** directly — no Pesquisar/search step, no results list. All
+other buttons on this screen (Limpar, Pesquisar) are irrelevant and
+`src/fill/` should ignore them.
+
+## Cadastrar button — confirmed
+
+Pulled from `examples/ANATER -ufpa-cadastro-filled.html` (same screen,
+now with Projeto/Instrumento/Estado/Município all selected). Confirms the
+guess above: the button renders inside `idPanelCadastroUpf` — the same
+span as the "Você cadastrou 50 UFPA(s)" counter — once the Projeto/
+Município cascade completes.
+
+| Button | Site field id | Rule |
+| --- | --- | --- |
+| Cadastrar | `j_idt293` (auto-generated, AJAX — locate by visible text "Cadastrar" scoped to `idPanelCadastroUpf`, not by id) | click this — opens the already-mapped Cadastrar UFPA page |
+| Pré-Cadastro | `j_idt413` (auto-generated, AJAX) | **ignore** — a different, out-of-scope flow; same span as Cadastrar, so `src/fill/` must disambiguate by text, not just scope |
+
+## Open points
+
+None — this screen is now fully mapped (Entidade/Projeto/Instrumento/
+Estado/Município ids, the empty-Tipo-de-Público rule, and the real
+Cadastrar button id/location).
 
 ---
 

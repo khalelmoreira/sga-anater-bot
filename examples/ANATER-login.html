@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><head id="j_idt2"><script type="text/javascript">if(window.PrimeFaces){PrimeFaces.settings.locale='en_US';}</script>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="Charset" content="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta http-equiv="cache-control" content="max-age=0">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>ANATER - CONTROLE DE ACESSOS</title>
+	
+	<link href="ANATER%20-%20CONTROLE%20DE%20ACESSOS_files/estilo_jwrF.css" rel="stylesheet">
+	<link href="https://sga.anater.org/resources/images/favicon-anater.png" type="image/x-icon" rel="icon">
+	
+	<link href="ANATER%20-%20CONTROLE%20DE%20ACESSOS_files/bootstrap.min_jwrF.css" rel="stylesheet">
+	<link href="ANATER%20-%20CONTROLE%20DE%20ACESSOS_files/bootstrap.min_jwrF.css" rel="stylesheet"><style>.lottie-animation-container{width:var(--lottie-animation-container-width);height:var(--lottie-animation-container-height);background-color:var(--lottie-animation-container-background-color);overflow:hidden;margin:var(--lottie-animation-margin)}.lottie-animation-container svg{transform:scale(var(--lottie-animation-scale))}</style><style>.lottie-animation-container{width:var(--lottie-animation-container-width);height:var(--lottie-animation-container-height);background-color:var(--lottie-animation-container-background-color);overflow:hidden;margin:var(--lottie-animation-margin)}.lottie-animation-container svg{transform:scale(var(--lottie-animation-scale))}</style></head>
+
+<body id="main" onload="document.loginform.j_username.focus();">
+
+	<div class="container-fluid">
+	
+		<div id="loginbox" style="margin-top: 80px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+			
+			<div class="centraliza-div">
+			
+				<div class="centraliza-div-2">
+				
+					<figure style="text-align: center">
+						<img src="ANATER%20-%20CONTROLE%20DE%20ACESSOS_files/logo-anater-ofcial_jwrF.jpg" alt="ANATER" title="ANATER">						
+					</figure>
+					
+					<figure style="text-align: center">
+						<img src="ANATER%20-%20CONTROLE%20DE%20ACESSOS_files/nome-sga_jwrF.png" alt="ANATER" title="ANATER">
+						<span style="font-size: 12px">1.1.0.1 01/08/2026 14:30	</span>
+					</figure>
+					
+				</div>
+				
+			</div>
+			
+			<div class="panel panel-info">
+			
+			
+				<div class="panel-heading">
+					<div class="panel-title"></div>
+				</div>
+	
+				<div style="padding-top: 30px" class="panel-body">
+	
+					<div style="display: none" id="login-alert" class="alert alert-danger  "></div>
+	
+					<form id="loginform" name="loginform" class="form-horizontal" role="form" method="post" action="/sgaLogin">
+					 
+					 	
+						<div style="margin-bottom: 25px" class="input-group">
+							<span class="input-group-addon">
+								<i class="glyphicon glyphicon-user"></i>
+							</span><input id="j_username" type="text" name="j_username" class="form-control" maxlength="14" placeholder="Apenas números, ex: 00011122233" autocomplete="off">							
+							<span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
+						</div>
+	
+						<div style="margin-bottom: 25px" class="input-group">
+							<span class="input-group-addon">
+								<i class="glyphicon glyphicon-lock"></i>
+							</span><input id="j_password" type="password" name="j_password" value="" maxlength="20" class="form-control" placeholder="Senha"><input id="j_codSistema" type="hidden" name="j_codSistema" value="1">
+						</div>
+	
+						<div class="input-group">
+							<div class="checkbox">
+								<label>									
+									<!-- &lt;input id="login-remember" type="checkbox" name="remember" value="1"&gt; Lembrar -->									
+								</label>
+							</div>
+						</div>
+	
+	
+						<div style="margin-top: 10px" class="form-group">
+							<!-- Button -->
+	
+							<div class="col-sm-12 controls">								
+								<!-- &lt;h:commandButton type="submit" value="Entrar" id="btn-login"  class="btn btn-success"&gt;&lt;/h:commandButton&gt; -->
+									<button type="submit" class="btn btn-success">ENTRAR</button>
+							</div>
+						</div>
+	
+						<div class="form-group">
+						
+							<div class="col-md-12 control">
+							
+								<div style="border-top: 1px solid #888; padding-top: 15px; font-size: 85%">
+									<a href="#" onclick="$('#loginbox').hide(); $('#signupbox').show()">Esqueci a senha.</a>
+								</div>
+								
+								<div style="font-size: 85%; text-align: center; color: #006600">
+									© Sistema desenvolvido e mantido por: Gerência de Tecnologia da Informação - GTI
+								</div>
+								
+							</div>
+							
+						</div>
+						
+					</form>
+	
+				</div>
+				
+			</div>			
+				
+		</div>
+		
+		
+		<div id="signupbox" style="display:none; margin-top: 250px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+		
+	        <div class="panel panel-info">
+	        
+	            <div class="panel-heading">
+	                <div class="panel-title">Esqueci a Senha</div>
+	            </div>
+	              
+	            <div class="panel-body">
+	            
+	                <form id="lembrarSenhaform" class="form-horizontal" method="post" action="/LembrarSenha" role="form">                    
+	                    
+	                    <div class="form-group">
+	                        <label for="lastname" class="col-md-2 control-label">CPF</label>
+	                        <div class="col-md-10">
+	                            <input type="text" class="form-control" name="lastname" placeholder="Apenas números, ex: 00011122233">
+	                        </div>
+	                    </div>
+	                    	
+	                    <div class="form-group">
+	                        <!-- Button -->                                        
+	                        <div class="col-md-offset-2 col-md-9">
+	                            <button id="btn-signup" type="submit" class="btn btn-info"><i class="icon-hand-right"></i> Enviar</button>
+	                        </div>
+	                    </div>
+	                    
+	                    <div class="form-group">
+							<div class="col-md-12 control">
+								<div style="border-top: 1px solid #888; padding-top: 15px; font-size: 85%">
+									<a id="signinlink" href="#" onclick="$('#signupbox').hide(); $('#loginbox').show()">Voltar à tela de Login </a>
+								</div>
+							</div>
+							
+						</div>
+						
+	                </form>
+	                
+	             </div>
+	             
+	        </div>
+	        
+		</div> 
+	
+	</div>	
+	
+	<script src="ANATER%20-%20CONTROLE%20DE%20ACESSOS_files/jquery_jwrF.js"></script>
+	<script src="ANATER%20-%20CONTROLE%20DE%20ACESSOS_files/bootstrap.min_jwrF.js"></script>
+	
+		<!-- Formatador de Campo e Maskara -->
+	<script src="ANATER%20-%20CONTROLE%20DE%20ACESSOS_files/jquery.mask.min_jwrF.js"></script>
+	<script src="ANATER%20-%20CONTROLE%20DE%20ACESSOS_files/jquery.format.min_jwrF.js"></script>
+	
+	<script>
+		$(document).ready(function() {
+			$("#j_username").focus();
+			
+			$("#j_username").mask("999.999.999-99");
+
+			$("#loginform").submit(function( event ) {
+				var text = $('#j_username').val();
+				text = text.replace('.', '');
+				text = text.replace('.', '');
+				text = text.replace('-', '');			    
+			    $('#j_username').val(text);
+			});
+		});
+	</script>
+	
+
+			
+</body></html>

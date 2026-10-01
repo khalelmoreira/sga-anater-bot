@@ -1,0 +1,1371 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:a4j="http://richfaces.org/a4j" class=" "><head id="j_idt2"><script type="text/javascript" src="ANATER%20-ufpa-cadastro_files/jsf.js_Wb6i.xhtml"></script><script type="text/javascript">if(window.PrimeFaces){PrimeFaces.settings.locale='en_US';}</script>
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="Charset" content="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta http-equiv="cache-control" content="max-age=0">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async="async" src="ANATER%20-ufpa-cadastro_files/google-analytics_analytics_Wb6i.js"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-169706711-1');
+	</script>
+	 
+	<script>
+		// block user back button to browser
+		history.pushState(null, null, location.href);
+	    window.onpopstate = function () {
+	        history.go(1);
+	    };
+	</script>
+	
+	
+	<!-- Inicio Pedido Leslier 02/08/2024
+	&lt;script 
+	  src="https://cdn.simonops.com/divedot-rum.prod.js" 
+	  type="text/javascript"&gt;
+	&lt;/script&gt;
+	&lt;script&gt;
+	    window.DD_RUM &amp;&amp; window.DD_RUM.init({
+	      applicationId: '2b4c8ca5-591b-45d9-bfff-290341225808',
+	      clientToken: 'pub478206535aa84012a40b6fda512d7a07',
+	      service: 'SGA',
+	      env: 'producao',
+	      // Especifique um n&uacute;mero de vers&atilde;o para identificar a vers&atilde;o implantada de sua aplica&ccedil;&atilde;o no Divedot,
+	      // version: '1.0.0',
+	      site: 'cloud.simonops.com',
+	      trackInteractions: true,
+	      sampleRate: 100,
+	    });
+	&lt;/script&gt;
+	 Fim  Pedido Leslier 02/08/2024 -->
+	
+	<link rel="stylesheet" href="ANATER%20-ufpa-cadastro_files/ol_Wb6i.css" type="text/css">
+	<link rel="stylesheet" href="ANATER%20-ufpa-cadastro_files/ol3gm_Wb6i.css" type="text/css">
+	
+	<style>
+      .map {
+        height: 750px;
+        width: 100%;
+      }
+    </style>
+	
+	<link rel="icon" href="https://sga.anater.org/resources/images/favicon-anater.png" type="image/x-icon">
+		
+	<!-- ########## IN&Iacute;CIO Imports de CSS ########## -->
+	<link href="ANATER%20-ufpa-cadastro_files/styleUtil_Wb6i.css" rel="stylesheet">
+    
+	
+	<!-- Bootstrap -->
+    <link href="ANATER%20-ufpa-cadastro_files/bootstrap.min_Wb6i.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link href="ANATER%20-ufpa-cadastro_files/font-awesome.min_Wb6i.css" rel="stylesheet">
+    
+    <!-- NProgress -->
+    <link href="ANATER%20-ufpa-cadastro_files/nprogress_Wb6i.css" rel="stylesheet">
+    
+    <!-- iCheck -->
+    <link href="ANATER%20-ufpa-cadastro_files/green_Wb6i.css" rel="stylesheet">
+    
+    <!-- bootstrap-progressbar -->
+    <link href="ANATER%20-ufpa-cadastro_files/bootstrap-progressbar-3.3.4.min_Wb6i.css" rel="stylesheet">
+    
+    <!-- JQVMap -->
+    <link href="ANATER%20-ufpa-cadastro_files/jqvmap.min_Wb6i.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <!-- &lt;link href="/resources/outros/build/css/custom.min.css" rel="stylesheet" /&gt; -->
+	
+	<link href="ANATER%20-ufpa-cadastro_files/custom_Wb6i.css" rel="stylesheet">
+	
+	<!-- Datatables -->
+    <link href="ANATER%20-ufpa-cadastro_files/dataTables.bootstrap.min_Wb6i.css" rel="stylesheet">
+    <link href="ANATER%20-ufpa-cadastro_files/buttons.bootstrap.min_Wb6i.css" rel="stylesheet">
+    <link href="ANATER%20-ufpa-cadastro_files/fixedHeader.bootstrap.min_Wb6i.css" rel="stylesheet">
+    <link href="ANATER%20-ufpa-cadastro_files/responsive.bootstrap.min_Wb6i.css" rel="stylesheet">
+    <link href="ANATER%20-ufpa-cadastro_files/scroller.bootstrap.min_Wb6i.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="ANATER%20-ufpa-cadastro_files/fileinput_Wb6i.css">
+    
+    <!-- API Select2 -->
+    
+    <link href="ANATER%20-ufpa-cadastro_files/selectize_Wb6i.css" rel="stylesheet">
+    
+    <!-- faces api -->
+    <link href="ANATER%20-ufpa-cadastro_files/styles_Wb6i.css" rel="stylesheet">
+   
+   <!-- fancybox --> 
+    <link href="ANATER%20-ufpa-cadastro_files/jquery.fancybox_Wb6i.css" rel="stylesheet">
+    
+ 
+    
+	<!-- ########## FIM Imports de CSS ########## -->
+	
+	<!-- ########## IN&Iacute;CIO Imposts de JavaScript ########## --><style>.lottie-animation-container{width:var(--lottie-animation-container-width);height:var(--lottie-animation-container-height);background-color:var(--lottie-animation-container-background-color);overflow:hidden;margin:var(--lottie-animation-margin)}.lottie-animation-container svg{transform:scale(var(--lottie-animation-scale))}</style><style>.lottie-animation-container{width:var(--lottie-animation-container-width);height:var(--lottie-animation-container-height);background-color:var(--lottie-animation-container-background-color);overflow:hidden;margin:var(--lottie-animation-margin)}.lottie-animation-container svg{transform:scale(var(--lottie-animation-scale))}</style><style type="text/css">.fancybox-margin{margin-right:0px;}</style></head><body class="nav-md"><span id="importLibsJsInicioBodyPanel">
+			<script type="text/javascript" src="ANATER%20-ufpa-cadastro_files/jquery_Wb6i.js"></script>
+			<script type="text/javascript" src="ANATER%20-ufpa-cadastro_files/jquery.mask.min_Wb6i.js"></script>
+			<script type="text/javascript" src="ANATER%20-ufpa-cadastro_files/jquery.maskMoney.min_Wb6i.js"></script>
+			<script type="text/javascript" src="ANATER%20-ufpa-cadastro_files/scriptUtil_Wb6i.js"></script>
+			<script type="text/javascript" src="ANATER%20-ufpa-cadastro_files/scriptUtilsGEO_Wb6i.js"></script>
+			
+			<!-- smartWizard -->
+	    	<script src="ANATER%20-ufpa-cadastro_files/jquery.smartWizard_Wb6i.js"></script></span>
+	
+	<!-- ########## FIM Imposts de JavaScript ########## -->
+	
+	<style>
+		table.dataTable thead>tr>th.sorting_asc, table.dataTable thead>tr>th.sorting_desc, table.dataTable thead>tr>th.sorting, table.dataTable thead>tr>td.sorting_asc, table.dataTable thead>tr>td.sorting_desc, table.dataTable thead>tr>td.sorting{
+			padding-right: 15px;
+		}
+	</style>
+	
+	<title>ANATER | Agência Nacional de Assistência Técnica e Extensão Rural</title>
+
+
+	<div class="container body">
+    
+      	<div class="main_container">
+<form id="menu" name="menu" method="post" action="/pages/manterUPF/consultarUPF.xhtml" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="menu" value="menu">
+
+
+	<div class="col-md-3 left_col">
+	
+		<div class="left_col scroll-view">
+
+			<div class="navbar nav_title" style="border: 0;"><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt10':'menu:j_idt10'},'');return false" class="site_title">
+				
+					<img height="50" src="ANATER%20-ufpa-cadastro_files/logomarca-sga-2_Wb6i.png" alt="ANATER"></a>
+				
+			</div>
+
+			<div class="clearfix"></div>
+			
+			<div class="h60"></div>
+			
+			<!-- sidebar menu -->
+			<div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+			
+				<div class="menu_section">
+								
+						 
+					
+					
+					
+					
+					
+					<ul class="nav side-menu">
+						<li><a href="https://sga.anater.org/pages/glossario.xhtml">
+								<i class="fa fa-book"></i>Glossário<!--span class="label label-success pull-right"&gt;Novo&lt;/span--></a>
+						</li>
+						
+						<li><a href="https://sga.anater.org/pages/boletimSga.xhtml">
+								<i class="fa fa-bullhorn"></i>Boletim SGA<!--span class="label label-success pull-right"&gt;Novo&lt;/span--></a>
+						</li>
+						
+						<li><a href="https://sga.anater.org/pages/videoAulaSga.xhtml">
+								<i class="fa fa-video-camera"></i>Vídeo Aula SGA <!--span class="label label-success pull-right"&gt;Novo&lt;/span--></a>
+						</li>
+						
+						
+						<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt24':'menu:j_idt24'},'');return false">
+								<i class="fa fa-question"></i>FAQ SGA <!--span class="label label-success pull-right"&gt;Novo&lt;/span--></a>
+							
+						</li>
+					
+						<!-- Se existir premise "MCREN, AN ou CO" para o usu&aacute;rio logado, mostrar&aacute; o Credenciamento-->
+							
+							<li>
+							
+								<a><i class="fa fa-indent"></i> Credenciamento<span class="fa fa-chevron-down"></span></a>
+								
+								<ul class="nav child_menu">
+											<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt30':'menu:j_idt30'},'');return false">Dados da Empresa</a>
+											</li>
+												<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt34':'menu:j_idt34'},'');return false">Documentos</a>
+												</li>
+										<li>
+											
+											<!-- If necess&aacute;rio para funcionamento de fiscaliza&ccedil;&atilde;o --><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt37':'menu:j_idt37'},'');return false">Equipe</a>
+											
+										</li>
+											<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt41':'menu:j_idt41'},'');return false">Infraestrutura</a>
+											</li>
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt44':'menu:j_idt44'},'');return false">Histórico</a>
+										</li>
+											<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt48':'menu:j_idt48'},'');return false">Certidão de Credenciamento</a>
+											</li>
+									
+								</ul>
+								
+							</li>						
+						<!-- MODULO COMUNIDADAE -->
+							<li>
+							
+								<a><i class="fa fa-users"></i>Comunidade<span class="fa fa-chevron-down"></span></a>
+								
+								<ul class="nav child_menu">								
+									
+									<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt53':'menu:j_idt53'},'');return false">Cadastro de Comunidade</a>
+									</li>
+									<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt55':'menu:j_idt55'},'');return false">Diagnóstico Com. T0</a>
+											
+									</li>
+									<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt57':'menu:j_idt57'},'');return false">Diagnóstico Com. T1</a>
+											
+									</li>
+									<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt59':'menu:j_idt59'},'');return false">Diagnóstico Com. T2</a>
+											
+									</li>
+								</ul>
+		
+							</li>
+						
+						<!--  M&oacute;dulo Fiscaliza&ccedil;&atilde;o -->
+						<!-- &lt;c:if test="false"&gt;
+						 -->
+						
+												
+	  
+	  
+						<!-- Se existir permiss&atilde;o "MMET" para o usu&aacute;rio logado, mostrar&aacute; o menu-->
+						
+							<li><a><i class="fa fa-male"></i> UFPA <span class="fa fa-chevron-down"></span></a>
+							
+								<ul class="nav child_menu">
+										<!-- li&gt;
+											&lt;h:commandLink 	action="/pages/manterBeneficiarioPf/consultarBeneficiarioPf"
+															actionListener=""
+															value="Benefici&aacute;rio" /&gt;
+												
+										&lt;/li&gt;
+										
+										&lt;li&gt;
+											&lt;h:commandLink 	action="/pages/manterGerenciarBeneficiarioPf/cadastrarBeneficiarioPf"
+															actionListener=""
+															value="Alocar Benefici&aacute;rio" /&gt;
+												
+										&lt;/li-->
+										
+											<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt65':'menu:j_idt65'},'');return false">Cadastro</a>
+											</li>
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt68':'menu:j_idt68'},'');return false">Diagnóstico T0</a>
+											
+										</li>
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt70':'menu:j_idt70'},'');return false">Diagnóstico T1</a>
+											
+										</li>
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt72':'menu:j_idt72'},'');return false">Diagnóstico T2</a>
+											
+										</li>
+								
+								
+								
+								</ul>
+							</li>
+						
+							<li><a><i class="fa fa-institution"></i> Empreendimentos <span class="fa fa-chevron-down"></span></a>
+							
+								<ul class="nav child_menu">
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt77':'menu:j_idt77'},'');return false">Cadastro</a>
+											
+										</li>
+									
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt80':'menu:j_idt80'},'');return false">Diagnóstico Emp. T0</a>
+											
+										</li>
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt82':'menu:j_idt82'},'');return false">Diagnóstico Emp. T1</a>
+											
+										</li>
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt84':'menu:j_idt84'},'');return false">Diagnóstico Emp. T2</a>
+											
+										</li>
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt86':'menu:j_idt86'},'');return false">Projeto de Gestão
+											<!-- span class="label label-success pull-right"&gt;Novo&lt;/span--></a>
+											
+										</li>
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt90':'menu:j_idt90'},'');return false">LPC Emp. T0</a>
+											
+										</li>
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt92':'menu:j_idt92'},'');return false">LPC Emp. T1</a>
+											
+										</li>
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt94':'menu:j_idt94'},'');return false">LPC Emp. T2</a>
+											
+										</li>
+								
+								
+								
+								</ul>
+							</li>
+						
+						
+						
+						<!-- In&iacute;cio Implementa&ccedil;&atilde;o Planejamento -->
+						
+							<li>
+							
+								<a><i class="fa fa-paper-plane"></i> Planejamento<span class="fa fa-chevron-down"></span></a>
+								
+								<ul class="nav child_menu">
+									
+									<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt99':'menu:j_idt99'},'');return false">Plano de Metas</a>
+									</li>
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt102':'menu:j_idt102'},'');return false">Planejamento Empreendimento
+												<!-- span class="label label-success pull-right"&gt;Novo&lt;/span--></a>
+										</li>
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt106':'menu:j_idt106'},'');return false">Planejamento Familiar</a></li>
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt108':'menu:j_idt108'},'');return false">Planejamento Comunitário</a></li>
+
+
+										<!-- Se tem permiss&atilde;o MPLAN ter&aacute; acesso a estes dois -->
+
+
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt110':'menu:j_idt110'},'');return false">Projeto Produtivo</a></li>
+
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt112':'menu:j_idt112'},'');return false">Projeto Produtivo Grupo</a></li>
+
+									
+									<!-- Fim Projeto Produtivo -->
+									
+								</ul>
+								
+							</li>
+						<!-- Fim Implementa&ccedil;&atilde;o Planejamento -->
+						
+							<li>
+								<a><i class="fa fa-rocket"></i> Execução<span class="fa fa-chevron-down"></span></a>
+								
+								<ul class="nav child_menu">
+									<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt118':'menu:j_idt118'},'');return false">Execução Individual</a>
+									</li>									
+									<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt120':'menu:j_idt120'},'');return false">Execução Empreendimento
+											<!-- span class="label label-success pull-right"&gt;Novo&lt;/span--></a>
+									</li>	
+									<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt124':'menu:j_idt124'},'');return false">Execução Controle Social</a>
+									</li>
+									<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt127':'menu:j_idt127'},'');return false">Execução Comunitária</a>
+									</li>
+									<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt129':'menu:j_idt129'},'');return false">Execução Coletiva Empreendimento						
+											<!-- span class="label label-success pull-right"&gt;Novo&lt;/span--></a>
+									</li>
+															
+								</ul>
+								
+							</li>
+								
+							<li>
+							
+								<a><i class="fa fa-database"></i> Business Intelligence<span class="fa fa-chevron-down"></span></a>
+								
+								<ul class="nav child_menu">
+									
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt135':'menu:j_idt135'},'');return false">Painel Extensionista</a>
+											
+										</li>
+									
+								</ul>
+								
+							</li>
+						
+						
+						<!-- MODULO RELAT&Oacute;RIO ANATER -->
+						
+						
+						
+						<!-- MODULO RELAT&Oacute;RIO ENTIDADE -->
+						
+						
+						
+						
+						<!-- MODULO CHAMADA PUBLICA -->
+						
+						
+						
+						<!-- MODULO GERENCIADOR FINANCEIRO -->
+						
+						
+						
+						
+						<!-- MODULO FISCALIZACAO -->
+						
+						<!-- INICIO MODULO PARECER TECNICO -->
+						<!-- FIM MODULO PARECER TECNICO -->
+						
+						<!-- INICIO MODULO GESTOR MAPA -->
+						<!-- FIM MODULO GESTOR MAPA -->
+						
+
+												
+						
+
+						<!--li&gt;&lt;a&gt;&lt;i class="fa fa-edit"&gt;&lt;/i&gt; Forms &lt;span
+								class="fa fa-chevron-down"&gt;&lt;/span&gt;&lt;/a&gt;
+							&lt;ul class="nav child_menu"&gt;
+								&lt;li&gt;&lt;a href="form.html"&gt;General Form&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="form_advanced.html"&gt;Advanced Components&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="form_validation.html"&gt;Form Validation&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="form_wizards.html"&gt;Form Wizard&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="form_upload.html"&gt;Form Upload&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="form_buttons.html"&gt;Form Buttons&lt;/a&gt;&lt;/li&gt;
+							&lt;/ul&gt;&lt;/li&gt;
+
+						&lt;li&gt;&lt;a&gt;&lt;i class="fa fa-desktop"&gt;&lt;/i&gt; UI Elements &lt;span
+								class="fa fa-chevron-down"&gt;&lt;/span&gt;&lt;/a&gt;
+							&lt;ul class="nav child_menu"&gt;
+								&lt;li&gt;&lt;a href="general_elements.html"&gt;General Elements&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="media_gallery.html"&gt;Media Gallery&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="typography.html"&gt;Typography&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="icons.html"&gt;Icons&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="glyphicons.html"&gt;Glyphicons&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="widgets.html"&gt;Widgets&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="invoice.html"&gt;Invoice&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="inbox.html"&gt;Inbox&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="calendar.html"&gt;Calendar&lt;/a&gt;&lt;/li&gt;
+							&lt;/ul&gt;&lt;/li&gt;
+
+						&lt;li&gt;&lt;a&gt;&lt;i class="fa fa-table"&gt;&lt;/i&gt; Tables &lt;span
+								class="fa fa-chevron-down"&gt;&lt;/span&gt;&lt;/a&gt;
+							&lt;ul class="nav child_menu"&gt;
+								&lt;li&gt;&lt;a href="tables.html"&gt;Tables&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="tables_dynamic.html"&gt;Table Dynamic&lt;/a&gt;&lt;/li&gt;
+							&lt;/ul&gt;&lt;/li&gt;
+
+						&lt;li&gt;&lt;a&gt;&lt;i class="fa fa-bar-chart-o"&gt;&lt;/i&gt; Data
+								Presentation &lt;span class="fa fa-chevron-down"&gt;&lt;/span&gt;&lt;/a&gt;
+							&lt;ul class="nav child_menu"&gt;
+								&lt;li&gt;&lt;a href="chartjs.html"&gt;Chart JS&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="chartjs2.html"&gt;Chart JS2&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="morisjs.html"&gt;Moris JS&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="echarts.html"&gt;ECharts&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="other_charts.html"&gt;Other Charts&lt;/a&gt;&lt;/li&gt;
+							&lt;/ul&gt;&lt;/li&gt;
+
+						&lt;li&gt;&lt;a&gt;&lt;i class="fa fa-clone"&gt;&lt;/i&gt;Layouts &lt;span
+								class="fa fa-chevron-down"&gt;&lt;/span&gt;&lt;/a&gt;
+							&lt;ul class="nav child_menu"&gt;
+								&lt;li&gt;&lt;a href="fixed_sidebar.html"&gt;Fixed Sidebar&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="fixed_footer.html"&gt;Fixed Footer&lt;/a&gt;&lt;/li&gt;
+							&lt;/ul&gt;&lt;/li-->
+					</ul> 	 
+
+				</div>
+
+
+				<!--div class="menu_section"&gt;
+					&lt;h3&gt;Live On&lt;/h3&gt;
+					&lt;ul class="nav side-menu"&gt;
+						&lt;li&gt;&lt;a&gt;&lt;i class="fa fa-bug"&gt;&lt;/i&gt; Additional Pages &lt;span
+								class="fa fa-chevron-down"&gt;&lt;/span&gt;&lt;/a&gt;
+							&lt;ul class="nav child_menu"&gt;
+								&lt;li&gt;&lt;a href="e_commerce.html"&gt;E-commerce&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="projects.html"&gt;Projects&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="project_detail.html"&gt;Project Detail&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="contacts.html"&gt;Contacts&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="profile.html"&gt;Profile&lt;/a&gt;&lt;/li&gt;
+							&lt;/ul&gt;&lt;/li&gt;
+						&lt;li&gt;&lt;a&gt;&lt;i class="fa fa-windows"&gt;&lt;/i&gt; Extras &lt;span
+								class="fa fa-chevron-down"&gt;&lt;/span&gt;&lt;/a&gt;
+							&lt;ul class="nav child_menu"&gt;
+								&lt;li&gt;&lt;a href="page_403.html"&gt;403 Error&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="page_404.html"&gt;404 Error&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="page_500.html"&gt;500 Error&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="plain_page.html"&gt;Plain Page&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="login.html"&gt;Login Page&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="pricing_tables.html"&gt;Pricing Tables&lt;/a&gt;&lt;/li&gt;
+							&lt;/ul&gt;&lt;/li&gt;
+						&lt;li&gt;&lt;a&gt;&lt;i class="fa fa-sitemap"&gt;&lt;/i&gt; Multilevel Menu &lt;span
+								class="fa fa-chevron-down"&gt;&lt;/span&gt;&lt;/a&gt;
+							&lt;ul class="nav child_menu"&gt;
+								&lt;li&gt;&lt;a href="#level1_1"&gt;Level One&lt;/a&gt;
+									&lt;li&gt;&lt;a&gt;Level One&lt;span class="fa fa-chevron-down"&gt;&lt;/span&gt;&lt;/a&gt;
+										&lt;ul class="nav child_menu"&gt;
+											&lt;li class="sub_menu"&gt;&lt;a href="level2.html"&gt;Level Two&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a href="#level2_1"&gt;Level Two&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a href="#level2_2"&gt;Level Two&lt;/a&gt;&lt;/li&gt;
+										&lt;/ul&gt;&lt;/li&gt;
+									&lt;li&gt;&lt;a href="#level1_2"&gt;Level One&lt;/a&gt;&lt;/li&gt;&lt;/li&gt;
+							&lt;/ul&gt;&lt;/li&gt;
+						&lt;li&gt;&lt;a href="javascript:void(0)"&gt;&lt;i class="fa fa-laptop"&gt;&lt;/i&gt;
+								Landing Page &lt;span class="label label-success pull-right"&gt;Coming
+									Soon&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+					&lt;/ul&gt;
+				&lt;/div-->
+
+			</div>
+			<!-- /sidebar menu -->
+
+		</div>
+		
+	</div><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:0" value="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" autocomplete="off">
+</form>
+
+
+
+	
+	
+	
+	<div class="top_nav">
+	<style>
+	 .fa-check:hover {
+	    color: green;
+	}
+	
+	.fa-trash:hover {
+	    color: red;
+	}
+	</style>
+
+	<div class="nav_menu">
+<form id="formNotificacao" name="formNotificacao" method="post" action="/pages/manterUPF/consultarUPF.xhtml" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="formNotificacao" value="formNotificacao">
+
+				
+			<nav>
+				
+				<div class="nav toggle">
+					<a id="menu_toggle"><i class="fa fa-bars"></i></a>
+				</div><div id="formNotificacao:testeNot">
+					
+					<ul class="nav navbar-nav navbar-right">
+						
+						<li class="">
+						
+							<a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+    
+   	 	PAULA MARIELI MARAFON
+   	 	
+	 
+								<span class=" fa fa-angle-down"></span>
+							</a>
+							
+								
+
+	                  		
+	                  
+						</li>
+						
+						<li role="presentation" class="dropdown">
+							<a href="https://sga.anater.org/logout" class="dropdown-toggle info-number" aria-expanded="false">
+								<i class="fa fa-sign-out" title="Sair"></i>Sair
+							</a>
+						</li>	
+						
+						<li role="presentation" class="dropdown">
+						
+							<a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+								<i class="fa fa-envelope-o"></i>
+									<span class="badge bg-green">0</span>
+							</a>
+							
+							<ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">										
+									<li>
+										<a>
+											<span>
+												<span>GTI</span>
+												<span class="time">-</span>
+											</span>
+											<span class="message">
+												Não existem notificações
+											</span>
+										</a>
+									</li>
+							</ul>
+						</li>
+				
+						<h3>SGA - Sistema de Gestão de Ater</h3>
+						
+					</ul></div>
+			
+			</nav><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:1" value="BgLp0GK3qAvYU0she+C60qSDBbP6ISVmMeB7Ej/jzdgOB7uEUL5nlhWBzdah6bocpZbkxaeFNE7dZpqUlTzMvN7hJFwyqzfgXat0BgMK6GoEmwmSQctWyiIq7EhSxbG5U7hRdRKc9a4yLHJVVn3ZjBbvFVTHB7n7AkVxe9WFRytlxGkBIfyPDzei/SKdG/xnOQO2MFzEHWVqDuU5uLb/vFlRW0fhzENhsuaOOnOjHq/Ylav2ecl9VLeDQd98jO+OP3J3sTQ/74XMS3tydPcy2q0AHUqRTaUugaTd9quzICsVlNE9zZiSyS5riEP9UEAb1uPAkLqqnnasTmMyEHRct+9tT17PmKOSFMd5Gr5fypHbYXw7xILqi4d4TDsIrBrdiOlDJZ5K6hDPPlZND7oQtYlbExDOSWVx24KVW87kTBtrQO/yaH1VyiKMbZwGcJGbHDA8MB9zFp3SyfJ3LjC9Q68fBy09Lh1lk/2+ehQ/7+rNQ9AZI+vLpAiMV6uhiXWkIEaBuO/Wi8Qk40kW+Wb5+4t0iPK6BtWubVTqErmVwhKLoN8ZvSRIET9tDRmdxi69nCVbguplQgFRz9qQHKuuUJsYpT8lG3TdUI98ogc896RGOT13G0dAPmqfu4Z1AkYjPVfRBIgOTs8ZBXUNWBelCivBaHEaVOooNo/tMYqMJ9stRzg8Ljvnfadyv69TAdTMZZUH2vHxc5Xcvq8yXbixdA0VR9tziIrqyXYz3JTz3iA4n0cCMLuxQNgkGDjY8+ezGwUtG1hDSZhQxumYLV6Q1zmJ20m2oV4XdMWyo3WPFCCtgoPThxHwPfZykog8VLJrBazp7o5nLvgO11AAkWOjgjAFsHboNN0yoSAY0xzmeQZbm8mUPuWLO1vBnNfuAcsGQXtBWNB2Hbkur3axyxdffiSU2axhwfeHekGH70Z8LxtZT2OW1Bu4mVerA9MUdUt6TDjXoUnGSi8z53JpV7vNNwyV4I+i0GwXiOquwPowWIX69iBd8i3WQ8vR+WaOJWMMxv0LORa/dKI7vYuDYVLGqMoiFGdqzTbo72ShsRCoeKK/1339dbpGDAPmT+qsg8e3R7u+FCkw9JaSYwZFOEOG1oj2lT6S/P5A76WwgSs4cIWPFJL/Up2nia00G5JQndiP4Suzy/oP91HBurQdgDsy343bAvbCDaoi3GuvdIo9yDWjyDMq/fQcuqkxw0hOpeNmviHNYOlwc/HlgOXffDlVClBZPEMmIlmnffTGA2UjisCdyhaUhrshz4SwIjEGqbJRD/2L7Sp/tN+fQwnGvN+kbob43IqYr0DEJle1WDhxQZleKhh2Qhl7+Sr15cO7xl+w0eS8USgOJkrbEZMuIyqsjnDiqA1isON9RabDcxM1IGp+X5k1lTy7jHQ59LgLd+3Rcfe2UsLfUZ/gjPfeTcIRevEpkJqEYrArjcgNuk99enAZWg00S4iN+k3BMSK0mwdE0N/O2eomDnzeoXIh5Ol0BDgBkPgdoB07tOSgDwnjvIDVfKPYBcbqiCGWiB0jqfxFYRZSD+X1kulpKXghxNlh26+cnlN6+juH5LcNJeVZCPNsFiQJs7wfQt5VoIMQXlc7FjTucy1oTdZv0sAiXnHsip9nQjsg6kwX5aWk4UucCZPjQ7K1spAF7DqL4jmBgvI+WfUC2lOcr3fowwqQp1po7PXn6ZeRdWw1YwmT3OwqkXprlVrtatQBjUG+x4nNsHFaFKdnBSLzPt6bvZ7vB0gnBez/fI1GuFMvpzG2kxuZ61XmmNCNyMGI5vemEHgfakxsHHTWb9ISVSW4kJvFegjfZ6hJffdj5j3WsSd6FjLnKw6WdKLTe1aG7pigNbIi//mxOX/d3TvEsuUN9zw0o0m/6kkekDGX0+0b7Cjpw3D+6vG9xXL8YifOCt2nmFZYSGGcF3htBvdaHpHdbR4NiKPWkKOff9b5FpF20GHs3Adf/1/qllYvWcWZM2OT4bJg9CpS5TenV8nuUZAKUQtYCI/b8dvUyJxR2dAtx4paPmTG04CgDRXY6ToKFJsudyJYzPoz15myRcOetQJs34r3FaLLpmzcClv9Uhq+BFRUq7olacRmayxOZuNtlwlXX8FpX8Y1c7EcHu6k/rMJv4P3HBWQ1peF54Iae/ikoOmDDcBZIsR5Np4RXHHOOJ+g7jOFT/XJ8yDz4CH9kAW09UP5rhqDYsIVJeg5G0V1QvQWOtzMXOm6UElDEJd/oOrlhPMG0oM/86XxAG0RXpCBsftWaJZ6vqViQmTMoGek7ww2iRkcLbiLhuhyBpYQdzBsrPn9yGOVsjM9ZSjmJY/1GWBzsyOyZ+J7aKfkKeBK+g50ou51ba4fG3QUFb3qdNl7o+OX1SQcsKHhZ94YU2fO1l5UVzeN3KzVAqyBNUmjZs3Ll8rqd+039tA9KkNmJvH9bD7la8YbPMF6ZpfWxZx5xcZPn0/r3f0H7A2MC9nbC+fqwEwVREXVaxG6lmfJACnvlQhrI1F5KN/4c9wMztNtUVSEb/tHqZqHNf7JHZCiTm8U+tOjV2tphgj8x2PzVf6YACoqKJIOcio+dIolnUbFaAJtuRJjfPWmHx9HEjA1te88XDjAM1bD3J7cZRnjHYvwGcjZzRIa35erm1Cdc706H1e3sylD9Ooi9YdsJOzUfNxkidErbe8=" autocomplete="off">
+</form>
+	
+	</div>
+		
+	</div>
+	
+<!-- /top navigation -->
+
+<form id="formularioUpf" name="formularioUpf" method="post" action="/pages/manterUPF/consultarUPF.xhtml" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="formularioUpf" value="formularioUpf">
+
+
+			<div class="right_col" role="main" style="min-height: 896px;">
+
+				<div class="page-title">
+
+					<div class="row">
+
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<!-- Mensagem global do sistema --><div id="formularioUpf:msgContext"></div>
+
+							<div class="x_panel">
+
+								<div class="x_title">
+
+									<h2 class="titulo_modulo">
+										<i class="fa fa-users" aria-hidden="true"></i> Consultar UFPA
+									</h2>
+									
+									<ul class="nav navbar-right panel_toolbox">
+									
+										<a class="btn btn-default">Você cadastrou <b>50</b> UFPA(s)</a><span id="formularioUpf:idPanelCadastroUpf"></span>
+
+									
+										
+
+									</ul>
+
+									<div class="clearfix"></div>
+
+								</div>
+
+								<div class="x_content">
+
+									<div class="row">
+
+										<div class="form-group col-md-12 col-sm-6 col-xs-12">
+
+											<label class="control-label col-md-2 col-sm-3 col-xs-3" for="first-name"> 
+												Entidade 
+											</label>
+
+											<div class="col-md-4 col-sm-6- col-xs-12"><select id="formularioUpf:j_idt172" name="formularioUpf:j_idt172" class="form-control" size="1" onchange="mojarra.ab(this,event,'change','@this','formularioUpf:idEstado')">	<option value="18047" selected="selected">MUNARINI AGRIMENSURA</option>
+</select>
+
+											</div>
+
+										</div>
+
+									</div>
+
+
+									<div class="row">
+
+										<div class="form-group col-md-12 col-sm-6 col-xs-12">
+
+											<label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name"> Projeto  </label>
+
+											<div class="col-md-3 col-sm-6 col-xs-12"><select id="formularioUpf:idProjeto" name="formularioUpf:idProjeto" class="form-control" size="1" onchange="mojarra.ab(this,event,'change','formularioUpf:idProjeto','formularioUpf:idPanelInstrumento formularioUpf:idUf formularioUpf:idPanelCadastroUpf')">	<option value="" selected="selected">--Selecione--</option>
+	<option value="47">UNIÃO COM MUNICÍPIOS</option>
+</select>
+
+											</div>
+
+										</div>
+
+									</div>
+
+									<div class="row">
+
+										<div class="form-group col-md-12 col-sm-6 col-xs-12"><span id="formularioUpf:idPanelInstrumento">
+
+												<label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name"> Instrumento  </label>
+
+												<div class="col-md-3 col-sm-6 col-xs-12"><select id="formularioUpf:idInstrumento" name="formularioUpf:idInstrumento" class="form-control" size="1" disabled="disabled">	<option value="" selected="selected">--Selecione--</option>
+</select>
+
+												</div></span>
+
+										</div>
+
+									</div>
+
+
+									<div class="row">
+
+										<div class="form-group col-md-12 col-sm-6 col-xs-12">
+
+											<label class="control-label col-md-2 col-sm-3 col-xs-3" for="first-name"> 
+												Estado 
+											</label>
+
+											<div class="col-md-4 col-sm-6 col-xs-12"><select id="formularioUpf:idUf" name="formularioUpf:idUf" class="form-control" size="1" onchange="mojarra.ab(this,event,'change','@form','formularioUpf:idMunicipio')">	<option value="" selected="selected">--Selecione--</option>
+	<option value="51">Mato Grosso</option>
+</select>
+											
+											</div>
+
+										</div>
+
+									</div>
+
+									<div class="row">
+
+										<div class="form-group col-md-12 col-sm-6 col-xs-12">
+
+											<label class="control-label col-md-2 col-sm-3 col-xs-3" for="first-name"> Município
+											</label>
+
+											<div class="col-md-4 col-sm-6 col-xs-12"><select id="formularioUpf:idMunicipio" name="formularioUpf:idMunicipio" class="form-control" size="1" disabled="disabled">	<option value="" selected="selected">--Selecione--</option>
+	<option value="6980">Bom Jesus Do Araguaia</option>
+	<option value="6992">Claudia</option>
+	<option value="7005">Feliz Natal</option>
+	<option value="7040">Nova Ubiratã</option>
+	<option value="7049">Peixoto De Azevedo</option>
+	<option value="7061">Querencia</option>
+	<option value="7071">São Jose Do Xingu</option>
+</select>
+
+											</div>
+
+										</div>
+
+									</div>
+									
+
+									<div class="row">
+
+										<div class="form-group col-md-12 col-sm-6 col-xs-12">
+
+											<label class="control-label col-md-2 col-sm-3 col-xs-3" for="first-name">
+												Tipo de Público 
+											</label>
+
+											<div class="col-md-4 col-sm-6 col-xs-12"><select name="formularioUpf:j_idt192" class="form-control" size="1">	<option value="" selected="selected">--Selecione--</option>
+	<option value="Acampados">Acampados</option>
+	<option value="Agricultores Familiares">Agricultores Familiares</option>
+	<option value="Agricultores Familiares Tradicionais">Agricultores Familiares Tradicionais</option>
+	<option value="Apanhadores de flores sempre vivas">Apanhadores de flores sempre vivas</option>
+	<option value="Aquicultores Familiares">Aquicultores Familiares</option>
+	<option value="Assentados">Assentados</option>
+	<option value="Associados">Associados</option>
+	<option value="Atingidos por Barragens">Atingidos por Barragens</option>
+	<option value="Atingidos por Base de Alcântara">Atingidos por Base de Alcântara</option>
+	<option value="Caatingueiros">Caatingueiros</option>
+	<option value="Caboclos">Caboclos</option>
+	<option value="Caiçaras">Caiçaras</option>
+	<option value="Castanheiros">Castanheiros</option>
+	<option value="Catadores de mangaba">Catadores de mangaba</option>
+	<option value="Ciganos">Ciganos</option>
+	<option value="Cipozeiros">Cipozeiros</option>
+	<option value="Comunidades">Comunidades</option>
+	<option value="Comunidades de fundos e fechos de pasto">Comunidades de fundos e fechos de pasto</option>
+	<option value="Comunidades Pantaneiras">Comunidades Pantaneiras</option>
+	<option value="Empreendimento da A.F.">Empreendimento da A.F.</option>
+	<option value="Empreendimentos Coletivos da Agricultura Familiar">Empreendimentos Coletivos da Agricultura Familiar</option>
+	<option value="Empreendimentos e Equipe de Técnicos">Empreendimentos e Equipe de Técnicos</option>
+	<option value="Extrativistas">Extrativistas</option>
+	<option value="Família de Agricultor Familiar">Família de Agricultor Familiar</option>
+	<option value="Famílias e Representantes do CMDRS">Famílias e Representantes do CMDRS</option>
+	<option value="Faxinalenses">Faxinalenses</option>
+	<option value="Fundos de Pasto">Fundos de Pasto</option>
+	<option value="Geraiszeiros">Geraiszeiros</option>
+	<option value="Ilhéus">Ilhéus</option>
+	<option value="Jangadeiros">Jangadeiros</option>
+	<option value="Juventude de povos e comunidades tradicionais">Juventude de povos e comunidades tradicionais</option>
+	<option value="Marisqueiras">Marisqueiras</option>
+	<option value="Morroquianos">Morroquianos</option>
+	<option value="Mulheres Rurais">Mulheres Rurais</option>
+	<option value="Orgânico">Orgânico</option>
+	<option value="Pantaneiros">Pantaneiros</option>
+	<option value="Pescadores Artesanais">Pescadores Artesanais</option>
+	<option value="PNCF – Trabalhador Agricultor Familiar">PNCF – Trabalhador Agricultor Familiar</option>
+	<option value="PNCF – Trabalhador Rural">PNCF – Trabalhador Rural</option>
+	<option value="Povo pomerano">Povo pomerano</option>
+	<option value="Povos e comunidades de matriz africana">Povos e comunidades de matriz africana</option>
+	<option value="Povos e comunidades de terreiro">Povos e comunidades de terreiro</option>
+	<option value="Povos Indígenas">Povos Indígenas</option>
+	<option value="Praieiros">Praieiros</option>
+	<option value="Produtores Rurais">Produtores Rurais</option>
+	<option value="Quebradeiras de Côco">Quebradeiras de Côco</option>
+	<option value="Quebradeiras de coco-de-babaçu">Quebradeiras de coco-de-babaçu</option>
+	<option value="Quilombolas">Quilombolas</option>
+	<option value="Raizeiros">Raizeiros</option>
+	<option value="Representantes do CMDRS/CEDRS">Representantes do CMDRS/CEDRS</option>
+	<option value="Representantes dos Empreendimentos e Entidades">Representantes dos Empreendimentos e Entidades</option>
+	<option value="Retireiros do Araguaia">Retireiros do Araguaia</option>
+	<option value="Ribeirinhos">Ribeirinhos</option>
+	<option value="Seringueiros">Seringueiros</option>
+	<option value="Sertanejos">Sertanejos</option>
+	<option value="Técnicos">Técnicos</option>
+	<option value="UFPA e Comunidade">UFPA e Comunidade</option>
+	<option value="Unidade Familiar de Produção Agrária">Unidade Familiar de Produção Agrária</option>
+	<option value="Varjeiros">Varjeiros</option>
+	<option value="Varzantereiros">Varzantereiros</option>
+	<option value="Veredeiros">Veredeiros</option>
+</select>
+
+											</div>
+
+										</div>
+
+									</div>
+
+									<div class="ln_solid"></div>
+
+									<div class="form-group">
+										<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3"><a href="#" title="Limpar" onclick="mojarra.jsfcljs(document.getElementById('formularioUpf'),{'formularioUpf:j_idt198':'formularioUpf:j_idt198'},'');return false" class="btn btn-default">
+        	 <i class="fa fa-eraser"></i> Limpar
+        </a><a href="#" title="Pesquisar" onclick="mojarra.jsfcljs(document.getElementById('formularioUpf'),{'formularioUpf:j_idt200':'formularioUpf:j_idt200'},'');return false" class="btn btn-success">
+			<i class="fa fa-search"></i> Pesquisar
+        </a>
+										</div>
+									</div>
+
+								</div>
+
+							</div>
+
+						</div>
+
+					</div><span id="formularioUpf:idListagemResultado"></span>
+
+				</div>
+
+			</div>
+
+	<div class="modal fade modalRespostaAvaliacaoMeta2" tabindex="-1" role="dialog" aria-hidden="true">
+
+		<div class="modal-dialog modal-lg">
+
+			<div class="modal-content">
+
+					<div class="modal-header">
+					
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">×</span>
+						</button>
+						
+						<h4 class="titulo_modulo">Avaliação do Gestor</h4>
+						
+					</div>
+
+					<div class="modal-body"><span id="formularioUpf:idModalMensagemRespostaAvaliacaoMeta2"><span id="formularioUpf:messagesModalRespostaAvaliacaoMeta2">
+							
+								<div class="row">
+								
+									<div class="form-group col-md-12 col-sm-6 col-xs-12">
+									
+										<label class="control-label col-md-2 col-sm-3 col-xs-3" for="first-name">
+											Cód. UFPA: 
+										</label>
+										
+										<div class="col-md-10 col-sm-6 col-xs-12">
+											
+										</div>
+										
+									</div>
+									
+								</div>
+													
+								<div class="row">
+								
+									<div class="form-group col-md-12 col-sm-6 col-xs-12">
+									
+										<label class="control-label col-md-2 col-sm-3 col-xs-3" for="first-name">
+											Avaliação: 
+										</label>
+										
+										<div class="col-md-10 col-sm-6 col-xs-12">
+											
+										</div>
+										
+									</div>
+									
+								</div></span></span>
+						
+					</div>
+
+					<div class="modal-footer">
+					
+						<button id="botaoFechar" type="button" class="btn btn-default" data-dismiss="modal">
+							Fechar
+						</button>
+						
+					</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<div class="modal fade modalConfirmacaoInativacaoUpf" tabindex="-1" role="dialog" aria-hidden="true">
+
+		<div class="modal-dialog modal-md">
+
+			<div class="modal-content">
+
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">×</span>
+						</button>
+						<h4 class="titulo_modulo">Confirmação</h4>
+					</div>
+
+					<div class="modal-body"><span id="formularioUpf:idModalMensagemConfirmacaoUpf">
+						
+							
+							
+							<h4>
+							</h4><span id="formularioUpf:messagesValidacaoModal">
+							
+								<div class="row">
+								
+									<div class="form-group col-md-12 col-sm-6 col-xs-12">
+									
+										<label class="control-label col-md-2 col-sm-3 col-xs-3" for="first-name">
+											Motivo 
+										</label>
+											
+										<div class="col-md-6 col-sm-6 col-xs-12"><select id="formularioUpf:idMotivo" name="formularioUpf:idMotivo" class="form-control" size="1">	<option value="" selected="selected">--Selecione--</option>
+	<option value="Falecimento">Falecimento</option>
+	<option value="Composição de nova família">Composição de nova família</option>
+	<option value="Mudou-se">Mudou-se</option>
+	<option value="Divórcio">Divórcio</option>
+	<option value="Não quer Ater">Não quer Ater</option>
+	<option value="Necessidade de Ater">Necessidade de Ater</option>
+	<option value="Duplicidade de Cadastro">Duplicidade de Cadastro</option>
+	<option value="Vendeu a Propriedade">Vendeu a Propriedade</option>
+	<option value="Família não encontrada na propriedade">Família não encontrada na propriedade</option>
+	<option value="Outros">Outros</option>
+	<option value="Assassinado">Assassinado</option>
+	<option value="Não faz parte da parceira">Não faz parte da parceira</option>
+	<option value="Acima da renda para receber Fomento">Acima da renda para receber Fomento</option>
+</select>
+
+										</div>
+										
+									</div>
+									
+								</div>
+
+								<div class="row">
+								
+									<div class="form-group col-md-12 col-sm-6 col-xs-12">
+									
+										<label class="control-label col-md-2 col-sm-3 col-xs-3" for="first-name">
+											Descrição 
+										</label>
+										
+										<div class="col-md-10 col-sm-6 col-xs-12"><textarea id="formularioUpf:idDescricaoMotivo" name="formularioUpf:idDescricaoMotivo" class="form-control col-md-7 col-xs-12" rows="6"></textarea>
+											
+										</div>
+										
+									</div>
+									
+								</div></span></span>
+						
+					</div>
+
+					<div class="modal-footer">
+					
+						<button id="botaoFechar" type="button" class="btn btn-default" data-dismiss="modal">
+							Agora não
+						</button><a href="#" onclick="mojarra.jsfcljs(document.getElementById('formularioUpf'),{'formularioUpf:j_idt228':'formularioUpf:j_idt228'},'');return false" class="btn btn-primary">Sim
+							<i class="fa fa-play"></i></a>
+						
+					</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<div class="modal fade modalMembrosFamilia" tabindex="-1" role="dialog" aria-hidden="true">
+
+		<div class="modal-dialog modal-sx">
+
+			<div class="modal-content"><span id="formularioUpf:formularioMembrosFamilia">
+				
+					<div class="x_panel">
+					
+						<div class="x_content"><div id="DataTables_Table_0_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer"><div class="row"><div class="col-sm-6"><div class="dataTables_length" id="DataTables_Table_0_length"><label>Exibir <select name="DataTables_Table_0_length" aria-controls="DataTables_Table_0" class="form-control input-sm"><option value="10" selected="selected">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> resultados</label></div></div><div class="col-sm-6"><div id="DataTables_Table_0_filter" class="dataTables_filter"><label>Buscar:<input type="search" class="form-control input-sm" placeholder="" aria-controls="DataTables_Table_0"></label></div></div></div><div class="row"><div class="col-sm-12"><table class="table table-striped table-bordered dataTable no-footer" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
+<thead>
+<tr role="row"><th scope="col" class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 0px;" aria-sort="ascending" aria-label="CPF: activate to sort column descending">CPF</th><th scope="col" class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 0px;" aria-label="Nome: activate to sort column ascending">Nome</th><th scope="col" class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 0px;" aria-label="Foto Beneficiário: activate to sort column ascending">Foto Beneficiário</th></tr>
+</thead>
+<tbody>
+<tr role="row" class="odd"><td class="sorting_1"></td><td></td><td></td></tr></tbody>
+</table></div></div><div class="row"><div class="col-sm-5"><div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">Exibindo 1 até 1 de 1 resultados</div></div><div class="col-sm-7"><div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate"><ul class="pagination"><li class="paginate_button previous disabled" id="DataTables_Table_0_previous"><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="0" tabindex="0">Anterior</a></li><li class="paginate_button active"><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="1" tabindex="0">1</a></li><li class="paginate_button next disabled" id="DataTables_Table_0_next"><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="2" tabindex="0">Próxima</a></li></ul></div></div></div></div>
+
+							
+			       		</div>
+			       		
+			       	</div></span>
+
+			</div>
+
+		</div>
+
+	</div>
+	<div class="modal fade modalHistoricoAvaliacaoMetaCadastro" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">×</span>
+						</button>
+						<h4 class="titulo_modulo">Histórico Avaliação do Gestor</h4>
+					</div>
+					<div class="modal-body"><span id="formularioUpf:idModalHistoricoAvaliacaoMetaCadastro"><span id="formularioUpf:messagesModalHistoricoAvaliacaoMetaCadastro">
+								<div class="row">
+									<div class="form-group col-md-12 col-sm-6 col-xs-12"><div id="formularioUpf:datatableModalHistoricoAvaliacaoMetaCadastro_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer"><div class="row"><div class="col-sm-6"><div class="dataTables_length" id="formularioUpf:datatableModalHistoricoAvaliacaoMetaCadastro_length"><label>Exibir <select name="formularioUpf:datatableModalHistoricoAvaliacaoMetaCadastro_length" aria-controls="formularioUpf:datatableModalHistoricoAvaliacaoMetaCadastro" class="form-control input-sm"><option value="10" selected="selected">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> resultados</label></div></div><div class="col-sm-6"><div id="formularioUpf:datatableModalHistoricoAvaliacaoMetaCadastro_filter" class="dataTables_filter"><label>Buscar:<input type="search" class="form-control input-sm" placeholder="" aria-controls="formularioUpf:datatableModalHistoricoAvaliacaoMetaCadastro"></label></div></div></div><div class="row"><div class="col-sm-12"><table id="formularioUpf:datatableModalHistoricoAvaliacaoMetaCadastro" class="table table-striped table-bordered dataTable no-footer" role="grid" aria-describedby="formularioUpf:datatableModalHistoricoAvaliacaoMetaCadastro_info">
+<thead>
+<tr role="row"><th scope="col" class="sorting_asc" tabindex="0" aria-controls="formularioUpf:datatableModalHistoricoAvaliacaoMetaCadastro" rowspan="1" colspan="1" style="width: 0px;" aria-sort="ascending" aria-label="Código da UFPA: activate to sort column descending">Código da UFPA</th><th scope="col" class="sorting" tabindex="0" aria-controls="formularioUpf:datatableModalHistoricoAvaliacaoMetaCadastro" rowspan="1" colspan="1" style="width: 0px;" aria-label="Código da Execução: activate to sort column ascending">Código da Execução</th><th scope="col" class="sorting" tabindex="0" aria-controls="formularioUpf:datatableModalHistoricoAvaliacaoMetaCadastro" rowspan="1" colspan="1" style="width: 0px;" aria-label="Data/Hora: activate to sort column ascending">Data/Hora</th><th scope="col" class="sorting" tabindex="0" aria-controls="formularioUpf:datatableModalHistoricoAvaliacaoMetaCadastro" rowspan="1" colspan="1" style="width: 0px;" aria-label="Status: activate to sort column ascending">Status</th><th scope="col" class="sorting" tabindex="0" aria-controls="formularioUpf:datatableModalHistoricoAvaliacaoMetaCadastro" rowspan="1" colspan="1" style="width: 0px;" aria-label="Avaliação: activate to sort column ascending">Avaliação</th></tr>
+</thead>
+<tbody>
+<tr role="row" class="odd"><td class="sorting_1"></td><td></td><td></td><td></td><td></td></tr></tbody>
+</table></div></div><div class="row"><div class="col-sm-5"><div class="dataTables_info" id="formularioUpf:datatableModalHistoricoAvaliacaoMetaCadastro_info" role="status" aria-live="polite">Exibindo 1 até 1 de 1 resultados</div></div><div class="col-sm-7"><div class="dataTables_paginate paging_simple_numbers" id="formularioUpf:datatableModalHistoricoAvaliacaoMetaCadastro_paginate"><ul class="pagination"><li class="paginate_button previous disabled" id="formularioUpf:datatableModalHistoricoAvaliacaoMetaCadastro_previous"><a href="#" aria-controls="formularioUpf:datatableModalHistoricoAvaliacaoMetaCadastro" data-dt-idx="0" tabindex="0">Anterior</a></li><li class="paginate_button active"><a href="#" aria-controls="formularioUpf:datatableModalHistoricoAvaliacaoMetaCadastro" data-dt-idx="1" tabindex="0">1</a></li><li class="paginate_button next disabled" id="formularioUpf:datatableModalHistoricoAvaliacaoMetaCadastro_next"><a href="#" aria-controls="formularioUpf:datatableModalHistoricoAvaliacaoMetaCadastro" data-dt-idx="2" tabindex="0">Próxima</a></li></ul></div></div></div></div>
+
+										
+									</div>
+								</div></span></span>
+					</div>
+					<div class="modal-footer">
+						<button id="botaoFechar" type="button" class="btn btn-default" data-dismiss="modal">
+							Fechar
+						</button>
+					</div>
+			</div>
+		</div>
+	</div><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:2" value="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" autocomplete="off">
+</form>
+	    	<!-- Datatables -->
+		    <script>
+		      $(document).ready(function() {
+		    	  
+		        var handleDataTableButtons = function() {
+		          if ($("#datatable-buttons").length) {
+		            $("#datatable-buttons").DataTable({
+		              dom: "Bfrtip",
+		              buttons: [
+		                {
+		                  extend: "copy",
+		                  className: "btn-sm"
+		                },
+		                {
+		                  extend: "csv",
+		                  className: "btn-sm"
+		                },
+		                {
+		                  extend: "excel",
+		                  className: "btn-sm"
+		                },
+		                {
+		                  extend: "pdfHtml5",
+		                  className: "btn-sm"
+		                },
+		                {
+		                  extend: "print",
+		                  className: "btn-sm"
+		                },
+		              ],
+		              responsive: true
+		            });
+		          }
+		        };
+		
+		        TableManageButtons = function() {
+		          "use strict";
+		          return {
+		            init: function() {
+		              handleDataTableButtons();
+		            }
+		          };
+		        }();
+		
+		        $('.table').dataTable();
+		
+		        $('#datatable-keytable').DataTable({
+		          keys: true
+		        });
+		
+		        $('#datatable-responsive').DataTable();
+		
+		        $('#datatable-scroller').DataTable({
+		          ajax: "js/datatables/json/scroller-demo.json",
+		          deferRender: true,
+		          scrollY: 380,
+		          scrollCollapse: true,
+		          scroller: true
+		        });
+		
+		        $('#datatable-fixed-header').DataTable({
+		          fixedHeader: true
+		        });
+		
+		        var $datatable = $('#datatable-checkbox');
+		
+		        $datatable.dataTable({
+		          'order': [[ 1, 'asc' ]],
+		          'columnDefs': [
+		            { orderable: false, targets: [0] }
+		          ]
+		        });
+		        $datatable.on('draw.dt', function() {
+		          $('input').iCheck({
+		            checkboxClass: 'icheckbox_flat-green'
+		          });
+		        });
+		
+		        TableManageButtons.init();
+		      });
+		    </script>
+		    <!-- /Datatables -->
+    	<script>
+			  $(document).ready(function() {
+				  $('.calendario').daterangepicker({
+					  format: "DD/MM/YYYY",
+					  singleDatePicker: true,
+					  showDropdowns: true,
+					  autoUpdateInput: false,
+					  calender_style: "picker_4",
+					  locale: {
+			        	    "format": "DD/MM/YYYY",
+			        	    "separator": " - ",
+			        	    "applyLabel": "Aplicar",
+			        	    "cancelLabel": "Cancelar",
+			        	    "fromLabel": "De",
+			        	    "toLabel": "Até",
+			        	    "customRangeLabel": "Custom",
+			        	    "daysOfWeek": [
+			        	        "Dom",
+			        	        "Seg",
+			        	        "Ter",
+			        	        "Qua",
+			        	        "Qui",
+			        	        "Sex",
+			        	        "Sáb"
+			        	    ],
+			        	    "monthNames": [
+			        	        "Janeiro",
+			        	        "Fevereiro",
+			        	        "Março",
+			        	        "Abril",
+			        	        "Maio",
+			        	        "Junho",
+			        	        "Julho",
+			        	        "Agosto",
+			        	        "Setembro",
+			        	        "Outubro",
+			        	        "Novembro",
+			        	        "Dezembro"
+			        	    ],
+			        	    "firstDay": 0
+			        	}
+			          
+			        }, function(start, end, label) {
+			          console.log(start.toISOString(), end.toISOString(), label);
+			        });
+				  
+				  // Configuração específica para campos readonly
+				  $('.calendario').on('apply.daterangepicker', function(ev, picker) {
+					  var $this = $(this);
+					  var dateValue = picker.startDate.format('DD/MM/YYYY');
+					  
+					  // Atualiza o valor do campo
+					  $this.val(dateValue);
+					  
+					  // Remove o atributo readonly temporariamente para permitir a mudança
+					  $this.removeAttr('readonly');
+					  
+					  // Força o JSF a detectar a mudança
+					  $this.trigger('change');
+					  $this.trigger('blur');
+					  
+					  // Restaura o readonly após um breve delay
+					  setTimeout(function() {
+						  $this.attr('readonly', 'readonly');
+					  }, 100);
+					  
+					  // Dispara evento nativo do DOM
+					  var nativeEvent = new Event('change', { bubbles: true, cancelable: true });
+					  this.dispatchEvent(nativeEvent);
+				  });
+				  
+				  // Permite que campos readonly abram o calendário ao clicar
+				  $('.calendario[readonly]').on('click focus', function(e) {
+					  e.preventDefault();
+					  $(this).trigger('click.daterangepicker');
+				  });
+				  
+				  $('.date-pick').datepicker("option", $.datepicker.regional["pt-BR"]);
+				  });
+			  
+			</script>
+<form id="formConfirm" name="formConfirm" method="post" action="/pages/manterUPF/consultarUPF.xhtml" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="formConfirm" value="formConfirm">
+
+	
+		<div class="modal fade modalConfirmacao" tabindex="-1" role="dialog" aria-hidden="true">
+										
+            <div class="modal-dialog modal-md">
+            
+              	<div class="modal-content"><span id="formConfirm:campos">
+              	
+		             	<div class="modal-header">
+		             	   	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+		                 	<h4 class="titulo_modulo" id="myModalLabel2">Confirmação</h4>
+		                 </div>
+	                 
+		                <div class="modal-body"><span id="formConfirm:idModalMensagemConfirmacao">
+		                  		<h4> </h4></span>
+		                </div>
+	                 
+	                 	<div class="modal-footer">
+	                	       	<button type="button" class="btn btn-default" data-dismiss="modal">Agora não</button><a href="#" onclick="mojarra.jsfcljs(document.getElementById('formConfirm'),{'formConfirm:j_idt282':'formConfirm:j_idt282'},'');return false" class="btn btn-success">Sim
+									<i class="fa fa-play"></i></a>
+						</div></span>
+	                	
+        		</div>
+              
+			</div>
+            
+		</div><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:3" value="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" autocomplete="off">
+</form>
+	    
+	    <!-- footer content -->
+		<footer>
+		
+        	ANATER | Agência Nacional de Assistência Técnica e Extensão Rural
+        	<br> 
+        	© Sistema desenvolvido e mantido por: Gerência de Tecnologia da Informação - GTI
+        
+          	<div class="pull-right">
+          		1.1.0.1 01/08/2026 14:30	
+          	</div>
+          	
+          <div class="clearfix"></div>
+          
+        </footer>
+        <!-- /footer content -->
+	  
+	  	</div>
+	  
+	</div>
+
+
+	<!-- ########## IN&Iacute;CIO Configura&ccedil;&atilde;o Default do Template ########## --><span id="idPanelConfigPadraoTemplate">
+    
+    	<!-- jQuery -->
+	    <script src="ANATER%20-ufpa-cadastro_files/jquery.min_Wb6i.js"></script>
+	    
+	    <!-- Bootstrap -->
+	    <script src="ANATER%20-ufpa-cadastro_files/bootstrap.min_Wb6i.js"></script>
+	    
+	    <!-- FastClick -->
+	    <script src="ANATER%20-ufpa-cadastro_files/fastclick_Wb6i.js"></script>
+	    
+	    <!-- NProgress -->
+	    <script src="ANATER%20-ufpa-cadastro_files/nprogress_Wb6i.js"></script>
+	    
+	   	
+	    <!-- Dropzone.js -->
+   		<script src="ANATER%20-ufpa-cadastro_files/dropzone.min_Wb6i.js"></script>
+	    
+	    <!-- Chart.js -->
+	    <script src="ANATER%20-ufpa-cadastro_files/Chart.min_Wb6i.js"></script>
+	    
+	    <!-- gauge.js -->
+	    <script src="ANATER%20-ufpa-cadastro_files/gauge.min_Wb6i.js"></script>
+	    
+	    <!-- bootstrap-progressbar -->
+	    <script src="ANATER%20-ufpa-cadastro_files/bootstrap-progressbar.min_Wb6i.js"></script>
+	    
+	    <!-- iCheck -->
+	    <script src="ANATER%20-ufpa-cadastro_files/icheck.min_Wb6i.js"></script>
+	    
+	    <!-- Skycons -->
+	    <script src="ANATER%20-ufpa-cadastro_files/skycons_Wb6i.js"></script>
+	    
+	    <!-- Flot -->
+	    <script src="ANATER%20-ufpa-cadastro_files/jquery.flot_Wb6i.js"></script>
+	    <script src="ANATER%20-ufpa-cadastro_files/jquery.flot.pie_Wb6i.js"></script>
+	    <script src="ANATER%20-ufpa-cadastro_files/jquery.flot.time_Wb6i.js"></script>
+	    <script src="ANATER%20-ufpa-cadastro_files/jquery.flot.stack_Wb6i.js"></script>
+	    <script src="ANATER%20-ufpa-cadastro_files/jquery.flot.resize_Wb6i.js"></script>
+	    
+	    <!-- Flot plugins -->
+	    <script src="ANATER%20-ufpa-cadastro_files/jquery.flot.orderBars_Wb6i.js"></script>
+	    <script src="ANATER%20-ufpa-cadastro_files/jquery.flot.spline.min_Wb6i.js"></script>
+	    <script src="ANATER%20-ufpa-cadastro_files/curvedLines_Wb6i.js"></script>
+	    
+	    <!-- DateJS -->
+	    <script src="ANATER%20-ufpa-cadastro_files/date_Wb6i.js"></script>
+	    
+	    <!-- JQVMap -->
+	    <script src="ANATER%20-ufpa-cadastro_files/jquery.vmap_Wb6i.js"></script>
+	    <script src="ANATER%20-ufpa-cadastro_files/jquery.vmap.world_Wb6i.js"></script>
+	    <script src="ANATER%20-ufpa-cadastro_files/jquery.vmap.sampledata_Wb6i.js"></script>
+	    
+	    <!-- bootstrap-daterangepicker -->
+	    <script src="ANATER%20-ufpa-cadastro_files/moment.min_Wb6i.js"></script>
+	    <script src="ANATER%20-ufpa-cadastro_files/daterangepicker_Wb6i.js"></script>
+	
+	    <!-- Custom Theme Scripts -->
+	    <!-- Modifica&ccedil;&atilde;o realizada dia 10/08/2018 Guilherme - Atendimento do componente jquery.smartWizard do cadastro de Empreendimento -->
+	   	<!-- &lt;script src="/resources/outros/build/js/custom.min.js"&gt;&lt;/script&gt; -->
+	    <script src="ANATER%20-ufpa-cadastro_files/custom.min_Wb6i.js"></script>
+	    
+	    <!-- Datatables -->
+	    <script src="ANATER%20-ufpa-cadastro_files/jquery.dataTables.min_Wb6i.js"></script> <!-- Este script mostra a label Exibir, Buscar e Exibindo -->
+	    <script src="ANATER%20-ufpa-cadastro_files/dataTables.bootstrap.min_Wb6i.js"></script>
+	    <script src="ANATER%20-ufpa-cadastro_files/dataTables.buttons.min_Wb6i.js"></script>
+	    <script src="ANATER%20-ufpa-cadastro_files/buttons.bootstrap.min_Wb6i.js"></script>
+	    <script src="ANATER%20-ufpa-cadastro_files/buttons.flash.min_Wb6i.js"></script>
+	    <script src="ANATER%20-ufpa-cadastro_files/buttons.html5.min_Wb6i.js"></script>
+	    <script src="ANATER%20-ufpa-cadastro_files/buttons.print.min_Wb6i.js"></script>
+	    <script src="ANATER%20-ufpa-cadastro_files/dataTables.fixedHeader.min_Wb6i.js"></script>
+	    <script src="ANATER%20-ufpa-cadastro_files/dataTables.keyTable.min_Wb6i.js"></script>
+	    <script src="ANATER%20-ufpa-cadastro_files/dataTables.responsive.min_Wb6i.js"></script>
+	    <script src="ANATER%20-ufpa-cadastro_files/responsive.bootstrap_Wb6i.js"></script>
+	    <script src="ANATER%20-ufpa-cadastro_files/dataTables.scroller.min_Wb6i.js"></script>
+	    <script src="ANATER%20-ufpa-cadastro_files/jszip.min_Wb6i.js"></script>
+	    <script src="ANATER%20-ufpa-cadastro_files/pdfmake.min_Wb6i.js"></script>
+	    <script src="ANATER%20-ufpa-cadastro_files/vfs_fonts_Wb6i.js"></script></span>
+	<!-- ########## FIM Configura&ccedil;&atilde;o Default do Template ########## --><span id="importLibsJsFinalBodyPanel">
+				<script type="text/javascript" src="ANATER%20-ufpa-cadastro_files/jquery-ui.min_Wb6i.js"></script>
+				<link href="ANATER%20-ufpa-cadastro_files/jquery-ui.min_Wb6i.css" rel="stylesheet">
+				<link href="ANATER%20-ufpa-cadastro_files/jquery-ui.structure.min_Wb6i.css" rel="stylesheet">
+				<link href="ANATER%20-ufpa-cadastro_files/jquery-ui.theme.min_Wb6i.css" rel="stylesheet">
+				
+				<script type="text/javascript" src="ANATER%20-ufpa-cadastro_files/jquery.mask.min_Wb6i.js"></script>
+				<script type="text/javascript" src="ANATER%20-ufpa-cadastro_files/jquery.maskMoney.min_Wb6i.js"></script>
+				<script type="text/javascript" src="ANATER%20-ufpa-cadastro_files/scriptUtil_Wb6i.js"></script>
+				<script type="text/javascript" src="ANATER%20-ufpa-cadastro_files/scriptUtilsGEO_Wb6i.js"></script>
+				<script type="text/javascript" src="ANATER%20-ufpa-cadastro_files/selectize.min_Wb6i.js"></script>
+				 <!-- Custom Theme Scripts -->
+	   			 <!-- Modifica&ccedil;&atilde;o realizada dia 10/08/2018 Guilherme - Atendimento do componente jquery.smartWizard do cadastro de Empreendimento -->
+				<script src="ANATER%20-ufpa-cadastro_files/cadastrarEmpreendimento_Wb6i.js"></script>
+				
+				<!-- smartWizard -->
+	    		<script src="ANATER%20-ufpa-cadastro_files/jquery.smartWizard_Wb6i.js"></script>
+	    		
+	    		<!-- WebCam -->
+	    		<script src="ANATER%20-ufpa-cadastro_files/webcam_Wb6i.js"></script>
+	    		
+	    		<!-- FileInput -->
+	    		<script type="text/javascript" src="ANATER%20-ufpa-cadastro_files/fileinput_Wb6i.js"></script>
+	    		<!-- fancybox -->
+	    		<script type="text/javascript" src="ANATER%20-ufpa-cadastro_files/jquery.fancybox.pack_Wb6i.js"></script>
+	    		
+	    		<!-- faces api -->
+	    		<script src="ANATER%20-ufpa-cadastro_files/face-api_Wb6i.js"></script>
+	    		
+	    		<!-- OpenLayers - Google Maps integration-->
+	    		
+	    		<!-- &lt;script src="/resources/openlayers/js/ol3gm-debug.js"&gt;&lt;/script&gt; --></span> 
+</body></html>
+<!-- 
+		O banner est&aacute; configurado para n&atilde;o aparecer no modo celular
+		 hidden-xs:  Celular (largura de 0px at&eacute; 760px ser&aacute; oculto)
+		 visible-sm: Tablet  (largura de  765px at&eacute; 990 px ser&aacute; vis&iacute;vel)
+		 visible-md: Monitor menor (de 990px at&eacute; 1200px ser&aacute; vis&iacute;vel) 
+		 visible-lg: Monitor maior(a partir de 1200px ser&aacute; vis&iacute;vel)
+	-->
+<!-- top navigation -->

@@ -1,0 +1,3454 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:a4j="http://richfaces.org/a4j" class=" "><head id="j_idt3"><script type="text/javascript">if(window.PrimeFaces){PrimeFaces.settings.locale='en_US';}</script>
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="Charset" content="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta http-equiv="cache-control" content="max-age=0">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async="async" src="ANATER%20-home_files/google-analytics_analytics_zpdL.js"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-169706711-1');
+	</script>
+	 
+	<script>
+		// block user back button to browser
+		history.pushState(null, null, location.href);
+	    window.onpopstate = function () {
+	        history.go(1);
+	    };
+	</script>
+	
+	
+	<!-- Inicio Pedido Leslier 02/08/2024
+	&lt;script 
+	  src="https://cdn.simonops.com/divedot-rum.prod.js" 
+	  type="text/javascript"&gt;
+	&lt;/script&gt;
+	&lt;script&gt;
+	    window.DD_RUM &amp;&amp; window.DD_RUM.init({
+	      applicationId: '2b4c8ca5-591b-45d9-bfff-290341225808',
+	      clientToken: 'pub478206535aa84012a40b6fda512d7a07',
+	      service: 'SGA',
+	      env: 'producao',
+	      // Especifique um n&uacute;mero de vers&atilde;o para identificar a vers&atilde;o implantada de sua aplica&ccedil;&atilde;o no Divedot,
+	      // version: '1.0.0',
+	      site: 'cloud.simonops.com',
+	      trackInteractions: true,
+	      sampleRate: 100,
+	    });
+	&lt;/script&gt;
+	 Fim  Pedido Leslier 02/08/2024 -->
+	
+	<link rel="stylesheet" href="ANATER%20-home_files/ol_zpdL.css" type="text/css">
+	<link rel="stylesheet" href="ANATER%20-home_files/ol3gm_zpdL.css" type="text/css">
+	
+	<style>
+      .map {
+        height: 750px;
+        width: 100%;
+      }
+    </style>
+	
+	<link rel="icon" href="https://sga.anater.org/resources/images/favicon-anater.png" type="image/x-icon">
+		
+	<!-- ########## IN&Iacute;CIO Imports de CSS ########## -->
+	<link href="ANATER%20-home_files/styleUtil_zpdL.css" rel="stylesheet">
+    
+	
+	<!-- Bootstrap -->
+    <link href="ANATER%20-home_files/bootstrap.min_zpdL.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link href="ANATER%20-home_files/font-awesome.min_zpdL.css" rel="stylesheet">
+    
+    <!-- NProgress -->
+    <link href="ANATER%20-home_files/nprogress_zpdL.css" rel="stylesheet">
+    
+    <!-- iCheck -->
+    <link href="ANATER%20-home_files/green_zpdL.css" rel="stylesheet">
+    
+    <!-- bootstrap-progressbar -->
+    <link href="ANATER%20-home_files/bootstrap-progressbar-3.3.4.min_zpdL.css" rel="stylesheet">
+    
+    <!-- JQVMap -->
+    <link href="ANATER%20-home_files/jqvmap.min_zpdL.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <!-- &lt;link href="/resources/outros/build/css/custom.min.css" rel="stylesheet" /&gt; -->
+	
+	<link href="ANATER%20-home_files/custom_zpdL.css" rel="stylesheet">
+	
+	<!-- Datatables -->
+    <link href="ANATER%20-home_files/dataTables.bootstrap.min_zpdL.css" rel="stylesheet">
+    <link href="ANATER%20-home_files/buttons.bootstrap.min_zpdL.css" rel="stylesheet">
+    <link href="ANATER%20-home_files/fixedHeader.bootstrap.min_zpdL.css" rel="stylesheet">
+    <link href="ANATER%20-home_files/responsive.bootstrap.min_zpdL.css" rel="stylesheet">
+    <link href="ANATER%20-home_files/scroller.bootstrap.min_zpdL.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="ANATER%20-home_files/fileinput_zpdL.css">
+    
+    <!-- API Select2 -->
+    
+    <link href="ANATER%20-home_files/selectize_zpdL.css" rel="stylesheet">
+    
+    <!-- faces api -->
+    <link href="ANATER%20-home_files/styles_zpdL.css" rel="stylesheet">
+   
+   <!-- fancybox --> 
+    <link href="ANATER%20-home_files/jquery.fancybox_zpdL.css" rel="stylesheet">
+    
+ 
+    
+	<!-- ########## FIM Imports de CSS ########## -->
+	
+	<!-- ########## IN&Iacute;CIO Imposts de JavaScript ########## --><style>.lottie-animation-container{width:var(--lottie-animation-container-width);height:var(--lottie-animation-container-height);background-color:var(--lottie-animation-container-background-color);overflow:hidden;margin:var(--lottie-animation-margin)}.lottie-animation-container svg{transform:scale(var(--lottie-animation-scale))}</style><style>.lottie-animation-container{width:var(--lottie-animation-container-width);height:var(--lottie-animation-container-height);background-color:var(--lottie-animation-container-background-color);overflow:hidden;margin:var(--lottie-animation-margin)}.lottie-animation-container svg{transform:scale(var(--lottie-animation-scale))}</style><style type="text/css">.fancybox-margin{margin-right:0px;}</style></head><body class="nav-md"><span id="importLibsJsInicioBodyPanel">
+			<script type="text/javascript" src="ANATER%20-home_files/jquery_zpdL.js"></script>
+			<script type="text/javascript" src="ANATER%20-home_files/jquery.mask.min_zpdL.js"></script>
+			<script type="text/javascript" src="ANATER%20-home_files/jquery.maskMoney.min_zpdL.js"></script>
+			<script type="text/javascript" src="ANATER%20-home_files/scriptUtil_zpdL.js"></script>
+			<script type="text/javascript" src="ANATER%20-home_files/scriptUtilsGEO_zpdL.js"></script>
+			
+			<!-- smartWizard -->
+	    	<script src="ANATER%20-home_files/jquery.smartWizard_zpdL.js"></script></span>
+	
+	<!-- ########## FIM Imposts de JavaScript ########## -->
+	
+	<style>
+		table.dataTable thead>tr>th.sorting_asc, table.dataTable thead>tr>th.sorting_desc, table.dataTable thead>tr>th.sorting, table.dataTable thead>tr>td.sorting_asc, table.dataTable thead>tr>td.sorting_desc, table.dataTable thead>tr>td.sorting{
+			padding-right: 15px;
+		}
+	</style>
+	
+	<title>ANATER | Agência Nacional de Assistência Técnica e Extensão Rural</title>
+
+
+	<div class="container body">
+    
+      	<div class="main_container">
+<form id="menu" name="menu" method="post" action="/pages/index.xhtml" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="menu" value="menu">
+
+
+	<div class="col-md-3 left_col">
+	
+		<div class="left_col scroll-view">
+
+			<div class="navbar nav_title" style="border: 0;">
+<script type="text/javascript" src="ANATER%20-home_files/jsf.js_zpdL.xhtml"></script>
+<a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt11':'menu:j_idt11'},'');return false" class="site_title">
+				
+					<img height="50" src="ANATER%20-home_files/logomarca-sga-2_zpdL.png" alt="ANATER"></a>
+				
+			</div>
+
+			<div class="clearfix"></div>
+			
+			<div class="h60"></div>
+			
+			<!-- sidebar menu -->
+			<div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+			
+				<div class="menu_section">
+								
+						 
+					
+					
+					
+					
+					
+					<ul class="nav side-menu">
+						<li><a href="https://sga.anater.org/pages/glossario.xhtml">
+								<i class="fa fa-book"></i>Glossário<!--span class="label label-success pull-right"&gt;Novo&lt;/span--></a>
+						</li>
+						
+						<li><a href="https://sga.anater.org/pages/boletimSga.xhtml">
+								<i class="fa fa-bullhorn"></i>Boletim SGA<!--span class="label label-success pull-right"&gt;Novo&lt;/span--></a>
+						</li>
+						
+						<li><a href="https://sga.anater.org/pages/videoAulaSga.xhtml">
+								<i class="fa fa-video-camera"></i>Vídeo Aula SGA <!--span class="label label-success pull-right"&gt;Novo&lt;/span--></a>
+						</li>
+						
+						
+						<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt25':'menu:j_idt25'},'');return false">
+								<i class="fa fa-question"></i>FAQ SGA <!--span class="label label-success pull-right"&gt;Novo&lt;/span--></a>
+							
+						</li>
+					
+						<!-- Se existir premise "MCREN, AN ou CO" para o usu&aacute;rio logado, mostrar&aacute; o Credenciamento-->
+							
+							<li>
+							
+								<a><i class="fa fa-indent"></i> Credenciamento<span class="fa fa-chevron-down"></span></a>
+								
+								<ul class="nav child_menu">
+											<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt31':'menu:j_idt31'},'');return false">Dados da Empresa</a>
+											</li>
+												<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt35':'menu:j_idt35'},'');return false">Documentos</a>
+												</li>
+										<li>
+											
+											<!-- If necess&aacute;rio para funcionamento de fiscaliza&ccedil;&atilde;o --><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt38':'menu:j_idt38'},'');return false">Equipe</a>
+											
+										</li>
+											<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt42':'menu:j_idt42'},'');return false">Infraestrutura</a>
+											</li>
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt45':'menu:j_idt45'},'');return false">Histórico</a>
+										</li>
+											<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt49':'menu:j_idt49'},'');return false">Certidão de Credenciamento</a>
+											</li>
+									
+								</ul>
+								
+							</li>						
+						<!-- MODULO COMUNIDADAE -->
+							<li>
+							
+								<a><i class="fa fa-users"></i>Comunidade<span class="fa fa-chevron-down"></span></a>
+								
+								<ul class="nav child_menu">								
+									
+									<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt54':'menu:j_idt54'},'');return false">Cadastro de Comunidade</a>
+									</li>
+									<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt56':'menu:j_idt56'},'');return false">Diagnóstico Com. T0</a>
+											
+									</li>
+									<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt58':'menu:j_idt58'},'');return false">Diagnóstico Com. T1</a>
+											
+									</li>
+									<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt60':'menu:j_idt60'},'');return false">Diagnóstico Com. T2</a>
+											
+									</li>
+								</ul>
+		
+							</li>
+						
+						<!--  M&oacute;dulo Fiscaliza&ccedil;&atilde;o -->
+						<!-- &lt;c:if test="false"&gt;
+						 -->
+						
+												
+	  
+	  
+						<!-- Se existir permiss&atilde;o "MMET" para o usu&aacute;rio logado, mostrar&aacute; o menu-->
+						
+							<li><a><i class="fa fa-male"></i> UFPA <span class="fa fa-chevron-down"></span></a>
+							
+								<ul class="nav child_menu">
+										<!-- li&gt;
+											&lt;h:commandLink 	action="/pages/manterBeneficiarioPf/consultarBeneficiarioPf"
+															actionListener=""
+															value="Benefici&aacute;rio" /&gt;
+												
+										&lt;/li&gt;
+										
+										&lt;li&gt;
+											&lt;h:commandLink 	action="/pages/manterGerenciarBeneficiarioPf/cadastrarBeneficiarioPf"
+															actionListener=""
+															value="Alocar Benefici&aacute;rio" /&gt;
+												
+										&lt;/li-->
+										
+											<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt66':'menu:j_idt66'},'');return false">Cadastro</a>
+											</li>
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt69':'menu:j_idt69'},'');return false">Diagnóstico T0</a>
+											
+										</li>
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt71':'menu:j_idt71'},'');return false">Diagnóstico T1</a>
+											
+										</li>
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt73':'menu:j_idt73'},'');return false">Diagnóstico T2</a>
+											
+										</li>
+								
+								
+								
+								</ul>
+							</li>
+						
+							<li><a><i class="fa fa-institution"></i> Empreendimentos <span class="fa fa-chevron-down"></span></a>
+							
+								<ul class="nav child_menu">
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt78':'menu:j_idt78'},'');return false">Cadastro</a>
+											
+										</li>
+									
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt81':'menu:j_idt81'},'');return false">Diagnóstico Emp. T0</a>
+											
+										</li>
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt83':'menu:j_idt83'},'');return false">Diagnóstico Emp. T1</a>
+											
+										</li>
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt85':'menu:j_idt85'},'');return false">Diagnóstico Emp. T2</a>
+											
+										</li>
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt87':'menu:j_idt87'},'');return false">Projeto de Gestão
+											<!-- span class="label label-success pull-right"&gt;Novo&lt;/span--></a>
+											
+										</li>
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt91':'menu:j_idt91'},'');return false">LPC Emp. T0</a>
+											
+										</li>
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt93':'menu:j_idt93'},'');return false">LPC Emp. T1</a>
+											
+										</li>
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt95':'menu:j_idt95'},'');return false">LPC Emp. T2</a>
+											
+										</li>
+								
+								
+								
+								</ul>
+							</li>
+						
+						
+						
+						<!-- In&iacute;cio Implementa&ccedil;&atilde;o Planejamento -->
+						
+							<li>
+							
+								<a><i class="fa fa-paper-plane"></i> Planejamento<span class="fa fa-chevron-down"></span></a>
+								
+								<ul class="nav child_menu">
+									
+									<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt100':'menu:j_idt100'},'');return false">Plano de Metas</a>
+									</li>
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt103':'menu:j_idt103'},'');return false">Planejamento Empreendimento
+												<!-- span class="label label-success pull-right"&gt;Novo&lt;/span--></a>
+										</li>
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt107':'menu:j_idt107'},'');return false">Planejamento Familiar</a></li>
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt109':'menu:j_idt109'},'');return false">Planejamento Comunitário</a></li>
+
+
+										<!-- Se tem permiss&atilde;o MPLAN ter&aacute; acesso a estes dois -->
+
+
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt111':'menu:j_idt111'},'');return false">Projeto Produtivo</a></li>
+
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt113':'menu:j_idt113'},'');return false">Projeto Produtivo Grupo</a></li>
+
+									
+									<!-- Fim Projeto Produtivo -->
+									
+								</ul>
+								
+							</li>
+						<!-- Fim Implementa&ccedil;&atilde;o Planejamento -->
+						
+							<li>
+								<a><i class="fa fa-rocket"></i> Execução<span class="fa fa-chevron-down"></span></a>
+								
+								<ul class="nav child_menu">
+									<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt119':'menu:j_idt119'},'');return false">Execução Individual</a>
+									</li>									
+									<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt121':'menu:j_idt121'},'');return false">Execução Empreendimento
+											<!-- span class="label label-success pull-right"&gt;Novo&lt;/span--></a>
+									</li>	
+									<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt125':'menu:j_idt125'},'');return false">Execução Controle Social</a>
+									</li>
+									<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt128':'menu:j_idt128'},'');return false">Execução Comunitária</a>
+									</li>
+									<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt130':'menu:j_idt130'},'');return false">Execução Coletiva Empreendimento						
+											<!-- span class="label label-success pull-right"&gt;Novo&lt;/span--></a>
+									</li>
+															
+								</ul>
+								
+							</li>
+								
+							<li>
+							
+								<a><i class="fa fa-database"></i> Business Intelligence<span class="fa fa-chevron-down"></span></a>
+								
+								<ul class="nav child_menu">
+									
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt136':'menu:j_idt136'},'');return false">Painel Extensionista</a>
+											
+										</li>
+									
+								</ul>
+								
+							</li>
+						
+						
+						<!-- MODULO RELAT&Oacute;RIO ANATER -->
+						
+						
+						
+						<!-- MODULO RELAT&Oacute;RIO ENTIDADE -->
+						
+						
+						
+						
+						<!-- MODULO CHAMADA PUBLICA -->
+						
+						
+						
+						<!-- MODULO GERENCIADOR FINANCEIRO -->
+						
+						
+						
+						
+						<!-- MODULO FISCALIZACAO -->
+						
+						<!-- INICIO MODULO PARECER TECNICO -->
+						<!-- FIM MODULO PARECER TECNICO -->
+						
+						<!-- INICIO MODULO GESTOR MAPA -->
+						<!-- FIM MODULO GESTOR MAPA -->
+						
+
+												
+						
+
+						<!--li&gt;&lt;a&gt;&lt;i class="fa fa-edit"&gt;&lt;/i&gt; Forms &lt;span
+								class="fa fa-chevron-down"&gt;&lt;/span&gt;&lt;/a&gt;
+							&lt;ul class="nav child_menu"&gt;
+								&lt;li&gt;&lt;a href="form.html"&gt;General Form&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="form_advanced.html"&gt;Advanced Components&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="form_validation.html"&gt;Form Validation&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="form_wizards.html"&gt;Form Wizard&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="form_upload.html"&gt;Form Upload&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="form_buttons.html"&gt;Form Buttons&lt;/a&gt;&lt;/li&gt;
+							&lt;/ul&gt;&lt;/li&gt;
+
+						&lt;li&gt;&lt;a&gt;&lt;i class="fa fa-desktop"&gt;&lt;/i&gt; UI Elements &lt;span
+								class="fa fa-chevron-down"&gt;&lt;/span&gt;&lt;/a&gt;
+							&lt;ul class="nav child_menu"&gt;
+								&lt;li&gt;&lt;a href="general_elements.html"&gt;General Elements&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="media_gallery.html"&gt;Media Gallery&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="typography.html"&gt;Typography&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="icons.html"&gt;Icons&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="glyphicons.html"&gt;Glyphicons&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="widgets.html"&gt;Widgets&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="invoice.html"&gt;Invoice&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="inbox.html"&gt;Inbox&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="calendar.html"&gt;Calendar&lt;/a&gt;&lt;/li&gt;
+							&lt;/ul&gt;&lt;/li&gt;
+
+						&lt;li&gt;&lt;a&gt;&lt;i class="fa fa-table"&gt;&lt;/i&gt; Tables &lt;span
+								class="fa fa-chevron-down"&gt;&lt;/span&gt;&lt;/a&gt;
+							&lt;ul class="nav child_menu"&gt;
+								&lt;li&gt;&lt;a href="tables.html"&gt;Tables&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="tables_dynamic.html"&gt;Table Dynamic&lt;/a&gt;&lt;/li&gt;
+							&lt;/ul&gt;&lt;/li&gt;
+
+						&lt;li&gt;&lt;a&gt;&lt;i class="fa fa-bar-chart-o"&gt;&lt;/i&gt; Data
+								Presentation &lt;span class="fa fa-chevron-down"&gt;&lt;/span&gt;&lt;/a&gt;
+							&lt;ul class="nav child_menu"&gt;
+								&lt;li&gt;&lt;a href="chartjs.html"&gt;Chart JS&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="chartjs2.html"&gt;Chart JS2&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="morisjs.html"&gt;Moris JS&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="echarts.html"&gt;ECharts&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="other_charts.html"&gt;Other Charts&lt;/a&gt;&lt;/li&gt;
+							&lt;/ul&gt;&lt;/li&gt;
+
+						&lt;li&gt;&lt;a&gt;&lt;i class="fa fa-clone"&gt;&lt;/i&gt;Layouts &lt;span
+								class="fa fa-chevron-down"&gt;&lt;/span&gt;&lt;/a&gt;
+							&lt;ul class="nav child_menu"&gt;
+								&lt;li&gt;&lt;a href="fixed_sidebar.html"&gt;Fixed Sidebar&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="fixed_footer.html"&gt;Fixed Footer&lt;/a&gt;&lt;/li&gt;
+							&lt;/ul&gt;&lt;/li-->
+					</ul> 	 
+
+				</div>
+
+
+				<!--div class="menu_section"&gt;
+					&lt;h3&gt;Live On&lt;/h3&gt;
+					&lt;ul class="nav side-menu"&gt;
+						&lt;li&gt;&lt;a&gt;&lt;i class="fa fa-bug"&gt;&lt;/i&gt; Additional Pages &lt;span
+								class="fa fa-chevron-down"&gt;&lt;/span&gt;&lt;/a&gt;
+							&lt;ul class="nav child_menu"&gt;
+								&lt;li&gt;&lt;a href="e_commerce.html"&gt;E-commerce&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="projects.html"&gt;Projects&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="project_detail.html"&gt;Project Detail&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="contacts.html"&gt;Contacts&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="profile.html"&gt;Profile&lt;/a&gt;&lt;/li&gt;
+							&lt;/ul&gt;&lt;/li&gt;
+						&lt;li&gt;&lt;a&gt;&lt;i class="fa fa-windows"&gt;&lt;/i&gt; Extras &lt;span
+								class="fa fa-chevron-down"&gt;&lt;/span&gt;&lt;/a&gt;
+							&lt;ul class="nav child_menu"&gt;
+								&lt;li&gt;&lt;a href="page_403.html"&gt;403 Error&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="page_404.html"&gt;404 Error&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="page_500.html"&gt;500 Error&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="plain_page.html"&gt;Plain Page&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="login.html"&gt;Login Page&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="pricing_tables.html"&gt;Pricing Tables&lt;/a&gt;&lt;/li&gt;
+							&lt;/ul&gt;&lt;/li&gt;
+						&lt;li&gt;&lt;a&gt;&lt;i class="fa fa-sitemap"&gt;&lt;/i&gt; Multilevel Menu &lt;span
+								class="fa fa-chevron-down"&gt;&lt;/span&gt;&lt;/a&gt;
+							&lt;ul class="nav child_menu"&gt;
+								&lt;li&gt;&lt;a href="#level1_1"&gt;Level One&lt;/a&gt;
+									&lt;li&gt;&lt;a&gt;Level One&lt;span class="fa fa-chevron-down"&gt;&lt;/span&gt;&lt;/a&gt;
+										&lt;ul class="nav child_menu"&gt;
+											&lt;li class="sub_menu"&gt;&lt;a href="level2.html"&gt;Level Two&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a href="#level2_1"&gt;Level Two&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a href="#level2_2"&gt;Level Two&lt;/a&gt;&lt;/li&gt;
+										&lt;/ul&gt;&lt;/li&gt;
+									&lt;li&gt;&lt;a href="#level1_2"&gt;Level One&lt;/a&gt;&lt;/li&gt;&lt;/li&gt;
+							&lt;/ul&gt;&lt;/li&gt;
+						&lt;li&gt;&lt;a href="javascript:void(0)"&gt;&lt;i class="fa fa-laptop"&gt;&lt;/i&gt;
+								Landing Page &lt;span class="label label-success pull-right"&gt;Coming
+									Soon&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+					&lt;/ul&gt;
+				&lt;/div-->
+
+			</div>
+			<!-- /sidebar menu -->
+
+		</div>
+		
+	</div><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:0" value="+yoDoXjiGJfYqygeU9OKmFi6GMBii1vPGHGsDpuGWDbKL+F82ZCdlut3Qx2ZE0QgVHoZcyF+1VbUmcF0C4js65AIGyiq7ra6xEYVNi4HJoovLD4J0LFe1An8GK7BNVOa/uzgZVyuJ53KYULF4u5AWjx1c6I7gscK37ieFHcpyE94ztVPHuhnxxRWH8l0nyC2MPfPAIMVP2DbDu3vUlyRpZv31pifXmfvOIwdXBuUaww+FPhc4yBMtkAX+n2jpB+w7fm1iPhtdbwkylfkcdm9mqzvwG7TI8bo7Ovl9tPAY2/G6+2JmEFKAZj4aDq/790MlIyLB07yYRrZHNok5eLmMZcsR68QbQ7kstl2QYEMuCPE0B86kc3cLPnnbS+YA9xDHg+E9JVr1H5onYfsbQdmvPE/EHq0IG0RhEVrGOX4AabppYAnTLl75sQWjwTuQ6qAeEgG/XDd94Kn5sCVfeJrYu3oD4GhuSUgz9CQBxObgddCFpuwMfIeKvQOUJ3aEUmNQlAwRDdc8RE2m2PqLPR2xs/0ZjBnP4tc2wecycOlpwSqdSsBCsxlyi68iZeJ8UrxXSXDVjua86f0nOrgXhhy2j17Wv7T5vGVsIWUg7OwkeQMxIeLXPHaIeoZM4QJelIzP0ixx5JH4O9Si7vCmJMNvtvIkh3f7A362xLtY3YOytRSspiqL+ro5zTtYeU5rr7bvk2X0RviEil84ZQt51aKgDAOCq+YoXPZAc73fjDBmizrZ2hBVxnLhuShi4bRqRA4KgRW5JkuyhCeU9MXwJDD+jCKWh9CVLwPIpUAxWQvBdnQlAISojfBWuF/cWTFPCxoC3I30+JrHxlywkMK7jUDFwdLLeO8UrpwN5JkKbNUEMJKSRXY9lduS6yAe2vQwqR1zsNQh4qIAIee0rtjyC56SLutgBQIYWmBKlB0RqhD9+0f3FSY2ZQH2PBCuaPRIAgvXRgNwGDmaQlYupZHnKuAbe6P/5Bf/3yo5BzUlxjphlpsqpC46cj1ojEn94G1lgVxlba5+vYIDobrDNVDFPUqZN6iF5YzVVFTDR/XOIoQtWmmHm2+zLkKIUz1iVEh2glVSpfDMERu+pTxGZ+NtXgjJSGrAoajvQL54Vvho36uQch2KGFirQBmhbTcg2e2rRdSZulbIW1khkMSh1y6HdofBXWGlz/u5C07jpYIG24+AXn5M8hYWLwPs2EYEjCVwOio+4stmRpKDXT6Mzx4Ma0Wc/DOLpMx9/hKT9R8Geub15Sys0BZKgWksJjb9ZKdEeTLOo4Cy+841V9gYN7Wvlz5KGSzB+0k5QsPq5chUILFK47ggKjXPXS/nh5JiWtzFqWhj4ukGu0dP33u+w9ThNYbKKXeHodC85rBqGm0lT8n2K6JnreDv04BEdjPvKJr3y1guwNLBH3JWXzJh3gRrtzWEu6ZuqLVPBU+XhuyBAZd80Sk4eP+FjZCw43DB8f8oJDtlQSA/Slc2NTR2g4TWJSOqF/PLhnJPfooAGaM/yAaRA/+4UakPsVCg9DyR7CPlr755cq3D+IZ+ZJF9KxT0h0ZA89wxY4iH5NTcBxcwYe4W3z0A8RK9XIf+w3iNB6jdulozd5Z3INYUFLE4GLhiOAYH+bwej/DgYMnNSJXDkkCQccuMtP2Y2sKcXJbcncqzbuMBTKLN0j5iixasdfo+0755X+Cz+KqGLTpwX6ojNWs+ls0YF/W3p0aizxXWGuiT/BIy2g2ioAjyN5s6CEiYjufnK8Ll+OyTGH9ucvT5XgeYUoc1Uxaxgf9rJeIafOdIekLxUEOP4vk/I2LJBDUPKCvgpvbnPDMWMw7h2xByRzDnF+AykwW3nXMQ3H5vanceDbcMoxzcQmxHeAUqILRsYf+ZOGSA4fCU9ddr0IzoDgnDXlk/p6zgflB8XExjXu5HI5cbA96JKectEJY47xRA2mV+KGL7TI3JQ5TrOpX4nOjcW6omtqoi5We9RPSHLxJk44kNVTh5hYswik9Nzui4g0ioDRCDSW/Z6DtyISRhVgadbcoyUTe1XkW94YXmKo8naDbpLJAA/yscWh6D3Y4hO8A/EQTjM3etwJzpNp5pR1PofjaMbWrZPkfpYWkjBe8ZgKC20yi7PpYFH0ioOidmbMzsAT5K9ylvyX1PUdYxf0Jq5Eh6yM220PLrYhJdX/GOEjTUtIm4apizxfSXnz/uXLZjH+96AmKSHscw1VYJG15fsJUTeUJFDtdm4wCKB+a3GX5OGWt66ku+TM7Ybc3PigoMSCnHnoQv8lc7KiYuoSIZ2/CHln+NLVMDjuF8ReCmLOd6w3EYkWhPvuDfAy+HmWqf7yioWXMeVhJHlQgCLu7ENkghXKtvx7VWw/SZHm/TM2RXo54HMXMFJqFdlo9ItVZjChXoC/CMuWmInhxqj8QSyZ+FZl3Qqd/vEKO7fZ1TL0hWm0ImfQmTM3wupy+8d2Etq5K6ERnEdqcpAUkXNj8L75//jCvmLVF5e9GUUDgviQ36FJ51v1s9yiDnpOuE9mkvHykYZJBfEvjt8DrFMaaMoJIb+Dp6aDKBQj3UWfFAuBixZ2PtiFwoH0YzSL6brERF+l0UpoVcY6dm7cJfWm5uXE=" autocomplete="off">
+</form>
+
+
+
+	
+	
+	
+	<div class="top_nav">
+	<style>
+	 .fa-check:hover {
+	    color: green;
+	}
+	
+	.fa-trash:hover {
+	    color: red;
+	}
+	</style>
+
+	<div class="nav_menu">
+<form id="formNotificacao" name="formNotificacao" method="post" action="/pages/index.xhtml" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="formNotificacao" value="formNotificacao">
+
+				
+			<nav>
+				
+				<div class="nav toggle">
+					<a id="menu_toggle"><i class="fa fa-bars"></i></a>
+				</div><div id="formNotificacao:testeNot">
+					
+					<ul class="nav navbar-nav navbar-right">
+						
+						<li class="">
+						
+							<a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+    
+   	 	PAULA MARIELI MARAFON
+   	 	
+	 
+								<span class=" fa fa-angle-down"></span>
+							</a>
+							
+								
+
+	                  		
+	                  
+						</li>
+						
+						<li role="presentation" class="dropdown">
+							<a href="https://sga.anater.org/logout" class="dropdown-toggle info-number" aria-expanded="false">
+								<i class="fa fa-sign-out" title="Sair"></i>Sair
+							</a>
+						</li>	
+						
+						<li role="presentation" class="dropdown">
+						
+							<a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+								<i class="fa fa-envelope-o"></i>
+									<span class="badge bg-green">0</span>
+							</a>
+							
+							<ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">										
+									<li>
+										<a>
+											<span>
+												<span>GTI</span>
+												<span class="time">-</span>
+											</span>
+											<span class="message">
+												Não existem notificações
+											</span>
+										</a>
+									</li>
+							</ul>
+						</li>
+				
+						<h3>SGA - Sistema de Gestão de Ater</h3>
+						
+					</ul></div>
+			
+			</nav><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:1" value="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" autocomplete="off">
+</form>
+	
+	</div>
+		
+	</div>
+	
+<!-- /top navigation -->
+
+
+		<div class="right_col" role="main" style="min-height: 4763px;">
+		
+			<div class="row tile_count" style="text-align:center">
+	                
+				<div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+					<span class="count_top"><i class="fa fa-users"></i> Total de UFPAs</span>
+					<div class="count">174</div>
+					<!--span class="count_bottom"&gt;&lt;i class="green"&gt;4% &lt;/i&gt; Fromlast Week&lt;/span-->
+				</div>
+				
+				<div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+					<span class="count_top"><i class="fa fa-male"></i> Total de Homens</span>
+					<div class="count">144</div>
+					<!--span class="count_bottom"&gt;&lt;i class="green"&gt;&lt;i class="fa fa-sort-asc"&gt;&lt;/i&gt;34% &lt;/i&gt; From last Week&lt;/span-->
+				</div>
+				
+				<div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+					<span class="count_top"><i class="fa fa-female"></i> Total de Mulheres</span>
+					<div class="count">129</div>
+					<!--span class="count_bottom"&gt;&lt;i class="green"&gt;&lt;i class="fa fa-sort-asc"&gt;&lt;/i&gt;34% &lt;/i&gt; From last Week&lt;/span-->
+				</div>
+				
+				<div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+					<span class="count_top"><i class="fa fa-clock-o"></i> Diagnósticos</span>
+					<div class="count">106</div>
+					<!--span class="count_bottom"&gt;&lt;i class="green"&gt;&lt;i class="fa fa-sort-asc"&gt;&lt;/i&gt;3% &lt;/i&gt; From last Week&lt;/span-->
+				</div>
+				
+				<div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+					<span class="count_top"><i class="fa fa-paper-plane"></i> Planejamentos</span>
+					<div class="count">0</div>
+					<!--span class="count_bottom"&gt;&lt;i class="green"&gt;&lt;i class="fa fa-sort-asc"&gt;&lt;/i&gt;34% &lt;/i&gt; From last Week&lt;/span-->
+				</div>
+				
+				<div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+					<span class="count_top"><i class="fa fa-rocket"></i> Execuções Individuais</span>
+					<div class="count">0</div>
+					<!--span class="count_bottom"&gt;&lt;i class="red"&gt;&lt;i class="fa fa-sort-desc"&gt;&lt;/i&gt;12% &lt;/i&gt; From last Week&lt;/span-->
+				</div>
+				
+				
+			</div>
+<form id="formDiagPlanExec" name="formDiagPlanExec" method="post" action="/pages/index.xhtml" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="formDiagPlanExec" value="formDiagPlanExec">
+
+			
+				<div class="row">
+	
+					<div class="col-md-4 col-sm-4 col-xs-12">
+	
+						<div class="x_panel tile fixed_height_320">
+	
+							<div class="x_title">
+	
+								<h2>
+									<i class="fa fa-clock-o"></i> Diagnóstico
+									- 
+								</h2>
+		
+								<div class="clearfix"></div>
+								
+							</div>
+	
+							<div class="x_content">
+	
+								<h4>Qtd. Finalizada</h4>
+										
+										<div class="widget_summary">
+		
+											<div class="w_left w_55">
+											
+												<span class="fonte10">PAULA MARIELI MARAFON</span>
+												
+											</div>
+			
+											<div class="w_right w_45">
+												<span>53</span>
+											</div>
+			
+										</div>
+										
+										<div class="widget_summary">
+		
+											<div class="w_left w_55">
+											
+												<span class="fonte10">EDUARDO CESAR DA SILVA </span>
+												
+											</div>
+			
+											<div class="w_right w_45">
+												<span>26</span>
+											</div>
+			
+										</div>
+										
+										<div class="widget_summary">
+		
+											<div class="w_left w_55">
+											
+												<span class="fonte10">MARIA GABRIELL Y URODA WESOLOWSKI</span>
+												
+											</div>
+			
+											<div class="w_right w_45">
+												<span>25</span>
+											</div>
+			
+										</div>
+										
+										<div class="widget_summary">
+		
+											<div class="w_left w_55">
+											
+												<span class="fonte10">DANIELLY MORAES MOREIRA DE LIMA</span>
+												
+											</div>
+			
+											<div class="w_right w_45">
+												<span>2</span>
+											</div>
+			
+										</div>
+	
+							</div>
+							
+						</div>
+						
+					</div>
+	
+	
+					<div class="col-md-4 col-sm-4 col-xs-12">
+	
+						<div class="x_panel tile fixed_height_320">
+	
+							<div class="x_title">
+	
+								<h2><i class="fa fa-paper-plane"></i> Planejamento Familiar - 
+									<a href="#" onclick="mojarra.jsfcljs(document.getElementById('formDiagPlanExec'),{'formDiagPlanExec:j_idt313':'formDiagPlanExec:j_idt313'},'');return false" class="btn btn-primary btn-xs">Ver Todos
+													<i class="fa fa-eye"></i></a>
+								</h2>
+	
+								<div class="clearfix"></div>
+	
+							</div>
+	
+							<div class="x_content">
+	
+								<h4>Qtd. Finalizada</h4>
+								
+									<div class="widget_summary">
+		
+										<div class="w_left w_55">
+										
+											<span class="fonte10">NÃO HÁ DADOS</span>
+											
+										</div>
+		
+										<div class="w_right w_45">
+											<span>0</span>
+										</div>
+		
+									</div>
+	
+							</div>
+							
+						</div>
+						
+					</div>
+					
+					
+					<div class="col-md-4 col-sm-4 col-xs-12">
+	
+						<div class="x_panel tile fixed_height_320">
+	
+							<div class="x_title">
+	
+								<h2><i class="fa fa-rocket"></i> Execução Individual - 
+									<a href="#" onclick="mojarra.jsfcljs(document.getElementById('formDiagPlanExec'),{'formDiagPlanExec:j_idt318':'formDiagPlanExec:j_idt318'},'');return false" class="btn btn-primary btn-xs">Ver Todos
+													<i class="fa fa-eye"></i></a>
+								</h2>
+	
+								<div class="clearfix"></div>
+	
+							</div>
+	
+							<div class="x_content">
+	
+								<h4>Qtd. Finalizada</h4>
+								
+									<div class="widget_summary">
+		
+										<div class="w_left w_55">
+										
+											<span class="fonte10">NÃO HÁ DADOS</span>
+											
+										</div>
+		
+										<div class="w_right w_45">
+											<span>0</span>
+										</div>
+		
+									</div>
+	
+							</div>
+							
+						</div>
+						
+					</div>
+	
+				</div><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:2" value="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" autocomplete="off">
+</form>
+			
+			
+			<div class="row">
+                
+	                <div class="col-md-6 col-sm-4 col-xs-12">
+<form id="idgInstrumentos" name="idgInstrumentos" method="post" action="/pages/index.xhtml" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="idgInstrumentos" value="idgInstrumentos">
+
+					
+		                	<div class="x_panel">
+		                	
+								<div class="x_title">
+								
+								  	<h2 class="titulo_modulo">
+										<i class="fa fa-line-chart" aria-hidden="true"></i> Índice de Desempenho Global (IDG)
+									</h2>
+								  
+								  	
+								  <div class="clearfix"></div>
+								  
+								</div>
+								
+		                  		<div class="x_content">
+		                  		<img height="100" src="ANATER%20-home_files/graficoManutencao_zpdL.png" alt="ANATER">
+		                    		
+		                  		</div>
+		                  		
+		                	</div><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:3" value="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" autocomplete="off">
+</form>
+	                	
+					</div>
+                
+	                <div class="col-md-6 col-sm-4 col-xs-12">
+<form id="idgInstrumentosQuadri" name="idgInstrumentosQuadri" method="post" action="/pages/index.xhtml" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="idgInstrumentosQuadri" value="idgInstrumentosQuadri">
+
+					
+		                	<div class="x_panel">
+		                	
+								<div class="x_title">
+								
+								  	<h2 class="titulo_modulo">
+										<i class="fa fa-line-chart" aria-hidden="true"></i>  IDG - Quadrimestre
+									</h2>
+									
+									
+								  
+								  <div class="clearfix"></div>
+								  
+								</div>
+								
+		                  		<div class="x_content">
+			                  		<img height="100" src="ANATER%20-home_files/graficoManutencao_zpdL.png" alt="ANATER">
+		                    		
+		                  		</div>
+		                  		
+		                	</div><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:4" value="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" autocomplete="off">
+</form>
+	                	
+					</div>
+			
+			</div>
+
+	<div class="row">
+
+		<div class="col-md-6 col-sm-6 col-xs-12">			
+			
+			
+			<div class="x_panel">
+
+				<div class="x_title">
+
+					<h2>
+						<i class="fa fa-file-pdf-o"></i> Formulários - PNCF TERRA BRASIL
+					</h2>
+
+					<div class="clearfix"></div>
+
+				</div>
+
+				<div class="x_content">
+
+					<div class="">
+
+						<ul class="to_do">
+
+							
+							<li>
+								<p>
+									<i class="fa fa-file-pdf-o" style="color: red"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/PNCF-TERRA-BRASIL/1_CADASTRO_DA_COMUNIDADE.pdf" target="_blank" title="Cadastro da Comunidade (.pdf)"><span class="flat">1 - Cadastro da Comunidade (.pdf)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+
+								<p>
+									<i class="fa fa-file-word-o" style="color: blue"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/PNCF-TERRA-BRASIL/1_CADASTRO_DA_COMUNIDADE.docx" target="_blank" title="Cadastro da Comunidade (.docx)"><span class="flat">1 - Cadastro da Comunidade (.docx)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+							</li>
+							
+							<li>
+								<p>
+									<i class="fa fa-file-pdf-o" style="color: red"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/PNCF-TERRA-BRASIL/2_relatorio_de_atividade_de_controle_social_empreendimentos.pdf" target="_blank" title="Projeto Indivídual de Ater (.pdf)"><span class="flat">2 - Projeto Indivídual de Ater (.pdf)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+
+								<p>
+									<i class="fa fa-file-word-o" style="color: blue"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/PNCF-TERRA-BRASIL/2_relatorio_de_atividade_de_controle_social_empreendimentos.docx" target="_blank" title="Projeto Indivídual de Ater (.docx)"><span class="flat">2 - Projeto Indivídual de Ater (.docx)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+							</li>
+							
+							
+							<li>
+								<p>
+									<i class="fa fa-file-pdf-o" style="color: red"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/PNCF-TERRA-BRASIL/13_RELATORIO_DE_ATIVIDADE_DE_CONTROLE_SOCIAL.pdf" target="_blank" title="Rel. de Atividade Controle Social (.pdf)"><span class="flat">3 - Rel. de Atividade Controle Social (.pdf)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+								
+								<p>
+									<i class="fa fa-file-word-o" style="color: blue"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/PNCF-TERRA-BRASIL/13_RELATORIO_DE_ATIVIDADE_DE_CONTROLE_SOCIAL.docx" target="_blank" title="Rel. de Atividade Controle Social (.docx)"><span class="flat">3 - Rel. de Atividade Controle Social (.docx)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+
+							</li>
+							
+							
+							<li>
+								<p>
+									<i class="fa fa-file-pdf-o" style="color: red"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/PNCF-TERRA-BRASIL/17_PPB_DESISTENCIA_DE_BENEFICIARIO.pdf" target="_blank" title="PPB Desistência de Beneficiário (.pdf)"><span class="flat">4 - PPB Desistência de Beneficiário (.pdf)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+								
+								<p>
+									<i class="fa fa-file-word-o" style="color: blue"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/PNCF-TERRA-BRASIL/17_PPB_DESISTENCIA_DE_BENEFICIARIO.docx" target="_blank" title="PPB Desistência de Beneficiário (.docx)"><span class="flat">4 - PPB Desistência de Beneficiário (.docx)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+								
+
+							</li>
+							
+							<li>
+								<p>
+									<i class="fa fa-file-pdf-o" style="color: red"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/PNCF-TERRA-BRASIL/18_CADASTRO_BENEFICIARIO_PNCF.pdf" target="_blank" title="Cadastro Beneficiário (.pdf)"><span class="flat">5 - Cadastro Beneficiário (.pdf)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+								
+								<p>
+									<i class="fa fa-file-word-o" style="color: blue"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/PNCF-TERRA-BRASIL/18_CADASTRO_BENEFICIARIO_PNCF.docx" target="_blank" title="Cadastro Beneficiário (.docx)"><span class="flat">5 - Cadastro Beneficiário (.docx)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+								
+
+							</li>
+							
+							<li>
+								<p>
+									<i class="fa fa-file-pdf-o" style="color: red"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/PNCF-TERRA-BRASIL/19_INDICADORES_MUNICIPAIS_DO_PNCF.pdf" target="_blank" title="Indicadores Municipais (.pdf)"><span class="flat">6 - Indicadores Municipais (.pdf)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+								
+								<p>
+									<i class="fa fa-file-word-o" style="color: blue"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/PNCF-TERRA-BRASIL/19_INDICADORES_MUNICIPAIS_DO_PNCF.docx" target="_blank" title="Indicadores Municipais(.docx)"><span class="flat">6 - Indicadores Municipais (.docx)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+								
+
+							</li>
+							
+							<li>
+								<p>
+									<i class="fa fa-file-pdf-o" style="color: red"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/PNCF-TERRA-BRASIL/20_INDICADORES_POTENCIAIS_BENEFICIARIOS_PNCF.pdf" target="_blank" title="Indicadores Potenciais Beneficiários (.pdf)"><span class="flat">7 - Indicadores Potenciais Beneficiários (.pdf)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+								
+								<p>
+									<i class="fa fa-file-word-o" style="color: blue"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/PNCF-TERRA-BRASIL/20_INDICADORES_POTENCIAIS_BENEFICIARIOS_PNCF.docx" target="_blank" title="Indicadores Potenciais Beneficiários(.docx)"><span class="flat">7 - Indicadores Potenciais Beneficiários (.docx)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+								
+
+							</li>
+							
+							<li>
+								<p>
+									<i class="fa fa-file-pdf-o" style="color: red"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/PNCF-TERRA-BRASIL/27-RELATORIO-DE-AVALIACAO-DE-RESULTADOS-PNCF.pdf" target="_blank" title="Rel. e Avaliação de Resultado (.pdf)"><span class="flat">8 - Rel. e Avaliação de Resultado (.pdf)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+								
+								<p>
+									<i class="fa fa-file-word-o" style="color: blue"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/PNCF-TERRA-BRASIL/27-RELATORIO-DE-AVALIACAO-DE-RESULTADOS-PNCF.docx" target="_blank" title="Rel. e Avaliação de Resultado(.docx)"><span class="flat">8 - Rel. e Avaliação de Resultados (.docx)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+								
+
+							</li>
+							
+							<li>
+								<p>
+									<i class="fa fa-file-pdf-o" style="color: red"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/PNCF-TERRA-BRASIL/8_RELATORIO_DE_ATIVIDADE_INDIVIDUAL_DE_ATER.pdf" target="_blank" title="Rel. de Atividade Indivídual de Ater (.pdf)"><span class="flat">9 - Rel. de Atividade Indivídual de Ater (.pdf)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+								
+								<p>
+									<i class="fa fa-file-word-o" style="color: blue"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/PNCF-TERRA-BRASIL/8_RELATORIO_DE_ATIVIDADE_INDIVIDUAL_DE_ATER.docx" target="_blank" title="Rel. de Atividade Indivídual de Ater (.docx)"><span class="flat">9 - Rel. de Atividade Indivídual de Ater (.docx)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+								
+
+							</li>
+
+						</ul>
+
+					</div>
+
+				</div>
+
+			</div>
+			
+			<div class="x_panel">
+
+				<div class="x_title">
+
+					<h2>
+						<i class="fa fa-file-pdf-o"></i> Formulários - PPB 1
+					</h2>
+
+					<div class="clearfix"></div>
+
+				</div>
+
+				<div class="x_content">
+
+					<div class="">
+
+						<ul class="to_do">
+
+							
+							<li>
+								<p>
+									<i class="fa fa-file-pdf-o" style="color: red"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/PPB-1/1_PPB_CADASTRO_DA_COMUNIDADE.pdf" target="_blank" title="PPB Cadastro da Comunidade (.pdf)"><span class="flat">1 - PPB Cadastro da Comunidade (.pdf)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+
+								<p>
+									<i class="fa fa-file-word-o" style="color: blue"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/PPB-1/1_PPB_CADASTRO_DA_COMUNIDADE.docx" target="_blank" title="PPB Cadastro da Comunidade (.docx)"><span class="flat">1 - PPB Cadastro da Comunidade (.docx)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+							</li>
+							
+							<li>
+								<p>
+									<i class="fa fa-file-pdf-o" style="color: red"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/PPB-1/2_PPB_INDICADORES_COMUNIDADE.pdf" target="_blank" title="Indicadores da Comunidade (.pdf)"><span class="flat">2 - Indicadores da Comunidade (.pdf)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+
+								<p>
+									<i class="fa fa-file-word-o" style="color: blue"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/PPB-1/2_PPB_INDICADORES_COMUNIDADE.docx" target="_blank" title="Indicadores da Comunidade (.docx)"><span class="flat">2 - Indicadores da Comunidade (.docx)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+							</li>
+							
+							<li>
+								<p>
+									<i class="fa fa-file-pdf-o" style="color: red"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/PPB-1/3_PPB_CADASTRO_UFPA.pdf" target="_blank" title="Cadastro UFPA (.pdf)"><span class="flat">3 - Cadastro UFPA (.pdf)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+
+								<p>
+									<i class="fa fa-file-word-o" style="color: blue"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/PPB-1/3_PPB_CADASTRO_UFPA.docx" target="_blank" title="Cadastro UFPA (.docx)"><span class="flat">3 - Cadastro UFPA (.docx)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+							</li>
+							
+							<li>
+								<p>
+									<i class="fa fa-file-pdf-o" style="color: red"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/PPB-1/4_PPB_INDICADORES_UFPA.pdf" target="_blank" title="Indicadores UFPA (.pdf)"><span class="flat">4 - Indicadores UFPA (.pdf)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+
+								<p>
+									<i class="fa fa-file-word-o" style="color: blue"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/PPB-1/4_PPB_INDICADORES_UFPA.docx" target="_blank" title="Indicadores UFPA (.docx)"><span class="flat">4 - Indicadores UFPA (.docx)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+							</li>
+							
+							<li>
+								<p>
+									<i class="fa fa-file-pdf-o" style="color: red"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/PPB-1/5_PPB_PROJETO_COLETIVO_DE_ATER.pdf" target="_blank" title="Projeto Coletivo de Ater (.pdf)"><span class="flat">5 - Projeto Coletivo de Ater (.pdf)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+
+								<p>
+									<i class="fa fa-file-word-o" style="color: blue"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/PPB-1/5_PPB_PROJETO_COLETIVO_DE_ATER.docx" target="_blank" title="Projeto Coletivo de Ater (.docx)"><span class="flat">5 - Projeto Coletivo de Ater (.docx)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+							</li>
+							
+							<li>
+								<p>
+									<i class="fa fa-file-pdf-o" style="color: red"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/PPB-1/6_PPB_PROJETO_INDIVIDUAL_DE_ATER.pdf" target="_blank" title="Projeto Individual de Ater (.pdf)"><span class="flat">6 - Projeto individual de Ater (.pdf)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+
+								<p>
+									<i class="fa fa-file-word-o" style="color: blue"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/PPB-1/6_PPB_PROJETO_INDIVIDUAL_DE_ATER.docx" target="_blank" title="Projeto Individual de Ater (.docx)"><span class="flat">6 - Projeto individual de Ater (.docx)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+							</li>
+							
+							<li>
+								<p>
+									<i class="fa fa-file-pdf-o" style="color: red"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/PPB-1/7_PPB_RELATORIO_DE_ATIVIDADE_COLETIVA_DE_ATER.pdf" target="_blank" title="Rel. de Atividade Coletiva de Ater (.pdf)"><span class="flat">7 - Rel. de Atividade Coletiva de Ater (.pdf)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+
+								<p>
+									<i class="fa fa-file-word-o" style="color: blue"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/PPB-1/7_PPB_RELATORIO_DE_ATIVIDADE_COLETIVA_DE_ATER.docx" target="_blank" title="Rel. de Atividade Coletiva de Ater (.docx)"><span class="flat">7 - Rel. de Atividade Coletiva de Ater (.docx)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+							</li>
+							
+							<li>
+								<p>
+									<i class="fa fa-file-pdf-o" style="color: red"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/PPB-1/12_PPB_PDSA.pdf" target="_blank" title="PDSA (.pdf)"><span class="flat">8 - PDSA (.pdf)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+
+								<p>
+									<i class="fa fa-file-word-o" style="color: blue"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/PPB-1/12_PPB_PDSA.docx" target="_blank" title="PDSA (.docx)"><span class="flat">8 - PDSA (.docx)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+							</li>
+							
+							<li>
+								<p>
+									<i class="fa fa-file-pdf-o" style="color: red"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/PPB-1/13_RELATORIO_DE_ATIVIDADE_DE_CONTROLE_SOCIAL.pdf" target="_blank" title="Rel. de Atividade Controle Social (.pdf)"><span class="flat">9 - Rel. de Atividade Controle Social (.pdf)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+
+								<p>
+									<i class="fa fa-file-word-o" style="color: blue"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/PPB-1/13_RELATORIO_DE_ATIVIDADE_DE_CONTROLE_SOCIAL.docx" target="_blank" title="Rel. de Atividade Controle Social (.docx)"><span class="flat">9 - Rel. de Atividade Controle Social (.docx)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+							</li>
+							
+							<li>
+								<p>
+									<i class="fa fa-file-pdf-o" style="color: red"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/PPB-1/14_PPB_DECLARACAO_ATER_REMOTA_ASSENTADOS.pdf" target="_blank" title="Declaração Ater Remota Assentados  (.pdf)"><span class="flat">10 - Declaração Ater Remota Assentados (.pdf)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+
+								<p>
+									<i class="fa fa-file-word-o" style="color: blue"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/PPB-1/14_PPB_DECLARACAO_ATER_REMOTA_ASSENTADOS.docx" target="_blank" title="Declaração Ater Remota Assentados  (.docx)"><span class="flat">10 - Declaração Ater Remota Assentados (.docx)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+							</li>
+							
+							<li>
+								<p>
+									<i class="fa fa-file-pdf-o" style="color: red"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/PPB-1/15_PPB_DECLARACAO_ATER_REMOTA_ENTIDADES.pdf" target="_blank" title="Declaração Ater Remota Entidades (.pdf)"><span class="flat">11 - Declaração Ater Remota Entidades (.pdf)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+
+								<p>
+									<i class="fa fa-file-word-o" style="color: blue"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/PPB-1/15_PPB_DECLARACAO_ATER_REMOTA_ENTIDADES.docx" target="_blank" title="Declaração Ater Remota Entidades (.docx)"><span class="flat">11 - Declaração Ater Remota Entidades (.docx)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+							</li>
+							
+							<li>
+								<p>
+									<i class="fa fa-file-pdf-o" style="color: red"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/PPB-1/17_PPB_DESISTENCIA_DE_BENEFICIARIO.pdf" target="_blank" title="Desistência de Beneficiário (.pdf)"><span class="flat">12 - Desistência de Beneficiário (.pdf)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+
+								<p>
+									<i class="fa fa-file-word-o" style="color: blue"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/PPB-1/17_PPB_DESISTENCIA_DE_BENEFICIARIO.docx" target="_blank" title="Desistência de Beneficiário (.docx)"><span class="flat">12 - Desistência de Beneficiário (.docx)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+							</li>
+							
+							<li>
+								<p>
+									<i class="fa fa-file-pdf-o" style="color: red"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/PPB-1/21_PPB_RELATORIO_DE_ATIVIDADE_DE_CONTROLE_SOCIAL_VIRTUAL.pdf" target="_blank" title="Rel. de Atividade Controle Social Virtual (.pdf)"><span class="flat">13 - Rel. de Atividade Controle Social Virtual (.pdf)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+
+								<p>
+									<i class="fa fa-file-word-o" style="color: blue"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/PPB-1/21_PPB_RELATORIO_DE_ATIVIDADE_DE_CONTROLE_SOCIAL_VIRTUAL.docx" target="_blank" title="Rel. de Atividade Controle Social Virtual (.docx)"><span class="flat">13 - Rel. de Atividade Controle Social Virtual (.docx)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+							</li>
+							
+							<li>
+								<p>
+									<i class="fa fa-file-pdf-o" style="color: red"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/PPB-1/26-RELATORIO-DE-AVALIACAO-DE-RESULTADOS-PPB.pdf" target="_blank" title="Rel. de Avaliação de Resultados(.pdf)"><span class="flat">14 - Rel. de Avaliação de Resultados (.pdf)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+
+								<p>
+									<i class="fa fa-file-word-o" style="color: blue"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/PPB-1/26-RELATORIO-DE-AVALIACAO-DE-RESULTADOS-PPB.docx" target="_blank" title="Rel. de Avaliação de Resultados (.docx)"><span class="flat">14 - Rel. de Avaliação de Resultados (.docx)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+							</li>
+							
+							<li>
+							
+								<p>
+									<i class="fa fa-file-pdf-o" style="color: red"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/PPB-1/8_RELATORIO_DE_ATIVIDADE_INDIVIDUAL_DE_ATER.pdf" target="_blank" title="Rel. de Atividade Indivídual de Ater (.pdf)"><span class="flat">15 - Rel. de Atividade Indivídual de Ater (.pdf)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+								
+								<p>
+									<i class="fa fa-file-word-o" style="color: blue"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/PPB-1/8_RELATORIO_DE_ATIVIDADE_INDIVIDUAL_DE_ATER.docx" target="_blank" title="Rel. de Atividade Indivídual de Ater (.docx)"><span class="flat">15 - Rel. de Atividade Indivídual de Ater (.docx)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+								
+
+							</li>
+							
+							
+							
+						</ul>
+
+					</div>
+
+				</div>
+
+			</div>
+			
+						<div class="x_panel">
+
+				<div class="x_title">
+
+					<h2>
+						<i class="fa fa-file-pdf-o"></i> Formulários - Mulheres Rurais I
+					</h2>
+
+					<div class="clearfix"></div>
+
+				</div>
+
+				<div class="x_content">
+
+					<div class="">
+
+						<ul class="to_do">
+
+							
+							<li>
+								<p>
+									<i class="fa fa-file-pdf-o" style="color: red"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/MULHER/1_CADASTRO_DA_COMUNIDADE.pdf" target="_blank" title="Cadastro da Comunidade (.pdf)"><span class="flat">1 - Cadastro da Comunidade (.pdf)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+
+								<p>
+									<i class="fa fa-file-word-o" style="color: blue"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/MULHER/1_CADASTRO_DA_COMUNIDADE.docx" target="_blank" title="Cadastro da Comunidade (.docx)"><span class="flat">1 - Cadastro da Comunidade (.docx)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+							</li>
+							<li>
+								<p>
+									<i class="fa fa-file-pdf-o" style="color: red"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/MULHER/2_INDICADORES_COLETIVOS_MULHERES.pdf" target="_blank" title="Indicadores Coletivos Mulheres (.pdf)"><span class="flat">2 - Indicadores Coletivos Mulheres (.pdf)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+
+								<p>
+									<i class="fa fa-file-word-o" style="color: blue"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/MULHER/2_INDICADORES_COLETIVOS_MULHERES.docx" target="_blank" title="Indicadores Coletivos Mulheres (.docx)"><span class="flat">2 - Indicadores Coletivos Mulheres (.docx)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+							</li>	
+													
+							<li>
+								<p>
+									<i class="fa fa-file-pdf-o" style="color: red"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/MULHER/3_CADASTRO_UFPA_-_MULHERES.pdf" target="_blank" title="Cadastro UFPA Mulheres (.pdf)"><span class="flat">3 - Cadastro UFPA Mulheres (.pdf)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+
+								<p>
+									<i class="fa fa-file-word-o" style="color: blue"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/MULHER/3_CADASTRO_UFPA_-_MULHERES.docx" target="_blank" title="Cadastro UFPA Mulheres (.docx)"><span class="flat">3 - Cadastro UFPA Mulheres (.docx)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+							</li>
+													
+							<li>
+								<p>
+									<i class="fa fa-file-pdf-o" style="color: red"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/MULHER/4_INDICADORES_UFPA_MULHERES.pdf" target="_blank" title="Indicadores UFPA Mulheres (.pdf)"><span class="flat">4 - Indicadores UFPA Mulheres (.pdf)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+
+								<p>
+									<i class="fa fa-file-word-o" style="color: blue"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/MULHER/4_INDICADORES_UFPA_MULHERES.docx" target="_blank" title="Indicadores UFPA Mulheres (.docx)"><span class="flat">4 - Indicadores UFPA Mulheres (.docx)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+							</li>
+
+							<li>
+								<p>
+									<i class="fa fa-file-pdf-o" style="color: red"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/MULHER/5_PLANEJAMENTO_INICIAL_DAS_ACOES_DE_ATER_PARA_MULHERES.pdf" target="_blank" title="Planejamento Inicial das Ações de Ater para Mulheres (.pdf)"><span class="flat">5 - Planejamento Inicial das Ações de Ater para Mulheres (.pdf)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+
+								<p>
+									<i class="fa fa-file-word-o" style="color: blue"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/MULHER/5_PLANEJAMENTO_INICIAL_DAS_ACOES_DE_ATER_PARA_MULHERES.docx" target="_blank" title="Planejamento Inicial das Ações de Ater para Mulheres (.docx)"><span class="flat">5 - Planejamento Inicial das Ações de Ater para Mulheres (.docx)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+							</li>
+
+							<li>
+								<p>
+									<i class="fa fa-file-pdf-o" style="color: red"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/MULHER/6_PLANEJAMENTO_DAS_ACOES_INDIVIDUAIS.pdf" target="_blank" title="Planejamento das Ações Individuais (.pdf)"><span class="flat">6 - Planejamento das Ações Individuais (.pdf)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+
+								<p>
+									<i class="fa fa-file-word-o" style="color: blue"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/MULHER/6_PLANEJAMENTO_DAS_ACOES_INDIVIDUAIS.docx" target="_blank" title="Planejamento das Ações Individuais (.docx)"><span class="flat">6 - Planejamento das Ações Individuais (.docx)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+							</li>
+
+							<li>
+								<p>
+									<i class="fa fa-file-pdf-o" style="color: red"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/MULHER/7_RELATORIO_DE_ATIVIDADE_COLETIVA_DE_ATER.pdf" target="_blank" title="Relatório de Atividade Coletiva de Ater (.pdf)"><span class="flat">7 - Relatório de Atividade Coletiva de Ater (.pdf)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+
+								<p>
+									<i class="fa fa-file-word-o" style="color: blue"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/MULHER/7_RELATORIO_DE_ATIVIDADE_COLETIVA_DE_ATER.docx" target="_blank" title="Relatório de Atividade Coletiva de Ater (.docx)"><span class="flat">7 - Relatório de Atividade Coletiva de Ater (.docx)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+							</li>
+
+							<li>
+								<p>
+									<i class="fa fa-file-pdf-o" style="color: red"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/MULHER/8_RELATORIO_DE_ATIVIDADE_INDIVIDUAL_DE_ATER.pdf" target="_blank" title="Relatório de Atividade Individual de Ater (.pdf)"><span class="flat">8 - Relatório de Atividade Individual de Ater (.pdf)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+
+								<p>
+									<i class="fa fa-file-word-o" style="color: blue"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/MULHER/8_RELATORIO_DE_ATIVIDADE_INDIVIDUAL_DE_ATER.docx" target="_blank" title="Relatório de Atividade Individual de Ater (.docx)"><span class="flat">8 - Relatório de Atividade Individual de Ater (.docx)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+							</li>
+							
+							<li>
+								<p>
+									<i class="fa fa-file-pdf-o" style="color: red"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/MULHER/13_RELATORIO_DE_ATIVIDADE_DE_CONTROLE_SOCIAL.pdf" target="_blank" title="Relatório de Atividade de Controle Social (.pdf)"><span class="flat">13 - Relatório de Atividade de Controle Social (.pdf)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+
+								<p>
+									<i class="fa fa-file-word-o" style="color: blue"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/MULHER/13_RELATORIO_DE_ATIVIDADE_DE_CONTROLE_SOCIAL.docx" target="_blank" title="Relatório de Atividade de Controle Social (.docx)"><span class="flat">13 - Relatório de Atividade de Controle Social (.docx)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+							</li>
+
+							<li>
+								<p>
+									<i class="fa fa-file-pdf-o" style="color: red"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/MULHER/15_RELATORIO_DE_AVALIACAO_DE_RESULTADOS_Mulheres.pdf" target="_blank" title="Relatório de Avaliação de Resultados Mulheres (.pdf)"><span class="flat">15 - Relatório de Avaliação de Resultados Mulheres (.pdf)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+
+								<p>
+									<i class="fa fa-file-word-o" style="color: blue"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/MULHER/15_RELATORIO_DE_AVALIACAO_DE_RESULTADOS_Mulheres.docx" target="_blank" title="Relatório de Avaliação de Resultados Mulheres (.docx)"><span class="flat">15 - Relatório de Avaliação de Resultados Mulheres (.docx)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+							</li>
+							
+							<li>
+								<p>
+									<i class="fa fa-file-pdf-o" style="color: red"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/MULHER/16_RELAT%C3%93RIO_DE_ATIVIDADE_COLETIVA_DIVERSA_DE_ATER.pdf" target="_blank" title="Relatório de Atividade Coletiva Diversa de Ater (.pdf)"><span class="flat">16 - Relatório de Atividade Coletiva Diversa de Ater (.pdf)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+
+								<p>
+									<i class="fa fa-file-word-o" style="color: blue"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/MULHER/16_RELAT%C3%93RIO_DE_ATIVIDADE_COLETIVA_DIVERSA_DE_ATER.docx" target="_blank" title="Relatório de Atividade Coletiva Diversa de Ater (.docx)"><span class="flat">16 - Relatório de Atividade Coletiva Diversa de Ater (.docx)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+							</li>
+
+							<li>
+								<p>
+									<i class="fa fa-file-pdf-o" style="color: red"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/MULHER/21_RELATORIO_DE_ATIVIDADE_DE_CONTROLE_SOCIAL_VIRTUAL.pdf" target="_blank" title="Relatório de Atividade de Controle Social Virtual (.pdf)"><span class="flat">21 - Relatório de Atividade de Controle Social Virtual (.pdf)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+
+								<p>
+									<i class="fa fa-file-word-o" style="color: blue"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/MULHER/21_RELATORIO_DE_ATIVIDADE_DE_CONTROLE_SOCIAL_VIRTUAL.docx" target="_blank" title="Relatório de Atividade de Controle Social Virtual (.docx)"><span class="flat">21 - Relatório de Atividade de Controle Social Virtual (.docx)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+							</li>
+							<li>
+								<p>
+									<i class="fa fa-file-pdf-o" style="color: red"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/MULHER/Relacoes_de_opcoes_do_SGA.pdf" target="_blank" title="Relações de opções do SGA (.pdf)"><span class="flat">Relações de opções do SGA (.pdf)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+							</li>
+							<li>
+								<p>
+									<i class="fa fa-file-pdf-o" style="color: red"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/MULHER/22_TERMO_DE_ADESAO.pdf" target="_blank" title="Termo de Adesão (.pdf)"><span class="flat">22 - Termo de Adesão (.pdf)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+
+								<p>
+									<i class="fa fa-file-word-o" style="color: blue"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2023/MULHER/22_TERMO_DE_ADESAO.docx" target="_blank" title="Termo de Adesão (.docx)"><span class="flat">22 - Termo de Adesão (.docx)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+							</li>
+						</ul>
+
+					</div>
+
+				</div>
+
+			</div>
+			
+			<div class="x_panel">
+
+				<div class="x_title">
+
+					<h2>
+						<i class="fa fa-file-pdf-o"></i> Formulários - Mulheres Rurais II
+					</h2>
+
+					<div class="clearfix"></div>
+
+				</div>
+
+				<div class="x_content">
+
+					<div class="">
+
+						<ul class="to_do">
+
+							
+							<li>
+								<p>
+									<i class="fa fa-file-pdf-o" style="color: red"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/MULHER/1_RELATORIO_DE_ATIVIDADE_VIRTUAL_DE_CONTROLE_SOCIAL_MRVS_v2.pdf" target="_blank" title="Relatório de Atividade Virtual de Controle Social (.pdf)"><span class="flat">1 - Relatório de Atividade Virtual de Controle Social (.pdf)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+
+								<p>
+									<i class="fa fa-file-word-o" style="color: blue"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/MULHER/1_RELATORIO_DE_ATIVIDADE_VIRTUAL_DE_CONTROLE_SOCIAL_MRVS_v2.docx" target="_blank" title="Relatório de Atividade Virtual de Controle Social (.docx)"><span class="flat">1 - Relatório de Atividade Virtual de Controle Social (.docx)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+							</li>
+							<li>
+								<p>
+									<i class="fa fa-file-pdf-o" style="color: red"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/MULHER/2_RELATORIO_DE_ATIVIDADE_DE_CONTROLE_SOCIAL_MRVS_v2.pdf" target="_blank" title="Relatorio de Atividade De Controle Social (.pdf)"><span class="flat">2 - Relatorio de Atividade De Controle Social (.pdf)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+
+								<p>
+									<i class="fa fa-file-word-o" style="color: blue"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/MULHER/2_RELATORIO_DE_ATIVIDADE_DE_CONTROLE_SOCIAL_MRVS_v2.docx" target="_blank" title="Relatorio de Atividade De Controle Social (.docx)"><span class="flat">2 - Relatorio de Atividade De Controle Social (.docx)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+							</li>	
+													
+							<li>
+								<p>
+									<i class="fa fa-file-pdf-o" style="color: red"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/MULHER/3_CADASTRO_UFPA_MRVS_v2.pdf" target="_blank" title="Cadastro UFPA Mulheres (.pdf)"><span class="flat">3 - Cadastro UFPA Mulheres (.pdf)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+
+								<p>
+									<i class="fa fa-file-word-o" style="color: blue"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/MULHER/3_CADASTRO_UFPA_MRVS_v2.docx" target="_blank" title="Cadastro UFPA Mulheres (.docx)"><span class="flat">3 - Cadastro UFPA Mulheres (.docx)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+							</li>
+													
+							<li>
+								<p>
+									<i class="fa fa-file-pdf-o" style="color: red"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/MULHER/4_INDICADORES_UFPA_MULHERES_MRVS_v2.pdf" target="_blank" title="Indicadores UFPA Mulheres (.pdf)"><span class="flat">4 - Indicadores UFPA Mulheres (.pdf)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+
+								<p>
+									<i class="fa fa-file-word-o" style="color: blue"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/MULHER/4_INDICADORES_UFPA_MULHERES_MRVS_v2.docx" target="_blank" title="Indicadores UFPA Mulheres (.docx)"><span class="flat">4 - Indicadores UFPA Mulheres (.docx)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+							</li>
+
+							<li>
+								<p>
+									<i class="fa fa-file-pdf-o" style="color: red"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/MULHER/5_CADASTRO_DA_COMUNIDADE_GRUPO_MRVS_v2.pdf" target="_blank" title="Cadastro da Comunidade Grupo (.pdf)"><span class="flat">5 - Cadastro da Comunidade Grupo (.pdf)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+
+								<p>
+									<i class="fa fa-file-word-o" style="color: blue"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/MULHER/5_CADASTRO_DA_COMUNIDADE_GRUPO_MRVS_v2.docx" target="_blank" title="Cadastro da Comunidade Grupo (.docx)"><span class="flat">5 - Cadastro da Comunidade Grupo (.docx)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+							</li>
+
+							<li>
+								<p>
+									<i class="fa fa-file-pdf-o" style="color: red"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/MULHER/6_INDICADORES_COLETIVO_MRVS_v2.pdf" target="_blank" title="Indicadores Coletivo (.pdf)"><span class="flat">6 - Indicadores Coletivo (.pdf)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+
+								<p>
+									<i class="fa fa-file-word-o" style="color: blue"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/MULHER/6_INDICADORES_COLETIVO_MRVS_v2.docx" target="_blank" title="Indicadores Coletivo (.docx)"><span class="flat">6 - Indicadores Coletivo (.docx)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+							</li>
+
+							<li>
+								<p>
+									<i class="fa fa-file-pdf-o" style="color: red"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/MULHER/7_PLANEJAMENTO_COLETIVO_INICIAL_MRVS_v2.pdf" target="_blank" title="Planejamento Coletivo Inicial (.pdf)"><span class="flat">7 - Planejamento Coletivo Inicial (.pdf)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+
+								<p>
+									<i class="fa fa-file-word-o" style="color: blue"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/MULHER/7_PLANEJAMENTO_COLETIVO_INICIAL_MRVS_v2.docx" target="_blank" title="Planejamento Coletivo Inicial (.docx)"><span class="flat">7 - Planejamento Coletivo Inicial (.docx)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+							</li>
+
+							<li>
+								<p>
+									<i class="fa fa-file-pdf-o" style="color: red"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/MULHER/8_PLANEJAMENTO_INDIVIDUAL_MRVS_v2.pdf" target="_blank" title="Planejamento Individual (.pdf)"><span class="flat">8 - Planejamento Individual (.pdf)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+
+								<p>
+									<i class="fa fa-file-word-o" style="color: blue"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/MULHER/8_PLANEJAMENTO_INDIVIDUAL_MRVS_v2.docx" target="_blank" title="Planejamento Individual (.docx)"><span class="flat">8 - Planejamento Individual (.docx)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+							</li>
+							
+							<li>
+								<p>
+									<i class="fa fa-file-pdf-o" style="color: red"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/MULHER/9_RELATORIO_TECNICO_DE_ATIVIDADE_INDIVIDUAL_DE_ATER_MRVS_v2.pdf" target="_blank" title="Relatório Técnico de Atividade Individual de ATER (.pdf)"><span class="flat">9 - Relatório Técnico de Atividade Individual de ATER (.pdf)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+
+								<p>
+									<i class="fa fa-file-word-o" style="color: blue"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/MULHER/9_RELATORIO_TECNICO_DE_ATIVIDADE_INDIVIDUAL_DE_ATER_MRVS_v2.docx" target="_blank" title="Relatório Técnico de Atividade Individual de ATER (.docx)"><span class="flat">9 - Relatório Técnico de Atividade Individual de ATER (.docx)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+							</li>
+
+							<li>
+								<p>
+									<i class="fa fa-file-pdf-o" style="color: red"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/MULHER/10_RELATORIO_TECNICO_DE_ATENDIMENTO_COLETIVO_DE_ATER_MRVS_v2.pdf" target="_blank" title="Relatório Técnico de Atendimento Coletivo de ATER (.pdf)"><span class="flat">10 - Relatório Técnico de Atendimento Coletivo de ATER (.pdf)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+
+								<p>
+									<i class="fa fa-file-word-o" style="color: blue"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/MULHER/10_RELATORIO_TECNICO_DE_ATENDIMENTO_COLETIVO_DE_ATER_MRVS_v2.docx" target="_blank" title="Relatório Técnico de Atendimento Coletivo de ATER (.docx)"><span class="flat">10 - Relatório Técnico de Atendimento Coletivo de ATER (.docx)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+							</li>
+							
+							<li>
+								<p>
+									<i class="fa fa-file-pdf-o" style="color: red"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/MULHER/11_RELATORIO_TECNICO_DE_ATENDIMENTO_REMOTO_DE_ATER_MRVS_v2.pdf" target="_blank" title="Relatório Técnico de Atendimento Remoto de ATER (.pdf)"><span class="flat">11 - Relatório Técnico de Atendimento Remoto de ATER (.pdf)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+
+								<p>
+									<i class="fa fa-file-word-o" style="color: blue"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/MULHER/11_RELATORIO_TECNICO_DE_ATENDIMENTO_REMOTO_DE_ATER_MRVS_v2.docx" target="_blank" title="Relatório Técnico de Atendimento Remoto de ATER (.docx)"><span class="flat">11 - Relatório Técnico de Atendimento Remoto de ATERr (.docx)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+							</li>
+
+							<li>
+								<p>
+									<i class="fa fa-file-pdf-o" style="color: red"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/MULHER/12_DECLARACAO_DE_DESISTENCIA_DE_FAMILIA_BENEFICIARIA_MRVS_v2.pdf" target="_blank" title="Declaração de Desistência de Família Beneficiária (.pdf)"><span class="flat">12 - Declaração de Desistência de Família Beneficiária (.pdf)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+
+								<p>
+									<i class="fa fa-file-word-o" style="color: blue"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/MULHER/12_DECLARACAO_DE_DESISTENCIA_DE_FAMILIA_BENEFICIARIA_MRVS_v2.docx" target="_blank" title="Declaração de Desistência de Família Beneficiária (.docx)"><span class="flat">12 - Declaração de Desistência de Família Beneficiária (.docx)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+							</li>
+							<li>
+								<p>
+									<i class="fa fa-file-pdf-o" style="color: red"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/MULHER/FLUXO_SGA_MRVS.pdf" target="_blank" title="FLUXO SGA (.pdf)"><span class="flat">13 - FLUXO SGA (.pdf)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+
+								<p>
+									<i class="fa fa-file-word-o" style="color: blue"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/MULHER/FLUXO_SGA_MRVS.docx" target="_blank" title="FLUXO SGA (.docx)"><span class="flat">13 - FLUXO SGA (.docx)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+							</li>
+							<li>
+								<p>
+									<i class="fa fa-file-pdf-o" style="color: red"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/MULHER/LISTA_DE_FORMULARIOS_MRVS.pdf" target="_blank" title="Lista De Formularios (.pdf)"><span class="flat">14 - Lista De Formularios (.pdf)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+
+								<p>
+									<i class="fa fa-file-word-o" style="color: blue"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/MULHER/LISTA_DE_FORMULARIOS_MRVS.docx" target="_blank" title="Lista De Formularios (.docx)"><span class="flat">14 - Lista De Formularios (.docx)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+							</li>
+						</ul>
+
+					</div>
+
+				</div>
+
+			</div>
+			
+		</div>
+	
+	
+	
+	<!-- Divis&atilde;o das colunas -->
+		
+		<div class="col-md-6 col-sm-6 col-xs-12">
+
+
+			
+			<div class="x_panel">
+
+				<div class="x_title">
+
+					<h2>
+						<i class="fa fa-file-pdf-o"></i> Formulários -  Bem Viver Biomas (Semiárido, Pampa, Centro
+ Oeste/Sudeste/Sul)
+					</h2>
+
+					<div class="clearfix"></div>
+
+				</div>
+
+				<div class="x_content">
+
+					<div class="">
+
+						<ul class="to_do">
+
+							
+							<li>
+								<p>
+									<i class="fa fa-file-pdf-o" style="color: red"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Bem_Viver_Biomas/2_RELATORIO_DE_ATIVIDADE_DE_CONTROLE_SOCIAL_BIOMAS_v2.pdf" target="_blank" title="Relatório de Atividade de Controle Social (.pdf)"><span class="flat">1 - Relatório de Atividade de Controle Social (.pdf)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+
+								<p>
+									<i class="fa fa-file-word-o" style="color: blue"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Bem_Viver_Biomas/2_RELATORIO_DE_ATIVIDADE_DE_CONTROLE_SOCIAL_BIOMAS_v2.docx" target="_blank" title="Relatório de Atividade de Controle Social (.docx)"><span class="flat">1 - Relatório de Atividade de Controle Social (.docx)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+							</li>
+							<li>
+								<p>
+									<i class="fa fa-file-pdf-o" style="color: red"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Bem_Viver_Biomas/3_RELATORIO_TECNICO_DE_DIAGNOSTICO_DA_COMUNIDADE_BIOMAS_v2.pdf" target="_blank" title="Relatório Técnico de Diagnóstico da Comunidade (.pdf)"><span class="flat">2 - Relatório Técnico de Diagnóstico da Comunidade (.pdf)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+
+								<p>
+									<i class="fa fa-file-word-o" style="color: blue"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Bem_Viver_Biomas/3_RELATORIO_TECNICO_DE_DIAGNOSTICO_DA_COMUNIDADE_BIOMAS_v2.docx" target="_blank" title="Relatório Técnico de Diagnóstico da Comunidade (.docx)"><span class="flat">2 - Relatório Técnico de Diagnóstico da Comunidade (.docx)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+							</li>	
+													
+							<li>
+								<p>
+									<i class="fa fa-file-pdf-o" style="color: red"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Bem_Viver_Biomas/4_INDICADORES_COMUNIDADE_GRUPO_BIOMAS_v2.pdf" target="_blank" title="Indicadores Comunidade Grupo (.pdf)"><span class="flat">3 - Indicadores Comunidade Grupo (.pdf)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+
+								<p>
+									<i class="fa fa-file-word-o" style="color: blue"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Bem_Viver_Biomas/4_INDICADORES_COMUNIDADE_GRUPO_BIOMAS_v2.docx" target="_blank" title="Indicadores Comunidade Grupo (.docx)"><span class="flat">3 - Indicadores Comunidade Grupo (.docx)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+							</li>
+													
+							<li>
+								<p>
+									<i class="fa fa-file-pdf-o" style="color: red"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Bem_Viver_Biomas/5_CADASTRO_DA_COMUNIDADE_GRUPO_BIOMAS_v2.pdf" target="_blank" title="Cadastro da Comunidade Grupo (.pdf)"><span class="flat">4 - Cadastro da Comunidade Grupo (.pdf)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+
+								<p>
+									<i class="fa fa-file-word-o" style="color: blue"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Bem_Viver_Biomas/5_CADASTRO_DA_COMUNIDADE_GRUPO_BIOMAS_v2.docx" target="_blank" title="Cadastro da Comunidade Grupo (.docx)"><span class="flat">4 - Cadastro da Comunidade Grupo (.docx)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+							</li>
+
+							<li>
+								<p>
+									<i class="fa fa-file-pdf-o" style="color: red"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Bem_Viver_Biomas/6_CADASTRO_DA_UFPA_BIOMAS_v2.pdf" target="_blank" title="Cadastro da UFPA (.pdf)"><span class="flat">5 - Cadastro da UFPA (.pdf)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+
+								<p>
+									<i class="fa fa-file-word-o" style="color: blue"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Bem_Viver_Biomas/6_CADASTRO_DA_UFPA_BIOMAS_v2.docx" target="_blank" title="Cadastro da UFPA (.docx)"><span class="flat">5 - Cadastro da UFPA (.docx)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+							</li>
+
+							<li>
+								<p>
+									<i class="fa fa-file-pdf-o" style="color: red"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Bem_Viver_Biomas/7_INDICADORES_DA_UFPA_BIOMAS_v2.pdf" target="_blank" title="Indicadores da UFPA (.pdf)"><span class="flat">6 - Indicadores da UFPA (.pdf)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+
+								<p>
+									<i class="fa fa-file-word-o" style="color: blue"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Bem_Viver_Biomas/7_INDICADORES_DA_UFPA_BIOMAS_v2.docx" target="_blank" title="Indicadores da UFPA (.docx)"><span class="flat">6 - Indicadores da UFPA (.docx)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+							</li>
+
+							<li>
+								<p>
+									<i class="fa fa-file-pdf-o" style="color: red"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Bem_Viver_Biomas/8_PLANEJAMENTO_COLETIVO_DE_ATER_BIOMAS_v2.pdf" target="_blank" title="Planejamento Coletivo de ATER (.pdf)"><span class="flat">7 - Planejamento Coletivo de ATER (.pdf)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+
+								<p>
+									<i class="fa fa-file-word-o" style="color: blue"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Bem_Viver_Biomas/8_PLANEJAMENTO_COLETIVO_DE_ATER_BIOMAS_v2.docx" target="_blank" title="Planejamento Coletivo de ATER (.docx)"><span class="flat">7 - Planejamento Coletivo de ATER (.docx)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+							</li>
+
+							<li>
+								<p>
+									<i class="fa fa-file-pdf-o" style="color: red"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Bem_Viver_Biomas/9_PLANEJAMENTO_INDIVIDUAL_DE_ATER_BIOMAS_v2.pdf" target="_blank" title="Planejamento Individual (.pdf)"><span class="flat">8 - Planejamento Individual (.pdf)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+
+								<p>
+									<i class="fa fa-file-word-o" style="color: blue"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Bem_Viver_Biomas/9_PLANEJAMENTO_INDIVIDUAL_DE_ATER_BIOMAS_v2.docx" target="_blank" title="Planejamento Individual (.docx)"><span class="flat">8 - Planejamento Individual (.docx)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+							</li>
+							
+							<li>
+								<p>
+									<i class="fa fa-file-pdf-o" style="color: red"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Bem_Viver_Biomas/11_RELATORIO_TECNICO_DE_ATIVIDADE_INDIVIDUAL_DE_ATER_BIOMAS_v2.pdf" target="_blank" title="Relatório Técnico de Atividade Individual de ATER (.pdf)"><span class="flat">9 - Relatório Técnico de Atividade Individual de ATER (.pdf)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+
+								<p>
+									<i class="fa fa-file-word-o" style="color: blue"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Bem_Viver_Biomas/11_RELATORIO_TECNICO_DE_ATIVIDADE_INDIVIDUAL_DE_ATER_BIOMAS_v2.docx" target="_blank" title="Relatório Técnico de Atividade Individual de ATER (.docx)"><span class="flat">9 - Relatório Técnico de Atividade Individual de ATER (.docx)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+							</li>
+
+							<li>
+								<p>
+									<i class="fa fa-file-pdf-o" style="color: red"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Bem_Viver_Biomas/14_RELATORIO_TECNICO_DE_ATENDIMENTO_COLETIVO_DE_ATER_BIOMAS_v2.pdf" target="_blank" title="Relatório Técnico de Atendimento Coletivo de ATER (.pdf)"><span class="flat">10 - Relatório Técnico de Atendimento Coletivo de ATER (.pdf)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+
+								<p>
+									<i class="fa fa-file-word-o" style="color: blue"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Bem_Viver_Biomas/14_RELATORIO_TECNICO_DE_ATENDIMENTO_COLETIVO_DE_ATER_BIOMAS_v2.docx" target="_blank" title="Relatório Técnico de Atendimento Coletivo de ATER (.docx)"><span class="flat">10 - Relatório Técnico de Atendimento Coletivo de ATER (.docx)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+							</li>
+							
+							<li>
+								<p>
+									<i class="fa fa-file-pdf-o" style="color: red"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Bem_Viver_Biomas/15_DECLARACAO_DE_DESISTENCIA_DE_FAMILIA_BENEFICIARIA_BIOMAS_v2.pdf" target="_blank" title="Declaração de Desistência de Família Beneficiária (.pdf)"><span class="flat">11 - Declaração de Desistência de Família Beneficiária (.pdf)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+
+								<p>
+									<i class="fa fa-file-word-o" style="color: blue"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Bem_Viver_Biomas/15_DECLARACAO_DE_DESISTENCIA_DE_FAMILIA_BENEFICIARIA_BIOMAS_v2.docx" target="_blank" title="Declaração de Desistência de Família Beneficiária (.docx)"><span class="flat">11 - Declaração de Desistência de Família Beneficiária (.docx)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+							</li>
+							<li>
+								<p>
+									<i class="fa fa-file-pdf-o" style="color: red"></i>
+									<a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Bem_Viver_Biomas/FLUXO_SGA_BIOMAS.pdf" target="_blank" title="FLUXO SGA (.pdf)"><span class="flat">12 - FLUXO SGA (.pdf)</span>
+									</a>
+									<!--span class="label label-success pull-right"&gt;Atualizado&lt;/span-->
+								</p>
+							</li>
+						</ul>
+
+					</div>
+
+				</div>
+
+			</div>
+			
+			<div class="x_panel">
+
+				<div class="x_title">
+
+					<h2>
+						<i class="fa fa-file-pdf-o"></i> Formulários - Bolsa Verde
+					</h2>
+
+					<div class="clearfix"></div>
+
+				</div>
+
+				<div class="x_content">
+
+					<div class="">
+
+						<ul class="to_do">
+
+							
+							<li>
+							  <p>
+							    <i class="fa fa-file-pdf-o" style="color: red"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Bolsa_Verde/1_RELATORIO_DE_CONTROLE_SOCIAL_BOLSA_VERDE_v1.pdf" target="_blank" title="RELATORIO DE CONTROLE SOCIAL BOLSA VERDE (.pdf)"><span class="flat">1 - RELATORIO DE CONTROLE SOCIAL BOLSA VERDE (.pdf)</span>
+							    </a>
+							  </p>
+							  <p>
+							    <i class="fa fa-file-word-o" style="color: blue"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Bolsa_Verde/1_RELATORIO_DE_CONTROLE_SOCIAL_BOLSA_VERDE_v1.docx" target="_blank" title="RELATORIO DE CONTROLE SOCIAL BOLSA VERDE (.docx)"><span class="flat">1 - RELATORIO DE CONTROLE SOCIAL BOLSA VERDE (.docx)</span>
+							    </a>
+							  </p>
+							</li>
+							
+							<li>
+							  <p>
+							    <i class="fa fa-file-pdf-o" style="color: red"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Bolsa_Verde/2_CADASTRO_DA_COMUNIDADE_BOLSA_VERDE_v1.pdf" target="_blank" title="CADASTRO DA COMUNIDADE BOLSA VERDE (.pdf)"><span class="flat">2 - CADASTRO DA COMUNIDADE BOLSA VERDE (.pdf)</span>
+							    </a>
+							  </p>
+							  <p>
+							    <i class="fa fa-file-word-o" style="color: blue"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Bolsa_Verde/2_CADASTRO_DA_COMUNIDADE_BOLSA_VERDE_v1.docx" target="_blank" title="CADASTRO DA COMUNIDADE BOLSA VERDE (.docx)"><span class="flat">2 - CADASTRO DA COMUNIDADE BOLSA VERDE (.docx)</span>
+							    </a>
+							  </p>
+							</li>
+							
+							<li>
+							  <p>
+							    <i class="fa fa-file-pdf-o" style="color: red"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Bolsa_Verde/3_CADASTRO_DA_UFPA_BOLSA_VERDE_v1.pdf" target="_blank" title="CADASTRO DA UFPA BOLSA VERDE (.pdf)"><span class="flat">3 - CADASTRO DA UFPA BOLSA VERDE (.pdf)</span>
+							    </a>
+							  </p>
+							  <p>
+							    <i class="fa fa-file-word-o" style="color: blue"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Bolsa_Verde/3_CADASTRO_DA_UFPA_BOLSA_VERDE_v1.docx" target="_blank" title="CADASTRO DA UFPA BOLSA VERDE (.docx)"><span class="flat">3 - CADASTRO DA UFPA BOLSA VERDE (.docx)</span>
+							    </a>
+							  </p>
+							</li>
+							
+							<li>
+							  <p>
+							    <i class="fa fa-file-pdf-o" style="color: red"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Bolsa_Verde/4_INDICADORES_DA_UFPA_BOLSA_VERDE_v1.pdf" target="_blank" title="INDICADORES DA UFPA BOLSA VERDE (.pdf)"><span class="flat">4 - INDICADORES DA UFPA BOLSA VERDE (.pdf)</span>
+							    </a>
+							  </p>
+							  <p>
+							    <i class="fa fa-file-word-o" style="color: blue"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Bolsa_Verde/4_INDICADORES_DA_UFPA_BOLSA_VERDE_v1.docx" target="_blank" title="INDICADORES DA UFPA BOLSA VERDE (.docx)"><span class="flat">4 - INDICADORES DA UFPA BOLSA VERDE (.docx)</span>
+							    </a>
+							  </p>
+							</li>
+							
+							<li>
+							  <p>
+							    <i class="fa fa-file-pdf-o" style="color: red"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Bolsa_Verde/5_RELATORIO_DIAGNOSTICO_DA_COMUNIDADE_BOLSA_VERDE_v1.pdf" target="_blank" title="RELATORIO DIAGNOSTICO DA COMUNIDADE BOLSA VERDE (.pdf)"><span class="flat">5 - RELATORIO DIAGNOSTICO DA COMUNIDADE BOLSA VERDE (.pdf)</span>
+							    </a>
+							  </p>
+							  <p>
+							    <i class="fa fa-file-word-o" style="color: blue"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Bolsa_Verde/5_RELATORIO_DIAGNOSTICO_DA_COMUNIDADE_BOLSA_VERDE_v1.docx" target="_blank" title="RELATORIO DIAGNOSTICO DA COMUNIDADE BOLSA VERDE (.docx)"><span class="flat">5 - RELATORIO DIAGNOSTICO DA COMUNIDADE BOLSA VERDE (.docx)</span>
+							    </a>
+							  </p>
+							</li>
+							
+							<li>
+							  <p>
+							    <i class="fa fa-file-pdf-o" style="color: red"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Bolsa_Verde/6_INDICADORES_COMUNIDADE_GRUPO_BOLSA_VERDE_v1.pdf" target="_blank" title="INDICADORES COMUNIDADE GRUPO BOLSA VERDE (.pdf)"><span class="flat">6 - INDICADORES COMUNIDADE GRUPO BOLSA VERDE (.pdf)</span>
+							    </a>
+							  </p>
+							  <p>
+							    <i class="fa fa-file-word-o" style="color: blue"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Bolsa_Verde/6_INDICADORES_COMUNIDADE_GRUPO_BOLSA_VERDE_v1.docx" target="_blank" title="INDICADORES COMUNIDADE GRUPO BOLSA VERDE (.docx)"><span class="flat">6 - INDICADORES COMUNIDADE GRUPO BOLSA VERDE (.docx)</span>
+							    </a>
+							  </p>
+							</li>
+							
+							<li>
+							  <p>
+							    <i class="fa fa-file-pdf-o" style="color: red"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Bolsa_Verde/7_PLANEJAMENTO_COLETIVO_DE_ATER_BOLSA_VERDE_v1.pdf" target="_blank" title="PLANEJAMENTO COLETIVO DE ATER BOLSA VERDE (.pdf)"><span class="flat">7 - PLANEJAMENTO COLETIVO DE ATER BOLSA VERDE (.pdf)</span>
+							    </a>
+							  </p>
+							  <p>
+							    <i class="fa fa-file-word-o" style="color: blue"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Bolsa_Verde/7_PLANEJAMENTO_COLETIVO_DE_ATER_BOLSA_VERDE_v1.docx" target="_blank" title="PLANEJAMENTO COLETIVO DE ATER BOLSA VERDE (.docx)"><span class="flat">7 - PLANEJAMENTO COLETIVO DE ATER BOLSA VERDE (.docx)</span>
+							    </a>
+							  </p>
+							</li>
+							
+							<li>
+							  <p>
+							    <i class="fa fa-file-pdf-o" style="color: red"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Bolsa_Verde/8_PLANEJAMENTO_PRODUTIVO_DE_ATER_BOLSA_VERDE_v1.pdf" target="_blank" title="PLANEJAMENTO PRODUTIVO DE ATER BOLSA VERDE (.pdf)"><span class="flat">8 - PLANEJAMENTO PRODUTIVO DE ATER BOLSA VERDE (.pdf)</span>
+							    </a>
+							  </p>
+							  <p>
+							    <i class="fa fa-file-word-o" style="color: blue"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Bolsa_Verde/8_PLANEJAMENTO_PRODUTIVO_DE_ATER_BOLSA_VERDE_v1.docx" target="_blank" title="PLANEJAMENTO PRODUTIVO DE ATER BOLSA VERDE (.docx)"><span class="flat">8 - PLANEJAMENTO PRODUTIVO DE ATER BOLSA VERDE (.docx)</span>
+							    </a>
+							  </p>
+							</li>
+							
+							<li>
+							  <p>
+							    <i class="fa fa-file-pdf-o" style="color: red"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Bolsa_Verde/9_PLANEJAMENTO_ADEQUACAO_RECUPERACAO_AMBIENTAL_BOLSA_VERDE_v1.pdf" target="_blank" title="PLANEJAMENTO ADEQUACAO RECUPERACAO AMBIENTAL BOLSA VERDE (.pdf)"><span class="flat">9 - PLANEJAMENTO ADEQUACAO RECUPERACAO AMBIENTAL BOLSA VERDE (.pdf)</span>
+							    </a>
+							  </p>
+							  <p>
+							    <i class="fa fa-file-word-o" style="color: blue"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Bolsa_Verde/9_PLANEJAMENTO_ADEQUACAO_RECUPERACAO_AMBIENTAL_BOLSA_VERDE_v1.docx" target="_blank" title="PLANEJAMENTO ADEQUACAO RECUPERACAO AMBIENTAL BOLSA VERDE (.docx)"><span class="flat">9 - PLANEJAMENTO ADEQUACAO RECUPERACAO AMBIENTAL BOLSA VERDE (.docx)</span>
+							    </a>
+							  </p>
+							</li>
+							
+							<li>
+							  <p>
+							    <i class="fa fa-file-pdf-o" style="color: red"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Bolsa_Verde/10_RELATORIO_TECNICO_DE_ATIVIDADE_INDIVIDUAL_DE_ATER_BOLSA_VERDE_v1.pdf" target="_blank" title="RELATORIO TECNICO DE ATIVIDADE INDIVIDUAL DE ATER BOLSA VERDE (.pdf)"><span class="flat">10 - RELATORIO TECNICO DE ATIVIDADE INDIVIDUAL DE ATER BOLSA VERDE (.pdf)</span>
+							    </a>
+							  </p>
+							  <p>
+							    <i class="fa fa-file-word-o" style="color: blue"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Bolsa_Verde/10_RELATORIO_TECNICO_DE_ATIVIDADE_INDIVIDUAL_DE_ATER_BOLSA_VERDE_v1.docx" target="_blank" title="RELATORIO TECNICO DE ATIVIDADE INDIVIDUAL DE ATER BOLSA VERDE (.docx)"><span class="flat">10 - RELATORIO TECNICO DE ATIVIDADE INDIVIDUAL DE ATER BOLSA VERDE (.docx)</span>
+							    </a>
+							  </p>
+							</li>
+							
+							<li>
+							  <p>
+							    <i class="fa fa-file-pdf-o" style="color: red"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Bolsa_Verde/11_RELATORIO%20TECNICO_DE_ATENDIMENTO_COLETIVO_DE_ATER_BOLSA_VERDE_v1.pdf" target="_blank" title="RELATORIO TECNICO DE ATENDIMENTO COLETIVO DE ATER BOLSA VERDE (.pdf)"><span class="flat">11 - RELATORIO TECNICO DE ATENDIMENTO COLETIVO DE ATER BOLSA VERDE (.pdf)</span>
+							    </a>
+							  </p>
+							  <p>
+							    <i class="fa fa-file-word-o" style="color: blue"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Bolsa_Verde/11_RELATORIO%20TECNICO_DE_ATENDIMENTO_COLETIVO_DE_ATER_BOLSA_VERDE_v1.docx" target="_blank" title="RELATORIO TECNICO DE ATENDIMENTO COLETIVO DE ATER BOLSA VERDE (.docx)"><span class="flat">11 - RELATORIO TECNICO DE ATENDIMENTO COLETIVO DE ATER BOLSA VERDE (.docx)</span>
+							    </a>
+							  </p>
+							</li>
+							
+							<li>
+							  <p>
+							    <i class="fa fa-file-pdf-o" style="color: red"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Bolsa_Verde/12_RELATORIO%20TECNICO_DE_AVALIACAO_PROCESSUAL_BOLSA_VERDE_v1.pdf" target="_blank" title="RELATORIO TECNICO DE AVALIACAO PROCESSUAL BOLSA VERDE (.pdf)"><span class="flat">12 - RELATORIO TECNICO DE AVALIACAO PROCESSUAL BOLSA VERDE (.pdf)</span>
+							    </a>
+							  </p>
+							  <p>
+							    <i class="fa fa-file-word-o" style="color: blue"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Bolsa_Verde/12_RELATORIO%20TECNICO_DE_AVALIACAO_PROCESSUAL_BOLSA_VERDE_v1.docx" target="_blank" title="RELATORIO TECNICO DE AVALIACAO PROCESSUAL BOLSA VERDE (.docx)"><span class="flat">12 - RELATORIO TECNICO DE AVALIACAO PROCESSUAL BOLSA VERDE (.docx)</span>
+							    </a>
+							  </p>
+							</li>
+							<li>
+							  <p>
+							    <i class="fa fa-file-pdf-o" style="color: red"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Bolsa_Verde/13_DECLARACAO_DE_DESISTENCIA_BOLSA_VERDE_v1.pdf" target="_blank" title="DECLARACAO DE DESISTENCIA BOLSA VERDE (.pdf)"><span class="flat">13 - DECLARACAO DE DESISTENCIA BOLSA VERDE (.pdf)</span>
+							    </a>
+							  </p>
+							  <p>
+							    <i class="fa fa-file-word-o" style="color: blue"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Bolsa_Verde/13_DECLARACAO_DE_DESISTENCIA_BOLSA_VERDE_v1.docx" target="_blank" title="DECLARACAO DE DESISTENCIA BOLSA VERDE (.docx)"><span class="flat">13 - DECLARACAO DE DESISTENCIA BOLSA VERDE (.docx)</span>
+							    </a>
+							  </p>
+							</li>
+							
+							<li>
+							  <p>
+							    <i class="fa fa-file-pdf-o" style="color: red"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Bolsa_Verde/FLUXO_SGA_BOLSA_VERDE.pdf" target="_blank" title="FLUXO SGA (.pdf)"><span class="flat">14 - FLUXO SGA (.pdf)</span>
+							    </a>
+							  </p>
+							</li>
+							
+						</ul>
+
+					</div>
+
+				</div>
+
+			</div>
+			
+			<div class="x_panel">
+
+				<div class="x_title">
+
+					<h2>
+						<i class="fa fa-file-pdf-o"></i> Formulários - Florestas Produtivas
+					</h2>
+
+					<div class="clearfix"></div>
+
+				</div>
+
+				<div class="x_content">
+
+					<div class="">
+
+						<ul class="to_do">
+
+							
+							<li>
+							  <p>
+							    <i class="fa fa-file-pdf-o" style="color: red"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Florestas_Produtivas/1_RELATORIO_DE_ATIVIDADE_DE_CONTROLE_SOCIAL.pdf" target="_blank" title="RELATORIO DE ATIVIDADE DE CONTROLE SOCIAL (.pdf)"><span class="flat">1 - RELATORIO DE ATIVIDADE DE CONTROLE SOCIAL (.pdf)</span>
+							    </a>
+							  </p>
+							  <p>
+							    <i class="fa fa-file-word-o" style="color: blue"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Florestas_Produtivas/1_RELATORIO_DE_ATIVIDADE_DE_CONTROLE_SOCIAL.docx" target="_blank" title="RELATORIO DE ATIVIDADE DE CONTROLE SOCIAL (.docx)"><span class="flat">1 - RELATORIO DE ATIVIDADE DE CONTROLE SOCIAL (.docx)</span>
+							    </a>
+							  </p>
+							</li>
+							
+							<li>
+							  <p>
+							    <i class="fa fa-file-pdf-o" style="color: red"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Florestas_Produtivas/2_INDICADORES_COMUNIDADE.pdf" target="_blank" title="INDICADORES COMUNIDADE (.pdf)"><span class="flat">2 - INDICADORES COMUNIDADE (.pdf)</span>
+							    </a>
+							  </p>
+							  <p>
+							    <i class="fa fa-file-word-o" style="color: blue"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Florestas_Produtivas/2_INDICADORES_COMUNIDADE.docx" target="_blank" title="INDICADORES COMUNIDADE (.docx)"><span class="flat">2 - INDICADORES COMUNIDADE (.docx)</span>
+							    </a>
+							  </p>
+							</li>
+							
+							<li>
+							  <p>
+							    <i class="fa fa-file-pdf-o" style="color: red"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Florestas_Produtivas/3_CADASTRO_DO_PROJETO_LOCAL.pdf" target="_blank" title="CADASTRO DO PROJETO LOCAL (.pdf)"><span class="flat">3 - CADASTRO DO PROJETO LOCAL (.pdf)</span>
+							    </a>
+							  </p>
+							  <p>
+							    <i class="fa fa-file-word-o" style="color: blue"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Florestas_Produtivas/3_CADASTRO_DO_PROJETO_LOCAL.docx" target="_blank" title="CADASTRO DO PROJETO LOCAL (.docx)"><span class="flat">3 - CADASTRO DO PROJETO LOCAL (.docx)</span>
+							    </a>
+							  </p>
+							</li>
+							
+							<li>
+							  <p>
+							    <i class="fa fa-file-pdf-o" style="color: red"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Florestas_Produtivas/4_CADASTRO_UFPA.pdf" target="_blank" title="CADASTRO UFPA (.pdf)"><span class="flat">4 - CADASTRO UFPA (.pdf)</span>
+							    </a>
+							  </p>
+							  <p>
+							    <i class="fa fa-file-word-o" style="color: blue"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Florestas_Produtivas/4_CADASTRO_UFPA.docx" target="_blank" title="CADASTRO UFPA (.docx)"><span class="flat">4 - CADASTRO UFPA (.docx)</span>
+							    </a>
+							  </p>
+							</li>
+							
+							<li>
+							  <p>
+							    <i class="fa fa-file-pdf-o" style="color: red"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Florestas_Produtivas/5_INDICADORES_DA_UFPA.pdf" target="_blank" title="INDICADORES DA UFPA (.pdf)"><span class="flat">5 - INDICADORES DA UFPA (.pdf)</span>
+							    </a>
+							  </p>
+							</li>
+							
+							<li>
+							  <p>
+							    <i class="fa fa-file-pdf-o" style="color: red"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Florestas_Produtivas/6_PROJETO_COLETIVO_DE_ATER.pdf" target="_blank" title="PROJETO COLETIVO DE ATER (.pdf)"><span class="flat">6 - PROJETO COLETIVO DE ATER (.pdf)</span>
+							    </a>
+							  </p>
+							  <p>
+							    <i class="fa fa-file-word-o" style="color: blue"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Florestas_Produtivas/6_PROJETO_COLETIVO_DE_ATER.docx" target="_blank" title="PROJETO COLETIVO DE ATER (.docx)"><span class="flat">6 - PROJETO COLETIVO DE ATER (.docx)</span>
+							    </a>
+							  </p>
+							</li>
+							
+							<li>
+							  <p>
+							    <i class="fa fa-file-pdf-o" style="color: red"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Florestas_Produtivas/7_PROJETO_INDIVIDUAL_DE_ATER.pdf" target="_blank" title="PROJETO INDIVIDUAL DE ATER (.pdf)"><span class="flat">7 - PROJETO INDIVIDUAL DE ATER (.pdf)</span>
+							    </a>
+							  </p>
+							  <p>
+							    <i class="fa fa-file-word-o" style="color: blue"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Florestas_Produtivas/7_PROJETO_INDIVIDUAL_DE_ATER.docx" target="_blank" title="PROJETO INDIVIDUAL DE ATER (.docx)"><span class="flat">7 - PROJETO INDIVIDUAL DE ATER (.docx)</span>
+							    </a>
+							  </p>
+							</li>
+							
+							<li>
+							  <p>
+							    <i class="fa fa-file-pdf-o" style="color: red"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Florestas_Produtivas/8_RELATORIO_TECNICO_DE_ATIVIDADE_INDIVIDUAL_DE_ATER.pdf" target="_blank" title="RELATORIO TECNICO DE ATIVIDADE INDIVIDUAL DE ATER (.pdf)"><span class="flat">8 - RELATORIO TECNICO DE ATIVIDADE INDIVIDUAL DE ATER (.pdf)</span>
+							    </a>
+							  </p>
+							  <p>
+							    <i class="fa fa-file-word-o" style="color: blue"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Florestas_Produtivas/8_RELATORIO_TECNICO_DE_ATIVIDADE_INDIVIDUAL_DE_ATER.docx" target="_blank" title="RELATORIO TECNICO DE ATIVIDADE INDIVIDUAL DE ATER (.docx)"><span class="flat">8 - RELATORIO TECNICO DE ATIVIDADE INDIVIDUAL DE ATER (.docx)</span>
+							    </a>
+							  </p>
+							</li>
+							
+							<li>
+							  <p>
+							    <i class="fa fa-file-pdf-o" style="color: red"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Florestas_Produtivas/9_RELATORIO_TECNICO_DE_IMPLANTACAO_DE_UNIDADE_DE_REFERENCIA.pdf" target="_blank" title="RELATORIO TECNICO DE IMPLANTACAO DE UNIDADE DE REFERENCIA (.pdf)"><span class="flat">9 - RELATORIO TECNICO DE IMPLANTACAO DE UNIDADE DE REFERENCIA (.pdf)</span>
+							    </a>
+							  </p>
+							  <p>
+							    <i class="fa fa-file-word-o" style="color: blue"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Florestas_Produtivas/9_RELATORIO_TECNICO_DE_IMPLANTACAO_DE_UNIDADE_DE_REFERENCIA.docx" target="_blank" title="RELATORIO TECNICO DE IMPLANTACAO DE UNIDADE DE REFERENCIA (.docx)"><span class="flat">9 - RELATORIO TECNICO DE IMPLANTACAO DE UNIDADE DE REFERENCIA (.docx)</span>
+							    </a>
+							  </p>
+							</li>
+							
+							<li>
+							  <p>
+							    <i class="fa fa-file-pdf-o" style="color: red"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Florestas_Produtivas/10_RELATORIO_TECNICO_DE_ATENDIMENTO_COLETIVO_DE_ATER.pdf" target="_blank" title="RELATORIO TECNICO DE ATENDIMENTO COLETIVO DE ATER (.pdf)"><span class="flat">10 - RELATORIO TECNICO DE ATENDIMENTO COLETIVO DE ATER (.pdf)</span>
+							    </a>
+							  </p>
+							  <p>
+							    <i class="fa fa-file-word-o" style="color: blue"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Florestas_Produtivas/10_RELATORIO_TECNICO_DE_ATENDIMENTO_COLETIVO_DE_ATER.docx" target="_blank" title="RELATORIO TECNICO DE ATENDIMENTO COLETIVO DE ATER (.docx)"><span class="flat">10 - RELATORIO TECNICO DE ATENDIMENTO COLETIVO DE ATER (.docx)</span>
+							    </a>
+							  </p>
+							</li>
+							
+							<li>
+							  <p>
+							    <i class="fa fa-file-pdf-o" style="color: red"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Florestas_Produtivas/11_RELATORIO_TECNICO_DE_ATENDIMENTO_COLETIVO_DIVERSO_DE_ATER.pdf" target="_blank" title="RELATORIO TECNICO DE ATENDIMENTO COLETIVO DIVERSO DE ATER (.pdf)"><span class="flat">11 - RELATORIO TECNICO DE ATENDIMENTO COLETIVO DIVERSO DE ATER (.pdf)</span>
+							    </a>
+							  </p>
+							  <p>
+							    <i class="fa fa-file-word-o" style="color: blue"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Florestas_Produtivas/11_RELATORIO_TECNICO_DE_ATENDIMENTO_COLETIVO_DIVERSO_DE_ATER.docx" target="_blank" title="RELATORIO TECNICO DE ATENDIMENTO COLETIVO DIVERSO DE ATER (.docx)"><span class="flat">11 - RELATORIO TECNICO DE ATENDIMENTO COLETIVO DIVERSO DE ATER (.docx)</span>
+							    </a>
+							  </p>
+							</li>
+							
+							<li>
+							  <p>
+							    <i class="fa fa-file-pdf-o" style="color: red"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Florestas_Produtivas/12_DECLARACAO_DE_DESISTENCIA.pdf" target="_blank" title="DECLARACAO DE DESISTENCIA (.pdf)"><span class="flat">12 - DECLARACAO DE DESISTENCIA (.pdf)</span>
+							    </a>
+							  </p>
+							  <p>
+							    <i class="fa fa-file-word-o" style="color: blue"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Florestas_Produtivas/12_DECLARACAO_DE_DESISTENCIA.docx" target="_blank" title="DECLARACAO DE DESISTENCIA (.docx)"><span class="flat">12 - DECLARACAO DE DESISTENCIA (.docx)</span>
+							    </a>
+							  </p>
+							</li>
+							
+							<li>
+							  <p>
+							    <i class="fa fa-file-pdf-o" style="color: red"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Florestas_Produtivas/FLUXO_SGA_FLORESTAS_PRODUDIVAS.pdf" target="_blank" title="FLUXO SGA FLORESTAS PRODUTIVAS (.pdf)"><span class="flat">13 - FLUXO SGA FLORESTAS PRODUTIVAS (.pdf)</span>
+							    </a>
+							  </p>
+							</li>
+							
+							<li>
+							  <p>
+							    <i class="fa fa-file-pdf-o" style="color: red"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Florestas_Produtivas/RELACAO_DE_FORMULARIOS_POR_ATIVIDADE.pdf" target="_blank" title="RELACAO DE FORMULARIOS POR ATIVIDADE (.pdf)"><span class="flat">14 - RELACAO DE FORMULARIOS POR ATIVIDADE (.pdf)</span>
+							    </a>
+							  </p>
+							</li>
+							
+						</ul>
+
+					</div>
+
+				</div>
+
+			</div>
+			
+			<div class="x_panel">
+
+				<div class="x_title">
+
+					<h2>
+						<i class="fa fa-file-pdf-o"></i> Formulários - Oiapoque
+					</h2>
+
+					<div class="clearfix"></div>
+
+				</div>
+
+				<div class="x_content">
+
+					<div class="">
+
+						<ul class="to_do">
+
+							
+							<li>
+							  <p>
+							    <i class="fa fa-file-pdf-o" style="color: red"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Oiapoque/1_RELATORIO_DE_CONTROLE_SOCIAL_Oiapoque.pdf" target="_blank" title="RELATORIO DE CONTROLE SOCIAL Oiapoque (.pdf)"><span class="flat">1 - RELATORIO DE CONTROLE SOCIAL Oiapoque (.pdf)</span>
+							    </a>
+							  </p>
+							  <p>
+							    <i class="fa fa-file-word-o" style="color: blue"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Oiapoque/1_RELATORIO_DE_CONTROLE_SOCIAL_Oiapoque.docx" target="_blank" title="RELATORIO DE CONTROLE SOCIAL Oiapoque (.docx)"><span class="flat">1 - RELATORIO DE CONTROLE SOCIAL Oiapoque (.docx)</span>
+							    </a>
+							  </p>
+							</li>
+							
+							<li>
+							  <p>
+							    <i class="fa fa-file-pdf-o" style="color: red"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Oiapoque/2_CADASTRO_DA_COMUNIDADE_OIAPOQUE.pdf" target="_blank" title="CADASTRO DA COMUNIDADE OIAPOQUE (.pdf)"><span class="flat">2 - CADASTRO DA COMUNIDADE OIAPOQUE (.pdf)</span>
+							    </a>
+							  </p>
+							  <p>
+							    <i class="fa fa-file-word-o" style="color: blue"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Oiapoque/2_CADASTRO_DA_COMUNIDADE_OIAPOQUE.docx" target="_blank" title="CADASTRO DA COMUNIDADE OIAPOQUE (.docx)"><span class="flat">2 - CADASTRO DA COMUNIDADE OIAPOQUE (.docx)</span>
+							    </a>
+							  </p>
+							</li>
+							
+							<li>
+							  <p>
+							    <i class="fa fa-file-pdf-o" style="color: red"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Oiapoque/3_CADASTRO_DA_UFPA_Oiapoque.pdf" target="_blank" title="CADASTRO DA UFPA Oiapoque (.pdf)"><span class="flat">3 - CADASTRO DA UFPA Oiapoque (.pdf)</span>
+							    </a>
+							  </p>
+							  <p>
+							    <i class="fa fa-file-word-o" style="color: blue"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Oiapoque/3_CADASTRO_DA_UFPA_Oiapoque.docx" target="_blank" title="CADASTRO DA UFPA Oiapoque (.docx)"><span class="flat">3 - CADASTRO DA UFPA Oiapoque (.docx)</span>
+							    </a>
+							  </p>
+							</li>
+							
+							<li>
+							  <p>
+							    <i class="fa fa-file-pdf-o" style="color: red"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Oiapoque/4_INDICADORES_DA_UFPA_Oiapoque.pdf" target="_blank" title="INDICADORES DA UFPA Oiapoque (.pdf)"><span class="flat">4 - INDICADORES DA UFPA Oiapoque (.pdf)</span>
+							    </a>
+							  </p>
+							  <p>
+							    <i class="fa fa-file-word-o" style="color: blue"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Oiapoque/4_INDICADORES_DA_UFPA_Oiapoque.docx" target="_blank" title="INDICADORES DA UFPA Oiapoque (.docx)"><span class="flat">4 - INDICADORES DA UFPA Oiapoque (.docx)</span>
+							    </a>
+							  </p>
+							</li>
+							
+							<li>
+							  <p>
+							    <i class="fa fa-file-pdf-o" style="color: red"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Oiapoque/5_INDICADORES_COMUNIDADE_Oiapoque.pdf" target="_blank" title="INDICADORES COMUNIDADE Oiapoque (.pdf)"><span class="flat">5 - INDICADORES COMUNIDADE Oiapoque (.pdf)</span>
+							    </a>
+							  </p>
+							  <p>
+							    <i class="fa fa-file-word-o" style="color: blue"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Oiapoque/5_INDICADORES_COMUNIDADE_Oiapoque.docx" target="_blank" title="INDICADORES COMUNIDADE Oiapoque (.docx)"><span class="flat">5 - INDICADORES COMUNIDADE Oiapoque (.docx)</span>
+							    </a>
+							  </p>
+							</li>
+							
+							<li>
+							  <p>
+							    <i class="fa fa-file-pdf-o" style="color: red"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Oiapoque/6_PLANEJAMENTO_COLETIVO_DE_ATER_Oiapoque.pdf" target="_blank" title="PLANEJAMENTO COLETIVO DE ATER Oiapoque (.pdf)"><span class="flat">6 - PLANEJAMENTO COLETIVO DE ATER Oiapoque (.pdf)</span>
+							    </a>
+							  </p>
+							  <p>
+							    <i class="fa fa-file-word-o" style="color: blue"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Oiapoque/6_PLANEJAMENTO_COLETIVO_DE_ATER_Oiapoque.docx" target="_blank" title="PLANEJAMENTO COLETIVO DE ATER Oiapoque (.docx)"><span class="flat">6 - PLANEJAMENTO COLETIVO DE ATER Oiapoque (.docx)</span>
+							    </a>
+							  </p>
+							</li>
+							
+							<li>
+							  <p>
+							    <i class="fa fa-file-pdf-o" style="color: red"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Oiapoque/7_PROJETO__PRODUTIVO_Oiapoque.pdf" target="_blank" title="PROJETO  PRODUTIVO Oiapoque (.pdf)"><span class="flat">7 - PROJETO  PRODUTIVO Oiapoque (.pdf)</span>
+							    </a>
+							  </p>
+							  <p>
+							    <i class="fa fa-file-word-o" style="color: blue"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Oiapoque/7_PROJETO__PRODUTIVO_Oiapoque.docx" target="_blank" title="PROJETO  PRODUTIVO Oiapoque (.docx)"><span class="flat">7 - PROJETO  PRODUTIVO Oiapoque (.docx)</span>
+							    </a>
+							  </p>
+							</li>
+							
+							<li>
+							  <p>
+							    <i class="fa fa-file-pdf-o" style="color: red"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Oiapoque/8_RELATORIO_TECNICO_DA_VISITA_DE_ACOMPANHAMENTO_OIAPOQUE.pdf" target="_blank" title="RELATORIO TECNICO DA VISITA DE ACOMPANHAMENTO OIAPOQUE (.pdf)"><span class="flat">8 - RELATORIO TECNICO DA VISITA DE ACOMPANHAMENTO OIAPOQUE (.pdf)</span>
+							    </a>
+							  </p>
+							  <p>
+							    <i class="fa fa-file-word-o" style="color: blue"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Oiapoque/8_RELATORIO_TECNICO_DA_VISITA_DE_ACOMPANHAMENTO_OIAPOQUE.docx" target="_blank" title="RELATORIO TECNICO DA VISITA DE ACOMPANHAMENTO OIAPOQUE (.docx)"><span class="flat">8 - RELATORIO TECNICO DA VISITA DE ACOMPANHAMENTO OIAPOQUE (.docx)</span>
+							    </a>
+							  </p>
+							</li>
+							
+							<li>
+							  <p>
+							    <i class="fa fa-file-pdf-o" style="color: red"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Oiapoque/9_RELATORIO_TECNICO_DE_ATENDIMENTO_COLETIVO_DE_ATER_OIAPOQUE.pdf" target="_blank" title="RELATORIO TECNICO DE ATENDIMENTO COLETIVO DE ATER OIAPOQUE (.pdf)"><span class="flat">9 - RELATORIO TECNICO DE ATENDIMENTO COLETIVO DE ATER OIAPOQUE (.pdf)</span>
+							    </a>
+							  </p>
+							  <p>
+							    <i class="fa fa-file-word-o" style="color: blue"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Oiapoque/9_RELATORIO_TECNICO_DE_ATENDIMENTO_COLETIVO_DE_ATER_OIAPOQUE.docx" target="_blank" title="RELATORIO TECNICO DE ATENDIMENTO COLETIVO DE ATER OIAPOQUE (.docx)"><span class="flat">9 - RELATORIO TECNICO DE ATENDIMENTO COLETIVO DE ATER OIAPOQUE (.docx)</span>
+							    </a>
+							  </p>
+							</li>
+							
+							<li>
+							  <p>
+							    <i class="fa fa-file-pdf-o" style="color: red"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Oiapoque/10_DECLARACAO_DE_DESISTENCIA_Oiapoque.pdf" target="_blank" title="DECLARACAO DE DESISTENCIA Oiapoque (.pdf)"><span class="flat">10 - DECLARACAO DE DESISTENCIA Oiapoque (.pdf)</span>
+							    </a>
+							  </p>
+							  <p>
+							    <i class="fa fa-file-word-o" style="color: blue"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Oiapoque/10_DECLARACAO_DE_DESISTENCIA_Oiapoque.docx" target="_blank" title="DECLARACAO DE DESISTENCIA Oiapoque (.docx)"><span class="flat">10 - DECLARACAO DE DESISTENCIA Oiapoque (.docx)</span>
+							    </a>
+							  </p>
+							</li>
+							
+							<li>
+							  <p>
+							    <i class="fa fa-file-pdf-o" style="color: red"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Oiapoque/FLUXO_SGA_Oiapoque.pdf" target="_blank" title="FLUXO SGA Oiapoque (.pdf)"><span class="flat">11 - FLUXO SGA Oiapoque (.pdf)</span>
+							    </a>
+							  </p>
+							</li>
+							
+						</ul>
+
+					</div>
+
+				</div>
+
+			</div>
+			
+			<div class="x_panel">
+
+				<div class="x_title">
+
+					<h2>
+						<i class="fa fa-file-pdf-o"></i> Formulários - União com Municípios
+					</h2>
+
+					<div class="clearfix"></div>
+
+				</div>
+
+				<div class="x_content">
+
+					<div class="">
+
+						<ul class="to_do">
+
+							<li>
+							  <p>
+							    <i class="fa fa-file-pdf-o" style="color: red"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Uniao_com_Municipios/1_RELATORIO_TECNICO_DE_CONTROLE_SOCIAL_UcM.pdf" target="_blank" title="Relatório Técnico de Controle Social – UcM (.pdf)"><span class="flat">1 - Relatório Técnico de Controle Social – UcM (.pdf)</span>
+							    </a>
+							  </p>
+							  <p>
+							    <i class="fa fa-file-word-o" style="color: blue"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Uniao_com_Municipios/1_RELATORIO_TECNICO_DE_CONTROLE_SOCIAL_UcM.docx" target="_blank" title="Relatório Técnico de Controle Social – UcM (.docx)"><span class="flat">1 - Relatório Técnico de Controle Social – UcM (.docx)</span>
+							    </a>
+							  </p>
+							</li>
+							
+							<li>
+							  <p>
+							    <i class="fa fa-file-pdf-o" style="color: red"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Uniao_com_Municipios/2_RELATORIO_TECNICO_DE_CONTROLE_SOCIAL_UcM.pdf" target="_blank" title="Relatório Técnico de Controle Social – UcM (.pdf)"><span class="flat">2 - Relatório Técnico de Controle Social – UcM (.pdf)</span>
+							    </a>
+							  </p>
+							  <p>
+							    <i class="fa fa-file-word-o" style="color: blue"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Uniao_com_Municipios/2_RELATORIO_TECNICO_DE_CONTROLE_SOCIAL_UcM.docx" target="_blank" title="Relatório Técnico de Controle Social – UcM (.docx)"><span class="flat">2 - Relatório Técnico de Controle Social – UcM (.docx)</span>
+							    </a>
+							  </p>
+							</li>
+							
+							<li>
+							  <p>
+							    <i class="fa fa-file-pdf-o" style="color: red"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Uniao_com_Municipios/3_CADASTRO_DIAGNOSTICO_DA_UFPA_UcM.pdf" target="_blank" title="Cadastro Diagnóstico da UFPA – UcM (.pdf)"><span class="flat">3 - Cadastro Diagnóstico da UFPA – UcM (.pdf)</span>
+							    </a>
+							  </p>
+							  <p>
+							    <i class="fa fa-file-word-o" style="color: blue"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Uniao_com_Municipios/3_CADASTRO_DIAGNOSTICO_DA_UFPA_UcM.docx" target="_blank" title="Cadastro Diagnóstico da UFPA – UcM (.docx)"><span class="flat">3 - Cadastro Diagnóstico da UFPA – UcM (.docx)</span>
+							    </a>
+							  </p>
+							</li>
+							
+							<li>
+							  <p>
+							    <i class="fa fa-file-pdf-o" style="color: red"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Uniao_com_Municipios/4_PLANO_DE_ACAO_DA_UFPA_UcM.pdf" target="_blank" title="Plano de Ação da UFPA – UcM (.pdf)"><span class="flat">4 - Plano de Ação da UFPA – UcM (.pdf)</span>
+							    </a>
+							  </p>
+							  <p>
+							    <i class="fa fa-file-word-o" style="color: blue"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Uniao_com_Municipios/4_PLANO_DE_ACAO_DA_UFPA_UcM.docx" target="_blank" title="Plano de Ação da UFPA – UcM (.docx)"><span class="flat">4 - Plano de Ação da UFPA – UcM (.docx)</span>
+							    </a>
+							  </p>
+							</li>
+							
+							<li>
+							  <p>
+							    <i class="fa fa-file-pdf-o" style="color: red"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Uniao_com_Municipios/5_ATIVIDADES_COLETIVAS_UcM.pdf" target="_blank" title="Atividades Coletivas – UcM (.pdf)"><span class="flat">5 - Atividades Coletivas – UcM (.pdf)</span>
+							    </a>
+							  </p>
+							  <p>
+							    <i class="fa fa-file-word-o" style="color: blue"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Uniao_com_Municipios/5_ATIVIDADES_COLETIVAS_UcM.docx" target="_blank" title="Atividades Coletivas – UcM (.docx)"><span class="flat">5 - Atividades Coletivas – UcM (.docx)</span>
+							    </a>
+							  </p>
+							</li>
+							
+							<li>
+							  <p>
+							    <i class="fa fa-file-pdf-o" style="color: red"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Uniao_com_Municipios/6_RELATORIO_DE_ATIVIDADE_DE_GEORREFERENCIAMENTO_UcM.pdf" target="_blank" title="Relatório de Atividade de Georreferenciamento – UcM (.pdf)"><span class="flat">6 - Relatório de Atividade de Georreferenciamento – UcM (.pdf)</span>
+							    </a>
+							  </p>
+							  <p>
+							    <i class="fa fa-file-word-o" style="color: blue"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Uniao_com_Municipios/6_RELATORIO_DE_ATIVIDADE_DE_GEORREFERENCIAMENTO_UcM.docx" target="_blank" title="Relatório de Atividade de Georreferenciamento – UcM (.docx)"><span class="flat">6 - Relatório de Atividade de Georreferenciamento – UcM (.docx)</span>
+							    </a>
+							  </p>
+							</li>
+							
+							<li>
+							  <p>
+							    <i class="fa fa-file-pdf-o" style="color: red"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Uniao_com_Municipios/7_RELATORIO_DE_ATIVIDADE_DE_INSERCAO_DIGITAL_UcM.pdf" target="_blank" title="Relatório de Atividade de Inserção Digital – UcM (.pdf)"><span class="flat">7 - Relatório de Atividade de Inserção Digital – UcM (.pdf)</span>
+							    </a>
+							  </p>
+							  <p>
+							    <i class="fa fa-file-word-o" style="color: blue"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Uniao_com_Municipios/7_RELATORIO_DE_ATIVIDADE_DE_INSERCAO_DIGITAL_UcM.docx" target="_blank" title="Relatório de Atividade de Inserção Digital – UcM (.docx)"><span class="flat">7 - Relatório de Atividade de Inserção Digital – UcM (.docx)</span>
+							    </a>
+							  </p>
+							</li>
+							
+							<li>
+							  <p>
+							    <i class="fa fa-file-pdf-o" style="color: red"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Uniao_com_Municipios/8_ATENDIMENTO_INDIVIDUAL_DE_ATER_PRADA_UcM.pdf" target="_blank" title="Atendimento Individual de ATER PRADA – UcM (.pdf)"><span class="flat">8 - Atendimento Individual de ATER PRADA – UcM (.pdf)</span>
+							    </a>
+							  </p>
+							  <p>
+							    <i class="fa fa-file-word-o" style="color: blue"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Uniao_com_Municipios/8_ATENDIMENTO_INDIVIDUAL_DE_ATER_PRADA_UcM.docx" target="_blank" title="Atendimento Individual de ATER PRADA – UcM (.docx)"><span class="flat">8 - Atendimento Individual de ATER PRADA – UcM (.docx)</span>
+							    </a>
+							  </p>
+							</li>
+							
+							<li>
+							  <p>
+							    <i class="fa fa-file-pdf-o" style="color: red"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Uniao_com_Municipios/9_ATENDIMENTO_INDIVIDUAL_DE_ATER_UcM.pdf" target="_blank" title="Atendimento Individual de ATER – UcM (.pdf)"><span class="flat">9 - Atendimento Individual de ATER – UcM (.pdf)</span>
+							    </a>
+							  </p>
+							  <p>
+							    <i class="fa fa-file-word-o" style="color: blue"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Uniao_com_Municipios/9_ATENDIMENTO_INDIVIDUAL_DE_ATER_UcM.docx" target="_blank" title="Atendimento Individual de ATER – UcM (.docx)"><span class="flat">9 - Atendimento Individual de ATER – UcM (.docx)</span>
+							    </a>
+							  </p>
+							</li>
+							
+							<li>
+							  <p>
+							    <i class="fa fa-file-pdf-o" style="color: red"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Uniao_com_Municipios/10_ATENDIMENTO_INDIVIDUAL_DE_ATER_SAF_UcM.pdf" target="_blank" title="Atendimento Individual de ATER SAF – UcM (.pdf)"><span class="flat">10 - Atendimento Individual de ATER SAF – UcM (.pdf)</span>
+							    </a>
+							  </p>
+							  <p>
+							    <i class="fa fa-file-word-o" style="color: blue"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Uniao_com_Municipios/10_ATENDIMENTO_INDIVIDUAL_DE_ATER_SAF_UcM.docx" target="_blank" title="Atendimento Individual de ATER SAF – UcM (.docx)"><span class="flat">10 - Atendimento Individual de ATER SAF – UcM (.docx)</span>
+							    </a>
+							  </p>
+							</li>
+							
+							<li>
+							  <p>
+							    <i class="fa fa-file-word-o" style="color: blue"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Uniao_com_Municipios/11_FLUXO_SGA_UCM.docx" target="_blank" title="FLUXO SGA – UCM (.docx)"><span class="flat">11 - FLUXO SGA – UCM (.docx)</span>
+							    </a>
+							  </p>
+							</li>
+							
+							<li>
+							  <p>
+							    <i class="fa fa-file-pdf-o" style="color: red"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Uniao_com_Municipios/12_FORMULARIOS_POR_ATIVIDADE_UcM.pdf" target="_blank" title="Formulários por atividade (.pdf)"><span class="flat">12 - Formulários por atividade (.pdf)</span>
+							    </a>
+							  </p>
+							  <p>
+							    <i class="fa fa-file-word-o" style="color: blue"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Uniao_com_Municipios/12_FORMULARIOS_POR_ATIVIDADE_UcM.docx" target="_blank" title="Formulários por atividade (.docx)"><span class="flat">12 - Formulários por atividade (.docx)</span>
+							    </a>
+							  </p>
+							</li>
+							
+							<li>
+							  <p>
+							    <i class="fa fa-file-pdf-o" style="color: red"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Uniao_com_Municipios/13_TERMO_ADESAO_FAMILIA_UcM.pdf" target="_blank" title="Termo de Adesão Família – UcM (.pdf)"><span class="flat">13 - Termo de Adesão Família – UcM (.pdf)</span>
+							    </a>
+							  </p>
+							  <p>
+							    <i class="fa fa-file-word-o" style="color: blue"></i>
+							    <a href="https://sga.anater.org/resources/docs/organizacao-formularios-2025/Uniao_com_Municipios/13_TERMO_ADESAO_FAMILIA_UcM.docx" target="_blank" title="Termo de Adesão Família – UcM (.docx)"><span class="flat">13 - Termo de Adesão Família – UcM (.docx)</span>
+							    </a>
+							  </p>
+							</li>
+							
+						</ul>
+
+					</div>
+
+				</div>
+
+			</div>
+			
+		</div>
+		
+
+
+		
+		
+				
+	</div>
+			
+
+		</div>
+		<!-- /page content -->
+		
+		<!-- ECharts -->
+		<script src="ANATER%20-home_files/echarts.min_zpdL.js"></script>
+		<script src="ANATER%20-home_files/world_zpdL.js"></script>
+	
+		<script>
+	
+			var theme = {
+	          color: [
+	              '#26B99A', '#34495E', '#FF8000', '#8C0000',
+	              '#9B59B6', '#8abb6f', '#759c6a', '#bfd3b7'
+	          ],
+	
+	          title: {
+	              itemGap: 8,
+	              textStyle: {
+	                  fontWeight: 'normal',
+	                  color: '#408829'
+	              }
+	          },
+	
+	          dataRange: {
+	              color: ['#1f610a', '#97b58d']
+	          },
+	
+	          toolbox: {
+	              color: ['#408829', '#408829', '#408829', '#408829']
+	          },
+	
+	          tooltip: {
+	              backgroundColor: 'rgba(0,0,0,0.5)',
+	              axisPointer: {
+	                  type: 'line',
+	                  lineStyle: {
+	                      color: '#408829',
+	                      type: 'dashed'
+	                  },
+	                  crossStyle: {
+	                      color: '#408829'
+	                  },
+	                  shadowStyle: {
+	                      color: 'rgba(200,200,200,0.3)'
+	                  }
+	              }
+	          },
+	
+	          dataZoom: {
+	              dataBackgroundColor: '#eee',
+	              fillerColor: 'rgba(64,136,41,0.2)',
+	              handleColor: '#408829'
+	          },
+	          grid: {
+	              borderWidth: 0
+	          },
+	
+	          categoryAxis: {
+	              axisLine: {
+	                  lineStyle: {
+	                      color: '#408829'
+	                  }
+	              },
+	              splitLine: {
+	                  lineStyle: {
+	                      color: ['#eee']
+	                  }
+	              }
+	          },
+	
+	          valueAxis: {
+	              axisLine: {
+	                  lineStyle: {
+	                      color: '#408829'
+	                  }
+	              },
+	              splitArea: {
+	                  show: true,
+	                  areaStyle: {
+	                      color: ['rgba(250,250,250,0.1)', 'rgba(200,200,200,0.1)']
+	                  }
+	              },
+	              splitLine: {
+	                  lineStyle: {
+	                      color: ['#eee']
+	                  }
+	              }
+	          },
+	          timeline: {
+	              lineStyle: {
+	                  color: '#408829'
+	              },
+	              controlStyle: {
+	                  normal: {color: '#408829'},
+	                  emphasis: {color: '#408829'}
+	              }
+	          },
+	
+	          k: {
+	              itemStyle: {
+	                  normal: {
+	                      color: '#68a54a',
+	                      color0: '#a9cba2',
+	                      lineStyle: {
+	                          width: 1,
+	                          color: '#408829',
+	                          color0: '#86b379'
+	                      }
+	                  }
+	              }
+	          },
+	          map: {
+	              itemStyle: {
+	                  normal: {
+	                      areaStyle: {
+	                          color: '#ddd'
+	                      },
+	                      label: {
+	                          textStyle: {
+	                              color: '#c12e34'
+	                          }
+	                      }
+	                  },
+	                  emphasis: {
+	                      areaStyle: {
+	                          color: '#99d2dd'
+	                      },
+	                      label: {
+	                          textStyle: {
+	                              color: '#c12e34'
+	                          }
+	                      }
+	                  }
+	              }
+	          },
+	          force: {
+	              itemStyle: {
+	                  normal: {
+	                      linkStyle: {
+	                          strokeColor: '#408829'
+	                      }
+	                  }
+	              }
+	          },
+	          chord: {
+	              padding: 4,
+	              itemStyle: {
+	                  normal: {
+	                      lineStyle: {
+	                          width: 1,
+	                          color: 'rgba(128, 128, 128, 0.5)'
+	                      },
+	                      chordStyle: {
+	                          lineStyle: {
+	                              width: 1,
+	                              color: 'rgba(128, 128, 128, 0.5)'
+	                          }
+	                      }
+	                  },
+	                  emphasis: {
+	                      lineStyle: {
+	                          width: 1,
+	                          color: 'rgba(128, 128, 128, 0.5)'
+	                      },
+	                      chordStyle: {
+	                          lineStyle: {
+	                              width: 1,
+	                              color: 'rgba(128, 128, 128, 0.5)'
+	                          }
+	                      }
+	                  }
+	              }
+	          },
+	          gauge: {
+	              startAngle: 225,
+	              endAngle: -45,
+	              axisLine: {
+	                  show: true,
+	                  lineStyle: {
+	                      color: [[0.2, '#86b379'], [0.8, '#68a54a'], [1, '#408829']],
+	                      width: 8
+	                  }
+	              },
+	              axisTick: {
+	                  splitNumber: 10,
+	                  length: 12,
+	                  lineStyle: {
+	                      color: 'auto'
+	                  }
+	              },
+	              axisLabel: {
+	                  textStyle: {
+	                      color: 'auto'
+	                  }
+	              },
+	              splitLine: {
+	                  length: 18,
+	                  lineStyle: {
+	                      color: 'auto'
+	                  }
+	              },
+	              pointer: {
+	                  length: '90%',
+	                  color: 'auto'
+	              },
+	              title: {
+	                  textStyle: {
+	                      color: '#333'
+	                  }
+	              },
+	              detail: {
+	                  textStyle: {
+	                      color: 'auto'
+	                  }
+	              }
+	          },
+	          textStyle: {
+	              fontFamily: 'Arial, Verdana, sans-serif'
+	          }
+	      };
+	
+	
+		var lisPercentualNumerico = []
+	      
+      	
+			lisPercentualNumerico.push("2.57");
+		
+	      
+	    var echartGauge = echarts.init(document.getElementById('echart_guage'), theme);
+		  	
+	    echartGauge.setOption({
+	        tooltip: {
+	          formatter: "{a} <br />{b} : {c}%"
+	        },
+	        toolbox: {
+	          show: true,
+	          feature: {
+	            restore: {
+	              show: true,
+	              title: "Atualizar"
+	            },
+	            saveAsImage: {
+	              show: true,
+	              title: "Salvar Imagem"
+	            }
+	          }
+	        },
+	        series: [{
+	          name: '',
+	          type: 'gauge',
+	          center: ['50%', '50%'],
+	          startAngle: 140,
+	          endAngle: -140,
+	          min: 0,
+	          max: 100,
+	          precision: 0,
+	          splitNumber: 10,
+	          axisLine: {
+	            show: true,
+	            lineStyle: {
+	              color: [
+	                [0.25, '#ff4500'],
+	                [0.5, 'orange'],
+	                [0.75, 'lightgreen'],
+	                [0.9, 'skyblue'],
+	                [1, 'purple']
+	              ],
+	              width: 30
+	            }
+	          },
+	          axisTick: {
+	            show: true,
+	            splitNumber: 5,
+	            length: 8,
+	            lineStyle: {
+	              color: '#eee',
+	              width: 1,
+	              type: 'solid'
+	            }
+	          },
+	          axisLabel: {
+	            show: true,
+	            formatter: function(v) {
+	              switch (v + '') {
+	                case '10':
+	                  return 'baixa';
+	                case '40':
+	                  return 'regular';
+	                case '60':
+	                  return 'bom';
+	                case '80':
+	                  return 'ótimo';
+	                case '100':
+		              return 'excelente';
+	                default:
+	                  return '';
+	              }
+	            },
+	            textStyle: {
+	              color: '#333'
+	            }
+	          },
+	          splitLine: {
+	            show: true,
+	            length: 30,
+	            lineStyle: {
+	              color: '#eee',
+	              width: 2,
+	              type: 'solid'
+	            }
+	          },
+	          pointer: {
+	            length: '80%',
+	            width: 7,
+	            color: 'auto'
+	          },
+	          title: {
+	            show: true,
+	            offsetCenter: ['-70%', -15],
+	            textStyle: {
+	              color: '#333',
+	              fontSize: 15
+	            }
+	          },
+	          detail: {
+	            show: true,
+	            backgroundColor: 'rgba(0,0,0,0)',
+	            borderWidth: 0,
+	            borderColor: '#ccc',
+	            width: 100,
+	            height: 60,
+	            offsetCenter: ['-60%', 15],
+	            formatter: '{value}%',
+	            textStyle: {
+	              color: 'auto',
+	              fontSize: 40
+	            }
+	          },
+	          data: [{
+	            value: lisPercentualNumerico,
+	            name: 'IDG'
+	          }]
+	        }]
+	      });
+	    
+	    
+	    
+	    var lisPercentualNumericoPeriodo = []
+	      
+      	
+      		lisPercentualNumericoPeriodo.push("9.100");
+		
+		      
+		var echartGauge = echarts.init(document.getElementById('echart_guage_2'), theme);
+		  	
+	    echartGauge.setOption({
+	        tooltip: {
+	          formatter: "{a} <br />{b} : {c}%"
+	        },
+	        toolbox: {
+	          show: true,
+	          feature: {
+	            restore: {
+	              show: true,
+	              title: "Atualizar"
+	            },
+	            saveAsImage: {
+	              show: true,
+	              title: "Salvar Imagem"
+	            }
+	          }
+	        },
+	        series: [{
+	          name: '',
+	          type: 'gauge',
+	          center: ['50%', '50%'],
+	          startAngle: 140,
+	          endAngle: -140,
+	          min: 0,
+	          max: 100,
+	          precision: 0,
+	          splitNumber: 10,
+	          axisLine: {
+	            show: true,
+	            lineStyle: {
+	              color: [
+	                [0.25, '#ff4500'],
+	                [0.5, 'orange'],
+	                [0.75, 'lightgreen'],
+	                [0.9, 'skyblue'],
+	                [1, 'purple']
+	              ],
+	              width: 30
+	            }
+	          },
+	          axisTick: {
+	            show: true,
+	            splitNumber: 5,
+	            length: 8,
+	            lineStyle: {
+	              color: '#eee',
+	              width: 1,
+	              type: 'solid'
+	            }
+	          },
+	          axisLabel: {
+	            show: true,
+	            formatter: function(v) {
+	              switch (v + '') {
+	                case '10':
+	                  return 'baixa';
+	                case '40':
+	                  return 'regular';
+	                case '60':
+	                  return 'bom';
+	                case '80':
+	                  return 'ótimo';
+	                case '100':
+		              return 'excelente';
+	                default:
+	                  return '';
+	              }
+	            },
+	            textStyle: {
+	              color: '#333'
+	            }
+	          },
+	          splitLine: {
+	            show: true,
+	            length: 30,
+	            lineStyle: {
+	              color: '#eee',
+	              width: 2,
+	              type: 'solid'
+	            }
+	          },
+	          pointer: {
+	            length: '80%',
+	            width: 7,
+	            color: 'auto'
+	          },
+	          title: {
+	            show: true,
+	            offsetCenter: ['-70%', -15],
+	            textStyle: {
+	              color: '#333',
+	              fontSize: 15
+	            }
+	          },
+	          detail: {
+	            show: true,
+	            backgroundColor: 'rgba(0,0,0,0)',
+	            borderWidth: 0,
+	            borderColor: '#ccc',
+	            width: 100,
+	            height: 60,
+	            offsetCenter: ['-70%', 15],
+	            formatter: '{value}%',
+	            textStyle: {
+	              color: 'auto',
+	              fontSize: 40
+	            }
+	          },
+	          data: [{
+	            value: lisPercentualNumericoPeriodo,
+	            name: 'IDG'
+	          }]
+	        }]
+	      });
+	
+	</script>
+<form id="formConfirm" name="formConfirm" method="post" action="/pages/index.xhtml" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="formConfirm" value="formConfirm">
+
+	
+		<div class="modal fade modalConfirmacao" tabindex="-1" role="dialog" aria-hidden="true">
+										
+            <div class="modal-dialog modal-md">
+            
+              	<div class="modal-content"><span id="formConfirm:campos">
+              	
+		             	<div class="modal-header">
+		             	   	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+		                 	<h4 class="titulo_modulo" id="myModalLabel2">Confirmação</h4>
+		                 </div>
+	                 
+		                <div class="modal-body"><span id="formConfirm:idModalMensagemConfirmacao">
+		                  		<h4> </h4></span>
+		                </div>
+	                 
+	                 	<div class="modal-footer">
+	                	       	<button type="button" class="btn btn-default" data-dismiss="modal">Agora não</button><a href="#" onclick="mojarra.jsfcljs(document.getElementById('formConfirm'),{'formConfirm:j_idt795':'formConfirm:j_idt795'},'');return false" class="btn btn-success">Sim
+									<i class="fa fa-play"></i></a>
+						</div></span>
+	                	
+        		</div>
+              
+			</div>
+            
+		</div><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:5" value="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" autocomplete="off">
+</form>
+	    
+	    <!-- footer content -->
+		<footer>
+		
+        	ANATER | Agência Nacional de Assistência Técnica e Extensão Rural
+        	<br> 
+        	© Sistema desenvolvido e mantido por: Gerência de Tecnologia da Informação - GTI
+        
+          	<div class="pull-right">
+          		1.1.0.1 01/08/2026 14:30	
+          	</div>
+          	
+          <div class="clearfix"></div>
+          
+        </footer>
+        <!-- /footer content -->
+	  
+	  	</div>
+	  
+	</div>
+
+
+	<!-- ########## IN&Iacute;CIO Configura&ccedil;&atilde;o Default do Template ########## --><span id="idPanelConfigPadraoTemplate">
+    
+    	<!-- jQuery -->
+	    <script src="ANATER%20-home_files/jquery.min_zpdL.js"></script>
+	    
+	    <!-- Bootstrap -->
+	    <script src="ANATER%20-home_files/bootstrap.min_zpdL.js"></script>
+	    
+	    <!-- FastClick -->
+	    <script src="ANATER%20-home_files/fastclick_zpdL.js"></script>
+	    
+	    <!-- NProgress -->
+	    <script src="ANATER%20-home_files/nprogress_zpdL.js"></script>
+	    
+	   	
+	    <!-- Dropzone.js -->
+   		<script src="ANATER%20-home_files/dropzone.min_zpdL.js"></script>
+	    
+	    <!-- Chart.js -->
+	    <script src="ANATER%20-home_files/Chart.min_zpdL.js"></script>
+	    
+	    <!-- gauge.js -->
+	    <script src="ANATER%20-home_files/gauge.min_zpdL.js"></script>
+	    
+	    <!-- bootstrap-progressbar -->
+	    <script src="ANATER%20-home_files/bootstrap-progressbar.min_zpdL.js"></script>
+	    
+	    <!-- iCheck -->
+	    <script src="ANATER%20-home_files/icheck.min_zpdL.js"></script>
+	    
+	    <!-- Skycons -->
+	    <script src="ANATER%20-home_files/skycons_zpdL.js"></script>
+	    
+	    <!-- Flot -->
+	    <script src="ANATER%20-home_files/jquery.flot_zpdL.js"></script>
+	    <script src="ANATER%20-home_files/jquery.flot.pie_zpdL.js"></script>
+	    <script src="ANATER%20-home_files/jquery.flot.time_zpdL.js"></script>
+	    <script src="ANATER%20-home_files/jquery.flot.stack_zpdL.js"></script>
+	    <script src="ANATER%20-home_files/jquery.flot.resize_zpdL.js"></script>
+	    
+	    <!-- Flot plugins -->
+	    <script src="ANATER%20-home_files/jquery.flot.orderBars_zpdL.js"></script>
+	    <script src="ANATER%20-home_files/jquery.flot.spline.min_zpdL.js"></script>
+	    <script src="ANATER%20-home_files/curvedLines_zpdL.js"></script>
+	    
+	    <!-- DateJS -->
+	    <script src="ANATER%20-home_files/date_zpdL.js"></script>
+	    
+	    <!-- JQVMap -->
+	    <script src="ANATER%20-home_files/jquery.vmap_zpdL.js"></script>
+	    <script src="ANATER%20-home_files/jquery.vmap.world_zpdL.js"></script>
+	    <script src="ANATER%20-home_files/jquery.vmap.sampledata_zpdL.js"></script>
+	    
+	    <!-- bootstrap-daterangepicker -->
+	    <script src="ANATER%20-home_files/moment.min_zpdL.js"></script>
+	    <script src="ANATER%20-home_files/daterangepicker_zpdL.js"></script>
+	
+	    <!-- Custom Theme Scripts -->
+	    <!-- Modifica&ccedil;&atilde;o realizada dia 10/08/2018 Guilherme - Atendimento do componente jquery.smartWizard do cadastro de Empreendimento -->
+	   	<!-- &lt;script src="/resources/outros/build/js/custom.min.js"&gt;&lt;/script&gt; -->
+	    <script src="ANATER%20-home_files/custom.min_zpdL.js"></script>
+	    
+	    <!-- Datatables -->
+	    <script src="ANATER%20-home_files/jquery.dataTables.min_zpdL.js"></script> <!-- Este script mostra a label Exibir, Buscar e Exibindo -->
+	    <script src="ANATER%20-home_files/dataTables.bootstrap.min_zpdL.js"></script>
+	    <script src="ANATER%20-home_files/dataTables.buttons.min_zpdL.js"></script>
+	    <script src="ANATER%20-home_files/buttons.bootstrap.min_zpdL.js"></script>
+	    <script src="ANATER%20-home_files/buttons.flash.min_zpdL.js"></script>
+	    <script src="ANATER%20-home_files/buttons.html5.min_zpdL.js"></script>
+	    <script src="ANATER%20-home_files/buttons.print.min_zpdL.js"></script>
+	    <script src="ANATER%20-home_files/dataTables.fixedHeader.min_zpdL.js"></script>
+	    <script src="ANATER%20-home_files/dataTables.keyTable.min_zpdL.js"></script>
+	    <script src="ANATER%20-home_files/dataTables.responsive.min_zpdL.js"></script>
+	    <script src="ANATER%20-home_files/responsive.bootstrap_zpdL.js"></script>
+	    <script src="ANATER%20-home_files/dataTables.scroller.min_zpdL.js"></script>
+	    <script src="ANATER%20-home_files/jszip.min_zpdL.js"></script>
+	    <script src="ANATER%20-home_files/pdfmake.min_zpdL.js"></script>
+	    <script src="ANATER%20-home_files/vfs_fonts_zpdL.js"></script></span>
+	<!-- ########## FIM Configura&ccedil;&atilde;o Default do Template ########## --><span id="importLibsJsFinalBodyPanel">
+				<script type="text/javascript" src="ANATER%20-home_files/jquery-ui.min_zpdL.js"></script>
+				<link href="ANATER%20-home_files/jquery-ui.min_zpdL.css" rel="stylesheet">
+				<link href="ANATER%20-home_files/jquery-ui.structure.min_zpdL.css" rel="stylesheet">
+				<link href="ANATER%20-home_files/jquery-ui.theme.min_zpdL.css" rel="stylesheet">
+				
+				<script type="text/javascript" src="ANATER%20-home_files/jquery.mask.min_zpdL.js"></script>
+				<script type="text/javascript" src="ANATER%20-home_files/jquery.maskMoney.min_zpdL.js"></script>
+				<script type="text/javascript" src="ANATER%20-home_files/scriptUtil_zpdL.js"></script>
+				<script type="text/javascript" src="ANATER%20-home_files/scriptUtilsGEO_zpdL.js"></script>
+				<script type="text/javascript" src="ANATER%20-home_files/selectize.min_zpdL.js"></script>
+				 <!-- Custom Theme Scripts -->
+	   			 <!-- Modifica&ccedil;&atilde;o realizada dia 10/08/2018 Guilherme - Atendimento do componente jquery.smartWizard do cadastro de Empreendimento -->
+				<script src="ANATER%20-home_files/cadastrarEmpreendimento_zpdL.js"></script>
+				
+				<!-- smartWizard -->
+	    		<script src="ANATER%20-home_files/jquery.smartWizard_zpdL.js"></script>
+	    		
+	    		<!-- WebCam -->
+	    		<script src="ANATER%20-home_files/webcam_zpdL.js"></script>
+	    		
+	    		<!-- FileInput -->
+	    		<script type="text/javascript" src="ANATER%20-home_files/fileinput_zpdL.js"></script>
+	    		<!-- fancybox -->
+	    		<script type="text/javascript" src="ANATER%20-home_files/jquery.fancybox.pack_zpdL.js"></script>
+	    		
+	    		<!-- faces api -->
+	    		<script src="ANATER%20-home_files/face-api_zpdL.js"></script>
+	    		
+	    		<!-- OpenLayers - Google Maps integration-->
+	    		
+	    		<!-- &lt;script src="/resources/openlayers/js/ol3gm-debug.js"&gt;&lt;/script&gt; --></span> 
+	
+	
+</body></html>
+<!-- 
+		O banner est&aacute; configurado para n&atilde;o aparecer no modo celular
+		 hidden-xs:  Celular (largura de 0px at&eacute; 760px ser&aacute; oculto)
+		 visible-sm: Tablet  (largura de  765px at&eacute; 990 px ser&aacute; vis&iacute;vel)
+		 visible-md: Monitor menor (de 990px at&eacute; 1200px ser&aacute; vis&iacute;vel) 
+		 visible-lg: Monitor maior(a partir de 1200px ser&aacute; vis&iacute;vel)
+	-->
+<!-- top navigation -->

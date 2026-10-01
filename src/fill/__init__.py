@@ -1,10 +1,10 @@
 """
 Fill layer — canonical schema -> site, via Playwright.
 
-Browser automation for the Cadastrar UFPA page is grounded in the saved
-HTML captures in examples/ (see site.py's module docstring for exactly
-what's confirmed vs. still needs a live/supervised run — login and the
-pre-Cadastro filter screens aren't in any saved capture).
+Browser automation for the Cadastrar UFPA page, login, and the
+Consultar UFPA filter screen is grounded in the saved HTML captures in
+examples/ (see site.py's module docstring for exactly what's confirmed
+vs. still inferred). Diagnóstico T0 is not grounded or implemented yet.
 
 register_ufpa() is the end-to-end convenience entrypoint: extract -> build
 schema -> login -> navigate -> fill -> (pause on low confidence) -> submit.
@@ -20,7 +20,7 @@ from src.fill.site import fill_cadastro_ufpa, login, open_cadastrar_ufpa, submit
 from src.schema import build_schema
 
 
-def register_ufpa(page, docx_path, *, entidade, estado, municipio, whatsapp_text=None, review_handler=cli_review, auto_submit=False):
+def register_ufpa(page, docx_path, *, municipio, whatsapp_text=None, review_handler=cli_review, auto_submit=False):
     """Runs one family's registration end to end on an already-launched
     Playwright `page`. Pauses (via `review_handler`) only on fields the
     schema layer flagged low confidence — everything else fills
@@ -38,7 +38,7 @@ def register_ufpa(page, docx_path, *, entidade, estado, municipio, whatsapp_text
     schema = build_schema(records, whatsapp_data=whatsapp_data)
 
     login(page, usuario, senha)
-    open_cadastrar_ufpa(page, entidade=entidade, estado=estado, municipio=municipio)
+    open_cadastrar_ufpa(page, municipio=municipio)
     fill_cadastro_ufpa(page, schema["panels"], review_handler)
 
     if auto_submit:
