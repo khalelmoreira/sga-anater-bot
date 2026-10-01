@@ -1,46 +1,22 @@
 """
 Canonical schema + validation — the process's "brain".
 
-Each extracted answer becomes a canonical record:
+Turns the raw records from src/extract/ into per-panel canonical fields
+(CanonicalField) ready for src/fill/, plus the Diagnóstico T0 questionnaire
+(IndicadorAnswer). Each gets a confidence:
 
-    {
-        "axis": str,
-        "indicator": str,
-        "question": str,
-        "value": str | None,
-        "confidence": "high" | "low",
-        "review_reason": str | None,
-    }
-
-`confidence: high` -> goes straight to automatic fill-in.
-`confidence: low`  -> flagged for pause and human approval at just that
-                       point (misaligned question/answer count, empty
-                       field, ambiguous answer, text that didn't match
-                       1:1 with the format the site expects).
+  - "high" -> fills in automatically, no human involved.
+  - "low"  -> src/fill/ pauses on that one field and waits for a human
+              decision, then continues (misaligned question/answer count,
+              empty required field, ambiguous Sim/Não, dropdown value that
+              doesn't match any known option, etc).
 
 See docs/mapeamento.md, section "Arquitetura proposta", for the full
-rationale.
+rationale, and each panel's section there for the field-by-field rules
+implemented in build.py.
 """
 
-from dataclasses import dataclass
+from src.schema.build import build_schema
+from src.schema.model import CanonicalField, IndicadorAnswer
 
-
-@dataclass
-class CanonicalRecord:
-    axis: str
-    indicator: str
-    question: str
-    value: str | None
-    confidence: str  # "high" | "low"
-    review_reason: str | None = None
-
-
-def validate(records: list[dict]) -> list[CanonicalRecord]:
-    """Applies confidence rules to the extracted raw records and returns
-    the list of canonical records, already classified.
-
-    TODO: implement confidence rules per field type (see
-    docs/mapeamento.md, table "Campos do site sem origem clara" in the
-    UFPA panel for the first known cases).
-    """
-    raise NotImplementedError
+__all__ = ["build_schema", "CanonicalField", "IndicadorAnswer"]
