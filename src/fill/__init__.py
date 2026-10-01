@@ -1,34 +1,50 @@
 """
-Fill-in layer — canonical data -> form on the SGA/ANATER site
-(sga.anater.org), via Playwright.
+Fill layer — canonical schema -> site, via Playwright.
 
-The site is JSF (.xhtml, with viewstate) and the session expires after
-~20 minutes, with no captcha. See docs/mapeamento.md, section "Fluxo de
-telas do site SGA/ANATER", for the full step-by-step (login -> Consultar
-UFPA -> Cadastrar UFPA with 9 accordion panels -> Diagnóstico T0).
+Browser automation for the Cadastrar UFPA page is grounded in the saved
+HTML captures in examples/ (see site.py's module docstring for exactly
+what's confirmed vs. still needs a live/supervised run — login and the
+pre-Cadastro filter screens aren't in any saved capture).
 
-General rule: for each field, look up the corresponding canonical record.
-  - confidence == "high" -> fill in and keep going on its own.
-  - confidence == "low" -> pause, flag the field, and wait for a human
-    decision before continuing.
+register_ufpa() is the end-to-end convenience entrypoint: extract -> build
+schema -> login -> navigate -> fill -> (pause on low confidence) -> submit.
+Diagnóstico T0 (the ~140-question follow-up) is a separate step — not
+implemented yet, since the only panels mapped field-by-field so far are
+the 8 Cadastrar UFPA ones (see docs/mapeamento.md).
 """
 
+from src.extract import extract_docx
+from src.fill.credentials import load_credentials
+from src.fill.review import cli_review
+from src.fill.site import fill_cadastro_ufpa, login, open_cadastrar_ufpa, submit
+from src.schema import build_schema
 
-def fill_registration(records: list) -> None:
-    """Fills the UFPA Registration form (9 panels) from the canonical
-    records, pausing only on low-confidence fields.
 
-    TODO: implement with Playwright. Login and navigation to "Cadastrar
-    UFPA" still need to be mapped field by field (see open points in
-    docs/mapeamento.md).
+def register_ufpa(page, docx_path, *, entidade, estado, municipio, whatsapp_text=None, review_handler=cli_review, auto_submit=False):
+    """Runs one family's registration end to end on an already-launched
+    Playwright `page`. Pauses (via `review_handler`) only on fields the
+    schema layer flagged low confidence — everything else fills
+    automatically, per docs/mapeamento.md.
+
+    Doesn't submit by default (`auto_submit=False`) — review the filled
+    page first; call `src.fill.site.submit(page)` yourself once satisfied,
+    or pass auto_submit=True to do it immediately.
     """
-    raise NotImplementedError
+    from src.extract import extract_whatsapp_text
+
+    usuario, senha = load_credentials()
+    records = extract_docx(docx_path)
+    whatsapp_data = extract_whatsapp_text(whatsapp_text) if whatsapp_text else None
+    schema = build_schema(records, whatsapp_data=whatsapp_data)
+
+    login(page, usuario, senha)
+    open_cadastrar_ufpa(page, entidade=entidade, estado=estado, municipio=municipio)
+    fill_cadastro_ufpa(page, schema["panels"], review_handler)
+
+    if auto_submit:
+        submit(page)
+
+    return schema
 
 
-def fill_diagnosis_t0(records: list) -> None:
-    """Fills the ~140 Sim/Não/Não se aplica questions of the Diagnóstico
-    T0, pausing only on low-confidence fields.
-
-    TODO: implement with Playwright.
-    """
-    raise NotImplementedError
+__all__ = ["register_ufpa"]

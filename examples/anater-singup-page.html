@@ -1,0 +1,3841 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:a4j="http://richfaces.org/a4j" class=" "><head id="j_idt2"><script type="text/javascript" src="anater-singup-page_files/jsf.js_vZAa.xhtml"></script><script type="text/javascript">if(window.PrimeFaces){PrimeFaces.settings.locale='en_US';}</script>
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="Charset" content="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta http-equiv="cache-control" content="max-age=0">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async="async" src="anater-singup-page_files/google-analytics_analytics_vZAa.js"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-169706711-1');
+	</script>
+	 
+	<script>
+		// block user back button to browser
+		history.pushState(null, null, location.href);
+	    window.onpopstate = function () {
+	        history.go(1);
+	    };
+	</script>
+	
+	
+	<!-- Inicio Pedido Leslier 02/08/2024
+	&lt;script 
+	  src="https://cdn.simonops.com/divedot-rum.prod.js" 
+	  type="text/javascript"&gt;
+	&lt;/script&gt;
+	&lt;script&gt;
+	    window.DD_RUM &amp;&amp; window.DD_RUM.init({
+	      applicationId: '2b4c8ca5-591b-45d9-bfff-290341225808',
+	      clientToken: 'pub478206535aa84012a40b6fda512d7a07',
+	      service: 'SGA',
+	      env: 'producao',
+	      // Especifique um n&uacute;mero de vers&atilde;o para identificar a vers&atilde;o implantada de sua aplica&ccedil;&atilde;o no Divedot,
+	      // version: '1.0.0',
+	      site: 'cloud.simonops.com',
+	      trackInteractions: true,
+	      sampleRate: 100,
+	    });
+	&lt;/script&gt;
+	 Fim  Pedido Leslier 02/08/2024 -->
+	
+	<link rel="stylesheet" href="anater-singup-page_files/ol_vZAa.css" type="text/css">
+	<link rel="stylesheet" href="anater-singup-page_files/ol3gm_vZAa.css" type="text/css">
+	
+	<style>
+      .map {
+        height: 750px;
+        width: 100%;
+      }
+    </style>
+	
+	<link rel="icon" href="https://sga.anater.org/resources/images/favicon-anater.png" type="image/x-icon">
+		
+	<!-- ########## IN&Iacute;CIO Imports de CSS ########## -->
+	<link href="anater-singup-page_files/styleUtil_vZAa.css" rel="stylesheet">
+    
+	
+	<!-- Bootstrap -->
+    <link href="anater-singup-page_files/bootstrap.min_vZAa.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link href="anater-singup-page_files/font-awesome.min_vZAa.css" rel="stylesheet">
+    
+    <!-- NProgress -->
+    <link href="anater-singup-page_files/nprogress_vZAa.css" rel="stylesheet">
+    
+    <!-- iCheck -->
+    <link href="anater-singup-page_files/green_vZAa.css" rel="stylesheet">
+    
+    <!-- bootstrap-progressbar -->
+    <link href="anater-singup-page_files/bootstrap-progressbar-3.3.4.min_vZAa.css" rel="stylesheet">
+    
+    <!-- JQVMap -->
+    <link href="anater-singup-page_files/jqvmap.min_vZAa.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <!-- &lt;link href="/resources/outros/build/css/custom.min.css" rel="stylesheet" /&gt; -->
+	
+	<link href="anater-singup-page_files/custom_vZAa.css" rel="stylesheet">
+	
+	<!-- Datatables -->
+    <link href="anater-singup-page_files/dataTables.bootstrap.min_vZAa.css" rel="stylesheet">
+    <link href="anater-singup-page_files/buttons.bootstrap.min_vZAa.css" rel="stylesheet">
+    <link href="anater-singup-page_files/fixedHeader.bootstrap.min_vZAa.css" rel="stylesheet">
+    <link href="anater-singup-page_files/responsive.bootstrap.min_vZAa.css" rel="stylesheet">
+    <link href="anater-singup-page_files/scroller.bootstrap.min_vZAa.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="anater-singup-page_files/fileinput_vZAa.css">
+    
+    <!-- API Select2 -->
+    
+    <link href="anater-singup-page_files/selectize_vZAa.css" rel="stylesheet">
+    
+    <!-- faces api -->
+    <link href="anater-singup-page_files/styles_vZAa.css" rel="stylesheet">
+   
+   <!-- fancybox --> 
+    <link href="anater-singup-page_files/jquery.fancybox_vZAa.css" rel="stylesheet">
+    
+ 
+    
+	<!-- ########## FIM Imports de CSS ########## -->
+	
+	<!-- ########## IN&Iacute;CIO Imposts de JavaScript ########## --><style>.lottie-animation-container{width:var(--lottie-animation-container-width);height:var(--lottie-animation-container-height);background-color:var(--lottie-animation-container-background-color);overflow:hidden;margin:var(--lottie-animation-margin)}.lottie-animation-container svg{transform:scale(var(--lottie-animation-scale))}</style><style>.lottie-animation-container{width:var(--lottie-animation-container-width);height:var(--lottie-animation-container-height);background-color:var(--lottie-animation-container-background-color);overflow:hidden;margin:var(--lottie-animation-margin)}.lottie-animation-container svg{transform:scale(var(--lottie-animation-scale))}</style><style type="text/css">.fancybox-margin{margin-right:0px;}</style></head><body class="nav-md"><span id="importLibsJsInicioBodyPanel">
+			<script type="text/javascript" src="anater-singup-page_files/jquery_vZAa.js"></script>
+			<script type="text/javascript" src="anater-singup-page_files/jquery.mask.min_vZAa.js"></script>
+			<script type="text/javascript" src="anater-singup-page_files/jquery.maskMoney.min_vZAa.js"></script>
+			<script type="text/javascript" src="anater-singup-page_files/scriptUtil_vZAa.js"></script>
+			<script type="text/javascript" src="anater-singup-page_files/scriptUtilsGEO_vZAa.js"></script>
+			
+			<!-- smartWizard -->
+	    	<script src="anater-singup-page_files/jquery.smartWizard_vZAa.js"></script></span>
+	
+	<!-- ########## FIM Imposts de JavaScript ########## -->
+	
+	<style>
+		table.dataTable thead>tr>th.sorting_asc, table.dataTable thead>tr>th.sorting_desc, table.dataTable thead>tr>th.sorting, table.dataTable thead>tr>td.sorting_asc, table.dataTable thead>tr>td.sorting_desc, table.dataTable thead>tr>td.sorting{
+			padding-right: 15px;
+		}
+	</style>
+	
+	<title>ANATER | Agência Nacional de Assistência Técnica e Extensão Rural</title>
+
+
+	<div class="container body">
+    
+      	<div class="main_container">
+<form id="menu" name="menu" method="post" action="/pages/manterUPF/cadastrarUPF.xhtml" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="menu" value="menu">
+
+
+	<div class="col-md-3 left_col">
+	
+		<div class="left_col scroll-view">
+
+			<div class="navbar nav_title" style="border: 0;"><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt10':'menu:j_idt10'},'');return false" class="site_title">
+				
+					<img height="50" src="anater-singup-page_files/logomarca-sga-2_vZAa.png" alt="ANATER"></a>
+				
+			</div>
+
+			<div class="clearfix"></div>
+			
+			<div class="h60"></div>
+			
+			<!-- sidebar menu -->
+			<div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+			
+				<div class="menu_section">
+								
+						 
+					
+					
+					
+					
+					
+					<ul class="nav side-menu">
+						<li><a href="https://sga.anater.org/pages/glossario.xhtml">
+								<i class="fa fa-book"></i>Glossário<!--span class="label label-success pull-right"&gt;Novo&lt;/span--></a>
+						</li>
+						
+						<li><a href="https://sga.anater.org/pages/boletimSga.xhtml">
+								<i class="fa fa-bullhorn"></i>Boletim SGA<!--span class="label label-success pull-right"&gt;Novo&lt;/span--></a>
+						</li>
+						
+						<li><a href="https://sga.anater.org/pages/videoAulaSga.xhtml">
+								<i class="fa fa-video-camera"></i>Vídeo Aula SGA <!--span class="label label-success pull-right"&gt;Novo&lt;/span--></a>
+						</li>
+						
+						
+						<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt24':'menu:j_idt24'},'');return false">
+								<i class="fa fa-question"></i>FAQ SGA <!--span class="label label-success pull-right"&gt;Novo&lt;/span--></a>
+							
+						</li>
+					
+						<!-- Se existir premise "MCREN, AN ou CO" para o usu&aacute;rio logado, mostrar&aacute; o Credenciamento-->
+							
+							<li>
+							
+								<a><i class="fa fa-indent"></i> Credenciamento<span class="fa fa-chevron-down"></span></a>
+								
+								<ul class="nav child_menu">
+											<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt30':'menu:j_idt30'},'');return false">Dados da Empresa</a>
+											</li>
+												<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt34':'menu:j_idt34'},'');return false">Documentos</a>
+												</li>
+										<li>
+											
+											<!-- If necess&aacute;rio para funcionamento de fiscaliza&ccedil;&atilde;o --><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt37':'menu:j_idt37'},'');return false">Equipe</a>
+											
+										</li>
+											<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt41':'menu:j_idt41'},'');return false">Infraestrutura</a>
+											</li>
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt44':'menu:j_idt44'},'');return false">Histórico</a>
+										</li>
+											<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt48':'menu:j_idt48'},'');return false">Certidão de Credenciamento</a>
+											</li>
+									
+								</ul>
+								
+							</li>						
+						<!-- MODULO COMUNIDADAE -->
+							<li>
+							
+								<a><i class="fa fa-users"></i>Comunidade<span class="fa fa-chevron-down"></span></a>
+								
+								<ul class="nav child_menu">								
+									
+									<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt53':'menu:j_idt53'},'');return false">Cadastro de Comunidade</a>
+									</li>
+									<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt55':'menu:j_idt55'},'');return false">Diagnóstico Com. T0</a>
+											
+									</li>
+									<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt57':'menu:j_idt57'},'');return false">Diagnóstico Com. T1</a>
+											
+									</li>
+									<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt59':'menu:j_idt59'},'');return false">Diagnóstico Com. T2</a>
+											
+									</li>
+								</ul>
+		
+							</li>
+						
+						<!--  M&oacute;dulo Fiscaliza&ccedil;&atilde;o -->
+						<!-- &lt;c:if test="false"&gt;
+						 -->
+						
+												
+	  
+	  
+						<!-- Se existir permiss&atilde;o "MMET" para o usu&aacute;rio logado, mostrar&aacute; o menu-->
+						
+							<li><a><i class="fa fa-male"></i> UFPA <span class="fa fa-chevron-down"></span></a>
+							
+								<ul class="nav child_menu">
+										<!-- li&gt;
+											&lt;h:commandLink 	action="/pages/manterBeneficiarioPf/consultarBeneficiarioPf"
+															actionListener=""
+															value="Benefici&aacute;rio" /&gt;
+												
+										&lt;/li&gt;
+										
+										&lt;li&gt;
+											&lt;h:commandLink 	action="/pages/manterGerenciarBeneficiarioPf/cadastrarBeneficiarioPf"
+															actionListener=""
+															value="Alocar Benefici&aacute;rio" /&gt;
+												
+										&lt;/li-->
+										
+											<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt65':'menu:j_idt65'},'');return false">Cadastro</a>
+											</li>
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt68':'menu:j_idt68'},'');return false">Diagnóstico T0</a>
+											
+										</li>
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt70':'menu:j_idt70'},'');return false">Diagnóstico T1</a>
+											
+										</li>
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt72':'menu:j_idt72'},'');return false">Diagnóstico T2</a>
+											
+										</li>
+								
+								
+								
+								</ul>
+							</li>
+						
+							<li><a><i class="fa fa-institution"></i> Empreendimentos <span class="fa fa-chevron-down"></span></a>
+							
+								<ul class="nav child_menu">
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt77':'menu:j_idt77'},'');return false">Cadastro</a>
+											
+										</li>
+									
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt80':'menu:j_idt80'},'');return false">Diagnóstico Emp. T0</a>
+											
+										</li>
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt82':'menu:j_idt82'},'');return false">Diagnóstico Emp. T1</a>
+											
+										</li>
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt84':'menu:j_idt84'},'');return false">Diagnóstico Emp. T2</a>
+											
+										</li>
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt86':'menu:j_idt86'},'');return false">Projeto de Gestão
+											<!-- span class="label label-success pull-right"&gt;Novo&lt;/span--></a>
+											
+										</li>
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt90':'menu:j_idt90'},'');return false">LPC Emp. T0</a>
+											
+										</li>
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt92':'menu:j_idt92'},'');return false">LPC Emp. T1</a>
+											
+										</li>
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt94':'menu:j_idt94'},'');return false">LPC Emp. T2</a>
+											
+										</li>
+								
+								
+								
+								</ul>
+							</li>
+						
+						
+						
+						<!-- In&iacute;cio Implementa&ccedil;&atilde;o Planejamento -->
+						
+							<li>
+							
+								<a><i class="fa fa-paper-plane"></i> Planejamento<span class="fa fa-chevron-down"></span></a>
+								
+								<ul class="nav child_menu">
+									
+									<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt99':'menu:j_idt99'},'');return false">Plano de Metas</a>
+									</li>
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt102':'menu:j_idt102'},'');return false">Planejamento Empreendimento
+												<!-- span class="label label-success pull-right"&gt;Novo&lt;/span--></a>
+										</li>
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt106':'menu:j_idt106'},'');return false">Planejamento Familiar</a></li>
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt108':'menu:j_idt108'},'');return false">Planejamento Comunitário</a></li>
+
+
+										<!-- Se tem permiss&atilde;o MPLAN ter&aacute; acesso a estes dois -->
+
+
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt110':'menu:j_idt110'},'');return false">Projeto Produtivo</a></li>
+
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt112':'menu:j_idt112'},'');return false">Projeto Produtivo Grupo</a></li>
+
+									
+									<!-- Fim Projeto Produtivo -->
+									
+								</ul>
+								
+							</li>
+						<!-- Fim Implementa&ccedil;&atilde;o Planejamento -->
+						
+							<li>
+								<a><i class="fa fa-rocket"></i> Execução<span class="fa fa-chevron-down"></span></a>
+								
+								<ul class="nav child_menu">
+									<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt118':'menu:j_idt118'},'');return false">Execução Individual</a>
+									</li>									
+									<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt120':'menu:j_idt120'},'');return false">Execução Empreendimento
+											<!-- span class="label label-success pull-right"&gt;Novo&lt;/span--></a>
+									</li>	
+									<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt124':'menu:j_idt124'},'');return false">Execução Controle Social</a>
+									</li>
+									<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt127':'menu:j_idt127'},'');return false">Execução Comunitária</a>
+									</li>
+									<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt129':'menu:j_idt129'},'');return false">Execução Coletiva Empreendimento						
+											<!-- span class="label label-success pull-right"&gt;Novo&lt;/span--></a>
+									</li>
+															
+								</ul>
+								
+							</li>
+								
+							<li>
+							
+								<a><i class="fa fa-database"></i> Business Intelligence<span class="fa fa-chevron-down"></span></a>
+								
+								<ul class="nav child_menu">
+									
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt135':'menu:j_idt135'},'');return false">Painel Extensionista</a>
+											
+										</li>
+									
+								</ul>
+								
+							</li>
+						
+						
+						<!-- MODULO RELAT&Oacute;RIO ANATER -->
+						
+						
+						
+						<!-- MODULO RELAT&Oacute;RIO ENTIDADE -->
+						
+						
+						
+						
+						<!-- MODULO CHAMADA PUBLICA -->
+						
+						
+						
+						<!-- MODULO GERENCIADOR FINANCEIRO -->
+						
+						
+						
+						
+						<!-- MODULO FISCALIZACAO -->
+						
+						<!-- INICIO MODULO PARECER TECNICO -->
+						<!-- FIM MODULO PARECER TECNICO -->
+						
+						<!-- INICIO MODULO GESTOR MAPA -->
+						<!-- FIM MODULO GESTOR MAPA -->
+						
+
+												
+						
+
+						<!--li&gt;&lt;a&gt;&lt;i class="fa fa-edit"&gt;&lt;/i&gt; Forms &lt;span
+								class="fa fa-chevron-down"&gt;&lt;/span&gt;&lt;/a&gt;
+							&lt;ul class="nav child_menu"&gt;
+								&lt;li&gt;&lt;a href="form.html"&gt;General Form&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="form_advanced.html"&gt;Advanced Components&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="form_validation.html"&gt;Form Validation&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="form_wizards.html"&gt;Form Wizard&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="form_upload.html"&gt;Form Upload&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="form_buttons.html"&gt;Form Buttons&lt;/a&gt;&lt;/li&gt;
+							&lt;/ul&gt;&lt;/li&gt;
+
+						&lt;li&gt;&lt;a&gt;&lt;i class="fa fa-desktop"&gt;&lt;/i&gt; UI Elements &lt;span
+								class="fa fa-chevron-down"&gt;&lt;/span&gt;&lt;/a&gt;
+							&lt;ul class="nav child_menu"&gt;
+								&lt;li&gt;&lt;a href="general_elements.html"&gt;General Elements&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="media_gallery.html"&gt;Media Gallery&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="typography.html"&gt;Typography&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="icons.html"&gt;Icons&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="glyphicons.html"&gt;Glyphicons&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="widgets.html"&gt;Widgets&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="invoice.html"&gt;Invoice&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="inbox.html"&gt;Inbox&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="calendar.html"&gt;Calendar&lt;/a&gt;&lt;/li&gt;
+							&lt;/ul&gt;&lt;/li&gt;
+
+						&lt;li&gt;&lt;a&gt;&lt;i class="fa fa-table"&gt;&lt;/i&gt; Tables &lt;span
+								class="fa fa-chevron-down"&gt;&lt;/span&gt;&lt;/a&gt;
+							&lt;ul class="nav child_menu"&gt;
+								&lt;li&gt;&lt;a href="tables.html"&gt;Tables&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="tables_dynamic.html"&gt;Table Dynamic&lt;/a&gt;&lt;/li&gt;
+							&lt;/ul&gt;&lt;/li&gt;
+
+						&lt;li&gt;&lt;a&gt;&lt;i class="fa fa-bar-chart-o"&gt;&lt;/i&gt; Data
+								Presentation &lt;span class="fa fa-chevron-down"&gt;&lt;/span&gt;&lt;/a&gt;
+							&lt;ul class="nav child_menu"&gt;
+								&lt;li&gt;&lt;a href="chartjs.html"&gt;Chart JS&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="chartjs2.html"&gt;Chart JS2&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="morisjs.html"&gt;Moris JS&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="echarts.html"&gt;ECharts&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="other_charts.html"&gt;Other Charts&lt;/a&gt;&lt;/li&gt;
+							&lt;/ul&gt;&lt;/li&gt;
+
+						&lt;li&gt;&lt;a&gt;&lt;i class="fa fa-clone"&gt;&lt;/i&gt;Layouts &lt;span
+								class="fa fa-chevron-down"&gt;&lt;/span&gt;&lt;/a&gt;
+							&lt;ul class="nav child_menu"&gt;
+								&lt;li&gt;&lt;a href="fixed_sidebar.html"&gt;Fixed Sidebar&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="fixed_footer.html"&gt;Fixed Footer&lt;/a&gt;&lt;/li&gt;
+							&lt;/ul&gt;&lt;/li-->
+					</ul> 	 
+
+				</div>
+
+
+				<!--div class="menu_section"&gt;
+					&lt;h3&gt;Live On&lt;/h3&gt;
+					&lt;ul class="nav side-menu"&gt;
+						&lt;li&gt;&lt;a&gt;&lt;i class="fa fa-bug"&gt;&lt;/i&gt; Additional Pages &lt;span
+								class="fa fa-chevron-down"&gt;&lt;/span&gt;&lt;/a&gt;
+							&lt;ul class="nav child_menu"&gt;
+								&lt;li&gt;&lt;a href="e_commerce.html"&gt;E-commerce&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="projects.html"&gt;Projects&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="project_detail.html"&gt;Project Detail&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="contacts.html"&gt;Contacts&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="profile.html"&gt;Profile&lt;/a&gt;&lt;/li&gt;
+							&lt;/ul&gt;&lt;/li&gt;
+						&lt;li&gt;&lt;a&gt;&lt;i class="fa fa-windows"&gt;&lt;/i&gt; Extras &lt;span
+								class="fa fa-chevron-down"&gt;&lt;/span&gt;&lt;/a&gt;
+							&lt;ul class="nav child_menu"&gt;
+								&lt;li&gt;&lt;a href="page_403.html"&gt;403 Error&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="page_404.html"&gt;404 Error&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="page_500.html"&gt;500 Error&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="plain_page.html"&gt;Plain Page&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="login.html"&gt;Login Page&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="pricing_tables.html"&gt;Pricing Tables&lt;/a&gt;&lt;/li&gt;
+							&lt;/ul&gt;&lt;/li&gt;
+						&lt;li&gt;&lt;a&gt;&lt;i class="fa fa-sitemap"&gt;&lt;/i&gt; Multilevel Menu &lt;span
+								class="fa fa-chevron-down"&gt;&lt;/span&gt;&lt;/a&gt;
+							&lt;ul class="nav child_menu"&gt;
+								&lt;li&gt;&lt;a href="#level1_1"&gt;Level One&lt;/a&gt;
+									&lt;li&gt;&lt;a&gt;Level One&lt;span class="fa fa-chevron-down"&gt;&lt;/span&gt;&lt;/a&gt;
+										&lt;ul class="nav child_menu"&gt;
+											&lt;li class="sub_menu"&gt;&lt;a href="level2.html"&gt;Level Two&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a href="#level2_1"&gt;Level Two&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a href="#level2_2"&gt;Level Two&lt;/a&gt;&lt;/li&gt;
+										&lt;/ul&gt;&lt;/li&gt;
+									&lt;li&gt;&lt;a href="#level1_2"&gt;Level One&lt;/a&gt;&lt;/li&gt;&lt;/li&gt;
+							&lt;/ul&gt;&lt;/li&gt;
+						&lt;li&gt;&lt;a href="javascript:void(0)"&gt;&lt;i class="fa fa-laptop"&gt;&lt;/i&gt;
+								Landing Page &lt;span class="label label-success pull-right"&gt;Coming
+									Soon&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+					&lt;/ul&gt;
+				&lt;/div-->
+
+			</div>
+			<!-- /sidebar menu -->
+
+		</div>
+		
+	</div><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:0" value="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" autocomplete="off">
+</form>
+
+
+
+	
+	
+	
+	<div class="top_nav">
+	<style>
+	 .fa-check:hover {
+	    color: green;
+	}
+	
+	.fa-trash:hover {
+	    color: red;
+	}
+	</style>
+
+	<div class="nav_menu">
+<form id="formNotificacao" name="formNotificacao" method="post" action="/pages/manterUPF/cadastrarUPF.xhtml" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="formNotificacao" value="formNotificacao">
+
+				
+			<nav>
+				
+				<div class="nav toggle">
+					<a id="menu_toggle"><i class="fa fa-bars"></i></a>
+				</div><div id="formNotificacao:testeNot">
+					
+					<ul class="nav navbar-nav navbar-right">
+						
+						<li class="">
+						
+							<a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+    
+   	 	DANIELLY MORAES MOREIRA DE LIMA
+   	 	
+	 
+								<span class=" fa fa-angle-down"></span>
+							</a>
+							
+								
+
+	                  		
+	                  
+						</li>
+						
+						<li role="presentation" class="dropdown">
+							<a href="https://sga.anater.org/logout" class="dropdown-toggle info-number" aria-expanded="false">
+								<i class="fa fa-sign-out" title="Sair"></i>Sair
+							</a>
+						</li>	
+						
+						<li role="presentation" class="dropdown">
+						
+							<a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+								<i class="fa fa-envelope-o"></i>
+									<span class="badge bg-green">0</span>
+							</a>
+							
+							<ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">										
+									<li>
+										<a>
+											<span>
+												<span>GTI</span>
+												<span class="time">-</span>
+											</span>
+											<span class="message">
+												Não existem notificações
+											</span>
+										</a>
+									</li>
+							</ul>
+						</li>
+				
+						<h3>SGA - Sistema de Gestão de Ater</h3>
+						
+					</ul></div>
+			
+			</nav><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:1" value="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" autocomplete="off">
+</form>
+	
+	</div>
+		
+	</div>
+	
+<!-- /top navigation -->
+<span id="idPanelScripts">
+			<style>
+				.sga-ajax-loading {
+					position: fixed;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					background: rgba(0, 0, 0, 0.35);
+					z-index: 9999;
+					display: none;
+					align-items: center;
+					justify-content: center;
+				}
+				.sga-ajax-loading-content {
+					background: #fff;
+					padding: 20px 30px;
+					border-radius: 4px;
+					font-size: 16px;
+					box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+				}
+			</style>
+			<script>
+				window.aplicarMascarasUpf = function() {
+					if (typeof $ === 'undefined' || typeof $.fn.mask === 'undefined') {
+						return;
+					}
+					$(".telefone").mask("(99)9999-9999");
+					$(".telefoneCelular").mask("(99)99999-9999");
+					$(".cep").mask("99.999-999");
+					$(".data").mask("99/99/9999");
+					$(".cpf").mask("999.999.999-99");
+					$(".nis").mask("999.9999.999-9");
+					$(".ano").mask("9999");
+				};
+
+				window.abrirModalCadastrarBeneficiario = function() {
+					aplicarMascarasUpf();
+					$('.modalCadastrarBeneficiario').modal('show');
+				};
+
+				$(function(){
+					aplicarMascarasUpf();
+					$('.dap').keyup(function () {
+					    if (this.value.match(/[^a-zA-Z0-9 ]/g)) {
+							this.value = this.value.replace(/[^a-zA-Z0-9 ]/g, '');
+					    }
+					});
+					$('.numero').keyup(function () {
+					    if (this.value.match(/[^0-9 ]/g)) {
+							this.value = this.value.replace(/[^0-9 ]/g, '');
+					    }
+					});
+				});
+						
+				if (!window["busystatus"]) {
+					window.busystatus = {};
+				}
+				if (typeof window.busystatus.activeRequests === 'undefined') {
+					window.busystatus.activeRequests = 0;
+				}
+				
+				busystatus.showLoading = function() {
+					var loadingEl = document.getElementById('sgaAjaxLoading');
+					document.body.style.cursor = 'wait';
+					if (loadingEl) {
+						loadingEl.style.display = 'flex';
+					}
+				};
+
+				busystatus.hideLoading = function() {
+					if (window.busystatus.activeRequests > 0) {
+						return;
+					}
+					var loadingEl = document.getElementById('sgaAjaxLoading');
+					document.body.style.cursor = 'auto';
+					if (loadingEl) {
+						loadingEl.style.display = 'none';
+					}
+				};
+				
+				busystatus.onStatusChange = function onStatusChange(data) {
+					var status = data.status;
+					if (status === "begin") {
+						window.busystatus.activeRequests++;
+						busystatus.showLoading();
+					} else if (status === "complete") {
+						window.busystatus.activeRequests = Math.max(0, window.busystatus.activeRequests - 1);
+						busystatus.hideLoading();
+					}
+				};
+				
+				if (!window.busystatus.handlersRegistered) {
+					jsf.ajax.addOnEvent(busystatus.onStatusChange);
+					jsf.ajax.addOnEvent(function(data) {
+						if (data.status === 'success') {
+							aplicarMascarasUpf();
+						}
+					});
+					window.busystatus.handlersRegistered = true;
+				}
+			</script></span>
+		<div id="sgaAjaxLoading" class="sga-ajax-loading" aria-live="polite" aria-busy="true">
+			<div class="sga-ajax-loading-content">
+				Aguardando... <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
+			</div>
+		</div>
+<form id="formularioUpf" name="formularioUpf" method="post" action="/pages/manterUPF/cadastrarUPF.xhtml" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="formularioUpf" value="formularioUpf">
+
+			<!-- page content -->
+			<div class="right_col" role="main" style="min-height: 2407px;">
+				<div class="page-title">
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<!-- Mensagem global do sistema --><div id="formularioUpf:msgContext"></div>
+							<div class="x_panel">
+								<div class="x_title">
+									<h2 class="titulo_modulo">
+										<i class="fa fa-flag" aria-hidden="true"></i> Cadastrar UFPA
+									</h2>
+									<ul class="nav navbar-right panel_toolbox">
+									</ul>
+									<div class="clearfix"></div>
+								</div>
+								<div class="x_content">
+									<!-- In&iacute;cio Accordion -->
+									<!-- start accordion -->
+									<div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
+										<div class="panel">
+											<a class="panel-heading" role="tab" id="headingUnidadeFamiliar" data-toggle="collapse" data-parent="#accordion" href="#collapseUnidadeFamiliar" aria-expanded="true" aria-controls="collapseUnidadeFamiliar" style="background: #dcdcdc;"><span id="formularioUpf:idPanelTerraBrasil5">
+														<h4 class="panel-title" style="font-size: 18px">
+															<i class="fa fa-home" aria-hidden="true"></i> Unidade Familiar de Produção Agrária - UFPA
+														</h4></span>				
+											</a>
+											<div id="collapseUnidadeFamiliar" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingUnidadeFamiliar">
+												<div class="panel-body">
+													<!-- In&iacute;cio tab Unidade Familiar --><span id="formularioUpf:idPanelTerraBrasil6">
+														<div class="row">
+															<div class="form-group col-md-12 col-sm-6 col-xs-12">
+																<label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name"> Nome da UFPA: * </label>
+																
+																<div class="col-md-4 col-sm-6 col-xs-12"><input id="formularioUpf:idNome" type="text" name="formularioUpf:idNome" class="form-control col-md-7 col-xs-12" maxlength="100">
+																</div>
+															</div>
+														</div></span>						
+		
+													
+													<div class="row">
+														<div class="form-group col-md-12 col-sm-6 col-xs-12">
+															<label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name"> DAP/CAF: </label>
+															<div class="col-md-3 col-sm-6 col-xs-12"><input id="formularioUpf:idDap" type="text" name="formularioUpf:idDap" class="form-control col-md-7 col-xs-12 dap" maxlength="25" size="25">
+																<span>25 caracteres</span>
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="form-group col-md-12 col-sm-6 col-xs-12">
+															<label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name"> Órgão Emissor: </label>
+															<div class="col-md-3 col-sm-6 col-xs-12"><input id="formularioUpf:idOrgaoEmissorDap" type="text" name="formularioUpf:idOrgaoEmissorDap" class="form-control col-md-7 col-xs-12 dap" maxlength="25" size="25">
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="form-group col-md-12 col-sm-6 col-xs-12">
+															<label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name"> Validade da DAP/CAF: </label>
+															<div class="col-md-3 col-sm-6 col-xs-12"><input id="formularioUpf:idValidadeDap" type="text" name="formularioUpf:idValidadeDap" class="form-control col-md-7 col-xs-12 data" maxlength="10" autocomplete="off">
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="form-group col-md-12 col-sm-6 col-xs-12">
+															<label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name"> Área do estabelecimento (ha): </label>
+															<div class="col-md-3 col-sm-6 col-xs-12"><input id="formularioUpf:idAreaEstabelecimento" type="text" name="formularioUpf:idAreaEstabelecimento" class="form-control col-md-7 col-xs-12 dap" maxlength="25" size="25">
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="form-group col-md-12 col-sm-6 col-xs-12">
+															<label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name"> Área do Imóvel Principal (ha): </label>
+															<div class="col-md-3 col-sm-6 col-xs-12"><input id="formularioUpf:idAreaImovelPrincipal" type="text" name="formularioUpf:idAreaImovelPrincipal" class="form-control col-md-7 col-xs-12 dap" maxlength="25" size="25">
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="form-group col-md-12 col-sm-6 col-xs-12">
+															<label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name"> Endereço: * </label>
+															<div class="col-md-3 col-sm-6 col-xs-12"><input id="formularioUpf:idEndereco" type="text" name="formularioUpf:idEndereco" class="form-control col-md-7 col-xs-12" maxlength="100">
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="form-group col-md-12 col-sm-6 col-xs-12">
+															<label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name"> Bairro: </label>
+															<div class="col-md-3 col-sm-6 col-xs-12"><input id="formularioUpf:idBairro" type="text" name="formularioUpf:idBairro" class="form-control col-md-7 col-xs-12" maxlength="60">
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="form-group col-md-12 col-sm-6 col-xs-12">
+															<label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name"> Número: </label>
+															<div class="col-md-1 col-sm-6 col-xs-12"><input id="formularioUpf:idNumero" type="text" name="formularioUpf:idNumero" class="form-control col-md-7 col-xs-12" maxlength="5">
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="form-group col-md-12 col-sm-6 col-xs-12">
+															<label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name"> Complemento: </label>
+															<div class="col-md-3 col-sm-6 col-xs-12"><input id="formularioUpf:idComplemento" type="text" name="formularioUpf:idComplemento" class="form-control col-md-7 col-xs-12" maxlength="70">
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="form-group col-md-12 col-sm-6 col-xs-12">
+															<label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name"> Projeto * </label>
+															<div class="col-md-3 col-sm-6 col-xs-12"><select id="formularioUpf:idProjeto" name="formularioUpf:idProjeto" class="form-control" size="1" onchange="mojarra.ab(this,event,'change','formularioUpf:idProjeto','formularioUpf:idPanelInstrumento formularioUpf:idUf formularioUpf:idPanelOrganicos formularioUpf:idPanelIntegrantes formularioUpf:idPanelManifestacaoInteresse formularioUpf:idPanelTerraBrasil formularioUpf:idPanelTerraBrasil1 formularioUpf:idPanelPerfilComunicacao formularioUpf:idPanelListaIndicadoresUpf formularioUpf:idPanelTerraBrasil2 formularioUpf:idPanelTerraBrasil3 formularioUpf:idPanelTerraBrasil4 formularioUpf:idPanelTerraBrasil5 formularioUpf:idPanelTerraBrasil6')">	<option value="">--Selecione--</option>
+	<option value="47" selected="selected">UNIÃO COM MUNICÍPIOS</option>
+</select>
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="form-group col-md-12 col-sm-6 col-xs-12"><span id="formularioUpf:idPanelInstrumento">
+																<label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name"> Instrumento * </label>
+																<div class="col-md-3 col-sm-6 col-xs-12"><select id="formularioUpf:idInstrumento" name="formularioUpf:idInstrumento" class="form-control" size="1" onchange="mojarra.ab(this,event,'change','formularioUpf:idInstrumento','formularioUpf:idUf formularioUpf:idClassificacaoUpf formularioUpf:idInstrumentoMeta')">	<option value="" selected="selected">--Selecione--</option>
+	<option value="CTR.GTI.ASS.667.26">CTR.GTI.ASS.667.26</option>
+</select>
+																</div></span>
+														</div>
+													</div>
+													<div class="row">
+														<div class="form-group col-md-12 col-sm-6 col-xs-12">
+															<label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name"> </label>
+															<div class="col-md-5 col-sm-6 col-xs-12 text-danger"> Para realizar cadastro de UFPA é necessário criar um "Plano Metas".</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="form-group col-md-12 col-sm-6 col-xs-12"><span id="formularioUpf:idPanelInstrumentoMeta">
+																<label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name"> Meta * </label>
+																<div class="col-md-4 col-sm-6 col-xs-12"><select id="formularioUpf:idInstrumentoMeta" name="formularioUpf:idInstrumentoMeta" class="form-control" size="1" disabled="disabled">	<option value="" selected="selected">--Selecione--</option>
+</select>
+																</div><span id="formularioUpf:idPanelQuantidadeGlobal"></span></span>
+														</div>
+													</div>
+													<div class="row">
+														<div class="form-group col-md-12 col-sm-6 col-xs-12">
+															<label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name"> CEP: * </label>
+															<div class="col-md-2 col-sm-6 col-xs-12"><input id="formularioUpf:idCep" type="text" name="formularioUpf:idCep" class="form-control col-md-7 col-xs-12 cep" maxlength="10" autocomplete="off">
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="form-group col-md-12 col-sm-6 col-xs-12">
+															<label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name"> Estado: * </label>
+															<div class="col-md-3 col-sm-6 col-xs-12"><span id="formularioUpf:idUf"></span>
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="form-group col-md-12 col-sm-6 col-xs-12">
+															<label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name"> Município: * </label>
+															<div class="col-md-4 col-sm-6 col-xs-12"><select id="formularioUpf:idMunicipio" name="formularioUpf:idMunicipio" class="form-control" size="1" disabled="disabled">	<option value="" selected="selected">--Selecione--</option>
+</select>
+															</div><span id="formularioUpf:idPanelQuantidadeGlobalMunicipio"></span>
+														</div>
+													</div>
+													<div class="row">
+														<div class="form-group col-md-12 col-sm-6 col-xs-12">
+															<label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name"> Comunidade / Grupo: </label>
+															<div class="col-md-3 col-sm-6 col-xs-12"><select id="formularioUpf:idComunidade" name="formularioUpf:idComunidade" class="form-control" size="1" disabled="disabled">	<option value="" selected="selected">--Selecione--</option>
+</select>
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="form-group col-md-12 col-sm-6 col-xs-12">
+															<label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name"> Classificação da UFPA: * </label>
+															<div class="col-md-3 col-sm-6 col-xs-12"><select id="formularioUpf:idClassificacaoUpf" name="formularioUpf:idClassificacaoUpf" class="form-control" size="1" disabled="disabled">	<option value="" selected="selected">--Selecione--</option>
+</select>
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="form-group col-md-12 col-sm-6 col-xs-12">
+															<label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name"> Programa de Fomento: * </label>
+															<div class="col-md-3 col-sm-6 col-xs-12"><table id="formularioUpf:idPbsm" class="flat">
+	<tbody><tr>
+<td>
+<input type="radio" name="formularioUpf:idPbsm" id="formularioUpf:idPbsm:0" value="FEZ_USO_FOMENTO"><label for="formularioUpf:idPbsm:0"> Já fez uso do Fomento</label></td>
+	</tr>
+	<tr>
+<td>
+<input type="radio" name="formularioUpf:idPbsm" id="formularioUpf:idPbsm:1" value="FAZ_USO_FOMENTO"><label for="formularioUpf:idPbsm:1"> Pertence ao Programa Fomento</label></td>
+	</tr>
+	<tr>
+<td>
+<input type="radio" name="formularioUpf:idPbsm" id="formularioUpf:idPbsm:2" value="FARA_USO_FOMENTO"><label for="formularioUpf:idPbsm:2"> Fará uso do Fomento</label></td>
+	</tr>
+	<tr>
+<td>
+<input type="radio" name="formularioUpf:idPbsm" id="formularioUpf:idPbsm:3" value="NENHUM"><label for="formularioUpf:idPbsm:3"> Nenhum.</label></td>
+	</tr>
+</tbody></table>
+															</div>
+														</div>
+													</div>
+													<!-- organicos --><span id="formularioUpf:idPanelOrganicos"></span>
+													<!-- fim organicos -->
+		<style type="text/css">
+			#idPanelUniaoMunicipios .radio-sim-nao td {
+				padding-right: 28px;
+			}
+			#idPanelUniaoMunicipios .radio-sim-nao input[type="radio"] {
+				margin-right: 6px;
+				vertical-align: middle;
+			}
+			#idPanelUniaoMunicipios .radio-sim-nao label {
+				margin-right: 8px;
+				font-weight: normal;
+			}
+		</style><span id="formularioUpf:idPanelUniaoMunicipios">
+			<div class="row">
+				<div class="form-group col-md-12 col-sm-6 col-xs-12">
+					<label class="control-label col-md-4 col-sm-4 col-xs-12">A área está inserida em terra pública?</label>
+					<div class="col-md-6 col-sm-6 col-xs-12"><table class="radio-sim-nao">
+	<tbody><tr>
+<td>
+<input type="radio" name="formularioUpf:j_idt281" id="formularioUpf:j_idt281:0" value="true"><label for="formularioUpf:j_idt281:0"> Sim</label></td>
+<td>
+<input type="radio" name="formularioUpf:j_idt281" id="formularioUpf:j_idt281:1" value="false"><label for="formularioUpf:j_idt281:1"> Não</label></td>
+	</tr>
+</tbody></table>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-md-12 col-sm-6 col-xs-12">
+					<label class="control-label col-md-4 col-sm-4 col-xs-12">Nome da gleba:</label>
+					<div class="col-md-4 col-sm-6 col-xs-12"><input type="text" name="formularioUpf:j_idt285" class="form-control" maxlength="200">
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-md-12 col-sm-6 col-xs-12">
+					<label class="control-label col-md-4 col-sm-4 col-xs-12">A área está inserida em projeto de assentamento – PA?</label>
+					<div class="col-md-6 col-sm-6 col-xs-12"><table id="formularioUpf:idAreaProjetoAssentamentoPa" class="radio-sim-nao">
+	<tbody><tr>
+<td>
+<input type="radio" name="formularioUpf:idAreaProjetoAssentamentoPa" id="formularioUpf:idAreaProjetoAssentamentoPa:0" value="true" onchange="mojarra.ab(this,event,'change',0,'formularioUpf:idPanelNomePa')"><label for="formularioUpf:idAreaProjetoAssentamentoPa:0"> Sim</label></td>
+<td>
+<input type="radio" name="formularioUpf:idAreaProjetoAssentamentoPa" id="formularioUpf:idAreaProjetoAssentamentoPa:1" value="false" onchange="mojarra.ab(this,event,'change',0,'formularioUpf:idPanelNomePa')"><label for="formularioUpf:idAreaProjetoAssentamentoPa:1"> Não</label></td>
+	</tr>
+</tbody></table>
+					</div>
+				</div>
+			</div><span id="formularioUpf:idPanelNomePa"></span>
+			<div class="row">
+				<div class="form-group col-md-12 col-sm-6 col-xs-12">
+					<label class="control-label col-md-4 col-sm-4 col-xs-12">Possui documentos da terra expedido por órgão público?</label>
+					<div class="col-md-6 col-sm-6 col-xs-12"><table id="formularioUpf:idPossuiDocumentosTerra" class="radio-sim-nao">
+	<tbody><tr>
+<td>
+<input type="radio" name="formularioUpf:idPossuiDocumentosTerra" id="formularioUpf:idPossuiDocumentosTerra:0" value="true" onchange="mojarra.ab(this,event,'change',0,'formularioUpf:idPanelDocumentosTerra')"><label for="formularioUpf:idPossuiDocumentosTerra:0"> Sim</label></td>
+<td>
+<input type="radio" name="formularioUpf:idPossuiDocumentosTerra" id="formularioUpf:idPossuiDocumentosTerra:1" value="false" onchange="mojarra.ab(this,event,'change',0,'formularioUpf:idPanelDocumentosTerra')"><label for="formularioUpf:idPossuiDocumentosTerra:1"> Não</label></td>
+	</tr>
+</tbody></table>
+					</div>
+				</div>
+			</div><span id="formularioUpf:idPanelDocumentosTerra"></span>
+			<div class="row">
+				<div class="form-group col-md-12 col-sm-6 col-xs-12">
+					<label class="control-label col-md-4 col-sm-4 col-xs-12">A área é georreferenciada?</label>
+					<div class="col-md-6 col-sm-6 col-xs-12"><table class="radio-sim-nao">
+	<tbody><tr>
+<td>
+<input type="radio" name="formularioUpf:j_idt322" id="formularioUpf:j_idt322:0" value="true"><label for="formularioUpf:j_idt322:0"> Sim</label></td>
+<td>
+<input type="radio" name="formularioUpf:j_idt322" id="formularioUpf:j_idt322:1" value="false"><label for="formularioUpf:j_idt322:1"> Não</label></td>
+	</tr>
+</tbody></table>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-md-12 col-sm-6 col-xs-12">
+					<label class="control-label col-md-4 col-sm-4 col-xs-12">A área possui Cadastro Ambiental Rural - CAR?</label>
+					<div class="col-md-6 col-sm-6 col-xs-12"><table id="formularioUpf:idPossuiCar" class="radio-sim-nao">
+	<tbody><tr>
+<td>
+<input type="radio" name="formularioUpf:idPossuiCar" id="formularioUpf:idPossuiCar:0" value="true" onchange="mojarra.ab(this,event,'change',0,'formularioUpf:idPanelReciboCar')"><label for="formularioUpf:idPossuiCar:0"> Sim</label></td>
+<td>
+<input type="radio" name="formularioUpf:idPossuiCar" id="formularioUpf:idPossuiCar:1" value="false" onchange="mojarra.ab(this,event,'change',0,'formularioUpf:idPanelReciboCar')"><label for="formularioUpf:idPossuiCar:1"> Não</label></td>
+	</tr>
+</tbody></table>
+					</div>
+				</div>
+			</div><span id="formularioUpf:idPanelReciboCar"></span>
+			<div class="row">
+				<div class="form-group col-md-12 col-sm-6 col-xs-12">
+					<label class="control-label col-md-4 col-sm-4 col-xs-12">É ocupante primitivo:</label>
+					<div class="col-md-6 col-sm-6 col-xs-12"><table id="formularioUpf:idOcupantePrimitivo" class="radio-sim-nao">
+	<tbody><tr>
+<td>
+<input type="radio" name="formularioUpf:idOcupantePrimitivo" id="formularioUpf:idOcupantePrimitivo:0" value="true" onchange="mojarra.ab(this,event,'change',0,'formularioUpf:idPanelDatasOcupacao',{'onevent':function(data){ if(data.status === 'success' &amp;&amp; typeof aplicarMascarasUpf === 'function'){ aplicarMascarasUpf(); } }})"><label for="formularioUpf:idOcupantePrimitivo:0"> Sim</label></td>
+<td>
+<input type="radio" name="formularioUpf:idOcupantePrimitivo" id="formularioUpf:idOcupantePrimitivo:1" value="false" onchange="mojarra.ab(this,event,'change',0,'formularioUpf:idPanelDatasOcupacao',{'onevent':function(data){ if(data.status === 'success' &amp;&amp; typeof aplicarMascarasUpf === 'function'){ aplicarMascarasUpf(); } }})"><label for="formularioUpf:idOcupantePrimitivo:1"> Não</label></td>
+	</tr>
+</tbody></table>
+					</div>
+				</div>
+			</div><span id="formularioUpf:idPanelDatasOcupacao"></span>
+			<div class="row">
+				<div class="form-group col-md-12 col-sm-6 col-xs-12">
+					<label class="control-label col-md-4 col-sm-4 col-xs-12">Nome do Transmitente ou beneficiário:</label>
+					<div class="col-md-4 col-sm-6 col-xs-12"><input id="formularioUpf:idNomeTransmitenteBeneficiario" type="text" name="formularioUpf:idNomeTransmitenteBeneficiario" class="form-control" maxlength="200">
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-md-12 col-sm-6 col-xs-12">
+					<label class="control-label col-md-4 col-sm-4 col-xs-12">CPF:</label>
+					<div class="col-md-4 col-sm-6 col-xs-12"><input id="formularioUpf:idCpfTransmitenteBeneficiario" type="text" name="formularioUpf:idCpfTransmitenteBeneficiario" class="form-control cpf" maxlength="14" onblur="mojarra.ab(this,event,'blur','@this','formularioUpf:idMsgCpfTransmitenteBeneficiario')" autocomplete="off">
+					</div><span id="formularioUpf:idMsgCpfTransmitenteBeneficiario"></span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-md-12 col-sm-6 col-xs-12">
+					<label class="control-label col-md-4 col-sm-4 col-xs-12">Está em RB?</label>
+					<div class="col-md-6 col-sm-6 col-xs-12"><table class="radio-sim-nao">
+	<tbody><tr>
+<td>
+<input type="radio" name="formularioUpf:j_idt339" id="formularioUpf:j_idt339:0" value="true"><label for="formularioUpf:j_idt339:0"> Sim</label></td>
+<td>
+<input type="radio" name="formularioUpf:j_idt339" id="formularioUpf:j_idt339:1" value="false"><label for="formularioUpf:j_idt339:1"> Não</label></td>
+	</tr>
+</tbody></table>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-md-12 col-sm-6 col-xs-12">
+					<label class="control-label col-md-4 col-sm-4 col-xs-12">Ocupa o imóvel de forma mansa e pacífica?</label>
+					<div class="col-md-6 col-sm-6 col-xs-12"><table class="radio-sim-nao">
+	<tbody><tr>
+<td>
+<input type="radio" name="formularioUpf:j_idt343" id="formularioUpf:j_idt343:0" value="true"><label for="formularioUpf:j_idt343:0"> Sim</label></td>
+<td>
+<input type="radio" name="formularioUpf:j_idt343" id="formularioUpf:j_idt343:1" value="false"><label for="formularioUpf:j_idt343:1"> Não</label></td>
+	</tr>
+</tbody></table>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-md-12 col-sm-6 col-xs-12">
+					<label class="control-label col-md-4 col-sm-4 col-xs-12">Forma de acesso — Terrestre</label>
+					<div class="col-md-3 col-sm-6 col-xs-12"><table id="formularioUpf:idAcessoTerrestre" class="radio-sim-nao">
+	<tbody><tr>
+<td>
+<input type="radio" name="formularioUpf:idAcessoTerrestre" id="formularioUpf:idAcessoTerrestre:0" value="true"><label for="formularioUpf:idAcessoTerrestre:0"> Sim</label></td>
+<td>
+<input type="radio" name="formularioUpf:idAcessoTerrestre" id="formularioUpf:idAcessoTerrestre:1" value="false"><label for="formularioUpf:idAcessoTerrestre:1"> Não</label></td>
+	</tr>
+</tbody></table>
+					</div>
+					<label class="control-label col-md-2 col-sm-2 col-xs-12">Fluvial</label>
+					<div class="col-md-3 col-sm-6 col-xs-12"><table id="formularioUpf:idAcessoFluvial" class="radio-sim-nao">
+	<tbody><tr>
+<td>
+<input type="radio" name="formularioUpf:idAcessoFluvial" id="formularioUpf:idAcessoFluvial:0" value="true"><label for="formularioUpf:idAcessoFluvial:0"> Sim</label></td>
+<td>
+<input type="radio" name="formularioUpf:idAcessoFluvial" id="formularioUpf:idAcessoFluvial:1" value="false"><label for="formularioUpf:idAcessoFluvial:1"> Não</label></td>
+	</tr>
+</tbody></table>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="form-group col-md-12 col-sm-6 col-xs-12">
+					<label class="control-label col-md-4 col-sm-4 col-xs-12">
+						Exerce cargo, emprego ou função pública remunerada no território nacional?
+					</label>
+					<div class="col-md-6 col-sm-6 col-xs-12"><table id="formularioUpf:idExerceCargoPublico" class="radio-sim-nao">
+	<tbody><tr>
+<td>
+<input type="radio" name="formularioUpf:idExerceCargoPublico" id="formularioUpf:idExerceCargoPublico:0" value="true" onchange="mojarra.ab(this,event,'change',0,'formularioUpf:idPanelCargoInstituicao')"><label for="formularioUpf:idExerceCargoPublico:0"> Sim</label></td>
+<td>
+<input type="radio" name="formularioUpf:idExerceCargoPublico" id="formularioUpf:idExerceCargoPublico:1" value="false" onchange="mojarra.ab(this,event,'change',0,'formularioUpf:idPanelCargoInstituicao')"><label for="formularioUpf:idExerceCargoPublico:1"> Não</label></td>
+	</tr>
+</tbody></table>
+					</div>
+				</div>
+			</div><span id="formularioUpf:idPanelCargoInstituicao"></span>
+			
+			<div class="row">
+				<div class="form-group col-md-12 col-sm-6 col-xs-12">
+					<label class="control-label col-md-4 col-sm-4 col-xs-12">
+						Presta serviço de interesse comunitário à comunidade rural ou à vizinhança da área objeto do projeto de assentamento?
+					</label>
+					<div class="col-md-6 col-sm-6 col-xs-12"><table class="radio-sim-nao">
+	<tbody><tr>
+<td>
+<input type="radio" name="formularioUpf:j_idt357" id="formularioUpf:j_idt357:0" value="true"><label for="formularioUpf:j_idt357:0"> Sim</label></td>
+<td>
+<input type="radio" name="formularioUpf:j_idt357" id="formularioUpf:j_idt357:1" value="false"><label for="formularioUpf:j_idt357:1"> Não</label></td>
+	</tr>
+</tbody></table>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="form-group col-md-12 col-sm-6 col-xs-12">
+					<label class="control-label col-md-4 col-sm-4 col-xs-12">
+						Já foi beneficiário(a) do Programa Nacional de Reforma Agrária - PNRA, de regularização fundiária ou de crédito fundiário?
+					</label>
+					<div class="col-md-6 col-sm-6 col-xs-12"><table class="radio-sim-nao">
+	<tbody><tr>
+<td>
+<input type="radio" name="formularioUpf:j_idt361" id="formularioUpf:j_idt361:0" value="true"><label for="formularioUpf:j_idt361:0"> Sim</label></td>
+<td>
+<input type="radio" name="formularioUpf:j_idt361" id="formularioUpf:j_idt361:1" value="false"><label for="formularioUpf:j_idt361:1"> Não</label></td>
+	</tr>
+</tbody></table>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="form-group col-md-12 col-sm-6 col-xs-12">
+					<label class="control-label col-md-4 col-sm-4 col-xs-12">
+						É proprietário, cotista ou acionista de sociedade empresária em atividade?
+					</label>
+					<div class="col-md-6 col-sm-6 col-xs-12"><table class="radio-sim-nao">
+	<tbody><tr>
+<td>
+<input type="radio" name="formularioUpf:j_idt365" id="formularioUpf:j_idt365:0" value="true"><label for="formularioUpf:j_idt365:0"> Sim</label></td>
+<td>
+<input type="radio" name="formularioUpf:j_idt365" id="formularioUpf:j_idt365:1" value="false"><label for="formularioUpf:j_idt365:1"> Não</label></td>
+	</tr>
+</tbody></table>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="form-group col-md-12 col-sm-6 col-xs-12">
+					<label class="control-label col-md-4 col-sm-4 col-xs-12">
+						É proprietário(a) de outro imóvel rural dentro do território nacional?
+					</label>
+					<div class="col-md-6 col-sm-6 col-xs-12"><table class="radio-sim-nao">
+	<tbody><tr>
+<td>
+<input type="radio" name="formularioUpf:j_idt369" id="formularioUpf:j_idt369:0" value="true"><label for="formularioUpf:j_idt369:0"> Sim</label></td>
+<td>
+<input type="radio" name="formularioUpf:j_idt369" id="formularioUpf:j_idt369:1" value="false"><label for="formularioUpf:j_idt369:1"> Não</label></td>
+	</tr>
+</tbody></table>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="form-group col-md-12 col-sm-6 col-xs-12">
+					<label class="control-label col-md-4 col-sm-4 col-xs-12">
+						Aufere renda familiar proveniente de atividade não agrária superior à três salários-mínimos mensais ou superior a um salário-mínimo per capita?
+					</label>
+					<div class="col-md-6 col-sm-6 col-xs-12"><table class="radio-sim-nao">
+	<tbody><tr>
+<td>
+<input type="radio" name="formularioUpf:j_idt373" id="formularioUpf:j_idt373:0" value="true"><label for="formularioUpf:j_idt373:0"> Sim</label></td>
+<td>
+<input type="radio" name="formularioUpf:j_idt373" id="formularioUpf:j_idt373:1" value="false"><label for="formularioUpf:j_idt373:1"> Não</label></td>
+	</tr>
+</tbody></table>
+					</div>
+				</div>
+			</div></span>
+													<!-- inicio programa produzir brasil  --><span id="formularioUpf:IdClassificacaoPublicoAlvo">
+													<!-- fim programa produzir brasil  -->
+													<!-- inicio pncf terra brasil  -->
+													
+													<!-- fim programa produzir brasil  --></span>
+													
+													
+													<!--  Removida coordenadas em 25/02/2019  -->
+													<!--  Re-inclu&iacute;das coordenadas em 25/04/2019  -->
+													<!-- Guilherme  Re - retirado para tratar a inser&ccedil;&atilde;o de coordenadas manual 07/10/2019  -->
+													
+													<!-- Fim tab Unidade Familiar -->
+
+													<!-- Manifesta&ccedil;&atilde;o de Interesse (OS 258) - apenas Ater Regulariza&ccedil;&atilde;o Ambiental RS -->
+
+												</div><div class="row">
+									
+	<div class="form-group col-md-12 col-sm-6 col-xs-12">
+	
+		<div class="col-md-9">
+		
+			<span style="color: #ce5454">* campos obrigatórios</span>
+			
+		</div>
+		
+	</div>
+	
+</div>
+											</div>
+										</div><span id="formularioUpf:idPanelTerraBrasil">
+											
+										
+										
+											<div class="panel">
+												<a class="panel-heading collapsed" role="tab" id="headingAtividadeProdutiva" data-toggle="collapse" data-parent="#accordion" href="#collapseAtividadeProdutiva" aria-expanded="false" aria-controls="collapseAtividadeProdutiva" style="background: #dcdcdc;">
+													<h4 class="panel-title" style="font-size: 18px">
+														<i class="fa fa-cog" aria-hidden="true"></i> Atividade Produtiva (Produção agrícola, não agrícolas e serviços)
+													</h4>
+												</a>
+												<div id="collapseAtividadeProdutiva" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingAtividadeProdutiva">
+													<div class="panel-body">
+														<!-- In&iacute;cio tab Atividade Produtiva -->
+														<div class="row">
+															<div class="form-group col-md-12 col-sm-6 col-xs-12"><span id="formularioUpf:idPanelAtividadeProdutiva">
+																	<div class="table-responsive">
+																		<table class="table">
+																			<thead>
+																				<tr>
+																					<th>Atividade
+																					</th>
+																					<th>Produção Anual
+																					</th>
+																					<th>Unidade de Medida
+																					</th>
+																					<th>Atividade Principal
+																					</th>
+																					<th>Ações
+																					</th>
+																				</tr>
+																			</thead>
+																			<tbody>
+																				<tr>
+																					<td><select id="formularioUpf:idAtividadeProdutivaUpfAtividadeProdutivasAd" name="formularioUpf:idAtividadeProdutivaUpfAtividadeProdutivasAd" class="form-control col-md-3 col-xs-12" size="1">	<option value="" selected="selected">--Selecione--</option>
+	<option value="Abacate">Abacate</option>
+	<option value="Abacaxi">Abacaxi</option>
+	<option value="Abóbora">Abóbora</option>
+	<option value="Abobóra Moranga">Abobóra Moranga</option>
+	<option value="Abobrinha">Abobrinha</option>
+	<option value="Abricó">Abricó</option>
+	<option value="Acácia Negra cultivo">Acácia Negra cultivo</option>
+	<option value="Acácia Negra extração">Acácia Negra extração</option>
+	<option value="Açaí cultivo">Açaí cultivo</option>
+	<option value="Açaí extração">Açaí extração</option>
+	<option value="Acelga">Acelga</option>
+	<option value="Acerola">Acerola</option>
+	<option value="Adubação verde outras">Adubação verde outras</option>
+	<option value="Agrião">Agrião</option>
+	<option value="Agroindústria / Processamento">Agroindústria / Processamento</option>
+	<option value="Água abastecimento">Água abastecimento</option>
+	<option value="Aipo">Aipo</option>
+	<option value="Alcachofra">Alcachofra</option>
+	<option value="Alcaparra">Alcaparra</option>
+	<option value="Alface">Alface</option>
+	<option value="Alfafa">Alfafa</option>
+	<option value="Algaroba">Algaroba</option>
+	<option value="Algodão">Algodão</option>
+	<option value="Alho">Alho</option>
+	<option value="Alho Poró">Alho Poró</option>
+	<option value="Almeirão">Almeirão</option>
+	<option value="Ameixa">Ameixa</option>
+	<option value="Amêndoa">Amêndoa</option>
+	<option value="Amendoim">Amendoim</option>
+	<option value="Amendoim forrageiro">Amendoim forrageiro</option>
+	<option value="Amora">Amora</option>
+	<option value="Andiroba">Andiroba</option>
+	<option value="Angico-de-bezerro">Angico-de-bezerro</option>
+	<option value="Anileira">Anileira</option>
+	<option value="Apicultura ou abelhas">Apicultura ou abelhas</option>
+	<option value="Aposentadoria">Aposentadoria</option>
+	<option value="Aquicultura de água doce">Aquicultura de água doce</option>
+	<option value="Aquicultura de água salgada">Aquicultura de água salgada</option>
+	<option value="Aquicultura de água salobra">Aquicultura de água salobra</option>
+	<option value="Araçá">Araçá</option>
+	<option value="Araucária cultivo">Araucária cultivo</option>
+	<option value="Arroz bravo">Arroz bravo</option>
+	<option value="Arroz de sequeiro">Arroz de sequeiro</option>
+	<option value="Arroz de Várzea">Arroz de Várzea</option>
+	<option value="Artesanato">Artesanato</option>
+	<option value="Asininocultura (asno, jumentos)">Asininocultura (asno, jumentos)</option>
+	<option value="Aspargo">Aspargo</option>
+	<option value="Associativismo">Associativismo</option>
+	<option value="Atemoia">Atemoia</option>
+	<option value="Atividade Coletiva">Atividade Coletiva</option>
+	<option value="Atividade rural não agrícola outras">Atividade rural não agrícola outras</option>
+	<option value="Aveia Branca">Aveia Branca</option>
+	<option value="Aveia Preta">Aveia Preta</option>
+	<option value="Avicultura de corte">Avicultura de corte</option>
+	<option value="Avicultura de postura">Avicultura de postura</option>
+	<option value="Avicultura mista (corte e postura)">Avicultura mista (corte e postura)</option>
+	<option value="Avicultura outras">Avicultura outras</option>
+	<option value="Azeitona">Azeitona</option>
+	<option value="Azevém">Azevém</option>
+	<option value="Babaçu cultivo">Babaçu cultivo</option>
+	<option value="Babaçu extração">Babaçu extração</option>
+	<option value="Bacaba">Bacaba</option>
+	<option value="Bacuri">Bacuri</option>
+	<option value="Banana">Banana</option>
+	<option value="Baru">Baru</option>
+	<option value="Batata Doce">Batata Doce</option>
+	<option value="Batata Inglesa">Batata Inglesa</option>
+	<option value="Batata outras">Batata outras</option>
+	<option value="Bate-caixa">Bate-caixa</option>
+	<option value="Bem estar">Bem estar</option>
+	<option value="Benefício social">Benefício social</option>
+	<option value="Berinjela">Berinjela</option>
+	<option value="Beterraba">Beterraba</option>
+	<option value="Biribá">Biribá</option>
+	<option value="Bovinocultura de corte">Bovinocultura de corte</option>
+	<option value="Bovinocultura leiteira">Bovinocultura leiteira</option>
+	<option value="Bovinocultura mista">Bovinocultura mista</option>
+	<option value="Bracatinga">Bracatinga</option>
+	<option value="Braquiária">Braquiária</option>
+	<option value="Brócolis">Brócolis</option>
+	<option value="Bubalinocultura ou búfalo">Bubalinocultura ou búfalo</option>
+	<option value="Bucha Vegetal">Bucha Vegetal</option>
+	<option value="Buriti">Buriti</option>
+	<option value="Cacau cultivo">Cacau cultivo</option>
+	<option value="Cacau extração">Cacau extração</option>
+	<option value="Cadastro">Cadastro</option>
+	<option value="Café">Café</option>
+	<option value="Caimbé">Caimbé</option>
+	<option value="Cajá-manga">Cajá-manga</option>
+	<option value="Cajá ou taperaba">Cajá ou taperaba</option>
+	<option value="Cajú">Cajú</option>
+	<option value="Calopogônio">Calopogônio</option>
+	<option value="Camapu">Camapu</option>
+	<option value="Camaratuba">Camaratuba</option>
+	<option value="Cameron">Cameron</option>
+	<option value="Camomila">Camomila</option>
+	<option value="Cana-de-Acuçar">Cana-de-Acuçar</option>
+	<option value="Canafístula">Canafístula</option>
+	<option value="Canarana">Canarana</option>
+	<option value="Canavalia">Canavalia</option>
+	<option value="Canola">Canola</option>
+	<option value="Capim Andropogum">Capim Andropogum</option>
+	<option value="Capim Angola">Capim Angola</option>
+	<option value="Capim Buffel">Capim Buffel</option>
+	<option value="Capim Coast cross">Capim Coast cross</option>
+	<option value="Capim Colonião">Capim Colonião</option>
+	<option value="Capim Corrente">Capim Corrente</option>
+	<option value="Capim de Várzea">Capim de Várzea</option>
+	<option value="Capim Elefante">Capim Elefante</option>
+	<option value="Capim Gordura">Capim Gordura</option>
+	<option value="Capim Mori">Capim Mori</option>
+	<option value="Capim Piatã">Capim Piatã</option>
+	<option value="Capim Rhodes">Capim Rhodes</option>
+	<option value="Capim Santo">Capim Santo</option>
+	<option value="Capim Taboquinha">Capim Taboquinha</option>
+	<option value="Capim Tanzânia">Capim Tanzânia</option>
+	<option value="Capim Uamã">Capim Uamã</option>
+	<option value="Caprinocultura">Caprinocultura</option>
+	<option value="Caqui">Caqui</option>
+	<option value="Cará">Cará</option>
+	<option value="Cará-da-Costa">Cará-da-Costa</option>
+	<option value="Carambola">Carambola</option>
+	<option value="Carnaúba cultivo">Carnaúba cultivo</option>
+	<option value="Carnaúba extração">Carnaúba extração</option>
+	<option value="Castanha de Cajú cultivo">Castanha de Cajú cultivo</option>
+	<option value="Castanha de Cajú extração">Castanha de Cajú extração</option>
+	<option value="Castanha do Brasilcultivo">Castanha do Brasilcultivo</option>
+	<option value="Castanha do Brasilextração">Castanha do Brasilextração</option>
+	<option value="Castanha outras   cultivo">Castanha outras   cultivo</option>
+	<option value="Castanha outras cultvo">Castanha outras cultvo</option>
+	<option value="Castanha outras   Extração">Castanha outras   Extração</option>
+	<option value="Castanha outras Extração">Castanha outras Extração</option>
+	<option value="Catingueira">Catingueira</option>
+	<option value="Cebola">Cebola</option>
+	<option value="Cebolinha Verde">Cebolinha Verde</option>
+	<option value="Cedro">Cedro</option>
+	<option value="Cenoura">Cenoura</option>
+	<option value="Centeio">Centeio</option>
+	<option value="Centrosema">Centrosema</option>
+	<option value="Cereja">Cereja</option>
+	<option value="Cevada">Cevada</option>
+	<option value="Cherimóia">Cherimóia</option>
+	<option value="Chicória/Escarola">Chicória/Escarola</option>
+	<option value="Chuchu">Chuchu</option>
+	<option value="Cidra">Cidra</option>
+	<option value="Citronela">Citronela</option>
+	<option value="Coco-Anão">Coco-Anão</option>
+	<option value="Coco-da-Baia cultivo">Coco-da-Baia cultivo</option>
+	<option value="Coco-da-Baia extração">Coco-da-Baia extração</option>
+	<option value="Coentro">Coentro</option>
+	<option value="Cogumelo Champignon">Cogumelo Champignon</option>
+	<option value="Cogumelo do Sol">Cogumelo do Sol</option>
+	<option value="Cogumelo Shiitake">Cogumelo Shiitake</option>
+	<option value="Cogumelo Shimeji">Cogumelo Shimeji</option>
+	<option value="Cogumelos outros">Cogumelos outros</option>
+	<option value="Colza">Colza</option>
+	<option value="Confecção caseira">Confecção caseira</option>
+	<option value="Conservas caseiras">Conservas caseiras</option>
+	<option value="Controle biológico">Controle biológico</option>
+	<option value="Controle Social">Controle Social</option>
+	<option value="Cooperativismo">Cooperativismo</option>
+	<option value="Copaíba">Copaíba</option>
+	<option value="Cornichão">Cornichão</option>
+	<option value="Couve">Couve</option>
+	<option value="Couve-Flor">Couve-Flor</option>
+	<option value="Cravo-da-Índia">Cravo-da-Índia</option>
+	<option value="Criações animais outras">Criações animais outras</option>
+	<option value="Crotalária">Crotalária</option>
+	<option value="Cudzu">Cudzu</option>
+	<option value="Cultura">Cultura</option>
+	<option value="Cunicultura ou coelho">Cunicultura ou coelho</option>
+	<option value="Cupuacu">Cupuacu</option>
+	<option value="Curauá">Curauá</option>
+	<option value="Damasco">Damasco</option>
+	<option value="Dende">Dende</option>
+	<option value="Destinação do lixo">Destinação do lixo</option>
+	<option value="Diagnóstico">Diagnóstico</option>
+	<option value="Diocleta">Diocleta</option>
+	<option value="Diversificação">Diversificação</option>
+	<option value="Documentação">Documentação</option>
+	<option value="Drogadição">Drogadição</option>
+	<option value="Educação">Educação</option>
+	<option value="Empreendedorismo">Empreendedorismo</option>
+	<option value="Energia Elétrica">Energia Elétrica</option>
+	<option value="Equinocultura">Equinocultura</option>
+	<option value="Equipamentos de proteção">Equipamentos de proteção</option>
+	<option value="Erva cidreira">Erva cidreira</option>
+	<option value="Erva de Sapo">Erva de Sapo</option>
+	<option value="Erva-doce">Erva-doce</option>
+	<option value="Erva-Mate">Erva-Mate</option>
+	<option value="Ervilha">Ervilha</option>
+	<option value="Espinafre">Espinafre</option>
+	<option value="Esporte">Esporte</option>
+	<option value="Extrativismo animal">Extrativismo animal</option>
+	<option value="Extrativismo mineral">Extrativismo mineral</option>
+	<option value="Extrativismo vegetal outros">Extrativismo vegetal outros</option>
+	<option value="Fava">Fava</option>
+	<option value="Feijão">Feijão</option>
+	<option value="Feijão Azuki">Feijão Azuki</option>
+	<option value="Feijão Caupi">Feijão Caupi</option>
+	<option value="Feijão de corda">Feijão de corda</option>
+	<option value="Feijão de Porco">Feijão de Porco</option>
+	<option value="Feijão Guandu">Feijão Guandu</option>
+	<option value="Feijão Verde">Feijão Verde</option>
+	<option value="Figo">Figo</option>
+	<option value="Fontes Alternativas de Energia">Fontes Alternativas de Energia</option>
+	<option value="Forrageiras outras">Forrageiras outras</option>
+	<option value="Framboesa">Framboesa</option>
+	<option value="Fruta pão">Fruta pão</option>
+	<option value="Fruticultura outras">Fruticultura outras</option>
+	<option value="Fumo">Fumo</option>
+	<option value="Galáxia">Galáxia</option>
+	<option value="Gengibre">Gengibre</option>
+	<option value="Gergelim">Gergelim</option>
+	<option value="Gestão Ambiental">Gestão Ambiental</option>
+	<option value="Ginseng">Ginseng</option>
+	<option value="Girassol">Girassol</option>
+	<option value="Gliricídia">Gliricídia</option>
+	<option value="Goiaba">Goiaba</option>
+	<option value="Grama">Grama</option>
+	<option value="Grão de bico">Grão de bico</option>
+	<option value="Graviola">Graviola</option>
+	<option value="Groselha">Groselha</option>
+	<option value="Guaraná">Guaraná</option>
+	<option value="Guariroba">Guariroba</option>
+	<option value="Habitação">Habitação</option>
+	<option value="Hana Nira">Hana Nira</option>
+	<option value="Hortelã">Hortelã</option>
+	<option value="Horticultura outras">Horticultura outras</option>
+	<option value="Informática">Informática</option>
+	<option value="Ingá">Ingá</option>
+	<option value="Inhame">Inhame</option>
+	<option value="Integração de sistemas (vegetal/animal)">Integração de sistemas (vegetal/animal)</option>
+	<option value="Jabuticaba">Jabuticaba</option>
+	<option value="Jambo">Jambo</option>
+	<option value="Jambu">Jambu</option>
+	<option value="Jardinagem e Paisagismo">Jardinagem e Paisagismo</option>
+	<option value="Jatobá">Jatobá</option>
+	<option value="Jenipapo">Jenipapo</option>
+	<option value="Jiló">Jiló</option>
+	<option value="Junco">Junco</option>
+	<option value="Junquinho">Junquinho</option>
+	<option value="Jussaracultivo">Jussaracultivo</option>
+	<option value="Jussaraextração">Jussaraextração</option>
+	<option value="Juta">Juta</option>
+	<option value="Juventude">Juventude</option>
+	<option value="Kiwi">Kiwi</option>
+	<option value="Lab lab">Lab lab</option>
+	<option value="Laranja">Laranja</option>
+	<option value="Lavouras consorciadas">Lavouras consorciadas</option>
+	<option value="Lavouras permanentes outras">Lavouras permanentes outras</option>
+	<option value="Lavouras temporárias outras">Lavouras temporárias outras</option>
+	<option value="Lazer">Lazer</option>
+	<option value="Lentilha">Lentilha</option>
+	<option value="Leucena">Leucena</option>
+	<option value="Lichia">Lichia</option>
+	<option value="Lima da Persia">Lima da Persia</option>
+	<option value="Limão">Limão</option>
+	<option value="Linho">Linho</option>
+	<option value="Louro">Louro</option>
+	<option value="Lúpulo">Lúpulo</option>
+	<option value="Maçã">Maçã</option>
+	<option value="Macaúba cultivo">Macaúba cultivo</option>
+	<option value="Macaúba extração">Macaúba extração</option>
+	<option value="Macaxeira">Macaxeira</option>
+	<option value="Malva">Malva</option>
+	<option value="Mamão">Mamão</option>
+	<option value="Mamona">Mamona</option>
+	<option value="Mandala / PAIS / similares">Mandala / PAIS / similares</option>
+	<option value="Mandioca">Mandioca</option>
+	<option value="Mandioquinha">Mandioquinha</option>
+	<option value="Manejo / Tratamemento dejetos">Manejo / Tratamemento dejetos</option>
+	<option value="Manga">Manga</option>
+	<option value="Mangaba cultivo">Mangaba cultivo</option>
+	<option value="Mangaba extração">Mangaba extração</option>
+	<option value="Mangostão">Mangostão</option>
+	<option value="Manjericão">Manjericão</option>
+	<option value="Maracujá">Maracujá</option>
+	<option value="Marmelo">Marmelo</option>
+	<option value="Maxixe">Maxixe</option>
+	<option value="Melancia">Melancia</option>
+	<option value="Melancia forrageira">Melancia forrageira</option>
+	<option value="Melão">Melão</option>
+	<option value="Meliponicultura">Meliponicultura</option>
+	<option value="Menta">Menta</option>
+	<option value="Milheto">Milheto</option>
+	<option value="Milho">Milho</option>
+	<option value="Minhocultura">Minhocultura</option>
+	<option value="Mirtilo">Mirtilo</option>
+	<option value="Mobilização">Mobilização</option>
+	<option value="Morango">Morango</option>
+	<option value="Moringa">Moringa</option>
+	<option value="Mostarda">Mostarda</option>
+	<option value="Muares (burro, mula)">Muares (burro, mula)</option>
+	<option value="Mucuna">Mucuna</option>
+	<option value="Mudas florestais">Mudas florestais</option>
+	<option value="Mudas frutíferas">Mudas frutíferas</option>
+	<option value="Mudas olericultura">Mudas olericultura</option>
+	<option value="Mudas outras">Mudas outras</option>
+	<option value="Mureru">Mureru</option>
+	<option value="Murici">Murici</option>
+	<option value="Nabo">Nabo</option>
+	<option value="Não se Aplica">Não se Aplica</option>
+	<option value="Nectarina">Nectarina</option>
+	<option value="Neem">Neem</option>
+	<option value="Nêspera">Nêspera</option>
+	<option value="Noz Maçadamia">Noz Maçadamia</option>
+	<option value="Noz Pecan">Noz Pecan</option>
+	<option value="Oleaginosa (outras) cultivo">Oleaginosa (outras) cultivo</option>
+	<option value="Oleaginosa (outras) extração">Oleaginosa (outras) extração</option>
+	<option value="Olericultura">Olericultura</option>
+	<option value="Oliva">Oliva</option>
+	<option value="Ora-pro-nobis">Ora-pro-nobis</option>
+	<option value="Organização da UFPA">Organização da UFPA</option>
+	<option value="Ornamentais outras">Ornamentais outras</option>
+	<option value="Ovinocultura">Ovinocultura</option>
+	<option value="Painco">Painco</option>
+	<option value="Palma Forrageira">Palma Forrageira</option>
+	<option value="Palmeira Ornamental">Palmeira Ornamental</option>
+	<option value="Palmeira Real">Palmeira Real</option>
+	<option value="Palmeira Sagu">Palmeira Sagu</option>
+	<option value="Palmito">Palmito</option>
+	<option value="Panicum">Panicum</option>
+	<option value="Paricá">Paricá</option>
+	<option value="Pastagem">Pastagem</option>
+	<option value="Pela couro">Pela couro</option>
+	<option value="Pensacola">Pensacola</option>
+	<option value="Pepino">Pepino</option>
+	<option value="Pequi cultivo">Pequi cultivo</option>
+	<option value="Pequi extração">Pequi extração</option>
+	<option value="Pêra">Pêra</option>
+	<option value="Pesca">Pesca</option>
+	<option value="Pêssego">Pêssego</option>
+	<option value="Physalis">Physalis</option>
+	<option value="Piaçava cultivo">Piaçava cultivo</option>
+	<option value="Piaçava extração">Piaçava extração</option>
+	<option value="Pimenta">Pimenta</option>
+	<option value="Pimenta do Reino">Pimenta do Reino</option>
+	<option value="Pimentão">Pimentão</option>
+	<option value="Pinha">Pinha</option>
+	<option value="Pinhão cultivo">Pinhão cultivo</option>
+	<option value="Pinhão extração">Pinhão extração</option>
+	<option value="Piquiá">Piquiá</option>
+	<option value="Piranga">Piranga</option>
+	<option value="Pitaya">Pitaya</option>
+	<option value="Pitomba">Pitomba</option>
+	<option value="Pixurim Extração">Pixurim Extração</option>
+	<option value="Plantas Medicinais, aromáticas e condimentares cultivo">Plantas Medicinais, aromáticas e condimentares cultivo</option>
+	<option value="Plantas Medicinais, aromáticas e condimentares extração">Plantas Medicinais, aromáticas e condimentares extração</option>
+	<option value="Plantas Ornamentais">Plantas Ornamentais</option>
+	<option value="Polpa de frutas">Polpa de frutas</option>
+	<option value="Pomelo">Pomelo</option>
+	<option value="Pornúnça">Pornúnça</option>
+	<option value="Poróngo">Poróngo</option>
+	<option value="Prevenção de riscos ambientais">Prevenção de riscos ambientais</option>
+	<option value="Produtos de Limpeza caseiros">Produtos de Limpeza caseiros</option>
+	<option value="Produtos Naturais">Produtos Naturais</option>
+	<option value="Projeto Ambiental">Projeto Ambiental</option>
+	<option value="Projeto de Crédito">Projeto de Crédito</option>
+	<option value="Projeto de Crédito Fundiário">Projeto de Crédito Fundiário</option>
+	<option value="Projeto / Parecer / Relatório">Projeto / Parecer / Relatório</option>
+	<option value="Psicultura">Psicultura</option>
+	<option value="Puerária">Puerária</option>
+	<option value="Pupunha">Pupunha</option>
+	<option value="Puruí">Puruí</option>
+	<option value="Quiabo">Quiabo</option>
+	<option value="Quicuio">Quicuio</option>
+	<option value="Quiuí ou Kiwi">Quiuí ou Kiwi</option>
+	<option value="Rabanete">Rabanete</option>
+	<option value="Raiz Forte">Raiz Forte</option>
+	<option value="Rami">Rami</option>
+	<option value="Refeições caseiras">Refeições caseiras</option>
+	<option value="Regularização ">Regularização </option>
+	<option value="Renda Alternativa">Renda Alternativa</option>
+	<option value="Repolho">Repolho</option>
+	<option value="Restaurante">Restaurante</option>
+	<option value="Romã">Romã</option>
+	<option value="Rúcula">Rúcula</option>
+	<option value="Sal">Sal</option>
+	<option value="Salsa">Salsa</option>
+	<option value="Saneamento">Saneamento</option>
+	<option value="Sapoti">Sapoti</option>
+	<option value="Saúde">Saúde</option>
+	<option value="Segurança Alimentar e Nutricional">Segurança Alimentar e Nutricional</option>
+	<option value="Sementes cultivo">Sementes cultivo</option>
+	<option value="Sementes extração">Sementes extração</option>
+	<option value="Sericicultura ou Bicho da Seda">Sericicultura ou Bicho da Seda</option>
+	<option value="Seringueira cultivo">Seringueira cultivo</option>
+	<option value="Seringueira extração">Seringueira extração</option>
+	<option value="Serradela">Serradela</option>
+	<option value="Serralha">Serralha</option>
+	<option value="Serviços ambientais">Serviços ambientais</option>
+	<option value="Silvicultura">Silvicultura</option>
+	<option value="Siratro">Siratro</option>
+	<option value="Sisalou Agave">Sisalou Agave</option>
+	<option value="Sistema Agroflorestal">Sistema Agroflorestal</option>
+	<option value="Sistema Agrosilvipastoril">Sistema Agrosilvipastoril</option>
+	<option value="Social">Social</option>
+	<option value="Soja">Soja</option>
+	<option value="Soja perene">Soja perene</option>
+	<option value="Sorgo">Sorgo</option>
+	<option value="Suinocultura">Suinocultura</option>
+	<option value="Taioba">Taioba</option>
+	<option value="Tamarindo">Tamarindo</option>
+	<option value="Tangerina">Tangerina</option>
+	<option value="Teca">Teca</option>
+	<option value="Tiririca">Tiririca</option>
+	<option value="Tiriricão">Tiriricão</option>
+	<option value="Tomate">Tomate</option>
+	<option value="Toranja">Toranja</option>
+	<option value="Trabalhador rural / Diarista">Trabalhador rural / Diarista</option>
+	<option value="Transporte">Transporte</option>
+	<option value="Trevo">Trevo</option>
+	<option value="Trigo">Trigo</option>
+	<option value="Trigo sarraceno">Trigo sarraceno</option>
+	<option value="Triticale">Triticale</option>
+	<option value="Tucum">Tucum</option>
+	<option value="Tucumã">Tucumã</option>
+	<option value="Tungue">Tungue</option>
+	<option value="Turismo rural / Agroturismo">Turismo rural / Agroturismo</option>
+	<option value="Umbu cultivo">Umbu cultivo</option>
+	<option value="Umbu extração">Umbu extração</option>
+	<option value="Unidade de Referência">Unidade de Referência</option>
+	<option value="Urucum">Urucum</option>
+	<option value="Uva">Uva</option>
+	<option value="Uxi">Uxi</option>
+	<option value="Vagem">Vagem</option>
+	<option value="Vassoura">Vassoura</option>
+	<option value="Vassourinha">Vassourinha</option>
+	<option value="Vime">Vime</option>
+	<option value="Violência doméstica">Violência doméstica</option>
+</select>
+																					</td>
+																					<td><input id="formularioUpf:idProducaoAnualUpfAtividadeProdutivasAd" type="text" name="formularioUpf:idProducaoAnualUpfAtividadeProdutivasAd" class="form-control col-md-7 col-xs-12" maxlength="100">
+																					</td>
+																					<td><select id="formularioUpf:idUnidMedidaUpfAtividadeProdutivasAd" name="formularioUpf:idUnidMedidaUpfAtividadeProdutivasAd" class="form-control" size="1">	<option value="" selected="selected">--Selecione--</option>
+	<option value="ampola">ampola</option>
+	<option value="ano">ano</option>
+	<option value="ANO(S)">ANO(S)</option>
+	<option value="área">área</option>
+	<option value="arroba">arroba</option>
+	<option value="balaio / jacá">balaio / jacá</option>
+	<option value="balde">balde</option>
+	<option value="bandeja">bandeja</option>
+	<option value="barcaça">barcaça</option>
+	<option value="barra">barra</option>
+	<option value="barril">barril</option>
+	<option value="BEZERRA(S) P/RECRIA">BEZERRA(S) P/RECRIA</option>
+	<option value="bisnaga">bisnaga</option>
+	<option value="blister">blister</option>
+	<option value="bloco">bloco</option>
+	<option value="bobina">bobina</option>
+	<option value="bombona">bombona</option>
+	<option value="BOOLEANO">BOOLEANO</option>
+	<option value="cabeça">cabeça</option>
+	<option value="CABECA/ NOVILHA RECEPTORA">CABECA/ NOVILHA RECEPTORA</option>
+	<option value="Cachos">Cachos</option>
+	<option value="caixa">caixa</option>
+	<option value="caixa k">caixa k</option>
+	<option value="capsula">capsula</option>
+	<option value="cartela">cartela</option>
+	<option value="celamim">celamim</option>
+	<option value="cento">cento</option>
+	<option value="cesto">cesto</option>
+	<option value="cm">cm</option>
+	<option value="cm²">cm²</option>
+	<option value="cm³">cm³</option>
+	<option value="comprimido">comprimido</option>
+	<option value="conjunto">conjunto</option>
+	<option value="container">container</option>
+	<option value="copo">copo</option>
+	<option value="copo">copo</option>
+	<option value="corda">corda</option>
+	<option value="CORDEIRO DESMAMADO">CORDEIRO DESMAMADO</option>
+	<option value="covado">covado</option>
+	<option value="créditos">créditos</option>
+	<option value="dezena">dezena</option>
+	<option value="diária">diária</option>
+	<option value="DIA(S)">DIA(S)</option>
+	<option value="display">display</option>
+	<option value="documento">documento</option>
+	<option value="dose">dose</option>
+	<option value="drágea">drágea</option>
+	<option value="dúzia">dúzia</option>
+	<option value="engradado">engradado</option>
+	<option value="envelope">envelope</option>
+	<option value="espiga">espiga</option>
+	<option value="estojo">estojo</option>
+	<option value="evento">evento</option>
+	<option value="fanga">fanga</option>
+	<option value="fardo">fardo</option>
+	<option value="FARDO(S)">FARDO(S)</option>
+	<option value="flaconete">flaconete</option>
+	<option value="folha">folha</option>
+	<option value="forma">forma</option>
+	<option value="frasco">frasco</option>
+	<option value="galão">galão</option>
+	<option value="garrafa">garrafa</option>
+	<option value="grade">grade</option>
+	<option value="grama">grama</option>
+	<option value="grão">grão</option>
+	<option value="hectare">hectare</option>
+	<option value="hora">hora</option>
+	<option value="hora homem">hora homem</option>
+	<option value="hora máquina">hora máquina</option>
+	<option value="insumo">insumo</option>
+	<option value="jeira">jeira</option>
+	<option value="jogo">jogo</option>
+	<option value="kg">kg</option>
+	<option value="kit">kit</option>
+	<option value="lata">lata</option>
+	<option value="libras">libras</option>
+	<option value="linha">linha</option>
+	<option value="litro">litro</option>
+	<option value="m">m</option>
+	<option value="m²">m²</option>
+	<option value="m³">m³</option>
+	<option value="maço / molho">maço / molho</option>
+	<option value="marco">marco</option>
+	<option value="megawatt hora">megawatt hora</option>
+	<option value="mês">mês</option>
+	<option value="MÊS(ES)">MÊS(ES)</option>
+	<option value="METRO(S)">METRO(S)</option>
+	<option value="milheiro">milheiro</option>
+	<option value="ml">ml</option>
+	<option value="moio">moio</option>
+	<option value="Monetário (R$)">Monetário (R$)</option>
+	<option value="muda">muda</option>
+	<option value="não se aplica">não se aplica</option>
+	<option value="NOVILHA RECEPTORA">NOVILHA RECEPTORA</option>
+	<option value="oitava">oitava</option>
+	<option value="outra">outra</option>
+	<option value="pacote">pacote</option>
+	<option value="paletes">paletes</option>
+	<option value="palmo">palmo</option>
+	<option value="par">par</option>
+	<option value="pé">pé</option>
+	<option value="peça">peça</option>
+	<option value="polegadas">polegadas</option>
+	<option value="ponto">ponto</option>
+	<option value="pote">pote</option>
+	<option value="pouche">pouche</option>
+	<option value="prato">prato</option>
+	<option value="processo">processo</option>
+	<option value="quilate">quilate</option>
+	<option value="rede">rede</option>
+	<option value="refeições">refeições</option>
+	<option value="refil">refil</option>
+	<option value="resma">resma</option>
+	<option value="rolo">rolo</option>
+	<option value="saca">saca</option>
+	<option value="sachê">sachê</option>
+	<option value="sacola">sacola</option>
+	<option value="safra">safra</option>
+	<option value="serviço">serviço</option>
+	<option value="tabuleiro">tabuleiro</option>
+	<option value="talão">talão</option>
+	<option value="tambor">tambor</option>
+	<option value="tanque">tanque</option>
+	<option value="tarefa">tarefa</option>
+	<option value="toesa">toesa</option>
+	<option value="ton">ton</option>
+	<option value="tonel">tonel</option>
+	<option value="tripa">tripa</option>
+	<option value="tubete">tubete</option>
+	<option value="tubo">tubo</option>
+	<option value="unidade">unidade</option>
+	<option value="unidade animal">unidade animal</option>
+	<option value="UNIDADE ATIVIDADE">UNIDADE ATIVIDADE</option>
+	<option value="UNIDADE PRODUTO">UNIDADE PRODUTO</option>
+	<option value="UN. PRODUTO/HOMEM">UN. PRODUTO/HOMEM</option>
+	<option value="vara">vara</option>
+	<option value="vasilhame">vasilhame</option>
+	<option value="vidro">vidro</option>
+	<option value="watt">watt</option>
+</select>
+																					</td>
+																					<td><input id="formularioUpf:idCheckAtividadePrincipal" type="checkbox" name="formularioUpf:idCheckAtividadePrincipal" style="color: #0000ff">
+																					</td>
+																					<td><a id="formularioUpf:j_idt537" href="#" onclick="mojarra.ab(this,event,'click','formularioUpf:idPanelAtividadeProdutiva','formularioUpf:idPanelAtividadeProdutiva');return false" class="btn btn-success btn-xs">Adicionar
+																							<i class="fa fa-plus"></i></a>
+																					</td>
+																				</tr>
+																			</tbody>
+																		</table>
+																	</div></span>
+																<!--  -->
+															</div>
+														</div>
+														<!-- Fim tab atividade produtiva -->
+													</div>
+												</div>
+											</div></span><span id="formularioUpf:idPanelMulheres"><span id="formularioUpf:idPanelTerraBrasil1"></span><span id="formularioUpf:idPanelPerfilComunicacao">
+												<div class="panel">
+														<a class="panel-heading collapsed" role="tab" id="headingPerfilComunicacao" data-toggle="collapse" data-parent="#accordion" href="#collapsePerfilComunicacao" aria-expanded="false" aria-controls="collapsePerfilComunicacao" style="background: #dcdcdc;">
+															<h4 class="panel-title" style="font-size: 18px">
+																<i class="fa fa-cubes" aria-hidden="true"></i> Diversos
+															</h4>
+														</a>
+													<div id="collapsePerfilComunicacao" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingPerfilComunicacao">
+														<div class="panel-body"><span id="formularioUpf:idPanelListaIndicadoresUpf">
+																		<label class="control-label col-md-12 col-sm-3 col-xs-12 fundoIndicadorSanfona" for="first-name"> <i class="fa fa-line-chart" aria-hidden="true"></i> Meios de Comunicação </label>
+																				<div class="row">
+																					<div class="form-group col-md-12 col-sm-6 col-xs-12">
+																						<label class="control-label col-md-4 col-sm-3 col-xs-12" for="first-name"> <i class="fa fa-hand-o-right" aria-hidden="true"></i> Celular?: </label>
+																						<div class="col-md-3 col-sm-6 col-xs-12"><table>
+	<tbody><tr>
+<td>
+<input type="radio" name="formularioUpf:j_idt548" id="formularioUpf:j_idt548:0" value="true"><label for="formularioUpf:j_idt548:0"> Sim</label></td>
+<td>
+<input type="radio" name="formularioUpf:j_idt548" id="formularioUpf:j_idt548:1" value="false"><label for="formularioUpf:j_idt548:1"> Não</label></td>
+	</tr>
+</tbody></table>
+																						</div>
+																						<div class="h20"></div>
+																						<div class="ln_solid"></div>
+																					</div>
+																				</div>
+																				<div class="row">
+																					<div class="form-group col-md-12 col-sm-6 col-xs-12">
+																						<label class="control-label col-md-4 col-sm-3 col-xs-12" for="first-name"> <i class="fa fa-hand-o-right" aria-hidden="true"></i> Facebook?: </label>
+																						<div class="col-md-3 col-sm-6 col-xs-12"><table>
+	<tbody><tr>
+<td>
+<input type="radio" name="formularioUpf:j_idt553" id="formularioUpf:j_idt553:0" value="true"><label for="formularioUpf:j_idt553:0"> Sim</label></td>
+<td>
+<input type="radio" name="formularioUpf:j_idt553" id="formularioUpf:j_idt553:1" value="false"><label for="formularioUpf:j_idt553:1"> Não</label></td>
+	</tr>
+</tbody></table>
+																						</div>
+																						<div class="h20"></div>
+																						<div class="ln_solid"></div>
+																					</div>
+																				</div>
+																				<div class="row">
+																					<div class="form-group col-md-12 col-sm-6 col-xs-12">
+																						<label class="control-label col-md-4 col-sm-3 col-xs-12" for="first-name"> <i class="fa fa-hand-o-right" aria-hidden="true"></i> Internet?: </label>
+																						<div class="col-md-3 col-sm-6 col-xs-12"><table>
+	<tbody><tr>
+<td>
+<input type="radio" name="formularioUpf:j_idt558" id="formularioUpf:j_idt558:0" value="true"><label for="formularioUpf:j_idt558:0"> Sim</label></td>
+<td>
+<input type="radio" name="formularioUpf:j_idt558" id="formularioUpf:j_idt558:1" value="false"><label for="formularioUpf:j_idt558:1"> Não</label></td>
+	</tr>
+</tbody></table>
+																						</div>
+																						<div class="h20"></div>
+																						<div class="ln_solid"></div>
+																					</div>
+																				</div>
+																				<div class="row">
+																					<div class="form-group col-md-12 col-sm-6 col-xs-12">
+																						<label class="control-label col-md-4 col-sm-3 col-xs-12" for="first-name"> <i class="fa fa-hand-o-right" aria-hidden="true"></i> Rádio?: </label>
+																						<div class="col-md-3 col-sm-6 col-xs-12"><table>
+	<tbody><tr>
+<td>
+<input type="radio" name="formularioUpf:j_idt563" id="formularioUpf:j_idt563:0" value="true"><label for="formularioUpf:j_idt563:0"> Sim</label></td>
+<td>
+<input type="radio" name="formularioUpf:j_idt563" id="formularioUpf:j_idt563:1" value="false"><label for="formularioUpf:j_idt563:1"> Não</label></td>
+	</tr>
+</tbody></table>
+																						</div>
+																						<div class="h20"></div>
+																						<div class="ln_solid"></div>
+																					</div>
+																				</div>
+																				<div class="row">
+																					<div class="form-group col-md-12 col-sm-6 col-xs-12">
+																						<label class="control-label col-md-4 col-sm-3 col-xs-12" for="first-name"> <i class="fa fa-hand-o-right" aria-hidden="true"></i> TV?: </label>
+																						<div class="col-md-3 col-sm-6 col-xs-12"><table>
+	<tbody><tr>
+<td>
+<input type="radio" name="formularioUpf:j_idt568" id="formularioUpf:j_idt568:0" value="true"><label for="formularioUpf:j_idt568:0"> Sim</label></td>
+<td>
+<input type="radio" name="formularioUpf:j_idt568" id="formularioUpf:j_idt568:1" value="false"><label for="formularioUpf:j_idt568:1"> Não</label></td>
+	</tr>
+</tbody></table>
+																						</div>
+																						<div class="h20"></div>
+																						<div class="ln_solid"></div>
+																					</div>
+																				</div>
+																				<div class="row">
+																					<div class="form-group col-md-12 col-sm-6 col-xs-12">
+																						<label class="control-label col-md-4 col-sm-3 col-xs-12" for="first-name"> <i class="fa fa-hand-o-right" aria-hidden="true"></i> Whatsapp?: </label>
+																						<div class="col-md-3 col-sm-6 col-xs-12"><table>
+	<tbody><tr>
+<td>
+<input type="radio" name="formularioUpf:j_idt573" id="formularioUpf:j_idt573:0" value="true"><label for="formularioUpf:j_idt573:0"> Sim</label></td>
+<td>
+<input type="radio" name="formularioUpf:j_idt573" id="formularioUpf:j_idt573:1" value="false"><label for="formularioUpf:j_idt573:1"> Não</label></td>
+	</tr>
+</tbody></table>
+																						</div>
+																						<div class="h20"></div>
+																						<div class="ln_solid"></div>
+																					</div>
+																				</div>
+																				<div class="row">
+																					<div class="form-group col-md-12 col-sm-6 col-xs-12">
+																						<label class="control-label col-md-4 col-sm-3 col-xs-12" for="first-name"> <i class="fa fa-hand-o-right" aria-hidden="true"></i> Youtube?: </label>
+																						<div class="col-md-3 col-sm-6 col-xs-12"><table>
+	<tbody><tr>
+<td>
+<input type="radio" name="formularioUpf:j_idt578" id="formularioUpf:j_idt578:0" value="true"><label for="formularioUpf:j_idt578:0"> Sim</label></td>
+<td>
+<input type="radio" name="formularioUpf:j_idt578" id="formularioUpf:j_idt578:1" value="false"><label for="formularioUpf:j_idt578:1"> Não</label></td>
+	</tr>
+</tbody></table>
+																						</div>
+																						<div class="h20"></div>
+																						<div class="ln_solid"></div>
+																					</div>
+																				</div>
+																		<label class="control-label col-md-12 col-sm-3 col-xs-12 fundoIndicadorSanfona" for="first-name"> <i class="fa fa-line-chart" aria-hidden="true"></i> Saneamento Rural </label>
+																				<div class="row">
+																					<div class="form-group col-md-12 col-sm-6 col-xs-12">
+																						<label class="control-label col-md-4 col-sm-3 col-xs-12" for="first-name"> <i class="fa fa-hand-o-right" aria-hidden="true"></i> Água para consumo?: </label>
+																						<div class="col-md-3 col-sm-6 col-xs-12"><table>
+	<tbody><tr>
+<td>
+<input type="radio" name="formularioUpf:j_idt584" id="formularioUpf:j_idt584:0" value="true"><label for="formularioUpf:j_idt584:0"> Sim</label></td>
+<td>
+<input type="radio" name="formularioUpf:j_idt584" id="formularioUpf:j_idt584:1" value="false"><label for="formularioUpf:j_idt584:1"> Não</label></td>
+	</tr>
+</tbody></table>
+																						</div>
+																						<div class="h20"></div>
+																						<div class="ln_solid"></div>
+																					</div>
+																				</div>
+																				<div class="row">
+																					<div class="form-group col-md-12 col-sm-6 col-xs-12">
+																						<label class="control-label col-md-4 col-sm-3 col-xs-12" for="first-name"> <i class="fa fa-hand-o-right" aria-hidden="true"></i> Água para consumo tratada?: </label>
+																						<div class="col-md-3 col-sm-6 col-xs-12"><table>
+	<tbody><tr>
+<td>
+<input type="radio" name="formularioUpf:j_idt589" id="formularioUpf:j_idt589:0" value="true"><label for="formularioUpf:j_idt589:0"> Sim</label></td>
+<td>
+<input type="radio" name="formularioUpf:j_idt589" id="formularioUpf:j_idt589:1" value="false"><label for="formularioUpf:j_idt589:1"> Não</label></td>
+	</tr>
+</tbody></table>
+																						</div>
+																						<div class="h20"></div>
+																						<div class="ln_solid"></div>
+																					</div>
+																				</div>
+																				<div class="row">
+																					<div class="form-group col-md-12 col-sm-6 col-xs-12">
+																						<label class="control-label col-md-4 col-sm-3 col-xs-12" for="first-name"> <i class="fa fa-hand-o-right" aria-hidden="true"></i> Água para produção?: </label>
+																						<div class="col-md-3 col-sm-6 col-xs-12"><table>
+	<tbody><tr>
+<td>
+<input type="radio" name="formularioUpf:j_idt594" id="formularioUpf:j_idt594:0" value="true"><label for="formularioUpf:j_idt594:0"> Sim</label></td>
+<td>
+<input type="radio" name="formularioUpf:j_idt594" id="formularioUpf:j_idt594:1" value="false"><label for="formularioUpf:j_idt594:1"> Não</label></td>
+	</tr>
+</tbody></table>
+																						</div>
+																						<div class="h20"></div>
+																						<div class="ln_solid"></div>
+																					</div>
+																				</div>
+																				<div class="row">
+																					<div class="form-group col-md-12 col-sm-6 col-xs-12">
+																						<label class="control-label col-md-4 col-sm-3 col-xs-12" for="first-name"> <i class="fa fa-hand-o-right" aria-hidden="true"></i> Captação de Água da chuva?: </label>
+																						<div class="col-md-3 col-sm-6 col-xs-12"><table>
+	<tbody><tr>
+<td>
+<input type="radio" name="formularioUpf:j_idt599" id="formularioUpf:j_idt599:0" value="true"><label for="formularioUpf:j_idt599:0"> Sim</label></td>
+<td>
+<input type="radio" name="formularioUpf:j_idt599" id="formularioUpf:j_idt599:1" value="false"><label for="formularioUpf:j_idt599:1"> Não</label></td>
+	</tr>
+</tbody></table>
+																						</div>
+																						<div class="h20"></div>
+																						<div class="ln_solid"></div>
+																					</div>
+																				</div>
+																				<div class="row">
+																					<div class="form-group col-md-12 col-sm-6 col-xs-12">
+																						<label class="control-label col-md-4 col-sm-3 col-xs-12" for="first-name"> <i class="fa fa-hand-o-right" aria-hidden="true"></i> Esgoto tratado?: </label>
+																						<div class="col-md-3 col-sm-6 col-xs-12"><table>
+	<tbody><tr>
+<td>
+<input type="radio" name="formularioUpf:j_idt604" id="formularioUpf:j_idt604:0" value="true"><label for="formularioUpf:j_idt604:0"> Sim</label></td>
+<td>
+<input type="radio" name="formularioUpf:j_idt604" id="formularioUpf:j_idt604:1" value="false"><label for="formularioUpf:j_idt604:1"> Não</label></td>
+	</tr>
+</tbody></table>
+																						</div>
+																						<div class="h20"></div>
+																						<div class="ln_solid"></div>
+																					</div>
+																				</div>
+																				<div class="row">
+																					<div class="form-group col-md-12 col-sm-6 col-xs-12">
+																						<label class="control-label col-md-4 col-sm-3 col-xs-12" for="first-name"> <i class="fa fa-hand-o-right" aria-hidden="true"></i> Fontes e nascentes protegidas?: </label>
+																						<div class="col-md-3 col-sm-6 col-xs-12"><table>
+	<tbody><tr>
+<td>
+<input type="radio" name="formularioUpf:j_idt609" id="formularioUpf:j_idt609:0" value="true"><label for="formularioUpf:j_idt609:0"> Sim</label></td>
+<td>
+<input type="radio" name="formularioUpf:j_idt609" id="formularioUpf:j_idt609:1" value="false"><label for="formularioUpf:j_idt609:1"> Não</label></td>
+	</tr>
+</tbody></table>
+																						</div>
+																						<div class="h20"></div>
+																						<div class="ln_solid"></div>
+																					</div>
+																				</div>
+																				<div class="row">
+																					<div class="form-group col-md-12 col-sm-6 col-xs-12">
+																						<label class="control-label col-md-4 col-sm-3 col-xs-12" for="first-name"> <i class="fa fa-hand-o-right" aria-hidden="true"></i> Utiliza agrotóxicos/: </label>
+																						<div class="col-md-3 col-sm-6 col-xs-12"><table>
+	<tbody><tr>
+<td>
+<input type="radio" name="formularioUpf:j_idt614" id="formularioUpf:j_idt614:0" value="true"><label for="formularioUpf:j_idt614:0"> Sim</label></td>
+<td>
+<input type="radio" name="formularioUpf:j_idt614" id="formularioUpf:j_idt614:1" value="false"><label for="formularioUpf:j_idt614:1"> Não</label></td>
+	</tr>
+</tbody></table>
+																						</div>
+																						<div class="h20"></div>
+																						<div class="ln_solid"></div>
+																					</div>
+																				</div></span>
+														</div>
+													</div>
+												</div></span><span id="formularioUpf:idPanelTerraBrasil2">
+												
+												<div class="panel">
+														<a class="panel-heading collapsed" role="tab" id="headingPatrimonio" data-toggle="collapse" data-parent="#accordion" href="#collapsePatrimonio" aria-expanded="false" aria-controls="collapsePatrimonio" style="background: #dcdcdc;">
+															<h4 class="panel-title" style="font-size: 18px">
+																<i class="fa fa-car" aria-hidden="true"></i> Patrimônio
+															</h4>
+														</a>
+													<div id="collapsePatrimonio" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingPatrimonio">
+														<div class="panel-body">
+															<!-- In&iacute;cio tab Patrimonio-->
+															<div class="row">
+																<div class="form-group col-md-12 col-sm-6 col-xs-12"><span id="formularioUpf:idPanelPatrimonio">
+																		<div class="table-responsive">
+																			<table class="table">
+																				<thead>
+																					<tr>
+																						<th>Descrição
+																						</th>
+																						<th>Quantidade
+																						</th>
+																						<th>Unidade Medida
+																						</th>
+																						<th>Ações
+																						</th>
+																					</tr>
+																				</thead>
+																				<tbody>
+																					<tr>
+																						<td><select id="formularioUpf:idUpfPatrimonioAd" name="formularioUpf:idUpfPatrimonioAd" class="form-control" size="1">	<option value="" selected="selected">--Selecione--</option>
+	<option value="01-Quantidade de implemento agrícolas">01-Quantidade de implemento agrícolas</option>
+	<option value="02-Quantidade de máquinas agrícolas">02-Quantidade de máquinas agrícolas</option>
+	<option value="03-Quantidade de veículos de passeio">03-Quantidade de veículos de passeio</option>
+	<option value="04-Quantidade de construções rurais">04-Quantidade de construções rurais</option>
+	<option value="05-Quantidade de motores elétricos">05-Quantidade de motores elétricos</option>
+	<option value="06-Quantidade de conjuntos de irrigação">06-Quantidade de conjuntos de irrigação</option>
+	<option value="07-Quantidade de animais de trabalho">07-Quantidade de animais de trabalho</option>
+	<option value="08-Quantidade de veículos / maquinário de tração animal">08-Quantidade de veículos / maquinário de tração animal</option>
+	<option value="09-Não se aplica">09-Não se aplica</option>
+</select>
+																						</td>
+																						<td><input id="formularioUpf:idUpfPatrimonioQuantidadeAd" type="text" name="formularioUpf:idUpfPatrimonioQuantidadeAd" class="form-control col-md-7 col-xs-12" maxlength="100">
+																						</td>
+																						<td><select id="formularioUpf:idUpfPatrimonioUnidMedidaAd" name="formularioUpf:idUpfPatrimonioUnidMedidaAd" class="form-control" size="1">	<option value="" selected="selected">--Selecione--</option>
+	<option value="ampola">ampola</option>
+	<option value="ano">ano</option>
+	<option value="ANO(S)">ANO(S)</option>
+	<option value="área">área</option>
+	<option value="arroba">arroba</option>
+	<option value="balaio / jacá">balaio / jacá</option>
+	<option value="balde">balde</option>
+	<option value="bandeja">bandeja</option>
+	<option value="barcaça">barcaça</option>
+	<option value="barra">barra</option>
+	<option value="barril">barril</option>
+	<option value="BEZERRA(S) P/RECRIA">BEZERRA(S) P/RECRIA</option>
+	<option value="bisnaga">bisnaga</option>
+	<option value="blister">blister</option>
+	<option value="bloco">bloco</option>
+	<option value="bobina">bobina</option>
+	<option value="bombona">bombona</option>
+	<option value="BOOLEANO">BOOLEANO</option>
+	<option value="cabeça">cabeça</option>
+	<option value="CABECA/ NOVILHA RECEPTORA">CABECA/ NOVILHA RECEPTORA</option>
+	<option value="Cachos">Cachos</option>
+	<option value="caixa">caixa</option>
+	<option value="caixa k">caixa k</option>
+	<option value="capsula">capsula</option>
+	<option value="cartela">cartela</option>
+	<option value="celamim">celamim</option>
+	<option value="cento">cento</option>
+	<option value="cesto">cesto</option>
+	<option value="cm">cm</option>
+	<option value="cm²">cm²</option>
+	<option value="cm³">cm³</option>
+	<option value="comprimido">comprimido</option>
+	<option value="conjunto">conjunto</option>
+	<option value="container">container</option>
+	<option value="copo">copo</option>
+	<option value="copo">copo</option>
+	<option value="corda">corda</option>
+	<option value="CORDEIRO DESMAMADO">CORDEIRO DESMAMADO</option>
+	<option value="covado">covado</option>
+	<option value="créditos">créditos</option>
+	<option value="dezena">dezena</option>
+	<option value="diária">diária</option>
+	<option value="DIA(S)">DIA(S)</option>
+	<option value="display">display</option>
+	<option value="documento">documento</option>
+	<option value="dose">dose</option>
+	<option value="drágea">drágea</option>
+	<option value="dúzia">dúzia</option>
+	<option value="engradado">engradado</option>
+	<option value="envelope">envelope</option>
+	<option value="espiga">espiga</option>
+	<option value="estojo">estojo</option>
+	<option value="evento">evento</option>
+	<option value="fanga">fanga</option>
+	<option value="fardo">fardo</option>
+	<option value="FARDO(S)">FARDO(S)</option>
+	<option value="flaconete">flaconete</option>
+	<option value="folha">folha</option>
+	<option value="forma">forma</option>
+	<option value="frasco">frasco</option>
+	<option value="galão">galão</option>
+	<option value="garrafa">garrafa</option>
+	<option value="grade">grade</option>
+	<option value="grama">grama</option>
+	<option value="grão">grão</option>
+	<option value="hectare">hectare</option>
+	<option value="hora">hora</option>
+	<option value="hora homem">hora homem</option>
+	<option value="hora máquina">hora máquina</option>
+	<option value="insumo">insumo</option>
+	<option value="jeira">jeira</option>
+	<option value="jogo">jogo</option>
+	<option value="kg">kg</option>
+	<option value="kit">kit</option>
+	<option value="lata">lata</option>
+	<option value="libras">libras</option>
+	<option value="linha">linha</option>
+	<option value="litro">litro</option>
+	<option value="m">m</option>
+	<option value="m²">m²</option>
+	<option value="m³">m³</option>
+	<option value="maço / molho">maço / molho</option>
+	<option value="marco">marco</option>
+	<option value="megawatt hora">megawatt hora</option>
+	<option value="mês">mês</option>
+	<option value="MÊS(ES)">MÊS(ES)</option>
+	<option value="METRO(S)">METRO(S)</option>
+	<option value="milheiro">milheiro</option>
+	<option value="ml">ml</option>
+	<option value="moio">moio</option>
+	<option value="Monetário (R$)">Monetário (R$)</option>
+	<option value="muda">muda</option>
+	<option value="não se aplica">não se aplica</option>
+	<option value="NOVILHA RECEPTORA">NOVILHA RECEPTORA</option>
+	<option value="oitava">oitava</option>
+	<option value="outra">outra</option>
+	<option value="pacote">pacote</option>
+	<option value="paletes">paletes</option>
+	<option value="palmo">palmo</option>
+	<option value="par">par</option>
+	<option value="pé">pé</option>
+	<option value="peça">peça</option>
+	<option value="polegadas">polegadas</option>
+	<option value="ponto">ponto</option>
+	<option value="pote">pote</option>
+	<option value="pouche">pouche</option>
+	<option value="prato">prato</option>
+	<option value="processo">processo</option>
+	<option value="quilate">quilate</option>
+	<option value="rede">rede</option>
+	<option value="refeições">refeições</option>
+	<option value="refil">refil</option>
+	<option value="resma">resma</option>
+	<option value="rolo">rolo</option>
+	<option value="saca">saca</option>
+	<option value="sachê">sachê</option>
+	<option value="sacola">sacola</option>
+	<option value="safra">safra</option>
+	<option value="serviço">serviço</option>
+	<option value="tabuleiro">tabuleiro</option>
+	<option value="talão">talão</option>
+	<option value="tambor">tambor</option>
+	<option value="tanque">tanque</option>
+	<option value="tarefa">tarefa</option>
+	<option value="toesa">toesa</option>
+	<option value="ton">ton</option>
+	<option value="tonel">tonel</option>
+	<option value="tripa">tripa</option>
+	<option value="tubete">tubete</option>
+	<option value="tubo">tubo</option>
+	<option value="unidade">unidade</option>
+	<option value="unidade animal">unidade animal</option>
+	<option value="UNIDADE ATIVIDADE">UNIDADE ATIVIDADE</option>
+	<option value="UNIDADE PRODUTO">UNIDADE PRODUTO</option>
+	<option value="UN. PRODUTO/HOMEM">UN. PRODUTO/HOMEM</option>
+	<option value="vara">vara</option>
+	<option value="vasilhame">vasilhame</option>
+	<option value="vidro">vidro</option>
+	<option value="watt">watt</option>
+</select>
+																						</td>
+																						<td><a id="formularioUpf:j_idt667" href="#" onclick="mojarra.ab(this,event,'click','formularioUpf:idPanelPatrimonio','formularioUpf:idPanelPatrimonio');return false" class="btn btn-success btn-xs">Adicionar
+																								<i class="fa fa-plus"></i></a>
+																						</td>
+																					</tr>
+																				</tbody>
+																			</table>
+																		</div>
+																		<script>
+																			$(function(){
+																				$(".ano").mask("9999");
+																			})
+																		</script></span>
+																	<!--  -->
+																</div>
+															</div>
+															<!-- Fim tab Patrimoio -->
+														</div>
+													</div>
+												</div>
+												<div class="panel">
+														<a class="panel-heading collapsed" role="tab" id="headingPlantel" data-toggle="collapse" data-parent="#accordion" href="#collapsePlantel" aria-expanded="false" aria-controls="collapsePlantel" style="background: #dcdcdc;">
+															<h4 class="panel-title" style="font-size: 18px">
+																<i class="fa fa-stack-overflow" aria-hidden="true"></i> Plantel
+															</h4>
+														</a>
+													<div id="collapsePlantel" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingPlantel">
+														<div class="panel-body">
+															<!-- In&iacute;cio tab Plantel-->
+															<div class="row">
+																<div class="form-group col-md-12 col-sm-6 col-xs-12"><span id="formularioUpf:idPanelPlantel">
+																		<div class="table-responsive">
+																			<table class="table">
+																				<thead>
+																					<tr>
+																						<th>Descrição
+																						</th>
+																						<th>Quantidade
+																						</th>
+																						<th>Unidade Medida
+																						</th>
+																						<th>Ações
+																						</th>
+																					</tr>
+																				</thead>
+																				<tbody>
+																					<tr>
+																						<td><select id="formularioUpf:idUpfPlantelDescricaoAd" name="formularioUpf:idUpfPlantelDescricaoAd" class="form-control" size="1">	<option value="" selected="selected">--Selecione--</option>
+	<option value="01-Bovinos">01-Bovinos</option>
+	<option value="02-Ovinos">02-Ovinos</option>
+	<option value="03-Caprinos">03-Caprinos</option>
+	<option value="04-Suínos">04-Suínos</option>
+	<option value="05-Aves">05-Aves</option>
+	<option value="06-Bubalinos">06-Bubalinos</option>
+	<option value="07-Equinos, muares e asininos">07-Equinos, muares e asininos</option>
+	<option value="08-Colmeias">08-Colmeias</option>
+	<option value="09-Pequenos animais (outros)">09-Pequenos animais (outros)</option>
+	<option value="10-Não se Aplica">10-Não se Aplica</option>
+</select>
+																						</td>
+																						<td><input id="formularioUpf:idUpfPlantelQuantidadeAd" type="text" name="formularioUpf:idUpfPlantelQuantidadeAd" class="form-control col-md-7 col-xs-12" maxlength="100">
+																						</td>
+																						<td><select id="formularioUpf:idUpfPlantelUnidMedidaAd" name="formularioUpf:idUpfPlantelUnidMedidaAd" class="form-control" size="1">	<option value="" selected="selected">--Selecione--</option>
+	<option value="ampola">ampola</option>
+	<option value="ano">ano</option>
+	<option value="ANO(S)">ANO(S)</option>
+	<option value="área">área</option>
+	<option value="arroba">arroba</option>
+	<option value="balaio / jacá">balaio / jacá</option>
+	<option value="balde">balde</option>
+	<option value="bandeja">bandeja</option>
+	<option value="barcaça">barcaça</option>
+	<option value="barra">barra</option>
+	<option value="barril">barril</option>
+	<option value="BEZERRA(S) P/RECRIA">BEZERRA(S) P/RECRIA</option>
+	<option value="bisnaga">bisnaga</option>
+	<option value="blister">blister</option>
+	<option value="bloco">bloco</option>
+	<option value="bobina">bobina</option>
+	<option value="bombona">bombona</option>
+	<option value="BOOLEANO">BOOLEANO</option>
+	<option value="cabeça">cabeça</option>
+	<option value="CABECA/ NOVILHA RECEPTORA">CABECA/ NOVILHA RECEPTORA</option>
+	<option value="Cachos">Cachos</option>
+	<option value="caixa">caixa</option>
+	<option value="caixa k">caixa k</option>
+	<option value="capsula">capsula</option>
+	<option value="cartela">cartela</option>
+	<option value="celamim">celamim</option>
+	<option value="cento">cento</option>
+	<option value="cesto">cesto</option>
+	<option value="cm">cm</option>
+	<option value="cm²">cm²</option>
+	<option value="cm³">cm³</option>
+	<option value="comprimido">comprimido</option>
+	<option value="conjunto">conjunto</option>
+	<option value="container">container</option>
+	<option value="copo">copo</option>
+	<option value="copo">copo</option>
+	<option value="corda">corda</option>
+	<option value="CORDEIRO DESMAMADO">CORDEIRO DESMAMADO</option>
+	<option value="covado">covado</option>
+	<option value="créditos">créditos</option>
+	<option value="dezena">dezena</option>
+	<option value="diária">diária</option>
+	<option value="DIA(S)">DIA(S)</option>
+	<option value="display">display</option>
+	<option value="documento">documento</option>
+	<option value="dose">dose</option>
+	<option value="drágea">drágea</option>
+	<option value="dúzia">dúzia</option>
+	<option value="engradado">engradado</option>
+	<option value="envelope">envelope</option>
+	<option value="espiga">espiga</option>
+	<option value="estojo">estojo</option>
+	<option value="evento">evento</option>
+	<option value="fanga">fanga</option>
+	<option value="fardo">fardo</option>
+	<option value="FARDO(S)">FARDO(S)</option>
+	<option value="flaconete">flaconete</option>
+	<option value="folha">folha</option>
+	<option value="forma">forma</option>
+	<option value="frasco">frasco</option>
+	<option value="galão">galão</option>
+	<option value="garrafa">garrafa</option>
+	<option value="grade">grade</option>
+	<option value="grama">grama</option>
+	<option value="grão">grão</option>
+	<option value="hectare">hectare</option>
+	<option value="hora">hora</option>
+	<option value="hora homem">hora homem</option>
+	<option value="hora máquina">hora máquina</option>
+	<option value="insumo">insumo</option>
+	<option value="jeira">jeira</option>
+	<option value="jogo">jogo</option>
+	<option value="kg">kg</option>
+	<option value="kit">kit</option>
+	<option value="lata">lata</option>
+	<option value="libras">libras</option>
+	<option value="linha">linha</option>
+	<option value="litro">litro</option>
+	<option value="m">m</option>
+	<option value="m²">m²</option>
+	<option value="m³">m³</option>
+	<option value="maço / molho">maço / molho</option>
+	<option value="marco">marco</option>
+	<option value="megawatt hora">megawatt hora</option>
+	<option value="mês">mês</option>
+	<option value="MÊS(ES)">MÊS(ES)</option>
+	<option value="METRO(S)">METRO(S)</option>
+	<option value="milheiro">milheiro</option>
+	<option value="ml">ml</option>
+	<option value="moio">moio</option>
+	<option value="Monetário (R$)">Monetário (R$)</option>
+	<option value="muda">muda</option>
+	<option value="não se aplica">não se aplica</option>
+	<option value="NOVILHA RECEPTORA">NOVILHA RECEPTORA</option>
+	<option value="oitava">oitava</option>
+	<option value="outra">outra</option>
+	<option value="pacote">pacote</option>
+	<option value="paletes">paletes</option>
+	<option value="palmo">palmo</option>
+	<option value="par">par</option>
+	<option value="pé">pé</option>
+	<option value="peça">peça</option>
+	<option value="polegadas">polegadas</option>
+	<option value="ponto">ponto</option>
+	<option value="pote">pote</option>
+	<option value="pouche">pouche</option>
+	<option value="prato">prato</option>
+	<option value="processo">processo</option>
+	<option value="quilate">quilate</option>
+	<option value="rede">rede</option>
+	<option value="refeições">refeições</option>
+	<option value="refil">refil</option>
+	<option value="resma">resma</option>
+	<option value="rolo">rolo</option>
+	<option value="saca">saca</option>
+	<option value="sachê">sachê</option>
+	<option value="sacola">sacola</option>
+	<option value="safra">safra</option>
+	<option value="serviço">serviço</option>
+	<option value="tabuleiro">tabuleiro</option>
+	<option value="talão">talão</option>
+	<option value="tambor">tambor</option>
+	<option value="tanque">tanque</option>
+	<option value="tarefa">tarefa</option>
+	<option value="toesa">toesa</option>
+	<option value="ton">ton</option>
+	<option value="tonel">tonel</option>
+	<option value="tripa">tripa</option>
+	<option value="tubete">tubete</option>
+	<option value="tubo">tubo</option>
+	<option value="unidade">unidade</option>
+	<option value="unidade animal">unidade animal</option>
+	<option value="UNIDADE ATIVIDADE">UNIDADE ATIVIDADE</option>
+	<option value="UNIDADE PRODUTO">UNIDADE PRODUTO</option>
+	<option value="UN. PRODUTO/HOMEM">UN. PRODUTO/HOMEM</option>
+	<option value="vara">vara</option>
+	<option value="vasilhame">vasilhame</option>
+	<option value="vidro">vidro</option>
+	<option value="watt">watt</option>
+</select>
+																						</td>
+																						<td><a id="formularioUpf:j_idt814" href="#" onclick="mojarra.ab(this,event,'click','formularioUpf:idPanelPlantel','formularioUpf:idPanelPlantel');return false" class="btn btn-success btn-xs">Adicionar
+																								<i class="fa fa-plus"></i></a>
+																						</td>
+																					</tr>
+																				</tbody>
+																			</table>
+																		</div>
+																		<script>
+																			$(function(){
+																				$(".ano").mask("9999");
+																			})
+																		</script></span>
+																	<!--  -->
+																</div>
+															</div>
+															<!-- Fim tab Plantel -->
+														</div>
+													</div>
+												</div>
+												<div class="panel">
+														<a class="panel-heading collapsed" role="tab" id="headingTipoArea" data-toggle="collapse" data-parent="#accordion" href="#collapseTipoArea" aria-expanded="false" aria-controls="collapseTipoArea" style="background: #dcdcdc;">
+															<h4 class="panel-title" style="font-size: 18px">
+																<i class="fa fa-area-chart" aria-hidden="true"></i> Tipo Área
+															</h4>
+														</a>
+													<div id="collapseTipoArea" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTipoArea">
+														<div class="panel-body">
+															<!-- In&iacute;cio tab Tipo Area-->
+															<div class="row">
+																<div class="form-group col-md-12 col-sm-6 col-xs-12"><span id="formularioUpf:idPanelTipoArea">
+																		<div class="table-responsive">
+																			<table class="table">
+																				<thead>
+																					<tr>
+																						<th>Descrição
+																						</th>
+																						<th>Quantidade
+																						</th>
+																						<th>Unidade Medida
+																						</th>
+																						<th>Ações
+																						</th>
+																					</tr>
+																				</thead>
+																				<tbody>
+																					<tr>
+																						<td><select id="formularioUpf:idUpfTipoAreaDescricaoAd" name="formularioUpf:idUpfTipoAreaDescricaoAd" class="form-control" size="1">	<option value="" selected="selected">--Selecione--</option>
+	<option value="01-Pastagens">01-Pastagens</option>
+	<option value="02-Culturas Temporárias">02-Culturas Temporárias</option>
+	<option value="03-Culturas permanentes">03-Culturas permanentes</option>
+	<option value="04-Lâmina d’água">04-Lâmina d’água</option>
+	<option value="05-Extrativismo">05-Extrativismo</option>
+	<option value="06-Reserva Legal">06-Reserva Legal</option>
+	<option value="07-Agrofloresta">07-Agrofloresta</option>
+	<option value="08-Não se Aplica">08-Não se Aplica</option>
+</select>
+																						</td>
+																						<td><input id="formularioUpf:idUpfTipoAreaQuantidadeAd" type="text" name="formularioUpf:idUpfTipoAreaQuantidadeAd" class="form-control col-md-7 col-xs-12" maxlength="100">
+																						</td>
+																						<td><select id="formularioUpf:idUpfTipoAreaUnidMedidaAd" name="formularioUpf:idUpfTipoAreaUnidMedidaAd" class="form-control" size="1">	<option value="" selected="selected">--Selecione--</option>
+	<option value="ampola">ampola</option>
+	<option value="ano">ano</option>
+	<option value="ANO(S)">ANO(S)</option>
+	<option value="área">área</option>
+	<option value="arroba">arroba</option>
+	<option value="balaio / jacá">balaio / jacá</option>
+	<option value="balde">balde</option>
+	<option value="bandeja">bandeja</option>
+	<option value="barcaça">barcaça</option>
+	<option value="barra">barra</option>
+	<option value="barril">barril</option>
+	<option value="BEZERRA(S) P/RECRIA">BEZERRA(S) P/RECRIA</option>
+	<option value="bisnaga">bisnaga</option>
+	<option value="blister">blister</option>
+	<option value="bloco">bloco</option>
+	<option value="bobina">bobina</option>
+	<option value="bombona">bombona</option>
+	<option value="BOOLEANO">BOOLEANO</option>
+	<option value="cabeça">cabeça</option>
+	<option value="CABECA/ NOVILHA RECEPTORA">CABECA/ NOVILHA RECEPTORA</option>
+	<option value="Cachos">Cachos</option>
+	<option value="caixa">caixa</option>
+	<option value="caixa k">caixa k</option>
+	<option value="capsula">capsula</option>
+	<option value="cartela">cartela</option>
+	<option value="celamim">celamim</option>
+	<option value="cento">cento</option>
+	<option value="cesto">cesto</option>
+	<option value="cm">cm</option>
+	<option value="cm²">cm²</option>
+	<option value="cm³">cm³</option>
+	<option value="comprimido">comprimido</option>
+	<option value="conjunto">conjunto</option>
+	<option value="container">container</option>
+	<option value="copo">copo</option>
+	<option value="copo">copo</option>
+	<option value="corda">corda</option>
+	<option value="CORDEIRO DESMAMADO">CORDEIRO DESMAMADO</option>
+	<option value="covado">covado</option>
+	<option value="créditos">créditos</option>
+	<option value="dezena">dezena</option>
+	<option value="diária">diária</option>
+	<option value="DIA(S)">DIA(S)</option>
+	<option value="display">display</option>
+	<option value="documento">documento</option>
+	<option value="dose">dose</option>
+	<option value="drágea">drágea</option>
+	<option value="dúzia">dúzia</option>
+	<option value="engradado">engradado</option>
+	<option value="envelope">envelope</option>
+	<option value="espiga">espiga</option>
+	<option value="estojo">estojo</option>
+	<option value="evento">evento</option>
+	<option value="fanga">fanga</option>
+	<option value="fardo">fardo</option>
+	<option value="FARDO(S)">FARDO(S)</option>
+	<option value="flaconete">flaconete</option>
+	<option value="folha">folha</option>
+	<option value="forma">forma</option>
+	<option value="frasco">frasco</option>
+	<option value="galão">galão</option>
+	<option value="garrafa">garrafa</option>
+	<option value="grade">grade</option>
+	<option value="grama">grama</option>
+	<option value="grão">grão</option>
+	<option value="hectare">hectare</option>
+	<option value="hora">hora</option>
+	<option value="hora homem">hora homem</option>
+	<option value="hora máquina">hora máquina</option>
+	<option value="insumo">insumo</option>
+	<option value="jeira">jeira</option>
+	<option value="jogo">jogo</option>
+	<option value="kg">kg</option>
+	<option value="kit">kit</option>
+	<option value="lata">lata</option>
+	<option value="libras">libras</option>
+	<option value="linha">linha</option>
+	<option value="litro">litro</option>
+	<option value="m">m</option>
+	<option value="m²">m²</option>
+	<option value="m³">m³</option>
+	<option value="maço / molho">maço / molho</option>
+	<option value="marco">marco</option>
+	<option value="megawatt hora">megawatt hora</option>
+	<option value="mês">mês</option>
+	<option value="MÊS(ES)">MÊS(ES)</option>
+	<option value="METRO(S)">METRO(S)</option>
+	<option value="milheiro">milheiro</option>
+	<option value="ml">ml</option>
+	<option value="moio">moio</option>
+	<option value="Monetário (R$)">Monetário (R$)</option>
+	<option value="muda">muda</option>
+	<option value="não se aplica">não se aplica</option>
+	<option value="NOVILHA RECEPTORA">NOVILHA RECEPTORA</option>
+	<option value="oitava">oitava</option>
+	<option value="outra">outra</option>
+	<option value="pacote">pacote</option>
+	<option value="paletes">paletes</option>
+	<option value="palmo">palmo</option>
+	<option value="par">par</option>
+	<option value="pé">pé</option>
+	<option value="peça">peça</option>
+	<option value="polegadas">polegadas</option>
+	<option value="ponto">ponto</option>
+	<option value="pote">pote</option>
+	<option value="pouche">pouche</option>
+	<option value="prato">prato</option>
+	<option value="processo">processo</option>
+	<option value="quilate">quilate</option>
+	<option value="rede">rede</option>
+	<option value="refeições">refeições</option>
+	<option value="refil">refil</option>
+	<option value="resma">resma</option>
+	<option value="rolo">rolo</option>
+	<option value="saca">saca</option>
+	<option value="sachê">sachê</option>
+	<option value="sacola">sacola</option>
+	<option value="safra">safra</option>
+	<option value="serviço">serviço</option>
+	<option value="tabuleiro">tabuleiro</option>
+	<option value="talão">talão</option>
+	<option value="tambor">tambor</option>
+	<option value="tanque">tanque</option>
+	<option value="tarefa">tarefa</option>
+	<option value="toesa">toesa</option>
+	<option value="ton">ton</option>
+	<option value="tonel">tonel</option>
+	<option value="tripa">tripa</option>
+	<option value="tubete">tubete</option>
+	<option value="tubo">tubo</option>
+	<option value="unidade">unidade</option>
+	<option value="unidade animal">unidade animal</option>
+	<option value="UNIDADE ATIVIDADE">UNIDADE ATIVIDADE</option>
+	<option value="UNIDADE PRODUTO">UNIDADE PRODUTO</option>
+	<option value="UN. PRODUTO/HOMEM">UN. PRODUTO/HOMEM</option>
+	<option value="vara">vara</option>
+	<option value="vasilhame">vasilhame</option>
+	<option value="vidro">vidro</option>
+	<option value="watt">watt</option>
+</select>
+																						</td>
+																						<td><a id="formularioUpf:j_idt889" href="#" onclick="mojarra.ab(this,event,'click','formularioUpf:idPanelTipoArea','formularioUpf:idPanelTipoArea');return false" class="btn btn-success btn-xs">Adicionar
+																								<i class="fa fa-plus"></i></a>
+																						</td>
+																					</tr>
+																				</tbody>
+																			</table>
+																		</div>
+																		<script>
+																			$(function(){
+																				$(".ano").mask("9999");
+																			})
+																		</script></span>
+																	<!--  -->
+																</div>
+															</div>
+															<!-- Fim tab Tipo Area -->
+														</div>
+													</div>
+												</div></span></span><span id="formularioUpf:idPanelTerraBrasil3">
+											<div class="panel">
+													<a class="panel-heading collapsed" role="tab" id="headingAcoesPonteciais" data-toggle="collapse" data-parent="#accordion" href="#collapseAcoesPonteciais" aria-expanded="false" aria-controls="collapseAcoesPonteciais" style="background: #dcdcdc;">
+														<h4 class="panel-title" style="font-size: 18px">
+															<i class="fa fa-plus" aria-hidden="true"></i> Ações Potenciais
+														</h4>
+													</a>
+												<div id="collapseAcoesPonteciais" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingAcoesPonteciais">
+													<div class="panel-body">
+														<!-- In&iacute;cio tab A&ccedil;&otilde;es Pontenciais-->
+														<div class="row">
+															<div class="form-group col-md-12 col-sm-6 col-xs-12">
+																<label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name"> Eixo Produtivo: * </label>
+																<div class="col-md-7 col-sm-6 col-xs-12"><textarea id="formularioUpf:idEixoProdutivo" name="formularioUpf:idEixoProdutivo" class="form-control " rows="10"></textarea>
+																</div>
+															</div>
+														</div>
+														<div class="row">
+															<div class="form-group col-md-12 col-sm-6 col-xs-12">
+																<label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name"> Eixo Social: * </label>
+																<div class="col-md-7 col-sm-6 col-xs-12"><textarea id="formularioUpf:idEixoSocial" name="formularioUpf:idEixoSocial" class="form-control " rows="6"></textarea>
+																</div>
+															</div>
+														</div>
+														<div class="row">
+															<div class="form-group col-md-12 col-sm-6 col-xs-12">
+																<label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name"> Eixo Ambiental: * </label>
+																<div class="col-md-7 col-sm-6 col-xs-12"><textarea id="formularioUpf:idEixoAmbiental" name="formularioUpf:idEixoAmbiental" class="form-control " rows="4"></textarea>
+																</div>
+															</div>
+														</div>
+														<div class="row">
+															<div class="form-group col-md-12 col-sm-6 col-xs-12">
+																<label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name"> Eixo Fundiário: * </label>
+																<div class="col-md-7 col-sm-6 col-xs-12"><textarea id="formularioUpf:idEixoFundiario" name="formularioUpf:idEixoFundiario" class="form-control " rows="6"></textarea>
+																</div>
+															</div>
+														</div>
+														<!-- Fim tab A&ccedil;&otilde;es Pontencias -->
+													</div>
+												</div>
+											</div></span>
+											
+											
+												<div class="panel">
+													<a class="panel-heading collapsed" role="tab" id="headingIntegrantes" data-toggle="collapse" data-parent="#accordion" href="#collapseIntegrantes" aria-expanded="false" aria-controls="collapseIntegrantes" style="background: #dcdcdc;">
+														<h4 class="panel-title" style="font-size: 18px">
+															<i class="fa fa-users" aria-hidden="true"></i> Integrantes
+														</h4>
+													</a>
+													<div id="collapseIntegrantes" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingIntegrantes">
+														<div class="panel-body">
+															<!-- In&iacute;cio tab Integrantes -->
+															<div class="row">
+																<div class="form-group col-md-12 col-sm-6 col-xs-12">
+																	<label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name"> Inserir Integrante: </label><a id="formularioUpf:j_idt910" href="#" onclick="mojarra.ab(this,event,'click','@this','formularioUpf:formularioBeneficiarioPf',{'onevent':function(data){ if(data.status == 'success'){ abrirModalCadastrarBeneficiario(); } }});return false" class="btn btn-success btn-xs">
+																		<i class="fa fa-plus"></i></a>
+																</div>
+																<div class="form-group col-md-12 col-sm-6 col-xs-12">
+																	<label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name"> Verificar Fomento: </label><a id="formularioUpf:j_idt913" href="#" onclick="mojarra.ab(this,event,'click','@this','formularioUpf:idPanelIntegrantes formularioUpf:msgContext');return false" class="btn btn-warning btn-xs">
+																		<i class="fa fa-cogs"></i></a>
+																</div>
+															</div>
+															<div class="row">
+																<div class="form-group col-md-12 col-sm-6 col-xs-12"><span id="formularioUpf:idPanelIntegrantes"></span>
+																</div>
+															</div>
+															<!-- Fim tab Integrantes -->
+														</div>
+													</div>
+												</div><span id="formularioUpf:idPanelTerraBrasil4">
+											
+											<div class="panel">
+													<a class="panel-heading collapsed" role="tab" id="headingPoliticasPublicas" data-toggle="collapse" data-parent="#accordion" href="#collapsePoliticasPublicas" aria-expanded="false" aria-controls="collapsePoliticasPublicas" style="background: #dcdcdc;">
+														<h4 class="panel-title" style="font-size: 18px">
+															<i class="fa fa-briefcase" aria-hidden="true"></i> Políticas Públicas
+														</h4>
+													</a>
+													<div id="collapsePoliticasPublicas" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingPoliticasPublicas">
+														<div class="panel-body">
+															<!-- In&iacute;cio tab Pol&iacute;ticas P&uacute;blicas -->
+															<div class="row">
+																<div class="form-group col-md-12 col-sm-6 col-xs-12"><span id="formularioUpf:idPanelPoliticaPublica">
+																		<div class="table-responsive">
+																			<table class="table">
+																				<thead>
+																					<tr>
+																						<th>Integrantes
+																						</th>
+																						<th>Políticas 
+																						</th>
+																						<th>Ano Adesão
+																						</th>
+																						<th>Ações
+																						</th>
+																					</tr>
+																				</thead>
+																				<tbody>
+																					<tr>
+																						<td><select id="formularioUpf:idPoliticaPublicaIntegrante" name="formularioUpf:idPoliticaPublicaIntegrante" class="form-control col-md-3 col-xs-12" size="1">	<option value="" selected="selected">--Selecione--</option>
+</select>
+																						</td>
+																						<td><select id="formularioUpf:idPoliticaPublicaPolitica" name="formularioUpf:idPoliticaPublicaPolitica" class="form-control col-md-6 col-xs-12" size="1">	<option value="" selected="selected">--Selecione--</option>
+	<option value="	ABC	">	ABC	</option>
+	<option value="Aposentadoria rural">Aposentadoria rural</option>
+	<option value="ATER para mulheres">ATER para mulheres</option>
+	<option value="	Auxílio Emergencial	">	Auxílio Emergencial	</option>
+	<option value="Biodiesel">Biodiesel</option>
+	<option value="	BNDES Agro	">	BNDES Agro	</option>
+	<option value="	Bolsa Atleta	">	Bolsa Atleta	</option>
+	<option value="Bolsa Família">Bolsa Família</option>
+	<option value="	Bolsa Verde	">	Bolsa Verde	</option>
+	<option value="BPC – Benefício de Prestação Continuada">BPC – Benefício de Prestação Continuada</option>
+	<option value="	Brincando com o esporte	">	Brincando com o esporte	</option>
+	<option value="	Carteira do idoso	">	Carteira do idoso	</option>
+	<option value="Carteira Indígena de Projetos de SAN e Desenvolvimento Sustentável (MMA)">Carteira Indígena de Projetos de SAN e Desenvolvimento Sustentável (MMA)</option>
+	<option value="Crédito de Instalação (INCRA)">Crédito de Instalação (INCRA)</option>
+	<option value="Crédito Fundiário">Crédito Fundiário</option>
+	<option value="	Crédito instalação - Apoio Inicial	">	Crédito instalação - Apoio Inicial	</option>
+	<option value="	Crédito instalação - Cacau	">	Crédito instalação - Cacau	</option>
+	<option value="	Crédito instalação - Florestal	">	Crédito instalação - Florestal	</option>
+	<option value="	Crédito instalação - Fomento	">	Crédito instalação - Fomento	</option>
+	<option value="	Crédito instalação - Fomento Mulher	">	Crédito instalação - Fomento Mulher	</option>
+	<option value="	Crédito instalação - Habitacional	">	Crédito instalação - Habitacional	</option>
+	<option value="	Crédito instalação - Recuperação Ambiental	">	Crédito instalação - Recuperação Ambiental	</option>
+	<option value="	Crédito instalação - Reforma Habitacional	">	Crédito instalação - Reforma Habitacional	</option>
+	<option value="	Crédito instalação - Semiárido	">	Crédito instalação - Semiárido	</option>
+	<option value="Crédito rural">Crédito rural</option>
+	<option value="	Criança Feliz	">	Criança Feliz	</option>
+	<option value="ESF - Estratégia de Saúde da Família">ESF - Estratégia de Saúde da Família</option>
+	<option value="Fomento de Atividades Produtivas (FUNAI)">Fomento de Atividades Produtivas (FUNAI)</option>
+	<option value="	FUNCAFÉ	">	FUNCAFÉ	</option>
+	<option value="Garantia safra">Garantia safra</option>
+	<option value="	Inovagro	">	Inovagro	</option>
+	<option value="Luz para Todos">Luz para Todos</option>
+	<option value="	Moderagro	">	Moderagro	</option>
+	<option value="	Moderfrota	">	Moderfrota	</option>
+	<option value="	Moderinfra	">	Moderinfra	</option>
+	<option value="Nenhuma">Nenhuma</option>
+	<option value="	Outros	">	Outros	</option>
+	<option value="	PAA Apoio à Formação de Estoques	">	PAA Apoio à Formação de Estoques	</option>
+	<option value="	PAA Aquisição de Sementes	">	PAA Aquisição de Sementes	</option>
+	<option value="	PAA  Compra com Doação Simultânea	">	PAA  Compra com Doação Simultânea	</option>
+	<option value="	PAA Compra Direta	">	PAA Compra Direta	</option>
+	<option value="	PAA Compra Institucional	">	PAA Compra Institucional	</option>
+	<option value="	PAA Incentivo à Produção e ao Consumo de Leite	">	PAA Incentivo à Produção e ao Consumo de Leite	</option>
+	<option value="PAA – Programa de Aquisição de Alimentos">PAA – Programa de Aquisição de Alimentos</option>
+	<option value="	PAB Apoio à Formação de Estoques	">	PAB Apoio à Formação de Estoques	</option>
+	<option value="	PAB Aquisição de Sementes	">	PAB Aquisição de Sementes	</option>
+	<option value="	PAB  Compra com Doação Simultânea	">	PAB  Compra com Doação Simultânea	</option>
+	<option value="	PAB Compra Direta	">	PAB Compra Direta	</option>
+	<option value="	PAB Compra Institucional	">	PAB Compra Institucional	</option>
+	<option value="	PAB Incentivo à Produção e ao Consumo de Leite	">	PAB Incentivo à Produção e ao Consumo de Leite	</option>
+	<option value="	PAC 2	">	PAC 2	</option>
+	<option value="	PCA	">	PCA	</option>
+	<option value="PDPI - Projetos Demonstrativos de Povos Indígenas (MMA)">PDPI - Projetos Demonstrativos de Povos Indígenas (MMA)</option>
+	<option value="	PGPAF	">	PGPAF	</option>
+	<option value="PNAE – Programa Nacional de Alimentação Escolar">PNAE – Programa Nacional de Alimentação Escolar</option>
+	<option value="PNDTR – Programa Nacional de Documentação da Trabalhadora Rural">PNDTR – Programa Nacional de Documentação da Trabalhadora Rural</option>
+	<option value="PNHR – Programa Nacional de Habitação Rural">PNHR – Programa Nacional de Habitação Rural</option>
+	<option value="	Proagro	">	Proagro	</option>
+	<option value="	Procap-Agro	">	Procap-Agro	</option>
+	<option value="	Prodecoop	">	Prodecoop	</option>
+	<option value="	Programa Cisternas	">	Programa Cisternas	</option>
+	<option value="	Programa de Cadastro de Terras e Regularização Fundiária	">	Programa de Cadastro de Terras e Regularização Fundiária	</option>
+	<option value="	Programa de Cadastro de Terras e Regularização Fundiária Terra Legal	">	Programa de Cadastro de Terras e Regularização Fundiária Terra Legal	</option>
+	<option value="	Programa de Fomento às Atividades Produtivas Rurais Fomento	">	Programa de Fomento às Atividades Produtivas Rurais Fomento	</option>
+	<option value="Programa de Organização Produtiva para Mulheres Rurais">Programa de Organização Produtiva para Mulheres Rurais</option>
+	<option value="	Programa Forças no Esporte	">	Programa Forças no Esporte	</option>
+	<option value="	Programa Nacional de Crédito Fundiário	">	Programa Nacional de Crédito Fundiário	</option>
+	<option value="	Programa Nacional de Produção e uso do Biodiesel	">	Programa Nacional de Produção e uso do Biodiesel	</option>
+	<option value="	Programa Nacional de Reforma Agrária	">	Programa Nacional de Reforma Agrária	</option>
+	<option value="	Programa Regularização Ambiental	">	Programa Regularização Ambiental	</option>
+	<option value="	Programa Regularização de Terras e Cadastro Rural	">	Programa Regularização de Terras e Cadastro Rural	</option>
+	<option value="	Progredir	">	Progredir	</option>
+	<option value="PROINF - Apoio a ações de infraestrutura e serviços">PROINF - Apoio a ações de infraestrutura e serviços</option>
+	<option value="	Projeto Dom Hélder Câmara	">	Projeto Dom Hélder Câmara	</option>
+	<option value="PRONAF">PRONAF</option>
+	<option value="	PRONAF Agroecologia	">	PRONAF Agroecologia	</option>
+	<option value="	PRONAF Agroindústria	">	PRONAF Agroindústria	</option>
+	<option value="	PRONAF Custeio	">	PRONAF Custeio	</option>
+	<option value="	PRONAF Eco	">	PRONAF Eco	</option>
+	<option value="	PRONAF Floresta 	">	PRONAF Floresta 	</option>
+	<option value="	PRONAF Grupo A	">	PRONAF Grupo A	</option>
+	<option value="	PRONAF Grupo A/C	">	PRONAF Grupo A/C	</option>
+	<option value="	PRONAF Grupo B	">	PRONAF Grupo B	</option>
+	<option value="	PRONAF Industrialização de Agroindústria Familiar	">	PRONAF Industrialização de Agroindústria Familiar	</option>
+	<option value="	PRONAF Jovem 	">	PRONAF Jovem 	</option>
+	<option value="	PRONAF Mais Alimentos	">	PRONAF Mais Alimentos	</option>
+	<option value="	PRONAF Microcrédito Produtivo Grupo A	">	PRONAF Microcrédito Produtivo Grupo A	</option>
+	<option value="	PRONAF Mulher	">	PRONAF Mulher	</option>
+	<option value="	PRONAF Outro 	">	PRONAF Outro 	</option>
+	<option value="	PRONAF Produtivo Orientado	">	PRONAF Produtivo Orientado	</option>
+	<option value="	PRONAF Semiárido	">	PRONAF Semiárido	</option>
+	<option value="	PRONAMP	">	PRONAMP	</option>
+	<option value="	PRONATEC	">	PRONATEC	</option>
+	<option value="	PRONERA	">	PRONERA	</option>
+	<option value="	PRORENOVA	">	PRORENOVA	</option>
+	<option value="	Renda Mesal Vitalícia	">	Renda Mesal Vitalícia	</option>
+	<option value="Salário defeso (pescadores artesanais)">Salário defeso (pescadores artesanais)</option>
+	<option value="	SEAF	">	SEAF	</option>
+	<option value="	Segundo Tempo	">	Segundo Tempo	</option>
+	<option value="	Seleções do futuro	">	Seleções do futuro	</option>
+	<option value="	SIPAF - Selo de Identificação da Participação da Agricultura Familiar	">	SIPAF - Selo de Identificação da Participação da Agricultura Familiar	</option>
+	<option value="	SUASA	">	SUASA	</option>
+	<option value="	Tarifa Social de energia	">	Tarifa Social de energia	</option>
+	<option value="	Terra Forte	">	Terra Forte	</option>
+	<option value="Terra Sol (INCRA)">Terra Sol (INCRA)</option>
+</select>
+																						</td>
+																						<td><input id="formularioUpf:idPoliticaPublicaDataAdesao" type="text" name="formularioUpf:idPoliticaPublicaDataAdesao" class="form-control col-md-1 col-xs-12 ano" maxlength="4" autocomplete="off">
+																						</td>
+																						<td><a id="formularioUpf:j_idt982" href="#" onclick="mojarra.ab(this,event,'click','formularioUpf:idPanelPoliticaPublica','formularioUpf:idPanelPoliticaPublica');return false" class="btn btn-success btn-xs">Adicionar
+																								<i class="fa fa-plus"></i></a>
+																						</td>
+																					</tr>
+																				</tbody>
+																			</table>
+																		</div>
+																		<script>
+																			$(function(){
+																				$(".ano").mask("9999");
+																			})
+																		</script></span>
+																	<!--  -->
+																</div>
+															</div>
+															<!-- Fim tab Pol&iacute;ticas P&uacute;blicas -->
+														</div>
+													</div>
+												</div></span>
+									</div>
+									<!-- end of accordion -->
+									<!-- Fim Accordion -->
+									<div class="h20"></div>
+									<div class="form-group">
+										<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3"><a href="#" title="Voltar" onclick="mojarra.jsfcljs(document.getElementById('formularioUpf'),{'formularioUpf:j_idt987':'formularioUpf:j_idt987'},'');return false" class="btn btn-primary">
+			 <i class="fa fa-reply"></i> Voltar
+		</a><a href="#" title="Limpar" onclick="mojarra.jsfcljs(document.getElementById('formularioUpf'),{'formularioUpf:j_idt989':'formularioUpf:j_idt989'},'');return false" class="btn btn-default">
+        	 <i class="fa fa-eraser"></i> Limpar
+        </a><a href="#" title="Salvar" onclick="mojarra.jsfcljs(document.getElementById('formularioUpf'),{'formularioUpf:j_idt993':'formularioUpf:j_idt993'},'');return false" class="btn btn-success">
+        	<i class="fa fa-floppy-o"></i> Salvar
+        </a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+	<div class="modal fade modalCadastrarBeneficiario" tabindex="-1" role="dialog" aria-hidden="true">
+
+		<div class="modal-dialog modal-lg">
+
+			<div class="modal-content">
+				<div class="modal-header">
+
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">×</span>
+					</button>
+
+				</div><span id="formularioUpf:formularioBeneficiarioPf"><span id="formularioUpf:idPanelScripts">
+						<script>
+							if (typeof aplicarMascarasUpf === 'function') {
+								aplicarMascarasUpf();
+							}
+						</script></span>
+					
+					<div class="x_panel">
+					
+						<div class="x_content"><div id="formularioUpf:idMensagemErro"></div>
+						
+						
+												
+							<div class="row">
+		
+								<div class="col-md-12 col-sm-12 col-xs-12">
+				
+									<!-- page content -->
+
+	<div class="col-md-12 col-sm-12 col-xs-12">
+	
+			<!-- Mensagem global do sistema -->
+			<div class="x_panel">
+			<style>
+				#my_camera {
+					width: 320px;
+					height: 240px;
+					border: 1px solid black;
+				}
+				
+				fileUpload {
+					position: relative;
+					overflow: hidden;
+					margin: -5px;
+				}
+				
+				.fileUpload input.upload {
+					position: absolute;
+					top: 0;
+					right: 0;
+					margin: 0;
+					padding: 0;
+					font-size: 20px;
+					cursor: pointer;
+					opacity: 0;
+					filter: alpha(opacity = 0);
+				}
+				
+				.label-info {
+					background-color: #5bc0de;
+					font-size: larger;
+				}
+			</style>
+				<div class="x_title">
+					<h2 class="titulo_modulo">
+						<i class="fa fa-flag" aria-hidden="true"></i> Cadastrar Pessoa
+					</h2>
+
+					<div class="clearfix"></div>
+
+				</div>
+
+				<div class="x_content">
+
+					<div class="row">
+					
+						<div class="form-group col-md-12 col-sm-6 col-xs-12">
+						
+							<label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name">
+								CPF *
+							</label>
+
+							<div class="col-md-3 col-sm-6 col-xs-12"><input id="formularioUpf:idCpf" type="text" name="formularioUpf:idCpf" class="form-control col-md-7 col-xs-12 cpf" maxlength="14" onblur="mojarra.ab(this,event,'blur','@this','formularioUpf:idPanelSalvar formularioUpf:idMsgCpf')" autocomplete="off">
+								
+							</div><span id="formularioUpf:idMsgCpf"></span>
+							
+						</div>
+						
+					</div>
+					
+					<div class="row">
+						<div class="form-group col-md-12 col-sm-6 col-xs-12">
+						
+							<label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name">NIS/CAD ÚNICO :
+							</label>
+	
+							<div class="col-md-3 col-sm-6 col-xs-12"><input id="formularioUpf:idNis" type="text" name="formularioUpf:idNis" class="form-control col-md-7 col-xs-12 nis" maxlength="14" size="11" autocomplete="off">
+							</div>
+							
+						</div>
+												
+					</div>
+
+					<div class="row">
+					
+						<div class="form-group col-md-12 col-sm-6 col-xs-12">
+							
+							<label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name">
+								Nome *
+							</label>
+
+							<div class="col-md-5 col-sm-6 col-xs-12"><input id="formularioUpf:idNomeBeneficiarioPf" type="text" name="formularioUpf:idNomeBeneficiarioPf" class="form-control col-md-7 col-xs-12" maxlength="80">
+								
+							</div>
+						
+						</div>
+					
+					</div>
+					
+					<div class="row">
+					
+						<div class="form-group col-md-12 col-sm-6 col-xs-12">
+						
+							<label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name">
+								Apelido 
+							</label>
+
+							<div class="col-md-3 col-sm-6 col-xs-12"><input id="formularioUpf:idApelido" type="text" name="formularioUpf:idApelido" class="form-control col-md-7 col-xs-12" maxlength="25">
+								
+							</div>
+							
+						</div>
+						
+					</div><span id="formularioUpf:idPanelIdentidadeOrientacao">
+						<div class="row">
+
+							<div class="form-group col-md-12 col-sm-6 col-xs-12">
+
+								<label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name">
+									Sexo * </label>
+
+								<div class="col-md-3 col-sm-6 col-xs-12"><table id="formularioUpf:idSexo">
+	<tbody><tr>
+<td>
+<input type="radio" name="formularioUpf:idSexo" id="formularioUpf:idSexo:0" value="M"><label for="formularioUpf:idSexo:0"> Masculino</label></td>
+<td>
+<input type="radio" name="formularioUpf:idSexo" id="formularioUpf:idSexo:1" value="F"><label for="formularioUpf:idSexo:1"> Feminino</label></td>
+	</tr>
+</tbody></table>
+
+								</div>
+
+							</div>
+
+						</div>
+					
+						<div class="row">
+							<div class="form-group col-md-12 col-sm-6 col-xs-12">
+								<label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name">
+									Orientação sexual * </label>
+
+								<div class="col-md-3 col-sm-6 col-xs-12"><select id="formularioUpf:idOrientacaoSexual" name="formularioUpf:idOrientacaoSexual" class="form-control" size="1">	<option value="" selected="selected">--Selecione--</option>
+	<option value="Gay">Gay</option>
+	<option value="Lésbica">Lésbica</option>
+	<option value="Bissexual">Bissexual</option>
+	<option value="Heterossexual">Heterossexual</option>
+	<option value="Assexual">Assexual</option>
+	<option value="Pansexual">Pansexual</option>
+	<option value="Outros">Outros</option>
+</select>
+								</div>
+							</div>
+						</div>
+					
+						<div class="row">
+							<div class="form-group col-md-12 col-sm-6 col-xs-12">
+								<label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name">
+									Identidade de gênero * </label>
+
+								<div class="col-md-3 col-sm-6 col-xs-12"><select id="formularioUpf:idIdentidadeGenero" name="formularioUpf:idIdentidadeGenero" class="form-control" size="1">	<option value="" selected="selected">--Selecione--</option>
+	<option value="Cysgênero">Cysgênero</option>
+	<option value="Homem transexual">Homem transexual</option>
+	<option value="Mulher transexual">Mulher transexual</option>
+	<option value="Não-binário">Não-binário</option>
+	<option value="Travesti">Travesti</option>
+	<option value="Outro">Outro</option>
+	<option value="Prefiro não dizer">Prefiro não dizer</option>
+</select>
+									
+								</div>
+							</div>
+						</div></span>
+				
+					<div class="row">
+						
+						<div class="form-group col-md-12 col-sm-6 col-xs-12">
+							
+							<label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name">
+								Data de Nascimento *
+							</label>
+
+							<div class="col-md-3 col-sm-6 col-xs-12"><input id="formularioUpf:idDataNasc" type="text" name="formularioUpf:idDataNasc" class="form-control col-md-7 col-xs-12 data" onchange="mojarra.ab(this,event,'valueChange',0,'formularioUpf:idPanelSalvar')" maxlength="10" autocomplete="off">
+								
+							</div>
+							
+						</div>
+						
+					</div>
+					
+					<div class="row">
+						
+						<div class="form-group col-md-12 col-sm-6 col-xs-12">
+						
+							<label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name">
+								Escolaridade *
+							</label>
+							
+	                        <div class="col-md-4"><select id="formularioUpf:codEscolaridade" name="formularioUpf:codEscolaridade" class="form-control" size="1">	<option value="" selected="selected">--Selecione--</option>
+	<option value="2">Alfabetizado</option>
+	<option value="1">Analfabeto</option>
+	<option value="11">Doutorado</option>
+	<option value="12">Em idade não escolar</option>
+	<option value="5">Ensino Médio</option>
+	<option value="6">Ensino Médio Incompleto</option>
+	<option value="3">Fundamental</option>
+	<option value="4">Fundamental Incompleto</option>
+	<option value="10">Mestrado</option>
+	<option value="0">Não Informado</option>
+	<option value="9">Pós Graduação</option>
+	<option value="7">Superior</option>
+	<option value="8">Superior Incompleto</option>
+</select>
+								
+							</div>
+						
+						</div>
+						
+					</div>
+						<div class="row">
+							<div class="form-group col-md-12 col-sm-6 col-xs-12">
+								<label class="control-label col-md-2 col-sm-3 col-xs-12">Estado Civil</label>
+								<div class="col-md-3 col-sm-6 col-xs-12"><select id="formularioUpf:idEstadoCivilIntegrante" name="formularioUpf:idEstadoCivilIntegrante" class="form-control" size="1" onchange="mojarra.ab(this,event,'change',0,'formularioUpf:idPanelDataCasamentoIntegrante',{'onevent':function(data){ if(data.status === 'success' &amp;&amp; typeof aplicarMascarasUpf === 'function'){ aplicarMascarasUpf(); } }})">	<option value="" selected="selected">--Selecione--</option>
+	<option value="5">Amasiado</option>
+	<option value="2">Casado(a)</option>
+	<option value="4">Divorciado</option>
+	<option value="0">Não Informado</option>
+	<option value="6">Outros</option>
+	<option value="8">Separado(a)</option>
+	<option value="1">Solteiro(a)</option>
+	<option value="7">União estável</option>
+	<option value="3">Viúvo(a)</option>
+</select>
+								</div>
+								<label class="control-label col-md-2 col-sm-3 col-xs-12">Regime de Bens</label>
+								<div class="col-md-3 col-sm-6 col-xs-12"><select id="formularioUpf:idRegimeBensIntegrante" name="formularioUpf:idRegimeBensIntegrante" class="form-control" size="1">	<option value="" selected="selected">--Selecione--</option>
+	<option value="1">Comunhão parcial de bens</option>
+	<option value="2">Comunhão universal de bens</option>
+	<option value="5">Não se aplica</option>
+	<option value="4">Participação final nos aquestos</option>
+	<option value="3">Separação total de bens</option>
+</select>
+								</div>
+							</div>
+						</div><span id="formularioUpf:idPanelDataCasamentoIntegrante"></span>
+						<div class="row">
+							<div class="form-group col-md-12 col-sm-6 col-xs-12">
+								<label class="control-label col-md-2 col-sm-3 col-xs-12">Modo preferencial para recebimento de comunicações e notificações:</label>
+								<div class="col-md-6 col-sm-6 col-xs-12"><table id="formularioUpf:idModoComunicacaoIntegrante">
+	<tbody><tr>
+<td>
+<input type="radio" name="formularioUpf:idModoComunicacaoIntegrante" id="formularioUpf:idModoComunicacaoIntegrante:0" value="C"><label for="formularioUpf:idModoComunicacaoIntegrante:0"> Correio</label></td>
+<td>
+<input type="radio" name="formularioUpf:idModoComunicacaoIntegrante" id="formularioUpf:idModoComunicacaoIntegrante:1" value="E"><label for="formularioUpf:idModoComunicacaoIntegrante:1"> E-mail</label></td>
+	</tr>
+</tbody></table>
+								</div>
+							</div>
+						</div>
+					
+					<div class="row">
+						
+						<div class="form-group col-md-12 col-sm-6 col-xs-12">
+							
+							<label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name">
+								Nome da Mãe *
+							</label>
+
+							<div class="col-md-4 col-sm-6 col-xs-12"><input id="formularioUpf:idNomeMae" type="text" name="formularioUpf:idNomeMae" class="form-control col-md-7 col-xs-12" maxlength="80">
+								
+							</div>
+							
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="form-group col-md-12 col-sm-6 col-xs-12">
+							<label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name">
+								Nome do Pai
+							</label>
+
+							<div class="col-md-4 col-sm-6 col-xs-12"><input id="formularioUpf:idNomePai" type="text" name="formularioUpf:idNomePai" class="form-control col-md-7 col-xs-12" maxlength="80">
+								
+							</div>
+							
+						</div>
+						
+					</div>
+					
+					<div class="row">
+						
+						<div class="form-group col-md-12 col-sm-6 col-xs-12">
+						
+							<label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name">
+								Classificação da Pessoa *
+							</label>
+							
+	                       <div class="col-md-3 col-sm-6 col-xs-12"><select id="formularioUpf:idClassificacaoBeneficiario" name="formularioUpf:idClassificacaoBeneficiario" class="form-control" size="1">	<option value="" selected="selected">--Selecione--</option>
+	<option value="Acampado">Acampado</option>
+	<option value="Agricultor Familiar Tradicional">Agricultor Familiar Tradicional</option>
+	<option value="Aquicultor Familiar">Aquicultor Familiar</option>
+	<option value="Assentado">Assentado</option>
+	<option value="Atingido por Barragens">Atingido por Barragens</option>
+	<option value="Atingido por Base de Alcântara">Atingido por Base de Alcântara</option>
+	<option value="Caatingueiro">Caatingueiro</option>
+	<option value="Caiçara">Caiçara</option>
+	<option value="Castanheiro">Castanheiro</option>
+	<option value="Cigano">Cigano</option>
+	<option value="Criança">Criança</option>
+	<option value="Empreendimento da A.F.">Empreendimento da A.F.</option>
+	<option value="Extrativista">Extrativista</option>
+	<option value="Faxinalense">Faxinalense</option>
+	<option value="Fundo de Pasto">Fundo de Pasto</option>
+	<option value="Geraiszeiro">Geraiszeiro</option>
+	<option value="Indígena">Indígena</option>
+	<option value="Jangadeiro">Jangadeiro</option>
+	<option value="Jovem">Jovem</option>
+	<option value="Marisqueira">Marisqueira</option>
+	<option value="Pantaneiro">Pantaneiro</option>
+	<option value="Pescador Artesanal">Pescador Artesanal</option>
+	<option value="Praieiro">Praieiro</option>
+	<option value="Quebradeiras de Côco">Quebradeiras de Côco</option>
+	<option value="Quilombola">Quilombola</option>
+	<option value="Ribeirinho">Ribeirinho</option>
+	<option value="Seringueiro">Seringueiro</option>
+	<option value="Sertanejo">Sertanejo</option>
+	<option value="Varjeiro">Varjeiro</option>
+	<option value="Varzantereiro">Varzantereiro</option>
+</select>
+								
+							</div>
+								
+						</div>
+						
+					</div>
+					
+					
+					
+					
+					<div class="row">
+					
+						<div class="form-group col-md-12 col-sm-6 col-xs-12">
+							
+							<label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name">
+								Email 
+							</label>
+
+							<div class="col-md-5 col-sm-6 col-xs-12"><input id="formularioUpf:idEmailBeneficiarioPf" type="text" name="formularioUpf:idEmailBeneficiarioPf" class="form-control col-md-7 col-xs-12" maxlength="80">
+								
+							</div>
+						
+						</div>
+					
+					</div>
+					
+					<div class="row">
+					
+						<div class="form-group col-md-12 col-sm-6 col-xs-12">
+						
+							<label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name">
+								Telefone Residencial 
+							</label>
+
+							<div class="col-md-3 col-sm-6 col-xs-12"><input id="formularioUpf:idTelefoneResidencial" type="text" name="formularioUpf:idTelefoneResidencial" class="form-control col-md-7 col-xs-12 telefone" maxlength="13" autocomplete="off">
+								
+							</div>
+						</div>
+						
+					</div>
+					
+					<div class="row">
+						<div class="form-group col-md-12 col-sm-6 col-xs-12">
+						<label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name">
+								Celular 
+							</label>
+							<div class="col-md-3 col-sm-6 col-xs-12"><input id="formularioUpf:idCelular" type="text" name="formularioUpf:idCelular" class="form-control col-md-7 col-xs-12 telefoneCelular" maxlength="14" autocomplete="off">
+							</div>
+						</div>
+					</div>
+					
+					
+					<div class="row">
+					
+						<div class="form-group col-md-12 col-sm-6 col-xs-12">
+						
+							<label class="col-md-2 col-sm-3 col-xs-12" for="first-name">
+								Resp. pela Família*
+							</label>
+
+							<div class="col-md-3 col-sm-6 col-xs-12"><table id="formularioUpf:idRespFamilia">
+	<tbody><tr>
+<td>
+<input type="radio" name="formularioUpf:idRespFamilia" id="formularioUpf:idRespFamilia:0" value="true"><label for="formularioUpf:idRespFamilia:0"> Sim</label></td>
+<td>
+<input type="radio" name="formularioUpf:idRespFamilia" id="formularioUpf:idRespFamilia:1" value="false"><label for="formularioUpf:idRespFamilia:1"> Não</label></td>
+	</tr>
+</tbody></table> 
+
+							</div>
+							
+						</div>
+						
+					</div>
+
+					<div class="row">
+					
+						<div class="form-group col-md-12 col-sm-6 col-xs-12">
+						
+							<label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name">
+								Parentesco *
+							</label>
+
+							<div class="col-md-3 col-sm-6 col-xs-12"><select id="formularioUpf:idParentesco" name="formularioUpf:idParentesco" class="form-control" size="1">	<option value="" selected="selected">--Selecione--</option>
+	<option value="Agregado">Agregado</option>
+	<option value="Avô(ó)">Avô(ó)</option>
+	<option value="Companheira">Companheira</option>
+	<option value="Companheiro">Companheiro</option>
+	<option value="Cunhado(a)">Cunhado(a)</option>
+	<option value="Esposa">Esposa</option>
+	<option value="Filho(a)">Filho(a)</option>
+	<option value="Genro">Genro</option>
+	<option value="Irmão/Irmã">Irmão/Irmã</option>
+	<option value="Madrasta">Madrasta</option>
+	<option value="Mãe">Mãe</option>
+	<option value="Marido">Marido</option>
+	<option value="Não declara">Não declara</option>
+	<option value="Neto(a)">Neto(a)</option>
+	<option value="Nora">Nora</option>
+	<option value="Padrasto">Padrasto</option>
+	<option value="Pai">Pai</option>
+	<option value="Sobrinho(a)">Sobrinho(a)</option>
+	<option value="Sogro">Sogro</option>
+	<option value="Sozinho">Sozinho</option>
+	<option value="Tio(a)">Tio(a)</option>
+</select>
+								
+							</div>
+							
+						</div>
+						
+					</div><div class="row">
+									
+	<div class="form-group col-md-12 col-sm-6 col-xs-12">
+	
+		<div class="col-md-9">
+		
+			<span style="color: #ce5454">* campos obrigatórios</span>
+			
+		</div>
+		
+	</div>
+	
+</div>
+
+				</div>
+
+			</div>
+
+		</div>
+									
+			       				</div>
+			       				
+			       			</div>
+			       			
+			       			<div class="row">
+		 
+								<div class="col-md-12 col-sm-12 col-xs-12"><a id="formularioUpf:j_idt1079" href="#" title="Limpar" onclick="mojarra.ab(this,event,'click',0,'formularioUpf:formularioBeneficiarioPf');return false" class="btn btn-default">
+							        	 <i class="fa fa-eraser"></i> Limpar
+							        </a><span id="formularioUpf:idPanelSalvar"><a id="formularioUpf:j_idt1081" href="#" title="Salvar" onclick="mojarra.ab(this,event,'click','formularioUpf:formularioBeneficiarioPf','formularioUpf:idPanelIntegrantes formularioUpf:formularioBeneficiarioPf formularioUpf:idPanelPoliticaPublica');return false" class="btn btn-success">
+						       					<i class="fa fa-floppy-o"></i> Salvar
+					       					</a></span>
+			       				
+			       				</div>
+			       				
+			       			</div>
+			       			
+			       		</div>
+			       		
+			       	</div></span>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<div class="modal fade modalConfirmaInativacaoBeneficiario" tabindex="-1" role="dialog" aria-hidden="true">
+
+		<div class="modal-dialog modal-md">
+
+			<div class="modal-content">
+
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">×</span>
+						</button>
+						<h4 class="titulo_modulo">Confirmação</h4>
+					</div>
+
+					<div class="modal-body"><span id="formularioUpf:idmodalConfirmaInativacaoBeneficiario">
+							<h4>
+							</h4><span id="formularioUpf:messagesValidacaoModal">
+									<script>
+						               $(document).ready(function () {
+						            	   $('#botaoFechar').click();
+						               });
+						           </script>
+							
+								<div class="row">
+								
+									<div class="form-group col-md-12 col-sm-6 col-xs-12">
+									
+										<label class="control-label col-md-2 col-sm-3 col-xs-3" for="first-name">
+											Motivo 
+										</label>
+											
+										<div class="col-md-6 col-sm-6 col-xs-12"><select id="formularioUpf:idMotivo" name="formularioUpf:idMotivo" class="form-control" size="1">	<option value="" selected="selected">--Selecione--</option>
+	<option value="Falecimento">Falecimento</option>
+	<option value="Composição de nova família">Composição de nova família</option>
+	<option value="Mudou-se">Mudou-se</option>
+	<option value="Divórcio">Divórcio</option>
+	<option value="Não quer Ater">Não quer Ater</option>
+	<option value="Necessidade de Ater">Necessidade de Ater</option>
+	<option value="Duplicidade de Cadastro">Duplicidade de Cadastro</option>
+	<option value="Vendeu a Propriedade">Vendeu a Propriedade</option>
+	<option value="Família não encontrada na propriedade">Família não encontrada na propriedade</option>
+	<option value="Outros">Outros</option>
+	<option value="Assassinado">Assassinado</option>
+	<option value="Não faz parte da parceira">Não faz parte da parceira</option>
+	<option value="Acima da renda para receber Fomento">Acima da renda para receber Fomento</option>
+</select>
+
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+								
+									<div class="form-group col-md-12 col-sm-6 col-xs-12">
+									
+										<label class="control-label col-md-2 col-sm-3 col-xs-3" for="first-name">
+											Descrição 
+										</label>
+										
+										<div class="col-md-10 col-sm-6 col-xs-12"><textarea id="formularioUpf:idDescricaoMotivo" name="formularioUpf:idDescricaoMotivo" class="form-control col-md-7 col-xs-12" rows="6"></textarea>
+											
+										</div>
+										
+									</div>
+									
+								</div></span></span>
+						
+					</div>
+
+					<div class="modal-footer">
+					
+						<button id="botaoFechar" type="button" class="btn btn-default" data-dismiss="modal">
+							Agora não
+						</button><a id="formularioUpf:j_idt1101" href="#" onclick="mojarra.ab(this,event,'click','@form','importLibsJsInicioBodyPanel importLibsJsFinalBodyPanel formularioUpf:messagesValidacaoModal formularioUpf:idPanelIntegrantes');return false" class="btn btn-primary">Sim
+							<i class="fa fa-play"></i></a>
+					
+					</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<div class="modal fade modalInserirImagemBeneficiario" tabindex="-1" role="dialog" aria-hidden="true">
+
+		<div class="modal-dialog modal-lg">
+
+			<div class="modal-content">
+				<div class="modal-header">
+
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">×</span>
+					</button>
+
+				</div><span id="formularioUpf:formularioInserirImagemBeneficiarioPf"><span id="formularioUpf:idPanelScripts2">
+					
+					<style>
+				    #my_camera{
+				        width: 320px;
+				        height: 240px;
+				        border: 1px solid black;
+				    }
+				    
+	    			.fileUpload {
+					    position: relative;
+					    overflow: hidden;
+					    margin: -5px;
+					}
+					.fileUpload input.upload {
+					    position: absolute;
+					    top: 0;
+					    right: 0;
+					    margin: 0;
+					    padding: 0;
+					    font-size: 20px;
+					    cursor: pointer;
+					    opacity: 0;
+					    filter: alpha(opacity=0);
+					}	
+					.label-info {
+		    			background-color: #337ab7;
+					}
+					</style></span>
+					
+					<div class="x_panel">
+					
+						<div class="x_content"><div id="formularioUpf:idMensagemErro2"></div>
+						
+						
+												
+							<div class="row">
+								<div class="x_title">
+									<h2 class="titulo_modulo">
+										<i class="fa fa-flag" aria-hidden="true"></i> Cadastrar Imagem do Beneficiàrio
+									</h2>
+				
+									<div class="clearfix"></div>
+									
+									
+									
+									<div class="row">
+										<div class="form-group col-md-10 col-sm-6 col-xs-12">
+											<label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+												CPF
+											</label>
+											
+											<div class="col-md-9"><span id="formularioUpf:cpfFormComposicaoFamiliar" style="color:black"></span>
+											</div>
+										</div>	
+									</div>
+									
+									<div class="row">
+										<div class="form-group col-md-10 col-sm-6 col-xs-12">
+											<label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+												Nome
+											</label>
+											
+											<div class="col-md-9"><span id="formularioUpf:nomeFormComposicaoFamiliar" style="color:black"></span>
+											</div>
+										</div>	
+									</div>
+									
+									<div class="row">
+										<div class="form-group col-md-10 col-sm-6 col-xs-12">
+											<label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+												Parentesco
+											</label>
+											
+											<div class="col-md-9"><span id="formularioUpf:parentescoFormComposicaoFamiliar" style="color:black"></span>
+												
+											</div>
+										</div>	
+									</div>
+									
+									<div class="row">
+										<div class="form-group col-md-12 col-sm-12 col-xs-12">
+											<label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name"> Anexar Foto do Beneficiário * </label>
+
+											<div class="col-md-9 col-sm-5 col-xs-12">
+											
+											
+												<div class="fileUpload btn btn-primary">
+													<span class="glyphicon glyphicon-folder-open"></span> <span class="image-preview-input-title">Arquivo...</span> <span class="label label-info" id="upload-file-info2"></span>
+													
+												</div>						
+																			
+											</div><span class="msgCampoNovo" style="color:red">Tamanho de Arquivo permitido de até 2MB.</span>
+											
+											
+											
+										</div>		
+									</div>
+				
+								</div>
+								
+			       				
+			       			</div>
+			       			
+			       			<div class="row">
+		 
+								<div class="col-md-12 col-sm-12 col-xs-12"><a id="formularioUpf:j_idt1114" href="#" title="Limpar" onclick="mojarra.ab(this,event,'click',0,'formularioUpf:formularioInserirImagemBeneficiarioPf');return false" class="btn btn-default">
+							        	 <i class="fa fa-eraser"></i> Limpar
+							        </a><a id="formularioUpf:j_idt1116" href="#" title="Salvar" onclick="mojarra.ab(this,event,'click','@form','formularioUpf:formularioInserirImagemBeneficiarioPf formularioUpf:idPanelIntegrantes fecharModal formularioUpf:idPanelPoliticaPublica');return false" class="btn btn-success">
+				       					<i class="fa fa-floppy-o"></i> Salvar
+			       					</a>
+									
+			       				
+			       				</div>
+			       				
+			       			</div>
+			       			
+			       		</div>
+			       		
+			       	</div></span><div class="row">
+									
+	<div class="form-group col-md-12 col-sm-6 col-xs-12">
+	
+		<div class="col-md-9">
+		
+			<span style="color: #ce5454">* campos obrigatórios</span>
+			
+		</div>
+		
+	</div>
+	
+</div>
+
+			</div>
+
+		</div>
+
+	</div><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:2" value="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" autocomplete="off">
+</form>
+<form id="formConfirm" name="formConfirm" method="post" action="/pages/manterUPF/cadastrarUPF.xhtml" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="formConfirm" value="formConfirm">
+
+	
+		<div class="modal fade modalConfirmacao" tabindex="-1" role="dialog" aria-hidden="true">
+										
+            <div class="modal-dialog modal-md">
+            
+              	<div class="modal-content"><span id="formConfirm:campos">
+              	
+		             	<div class="modal-header">
+		             	   	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+		                 	<h4 class="titulo_modulo" id="myModalLabel2">Confirmação</h4>
+		                 </div>
+	                 
+		                <div class="modal-body"><span id="formConfirm:idModalMensagemConfirmacao">
+		                  		<h4> </h4></span>
+		                </div>
+	                 
+	                 	<div class="modal-footer">
+	                	       	<button type="button" class="btn btn-default" data-dismiss="modal">Agora não</button><a href="#" onclick="mojarra.jsfcljs(document.getElementById('formConfirm'),{'formConfirm:j_idt1127':'formConfirm:j_idt1127'},'');return false" class="btn btn-success">Sim
+									<i class="fa fa-play"></i></a>
+						</div></span>
+	                	
+        		</div>
+              
+			</div>
+            
+		</div><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:3" value="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" autocomplete="off">
+</form>
+	    
+	    <!-- footer content -->
+		<footer>
+		
+        	ANATER | Agência Nacional de Assistência Técnica e Extensão Rural
+        	<br> 
+        	© Sistema desenvolvido e mantido por: Gerência de Tecnologia da Informação - GTI
+        
+          	<div class="pull-right">
+          		1.1.0.1 01/08/2026 14:30	
+          	</div>
+          	
+          <div class="clearfix"></div>
+          
+        </footer>
+        <!-- /footer content -->
+	  
+	  	</div>
+	  
+	</div>
+
+
+	<!-- ########## IN&Iacute;CIO Configura&ccedil;&atilde;o Default do Template ########## --><span id="idPanelConfigPadraoTemplate">
+    
+    	<!-- jQuery -->
+	    <script src="anater-singup-page_files/jquery.min_vZAa.js"></script>
+	    
+	    <!-- Bootstrap -->
+	    <script src="anater-singup-page_files/bootstrap.min_vZAa.js"></script>
+	    
+	    <!-- FastClick -->
+	    <script src="anater-singup-page_files/fastclick_vZAa.js"></script>
+	    
+	    <!-- NProgress -->
+	    <script src="anater-singup-page_files/nprogress_vZAa.js"></script>
+	    
+	   	
+	    <!-- Dropzone.js -->
+   		<script src="anater-singup-page_files/dropzone.min_vZAa.js"></script>
+	    
+	    <!-- Chart.js -->
+	    <script src="anater-singup-page_files/Chart.min_vZAa.js"></script>
+	    
+	    <!-- gauge.js -->
+	    <script src="anater-singup-page_files/gauge.min_vZAa.js"></script>
+	    
+	    <!-- bootstrap-progressbar -->
+	    <script src="anater-singup-page_files/bootstrap-progressbar.min_vZAa.js"></script>
+	    
+	    <!-- iCheck -->
+	    <script src="anater-singup-page_files/icheck.min_vZAa.js"></script>
+	    
+	    <!-- Skycons -->
+	    <script src="anater-singup-page_files/skycons_vZAa.js"></script>
+	    
+	    <!-- Flot -->
+	    <script src="anater-singup-page_files/jquery.flot_vZAa.js"></script>
+	    <script src="anater-singup-page_files/jquery.flot.pie_vZAa.js"></script>
+	    <script src="anater-singup-page_files/jquery.flot.time_vZAa.js"></script>
+	    <script src="anater-singup-page_files/jquery.flot.stack_vZAa.js"></script>
+	    <script src="anater-singup-page_files/jquery.flot.resize_vZAa.js"></script>
+	    
+	    <!-- Flot plugins -->
+	    <script src="anater-singup-page_files/jquery.flot.orderBars_vZAa.js"></script>
+	    <script src="anater-singup-page_files/jquery.flot.spline.min_vZAa.js"></script>
+	    <script src="anater-singup-page_files/curvedLines_vZAa.js"></script>
+	    
+	    <!-- DateJS -->
+	    <script src="anater-singup-page_files/date_vZAa.js"></script>
+	    
+	    <!-- JQVMap -->
+	    <script src="anater-singup-page_files/jquery.vmap_vZAa.js"></script>
+	    <script src="anater-singup-page_files/jquery.vmap.world_vZAa.js"></script>
+	    <script src="anater-singup-page_files/jquery.vmap.sampledata_vZAa.js"></script>
+	    
+	    <!-- bootstrap-daterangepicker -->
+	    <script src="anater-singup-page_files/moment.min_vZAa.js"></script>
+	    <script src="anater-singup-page_files/daterangepicker_vZAa.js"></script>
+	
+	    <!-- Custom Theme Scripts -->
+	    <!-- Modifica&ccedil;&atilde;o realizada dia 10/08/2018 Guilherme - Atendimento do componente jquery.smartWizard do cadastro de Empreendimento -->
+	   	<!-- &lt;script src="/resources/outros/build/js/custom.min.js"&gt;&lt;/script&gt; -->
+	    <script src="anater-singup-page_files/custom.min_vZAa.js"></script>
+	    
+	    <!-- Datatables -->
+	    <script src="anater-singup-page_files/jquery.dataTables.min_vZAa.js"></script> <!-- Este script mostra a label Exibir, Buscar e Exibindo -->
+	    <script src="anater-singup-page_files/dataTables.bootstrap.min_vZAa.js"></script>
+	    <script src="anater-singup-page_files/dataTables.buttons.min_vZAa.js"></script>
+	    <script src="anater-singup-page_files/buttons.bootstrap.min_vZAa.js"></script>
+	    <script src="anater-singup-page_files/buttons.flash.min_vZAa.js"></script>
+	    <script src="anater-singup-page_files/buttons.html5.min_vZAa.js"></script>
+	    <script src="anater-singup-page_files/buttons.print.min_vZAa.js"></script>
+	    <script src="anater-singup-page_files/dataTables.fixedHeader.min_vZAa.js"></script>
+	    <script src="anater-singup-page_files/dataTables.keyTable.min_vZAa.js"></script>
+	    <script src="anater-singup-page_files/dataTables.responsive.min_vZAa.js"></script>
+	    <script src="anater-singup-page_files/responsive.bootstrap_vZAa.js"></script>
+	    <script src="anater-singup-page_files/dataTables.scroller.min_vZAa.js"></script>
+	    <script src="anater-singup-page_files/jszip.min_vZAa.js"></script>
+	    <script src="anater-singup-page_files/pdfmake.min_vZAa.js"></script>
+	    <script src="anater-singup-page_files/vfs_fonts_vZAa.js"></script></span>
+	<!-- ########## FIM Configura&ccedil;&atilde;o Default do Template ########## --><span id="importLibsJsFinalBodyPanel">
+				<script type="text/javascript" src="anater-singup-page_files/jquery-ui.min_vZAa.js"></script>
+				<link href="anater-singup-page_files/jquery-ui.min_vZAa.css" rel="stylesheet">
+				<link href="anater-singup-page_files/jquery-ui.structure.min_vZAa.css" rel="stylesheet">
+				<link href="anater-singup-page_files/jquery-ui.theme.min_vZAa.css" rel="stylesheet">
+				
+				<script type="text/javascript" src="anater-singup-page_files/jquery.mask.min_vZAa.js"></script>
+				<script type="text/javascript" src="anater-singup-page_files/jquery.maskMoney.min_vZAa.js"></script>
+				<script type="text/javascript" src="anater-singup-page_files/scriptUtil_vZAa.js"></script>
+				<script type="text/javascript" src="anater-singup-page_files/scriptUtilsGEO_vZAa.js"></script>
+				<script type="text/javascript" src="anater-singup-page_files/selectize.min_vZAa.js"></script>
+				 <!-- Custom Theme Scripts -->
+	   			 <!-- Modifica&ccedil;&atilde;o realizada dia 10/08/2018 Guilherme - Atendimento do componente jquery.smartWizard do cadastro de Empreendimento -->
+				<script src="anater-singup-page_files/cadastrarEmpreendimento_vZAa.js"></script>
+				
+				<!-- smartWizard -->
+	    		<script src="anater-singup-page_files/jquery.smartWizard_vZAa.js"></script>
+	    		
+	    		<!-- WebCam -->
+	    		<script src="anater-singup-page_files/webcam_vZAa.js"></script>
+	    		
+	    		<!-- FileInput -->
+	    		<script type="text/javascript" src="anater-singup-page_files/fileinput_vZAa.js"></script>
+	    		<!-- fancybox -->
+	    		<script type="text/javascript" src="anater-singup-page_files/jquery.fancybox.pack_vZAa.js"></script>
+	    		
+	    		<!-- faces api -->
+	    		<script src="anater-singup-page_files/face-api_vZAa.js"></script>
+	    		
+	    		<!-- OpenLayers - Google Maps integration-->
+	    		
+	    		<!-- &lt;script src="/resources/openlayers/js/ol3gm-debug.js"&gt;&lt;/script&gt; --></span> 
+</body></html>
+<!-- 
+		O banner est&aacute; configurado para n&atilde;o aparecer no modo celular
+		 hidden-xs:  Celular (largura de 0px at&eacute; 760px ser&aacute; oculto)
+		 visible-sm: Tablet  (largura de  765px at&eacute; 990 px ser&aacute; vis&iacute;vel)
+		 visible-md: Monitor menor (de 990px at&eacute; 1200px ser&aacute; vis&iacute;vel) 
+		 visible-lg: Monitor maior(a partir de 1200px ser&aacute; vis&iacute;vel)
+	-->
+<!-- top navigation -->

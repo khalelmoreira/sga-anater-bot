@@ -108,11 +108,14 @@ Three layers, so that a new data source (the user still has to investigate other
 
 - [x] Map field by field (real names/ids, input type, validations) each of the 8 fillable panels of the registration — **done**: UFPA, Atividade Produtiva, Diversos, Patrimônio, Plantel, Tipo Área, Integrantes, and Ações Potenciais are all mapped below, with real field ids pulled from saved HTML captures (see each panel's section)
 - [x] "Recursos disponíveis" and "Participação em atividades coletivas" sub-blocks (within Table 3 of the `.docx`) — **confirmed by Khalel: always empty in practice, ignore** (see Patrimônio panel section)
-- [ ] Decide the bot's login/session strategy: manual login (person authenticates and the bot takes over the session) vs. automated login with stored credentials
-- [ ] Investigate the other data sources the user still needs to identify, and how they fit into the extraction layer
-- [ ] Define in detail the high/low confidence rules of the canonical schema, per field type
-- [ ] Confirm browser automation tool (Playwright is the current recommendation)
-- [ ] Only start writing code after this mapping is done
+- [x] Decide the bot's login/session strategy: **automated login with stored credentials** — confirmed by Khalel
+- [x] Investigate the other data sources the user still needs to identify: **confirmed by Khalel — there are none; `.docx` + WhatsApp text are the only two sources**
+- [x] Define in detail the high/low confidence rules of the canonical schema, per field type — implemented in `src/schema/build.py`, one rule per field as documented in each panel's section above
+- [x] Confirm browser automation tool: **Playwright, confirmed by Khalel**
+- [x] Extraction layer (`src/extract/`) implemented and verified against `examples/example.docx` — both `docx_source.py` (10-table walker) and `whatsapp_source.py` (4-paragraph parser)
+- [x] Schema layer (`src/schema/`) implemented and verified — `build.py` turns raw records into per-panel `CanonicalField`s (+ `IndicadorAnswer` for Diagnóstico T0), applying every confidence rule documented above. Dropdown-heavy fields (Atividade, Unidade de Medida, Município, Comunidade/Grupo, Estado Civil, Classificação da Pessoa, Escolaridade) accept an optional live option catalog from `src/fill/` to upgrade low→high confidence just-in-time; without one they default to low rather than guessing
+- [x] `src/fill/` (Playwright) implemented for the 8 Cadastrar UFPA panels — locators and fill logic are grounded directly in `examples/anater-signup-page-1.html` (real stable ids, real radio/select DOM structure, real "Adicionar"/"Salvar"/modal button behavior) and smoke-tested with a mock page against the full canonical schema (correct accordion/panel/row ordering, correct number of "Adicionar" clicks per repeatable panel, low-confidence fields correctly held for review instead of blindly filled). **Not yet verified against the live site**: login (`src/fill/site.py:login()`), the "Consultar UFPA" filter screen (`open_cadastrar_ufpa()`), and all of Diagnóstico T0 (search screen + the ~140-question page) — no saved HTML capture exists for any of these three, so their selectors are best-effort placeholders. Needs a supervised first run to confirm/correct
+- [ ] Diagnóstico T0 fill-in (the ~140 Indicador questions, already mapped into `IndicadorAnswer` by the schema layer) — not implemented in `src/fill/` yet, only the 8 Cadastrar UFPA panels
 
 ---
 
