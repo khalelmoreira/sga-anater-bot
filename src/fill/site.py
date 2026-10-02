@@ -54,12 +54,15 @@ def login(page, usuario, senha, gate=None):
     safest to pass raw digits directly rather than a formatted CPF
     string (the mask plugin only reformats on real keystroke events,
     which Playwright's .fill() doesn't trigger)."""
+    def _submit_login():
+        page.locator("#loginform button[type=submit]").click()
+        page.wait_for_load_state("networkidle")  # this submits a plain form -> full page navigation
+
     gate = gate or ActionGate.noop()
     gate.confirm("Navigate to login page", lambda: page.goto(f"{BASE_URL}/pages/login.xhtml"))
     gate.confirm("Fill login CPF", lambda: page.fill("#j_username", usuario), label="CPF (login)", value=usuario)
     gate.confirm("Fill login password", lambda: page.fill("#j_password", senha), label="Senha", value=senha)
-    gate.confirm("Click ENTRAR (submit login)", lambda: page.locator("#loginform button[type=submit]").click())
-    page.wait_for_load_state("networkidle")
+    gate.confirm("Click ENTRAR (submit login)", _submit_login)
 
 
 # Fixed, single-option values on the Consultar UFPA filter screen,
@@ -93,28 +96,31 @@ def open_cadastrar_ufpa(page, *, municipio, gate=None):
     confirmed, and is the most likely thing to need correcting on a first
     live run.
     """
+    def _click_cadastro():
+        ufpa_item.get_by_text("Cadastro", exact=True).click()
+        page.wait_for_load_state("networkidle")  # full page: Consultar UFPA filter screen
+
+    def _select(site_id, label_option):
+        def _run():
+            page.locator(f"#formularioUpf\\:{site_id}").select_option(label=label_option)
+            page.wait_for_timeout(300)  # lets the AJAX cascade (Projeto -> Instrumento/Estado/Município) settle
+        return _run
+
+    def _click_cadastrar():
+        page.locator(r"#formularioUpf\:idPanelCadastroUpf").get_by_text("Cadastrar", exact=True).click()
+        page.wait_for_load_state("networkidle")  # full page: Cadastrar UFPA
+
     gate = gate or ActionGate.noop()
     ufpa_item = page.locator("#sidebar-menu li").filter(has_text="UFPA").first
     gate.confirm("Click sidebar 'UFPA' (expand submenu)", lambda: ufpa_item.locator("> a").first.click())
-    gate.confirm("Click sidebar 'Cadastro'", lambda: ufpa_item.get_by_text("Cadastro", exact=True).click())
-    page.wait_for_load_state("networkidle")
+    gate.confirm("Click sidebar 'Cadastro'", _click_cadastro)
 
-    gate.confirm("Select Projeto", lambda: page.locator(r"#formularioUpf\:idProjeto").select_option(label=_PROJETO_LABEL),
-                 label="Projeto", value=_PROJETO_LABEL)
-    page.wait_for_timeout(300)
-    gate.confirm("Select Instrumento", lambda: page.locator(r"#formularioUpf\:idInstrumento").select_option(label=_INSTRUMENTO_LABEL),
-                 label="Instrumento", value=_INSTRUMENTO_LABEL)
-    page.wait_for_timeout(300)
-    gate.confirm("Select Estado", lambda: page.locator(r"#formularioUpf\:idUf").select_option(label=_ESTADO_LABEL),
-                 label="Estado", value=_ESTADO_LABEL)
-    page.wait_for_timeout(300)
-    gate.confirm("Select Município", lambda: page.locator(r"#formularioUpf\:idMunicipio").select_option(label=municipio),
-                 label="Município", value=municipio)
-    page.wait_for_timeout(300)
+    gate.confirm("Select Projeto", _select("idProjeto", _PROJETO_LABEL), label="Projeto", value=_PROJETO_LABEL)
+    gate.confirm("Select Instrumento", _select("idInstrumento", _INSTRUMENTO_LABEL), label="Instrumento", value=_INSTRUMENTO_LABEL)
+    gate.confirm("Select Estado", _select("idUf", _ESTADO_LABEL), label="Estado", value=_ESTADO_LABEL)
+    gate.confirm("Select Município", _select("idMunicipio", municipio), label="Município", value=municipio)
 
-    gate.confirm("Click 'Cadastrar' (open Cadastrar UFPA page)",
-                 lambda: page.locator(r"#formularioUpf\:idPanelCadastroUpf").get_by_text("Cadastrar", exact=True).click())
-    page.wait_for_load_state("networkidle")
+    gate.confirm("Click 'Cadastrar' (open Cadastrar UFPA page)", _click_cadastrar)
 
 
 def expand_all_accordions(page, gate=None):
@@ -123,8 +129,10 @@ def expand_all_accordions(page, gate=None):
         collapse_id = heading_id.replace("heading", "collapse")
         panel = page.locator(f"#{collapse_id}")
         if "in" not in (panel.get_attribute("class") or ""):
-            gate.confirm(f"Expand accordion panel '{panel_name}'", lambda h=heading_id: loc.accordion_toggle(page, h))
-            page.wait_for_timeout(200)
+            def _toggle(h=heading_id):
+                loc.accordion_toggle(page, h)
+                page.wait_for_timeout(200)
+            gate.confirm(f"Expand accordion panel '{panel_name}'", _toggle)
 
 
 # ------------------------------------------------------------- field filling
@@ -154,32 +162,33 @@ def fill_field(page, field, review_handler=cli_review, gate=None):
     label_text = site_id[len("label:"):] if site_id.startswith("label:") else None
     where = f"{field.panel}/{field.field}"
 
+    def _settle():
+        page.wait_for_timeout(100)  # lets any onchange AJAX (mojarra.ab) settle
+
     if field.field_type == "text":
         target = loc.form_group_by_label(page, label_text).locator("input, textarea").first if label_text else loc.by_business_id(page, site_id)
-        gate.confirm(f"Fill '{where}'", lambda: target.fill(str(value)), label=field.field, value=value)
+        gate.confirm(f"Fill '{where}'", lambda: (target.fill(str(value)), _settle()), label=field.field, value=value)
 
     elif field.field_type == "select":
         # no schema field currently uses the "label:" scheme for a <select>
-        gate.confirm(f"Select '{where}'", lambda: loc.select_dropdown(page, site_id, str(value)), label=field.field, value=value)
+        gate.confirm(f"Select '{where}'", lambda: (loc.select_dropdown(page, site_id, str(value)), _settle()), label=field.field, value=value)
 
     elif field.field_type == "checkbox":
         target = loc.by_business_id(page, site_id)
         action = "Check" if value else "Uncheck"
-        gate.confirm(f"{action} '{where}'", lambda: (target.check() if value else target.uncheck()), label=field.field, value=value)
+        gate.confirm(f"{action} '{where}'", lambda: ((target.check() if value else target.uncheck()), _settle()), label=field.field, value=value)
 
     elif field.field_type == "radio_bool":
         group = loc.radio_group(page, site_id=None if label_text else site_id, label_text=label_text)
         option = "Sim" if value else "Não"
-        gate.confirm(f"Click '{option}' for '{where}'", lambda: loc.click_radio_option(group, option), label=field.field, value=value)
+        gate.confirm(f"Click '{option}' for '{where}'", lambda: (loc.click_radio_option(group, option), _settle()), label=field.field, value=value)
 
     elif field.field_type == "radio_text":
         group = loc.radio_group(page, site_id=None if label_text else site_id, label_text=label_text)
-        gate.confirm(f"Click '{value}' for '{where}'", lambda: loc.click_radio_option(group, str(value)), label=field.field, value=value)
+        gate.confirm(f"Click '{value}' for '{where}'", lambda: (loc.click_radio_option(group, str(value)), _settle()), label=field.field, value=value)
 
     else:
         raise ValueError(f"unknown field_type {field.field_type!r} for {field.panel}/{field.field}")
-
-    page.wait_for_timeout(100)  # lets any onchange AJAX (mojarra.ab) settle
 
 
 def fill_simple_panel(page, panel_fields, review_handler=cli_review, gate=None):
@@ -196,23 +205,32 @@ def fill_repeatable_panel(page, panel_name, rows_by_index, review_handler=cli_re
     see docs/mapeamento.md, each panel's "Structure" note)."""
     gate = gate or ActionGate.noop()
     panel_span_id = _REPEATABLE_ROW_PANEL[panel_name]
+    def _add_row():
+        loc.add_row_button(page, panel_span_id).click()
+        page.wait_for_timeout(300)
+
     for idx, row_fields in sorted(rows_by_index.items()):
         for field in row_fields:
             fill_field(page, field, review_handler, gate)
-        gate.confirm(f"Click 'Adicionar' ({panel_name} row {idx})", lambda: loc.add_row_button(page, panel_span_id).click())
-        page.wait_for_timeout(300)
+        gate.confirm(f"Click 'Adicionar' ({panel_name} row {idx})", _add_row)
 
 
 def fill_integrantes_panel(page, rows_by_index, review_handler=cli_review, gate=None):
     """One modal submission per person (see docs/mapeamento.md)."""
+    def _open_modal():
+        loc.inserir_integrante_button(page).click()
+        page.wait_for_timeout(300)
+
+    def _save_modal():
+        loc.modal_salvar_button(page).click()
+        page.wait_for_timeout(300)
+
     gate = gate or ActionGate.noop()
     for idx, person_fields in sorted(rows_by_index.items()):
-        gate.confirm(f"Click 'Inserir Integrante' (person {idx})", lambda: loc.inserir_integrante_button(page).click())
-        page.wait_for_timeout(300)
+        gate.confirm(f"Click 'Inserir Integrante' (person {idx})", _open_modal)
         for field in person_fields:
             fill_field(page, field, review_handler, gate)
-        gate.confirm(f"Click modal 'Salvar' (person {idx})", lambda: loc.modal_salvar_button(page).click())
-        page.wait_for_timeout(300)
+        gate.confirm(f"Click modal 'Salvar' (person {idx})", _save_modal)
 
 
 def group_by_panel_index(fields):
@@ -226,10 +244,12 @@ def group_by_panel_index(fields):
 
 
 def submit(page, gate=None):
+    def _submit():
+        loc.main_salvar_button(page).click()
+        page.wait_for_load_state("networkidle")
+
     gate = gate or ActionGate.noop()
-    gate.confirm("Click page 'Salvar' -- SUBMITS the whole Cadastrar UFPA registration",
-                 lambda: loc.main_salvar_button(page).click())
-    page.wait_for_load_state("networkidle")
+    gate.confirm("Click page 'Salvar' -- SUBMITS the whole Cadastrar UFPA registration", _submit)
 
 
 # --------------------------------------------------------------- orchestrator

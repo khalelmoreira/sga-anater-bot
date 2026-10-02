@@ -526,3 +526,18 @@ def extract_docx(path: str) -> list[dict]:
     records += _extract_indicadores(tables[9])
 
     return records
+
+
+def find_pa_municipio(path: str) -> tuple[str | None, str | None]:
+    """Pulls just Nome do PA / Município from the .docx -- the two values
+    the WhatsApp "Ações Potenciais" template is matched against (see
+    whatsapp_source.py:load_whatsapp_text()). Lighter than a full
+    extract_docx() + schema build when that's all a caller needs up front
+    (e.g. before deciding which WhatsApp template file to load)."""
+    records = extract_docx(path)
+    idx = {}
+    for r in records:
+        idx.setdefault(r["section"], {})[r["field"]] = r["value"]
+    pa_nome = idx.get("ufpa", {}).get("Nome do PA")
+    municipio = idx.get("entidade.local", {}).get("Município")
+    return pa_nome, municipio

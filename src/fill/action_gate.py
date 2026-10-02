@@ -14,10 +14,19 @@ Not meant to get in the way of the existing mock-page smoke tests or any
 future automated test — pass `ActionGate.noop()` (or no gate at all,
 every site.py function defaults to one) to run unattended with no
 prompting and no log file.
+
+Optional screenshots (`screenshot=True`, then `attach_page(page)` once
+the Playwright page exists): one .png after every executed/errored
+action, for runs with no visible browser window (headless, or a
+devcontainer with broken GUI forwarding). Unlike the JSONL log,
+screenshots are a picture of the real, filled form — NOT sanitized, and
+not meant to be read by Claude. They're for a human to open locally;
+logs/ (which holds both) is gitignored.
 """
 
 import datetime
 import json
+import re
 from pathlib import Path
 
 DEFAULT_LOG_DIR = "logs"
@@ -61,21 +70,37 @@ class AbortRun(Exception):
 class ActionGate:
     """Call confirm() before every state-changing Playwright action."""
 
-    def __init__(self, log_path=None, *, auto_allow=False):
+    def __init__(self, log_path=None, *, auto_allow=False, screenshot=False):
         self.auto_allow = auto_allow
+        stamp = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
         if log_path is None:
-            stamp = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
             log_path = f"{DEFAULT_LOG_DIR}/run-{stamp}.jsonl"
         self.path = Path(log_path)
         self.path.parent.mkdir(parents=True, exist_ok=True)
 
+        self.page = None
+        self._shot_count = 0
+        self.screenshot_dir = Path(DEFAULT_LOG_DIR) / "screenshots" / stamp if screenshot else None
+        if self.screenshot_dir is not None:
+            self.screenshot_dir.mkdir(parents=True, exist_ok=True)
+
     @classmethod
     def noop(cls):
-        """No prompting, no log file — for mock-page smoke tests / CI."""
+        """No prompting, no log file, no screenshots — for mock-page
+        smoke tests / CI."""
         gate = cls.__new__(cls)
         gate.auto_allow = True
         gate.path = None
+        gate.page = None
+        gate.screenshot_dir = None
+        gate._shot_count = 0
         return gate
+
+    def attach_page(self, page):
+        """Lets confirm() screenshot the live page after each action.
+        Call once the Playwright `page` exists (the gate itself is
+        normally created before the browser launches)."""
+        self.page = page
 
     def _write(self, **record):
         if self.path is None:
@@ -83,6 +108,29 @@ class ActionGate:
         record["ts"] = datetime.datetime.now().isoformat(timespec="seconds")
         with self.path.open("a", encoding="utf-8") as f:
             f.write(json.dumps(record, ensure_ascii=False) + "\n")
+
+    def _save_screenshot(self, description, tag):
+        if self.screenshot_dir is None or self.page is None:
+            return None
+        self._shot_count += 1
+        slug = re.sub(r"[^a-zA-Z0-9]+", "-", description).strip("-").lower()[:60]
+        path = self.screenshot_dir / f"{self._shot_count:04d}-{tag}-{slug}.png"
+        try:
+            # The action that just ran may have kicked off a page navigation
+            # or a JSF AJAX round-trip (mojarra.ab) that isn't done yet --
+            # without this, screenshots routinely capture a half-loaded or
+            # stale page. networkidle is best-effort (some actions trigger
+            # no network activity at all, so this just times out and moves
+            # on), plus a short fixed pause for the DOM/paint to catch up.
+            try:
+                self.page.wait_for_load_state("networkidle", timeout=2000)
+            except Exception:
+                pass
+            self.page.wait_for_timeout(150)
+            self.page.screenshot(path=str(path))
+        except Exception:
+            return None  # a screenshot failure must never break the actual run
+        return str(path)
 
     def confirm(self, description, action_fn, *, label=None, value=None):
         """Prompts allow/deny/quit for `description`, logs the decision
@@ -120,7 +168,9 @@ class ActionGate:
         try:
             result = action_fn()
         except Exception as e:
-            self._write(event="error", description=description, error=str(e))
+            shot = self._save_screenshot(description, "error")
+            self._write(event="error", description=description, error=str(e), screenshot=shot)
             raise
-        self._write(event="executed", description=description)
+        shot = self._save_screenshot(description, "ok")
+        self._write(event="executed", description=description, screenshot=shot)
         return result
