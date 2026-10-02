@@ -128,6 +128,11 @@ def build_ufpa(docx_idx, option_catalogs=None):
     # radio_text fields are clicked by matching this text, not the underlying option value (NENHUM)
     out.append(_f("ufpa", "Programa de Fomento", "idPbsm", "Nenhum.", "high", None, origin="fixed", field_type="radio_text"))
 
+    # Estado (idUf) must be set before Município: Município's options are
+    # filled by AJAX from it (empty otherwise). Pre-selected on the site
+    # when the filter screen's Estado carried over, so this usually skips.
+    out.append(_f("ufpa", "Estado", "idUf", "Mato Grosso", "high", None, origin="fixed", field_type="select"))
+
     # --- dropdowns needing live-catalog confirmation
     municipio, conf, reason = dropdown_match(local.get("Município"), option_catalogs.get("idMunicipio"))
     out.append(_f("ufpa", "Município", "idMunicipio", municipio, conf, reason, field_type="select"))
@@ -135,8 +140,6 @@ def build_ufpa(docx_idx, option_catalogs=None):
     comunidade, conf, reason = dropdown_match(ufpa.get("Grupo"), option_catalogs.get("idComunidade"))
     out.append(_f("ufpa", "Comunidade / Grupo", "idComunidade", comunidade, conf, reason, field_type="select"))
 
-    # Estado (idUf) is pre-set at the site right before Cadastro, not from
-    # the docx — not a fill target, deliberately not emitted here.
     # Bairro, Número, and the 3 geographic-coordinate fields are confirmed
     # never filled by the bot — deliberately not emitted here either.
 

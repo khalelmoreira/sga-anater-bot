@@ -57,9 +57,15 @@ def click_radio_option(group_locator, option_text):
     group_locator.locator("label", has_text=option_text).first.click()
 
 
+def _select_locator(page, site_id):
+    """The <select> for a business id. Some ids (e.g. Estado's `idUf`)
+    sit on a wrapper <span> around an auto-id'd <select>, so match either."""
+    return page.locator(f'select#{FORM}\\:{site_id}, #{FORM}\\:{site_id} select')
+
+
 def select_dropdown(page, site_id, option_text):
     """Selects a <select> option by its visible label text."""
-    page.locator(f'#{FORM}\\:{site_id}').select_option(label=option_text)
+    _select_locator(page, site_id).select_option(label=option_text)
 
 
 def select_is_already_set(page, site_id, wanted):
@@ -68,7 +74,7 @@ def select_is_already_set(page, site_id, wanted):
     selected option's value or visible text; `wanted` may also be a longer
     description that contains the selected value (e.g. Meta: "Cod.: 21100
     - ..." vs option value "21100")."""
-    sel = page.locator(f'#{FORM}\\:{site_id}')
+    sel = _select_locator(page, site_id)
     cur_value = sel.evaluate("el => el.value")
     if not cur_value:
         return False
@@ -81,10 +87,17 @@ def select_dropdown_if_needed(page, site_id, wanted):
     """Leaves a pre-selected <select> alone. Otherwise selects `wanted`
     (by value, then by visible text); failing that, if the site offers
     exactly one non-blank option, selects that one. Returns True if it
-    changed anything."""
+    changed anything.
+
+    Cascading selects (Município after Estado) are filled by AJAX, so
+    first wait for real options to show up."""
+    sel = _select_locator(page, site_id)
+    try:
+        sel.locator('option:not([value=""])').first.wait_for(state="attached", timeout=10000)
+    except Exception:
+        pass  # fall through to the error below with the real option count
     if select_is_already_set(page, site_id, wanted):
         return False
-    sel = page.locator(f'#{FORM}\\:{site_id}')
     for kwargs in ({"value": str(wanted)}, {"label": str(wanted)}):
         try:
             sel.select_option(timeout=2000, **kwargs)
