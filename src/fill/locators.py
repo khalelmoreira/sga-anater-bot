@@ -62,6 +62,42 @@ def select_dropdown(page, site_id, option_text):
     page.locator(f'#{FORM}\\:{site_id}').select_option(label=option_text)
 
 
+def select_is_already_set(page, site_id, wanted):
+    """True if the <select> already shows `wanted` — the site pre-selects
+    the standard Projeto/Instrumento/Meta/Classificação. Matches the
+    selected option's value or visible text; `wanted` may also be a longer
+    description that contains the selected value (e.g. Meta: "Cod.: 21100
+    - ..." vs option value "21100")."""
+    sel = page.locator(f'#{FORM}\\:{site_id}')
+    cur_value = sel.evaluate("el => el.value")
+    if not cur_value:
+        return False
+    cur_label = sel.evaluate("el => el.options[el.selectedIndex].text").strip()
+    wanted = str(wanted).strip()
+    return wanted in (cur_value, cur_label) or cur_value in wanted
+
+
+def select_dropdown_if_needed(page, site_id, wanted):
+    """Leaves a pre-selected <select> alone. Otherwise selects `wanted`
+    (by value, then by visible text); failing that, if the site offers
+    exactly one non-blank option, selects that one. Returns True if it
+    changed anything."""
+    if select_is_already_set(page, site_id, wanted):
+        return False
+    sel = page.locator(f'#{FORM}\\:{site_id}')
+    for kwargs in ({"value": str(wanted)}, {"label": str(wanted)}):
+        try:
+            sel.select_option(timeout=2000, **kwargs)
+            return True
+        except Exception:
+            pass
+    options = [v for v in sel.locator("option").evaluate_all("els => els.map(e => e.value)") if v]
+    if len(options) == 1:
+        sel.select_option(value=options[0])
+        return True
+    raise ValueError(f"<select {site_id}> isn't set to {wanted!r} and has {len(options)} non-blank options")
+
+
 def add_row_button(page, panel_span_id):
     """The 'Adicionar' button for a repeatable-row panel (Atividade
     Produtiva, Patrimônio, Plantel, Tipo Área), located by the stable

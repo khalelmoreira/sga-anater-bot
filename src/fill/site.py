@@ -174,7 +174,10 @@ def fill_field(page, field, review_handler=cli_review, gate=None):
 
     elif field.field_type == "select":
         # no schema field currently uses the "label:" scheme for a <select>
-        gate.confirm(f"Select '{where}'", lambda: (loc.select_dropdown(page, site_id, str(value)), _settle()), label=field.field, value=value)
+        if loc.select_is_already_set(page, site_id, value):
+            print(f"[SKIP] '{where}' already set on the site -- nothing to select")
+            return
+        gate.confirm(f"Select '{where}'", lambda: (loc.select_dropdown_if_needed(page, site_id, value), _settle()), label=field.field, value=value)
 
     elif field.field_type == "checkbox":
         target = loc.by_business_id(page, site_id)
