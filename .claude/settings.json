@@ -6,7 +6,11 @@
       "Edit(./.env)",
       "Edit(./.env.*)",
       "Read(./data/*)",
-      "Edit(./data/**)"
+      "Edit(./data/**)",
+      "Read(./logs/schemas/*)",
+      "Edit(./logs/schemas/**)",
+      "Read(./logs/screenshots/*)",
+      "Edit(./logs/screenshots/**)"
     ],
     "allow": [
       "Read(./data/acoes_potenciais/**)"
