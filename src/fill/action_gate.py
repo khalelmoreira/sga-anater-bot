@@ -41,6 +41,7 @@ SENSITIVE_FIELD_NAMES = {
     "nome", "apelido", "nome da ufpa",
     "nome da mãe", "nome do pai",
     "nome do transmitente ou beneficiário", "cpf transmitente ou beneficiário",
+    "cpf (transmitente/beneficiário)",
     "nis/cad único", "e-mail", "email", "celular",
     "data de nascimento", "data da união", "data de ocupação originária",
     "data de ocupação atual",
@@ -49,7 +50,12 @@ SENSITIVE_FIELD_NAMES = {
 
 
 def _is_sensitive(label):
-    return bool(label) and label.strip().lower() in SENSITIVE_FIELD_NAMES
+    if not label:
+        return False
+    name = label.strip().lower()
+    # any CPF-bearing label is redacted, even if its exact wording isn't
+    # in the set (that gap is how "CPF (Transmitente/beneficiário)" leaked)
+    return name in SENSITIVE_FIELD_NAMES or "cpf" in name
 
 
 def sanitize(label, value):
