@@ -21,6 +21,8 @@ page-1.html), not guessed:
     `idPanelXxx` span — located by that, not by id.
 """
 
+from src.schema.rules import normalize
+
 FORM = "formularioUpf"
 
 
@@ -80,7 +82,11 @@ def select_is_already_set(page, site_id, wanted):
         return False
     cur_label = sel.evaluate("el => el.options[el.selectedIndex].text").strip()
     wanted = str(wanted).strip()
-    return wanted in (cur_value, cur_label) or cur_value in wanted
+    return (
+        wanted in (cur_value, cur_label)
+        or cur_value in wanted
+        or normalize(wanted) == normalize(cur_label)
+    )
 
 
 def select_dropdown_if_needed(page, site_id, wanted):
@@ -104,7 +110,16 @@ def select_dropdown_if_needed(page, site_id, wanted):
             return True
         except Exception:
             pass
-    options = [v for v in sel.locator("option").evaluate_all("els => els.map(e => e.value)") if v]
+    # punctuation/case/accent-insensitive match against the live options
+    # (docx "PA.MACIFE" vs site "PA MACIFE")
+    live = [o for o in sel.locator("option").evaluate_all(
+        "els => els.map(e => ({value: e.value, text: e.text}))") if o["value"]]
+    target = normalize(wanted)
+    matches = [o for o in live if normalize(o["text"]) == target or normalize(o["value"]) == target]
+    if len(matches) == 1:
+        sel.select_option(value=matches[0]["value"])
+        return True
+    options = [o["value"] for o in live]
     if len(options) == 1:
         sel.select_option(value=options[0])
         return True
