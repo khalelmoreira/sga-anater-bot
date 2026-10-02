@@ -71,9 +71,16 @@ def add_row_button(page, panel_span_id):
 
 
 def accordion_toggle(page, heading_id):
-    """Expands an accordion panel by its heading id, if it's collapsed."""
-    heading = page.locator(f"#{heading_id}")
-    heading.locator("a").first.click()
+    """Expands an accordion panel by its heading id, if it's collapsed.
+
+    The heading *is* the clickable <a> itself (id="headingXxx" sits on
+    the <a class="panel-heading" ...> tag — see examples/anater-signup-
+    page-1.html), not a wrapper containing a separate <a> child. An
+    earlier version of this function searched for a descendant <a>
+    inside it, which never matches (Playwright's .locator() only finds
+    descendants, never the element itself) and hangs until Playwright's
+    default click timeout."""
+    page.locator(f"#{heading_id}").click()
 
 
 def inserir_integrante_button(page):
