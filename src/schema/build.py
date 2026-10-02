@@ -55,7 +55,6 @@ def build_ufpa(docx_idx, option_catalogs=None):
         ("Nome da gleba", "label:Nome da gleba", ufpa.get("Nome da gleba")),
         ("Nome do Transmitente ou beneficiário", "idNomeTransmitenteBeneficiario", ufpa.get("Nome do Transmitente ou beneficiário")),
         ("CPF (Transmitente/beneficiário)", "idCpfTransmitenteBeneficiario", ufpa.get("CPF (Transmitente/beneficiário)")),
-        ("Nome do PA", "idNomePa", ufpa.get("Nome do PA")),
     ]
     for label, site_id, value in text_fields:
         v, conf, reason = optional_text(value)
@@ -81,12 +80,18 @@ def build_ufpa(docx_idx, option_catalogs=None):
         ("Exerce cargo, emprego ou função pública remunerada?", "idExerceCargoPublico", coord.get("Exerce cargo, emprego ou função pública remunerada?")),
         ("Presta serviço de interesse comunitário à comunidade rural?", "label:Presta Serviço De Interesse Comunitário", coord.get("Presta serviço de interesse comunitário à comunidade rural?")),
         ("É proprietário, cotista ou acionista de sociedade empresária em atividade?", "label:É Proprietário, Cotista Ou Acionista", coord.get("É proprietário, cotista ou acionista de sociedade empresária?")),
-        ("É proprietário(a) de outro imóvel rural dentro do território nacional?", "label:É Proprietário (A) De Outro Imóvel Rural", coord.get("É proprietário(a) de outro imóvel rural no território nacional?")),
+        ("É proprietário(a) de outro imóvel rural dentro do território nacional?", "label:É Proprietário(a) De Outro Imóvel Rural", coord.get("É proprietário(a) de outro imóvel rural no território nacional?")),
         ("Aufere renda familiar não agrária acima do limite?", "label:Aufere Renda Familiar", coord.get("Aufere renda familiar não agrária acima do limite?")),
     ]
     for label, site_id, value in bool_fields:
         v, conf, reason = bool_direct(value, label)
         out.append(_f("ufpa", label, site_id, v, conf, reason, field_type="radio_bool"))
+
+    # --- Nome do PA: revealed by AJAX only after "Área em projeto de
+    # assentamento – PA?" = Sim, so it must come after that radio (fill
+    # order == list order)
+    v, conf, reason = optional_text(ufpa.get("Nome do PA"))
+    out.append(_f("ufpa", "Nome do PA", "idNomePa", v, conf, reason))
 
     # --- conditional: only meaningful/filled under a specific prior answer
     if ufpa.get("É ocupante primitivo?") is False:
