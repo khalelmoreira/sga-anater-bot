@@ -123,16 +123,19 @@ def open_cadastrar_ufpa(page, *, municipio, gate=None):
     gate.confirm("Click 'Cadastrar' (open Cadastrar UFPA page)", _click_cadastrar)
 
 
-def expand_all_accordions(page, gate=None):
+def open_panel(page, panel_name, gate=None):
+    """Opens one accordion panel if it's collapsed. The panels share
+    data-parent="#accordion", so opening one collapses the others —
+    call this right before filling that panel, never up front for all."""
     gate = gate or ActionGate.noop()
-    for panel_name, heading_id in _PANEL_HEADING.items():
-        collapse_id = heading_id.replace("heading", "collapse")
-        panel = page.locator(f"#{collapse_id}")
-        if "in" not in (panel.get_attribute("class") or ""):
-            def _toggle(h=heading_id):
-                loc.accordion_toggle(page, h)
-                page.wait_for_timeout(200)
-            gate.confirm(f"Expand accordion panel '{panel_name}'", _toggle)
+    heading_id = _PANEL_HEADING[panel_name]
+    collapse_id = heading_id.replace("heading", "collapse")
+    panel = page.locator(f"#{collapse_id}")
+    if "in" not in (panel.get_attribute("class") or "").split():
+        def _toggle():
+            loc.accordion_toggle(page, heading_id)
+            page.wait_for_timeout(400)  # bootstrap collapse transition
+        gate.confirm(f"Expand accordion panel '{panel_name}'", _toggle)
 
 
 # ------------------------------------------------------------- field filling
@@ -259,22 +262,23 @@ def fill_cadastro_ufpa(page, schema_panels, review_handler=cli_review, gate=None
     canonical schema (src.schema.build_schema()["panels"]). Does NOT
     submit — call submit(page) once satisfied."""
     gate = gate or ActionGate.noop()
-    expand_all_accordions(page, gate)
-
     by_panel = {}
     for field in schema_panels:
         base = field.panel.split("[")[0]
         by_panel.setdefault(base, []).append(field)
 
-    fill_simple_panel(page, by_panel.get("ufpa", []), review_handler, gate)
-    fill_simple_panel(page, by_panel.get("diversos", []), review_handler, gate)
-    fill_simple_panel(page, by_panel.get("acoes_potenciais", []), review_handler, gate)
+    for panel_name in ("ufpa", "diversos", "acoes_potenciais"):
+        if by_panel.get(panel_name):
+            open_panel(page, panel_name, gate)
+            fill_simple_panel(page, by_panel[panel_name], review_handler, gate)
 
     for panel_name in ("atividade_produtiva", "patrimonio", "plantel", "tipo_area"):
         fields = [f for f in schema_panels if f.panel.startswith(panel_name)]
         if fields:
+            open_panel(page, panel_name, gate)
             fill_repeatable_panel(page, panel_name, group_by_panel_index(fields), review_handler, gate)
 
     integrantes_fields = [f for f in schema_panels if f.panel.startswith("integrantes")]
     if integrantes_fields:
+        open_panel(page, "integrantes", gate)
         fill_integrantes_panel(page, group_by_panel_index(integrantes_fields), review_handler, gate)
