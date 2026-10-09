@@ -407,6 +407,7 @@ def build_integrantes(records, option_catalogs=None):
         out.append(_f(
             panel, "Parentesco", "idParentesco", p.get("Parentesco"), "low",
             "no source in the .docx and no fixed default — always needs human input, per Khalel",
+            field_type="select",
         ))
 
     return out
