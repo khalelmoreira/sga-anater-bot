@@ -59,6 +59,15 @@ def click_radio_option(group_locator, option_text):
     group_locator.locator("label", has_text=option_text).first.click()
 
 
+class OptionNotFound(ValueError):
+    """The <select> has no option matching the wanted value. `.options`
+    holds the live visible option texts so a human can pick one."""
+
+    def __init__(self, site_id, wanted, options):
+        super().__init__(f"<select {site_id}> isn't set to {wanted!r} and has {len(options)} non-blank options")
+        self.site_id, self.wanted, self.options = site_id, wanted, options
+
+
 def _select_locator(page, site_id):
     """The <select> for a business id. Some ids (e.g. Estado's `idUf`)
     sit on a wrapper <span> around an auto-id'd <select>, so match either."""
@@ -123,7 +132,7 @@ def select_dropdown_if_needed(page, site_id, wanted):
     if len(options) == 1:
         sel.select_option(value=options[0])
         return True
-    raise ValueError(f"<select {site_id}> isn't set to {wanted!r} and has {len(options)} non-blank options")
+    raise OptionNotFound(site_id, wanted, [o["text"].strip() for o in live])
 
 
 def add_row_button(page, panel_span_id):

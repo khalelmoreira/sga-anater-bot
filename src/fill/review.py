@@ -9,8 +9,11 @@ fill them, and uses whatever value comes back (or skips the field
 entirely if told to).
 """
 
+import difflib
 from dataclasses import dataclass
 from typing import Any
+
+from src.schema.rules import normalize
 
 SKIP = object()  # sentinel: leave this field unfilled on the site
 
@@ -57,3 +60,40 @@ def resolve(fields, review_handler=cli_review):
         field.review_reason = None
         resolved.append(field)
     return resolved
+
+
+def _rank_options(wanted, options):
+    """Options sorted by closeness to `wanted` (shared words first,
+    character similarity as a tiebreaker)."""
+    target = normalize(wanted)
+    words = set(target.split())
+
+    def score(opt):
+        n = normalize(opt)
+        overlap = len(words & set(n.split())) / max(len(words), 1)
+        return overlap + 0.2 * difflib.SequenceMatcher(None, target, n).ratio()
+
+    return sorted(options, key=score, reverse=True)
+
+
+def pick_option(field_label, wanted, options, show=8):
+    """Human picker for a dropdown whose wanted value matches no live
+    option. Returns the chosen option text, or SKIP. Type a number to
+    pick, any other text to filter the full list, or 'skip'."""
+    print(f"\n--- NO MATCHING OPTION: {field_label} ---")
+    print(f"  source value  : {wanted!r}  ({len(options)} options on the site)")
+    shown = _rank_options(wanted, options)[:show]
+    while True:
+        for i, opt in enumerate(shown, 1):
+            print(f"  {i:>2}. {opt}")
+        answer = input("  number to pick, text to search the full list, or 'skip': ").strip()
+        if answer.lower() == "skip":
+            return SKIP
+        if answer.isdigit() and 1 <= int(answer) <= len(shown):
+            return shown[int(answer) - 1]
+        if answer:
+            found = [o for o in options if normalize(answer) in normalize(o)]
+            if found:
+                shown = found[:30]
+            else:
+                print("  (nothing matches that)")

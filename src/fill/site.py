@@ -22,7 +22,7 @@ Grounding, honestly stated:
 
 from src.fill import locators as loc
 from src.fill.action_gate import ActionGate
-from src.fill.review import cli_review
+from src.fill.review import SKIP, cli_review, pick_option
 
 BASE_URL = "https://sga.anater.org"
 
@@ -177,7 +177,18 @@ def fill_field(page, field, review_handler=cli_review, gate=None):
         if loc.select_is_already_set(page, site_id, value):
             print(f"[SKIP] '{where}' already set on the site -- nothing to select")
             return
-        gate.confirm(f"Select '{where}'", lambda: (loc.select_dropdown_if_needed(page, site_id, value), _settle()), label=field.field, value=value)
+        def _select():
+            try:
+                loc.select_dropdown_if_needed(page, site_id, value)
+            except loc.OptionNotFound as e:
+                choice = pick_option(where, value, e.options)
+                if choice is SKIP:
+                    print(f"[SKIP] '{where}' left unfilled")
+                    return
+                loc.select_dropdown_if_needed(page, site_id, choice)
+            _settle()
+
+        gate.confirm(f"Select '{where}'", _select, label=field.field, value=value)
 
     elif field.field_type == "checkbox":
         target = loc.by_business_id(page, site_id)
