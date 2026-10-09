@@ -71,6 +71,7 @@ def main():
     parser.add_argument("--auto-submit", action="store_true", help="click Salvar automatically instead of pausing for review")
     parser.add_argument("--headless", action="store_true", help="run the browser headless (default: visible, recommended for the first real runs)")
     parser.add_argument("--auto-allow", action="store_true", help="don't prompt before each action (still logged) -- NOT recommended for a first live run")
+    parser.add_argument("--auto-allow-until", type=int, default=0, metavar="N", help="don't prompt for the first N actions (still logged) -- use the number shown in the last [ACTION n] prompt you verified, e.g. when retrying after a crash; prompts resume at N+1")
     parser.add_argument("--no-screenshots", action="store_true", help="skip the after-action screenshots")
     args = parser.parse_args()
 
@@ -78,7 +79,7 @@ def main():
         parser.error("pass exactly one of docx_path or --schema")
 
     load_dotenv()
-    gate = ActionGate(auto_allow=args.auto_allow, screenshot=not args.no_screenshots)
+    gate = ActionGate(auto_allow=args.auto_allow, screenshot=not args.no_screenshots, auto_allow_until=args.auto_allow_until)
     print(f"Action log: {gate.path}")
     if gate.screenshot_dir:
         print(f"Screenshots: {gate.screenshot_dir}/ (not sanitized -- real data, review yourself)")

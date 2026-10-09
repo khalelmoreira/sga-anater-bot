@@ -76,8 +76,13 @@ class AbortRun(Exception):
 class ActionGate:
     """Call confirm() before every state-changing Playwright action."""
 
-    def __init__(self, log_path=None, *, auto_allow=False, screenshot=False):
+    def __init__(self, log_path=None, *, auto_allow=False, screenshot=False, auto_allow_until=0):
         self.auto_allow = auto_allow
+        # actions numbered 1..auto_allow_until run without a prompt (still
+        # logged); the prompt shows each action's number so a retry after a
+        # crash can pass the last number already verified
+        self.auto_allow_until = auto_allow_until
+        self.action_count = 0
         stamp = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
         if log_path is None:
             log_path = f"{DEFAULT_LOG_DIR}/run-{stamp}.jsonl"
@@ -96,6 +101,8 @@ class ActionGate:
         smoke tests / CI."""
         gate = cls.__new__(cls)
         gate.auto_allow = True
+        gate.auto_allow_until = 0
+        gate.action_count = 0
         gate.path = None
         gate.page = None
         gate.screenshot_dir = None
@@ -149,12 +156,16 @@ class ActionGate:
         prompting — still logged, just not interactively confirmed.
         """
         safe_value = sanitize(label, value) if label is not None else None
-        self._write(event="prompt", description=description, field=label, value=safe_value)
+        self.action_count += 1
+        n = self.action_count
+        self._write(event="prompt", n=n, description=description, field=label, value=safe_value)
 
-        if self.auto_allow:
+        if self.auto_allow or n <= self.auto_allow_until:
             answer = "y"
         else:
-            prompt = f"\n[ACTION] {description}"
+            if n == self.auto_allow_until + 1 and self.auto_allow_until:
+                print(f"\n--- auto-allow window ended after action {self.auto_allow_until}; prompting from here ---")
+            prompt = f"\n[ACTION {n}] {description}"
             if label is not None:
                 prompt += f"  (field={label!r}, value={safe_value!r})"
             answer = input(prompt + "\n  allow? [Y/n/q/a=allow remaining]: ").strip().lower()
