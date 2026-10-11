@@ -4,14 +4,13 @@ Fill layer — canonical schema -> site, via Playwright.
 Browser automation for the Cadastrar UFPA page, login, and the
 Consultar UFPA filter screen is grounded in the saved HTML captures in
 examples/ (see site.py's module docstring for exactly what's confirmed
-vs. still inferred). Diagnóstico T0 is not grounded or implemented yet.
+vs. still inferred). Diagnóstico T0 lives in diagnostico.py.
 
 register_ufpa() is the end-to-end convenience entrypoint: extract -> build
 schema -> pre-flight gate -> login -> navigate -> fill -> (pause on low
-confidence) -> submit. Diagnóstico T0 (the ~140-question follow-up) is a
-separate step — not implemented yet, since the only panels mapped
-field-by-field so far are the 8 Cadastrar UFPA ones (see
-docs/mapeamento.md).
+confidence) -> submit. Diagnóstico T0 (the questionnaire) is a
+separate step: src.fill.diagnostico.run_diagnostico_t0() /
+scripts.run_diagnostico (see docs/mapeamento.md).
 """
 
 from src.extract import extract_docx

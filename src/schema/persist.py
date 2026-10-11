@@ -17,7 +17,7 @@ import json
 from dataclasses import asdict
 from pathlib import Path
 
-from src.schema.model import CanonicalField
+from src.schema.model import CanonicalField, IndicadorAnswer
 
 
 def save_panels(panels, path):
@@ -31,3 +31,24 @@ def load_panels(path):
     with open(path, encoding="utf-8") as f:
         data = json.load(f)
     return [CanonicalField(**d) for d in data]
+
+
+def indicadores_path(panels_path):
+    """Where the Diagnóstico T0 answers live next to a saved panels file:
+    logs/schema-x.json -> logs/schema-x.diagnostico.json (the panels file
+    keeps its original format so run_registration --schema is unaffected)."""
+    p = Path(panels_path)
+    return str(p.with_name(p.stem + ".diagnostico.json"))
+
+
+def save_indicadores(answers, path):
+    Path(path).parent.mkdir(parents=True, exist_ok=True)
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump([asdict(a) for a in answers], f, ensure_ascii=False, indent=2)
+    return str(path)
+
+
+def load_indicadores(path):
+    with open(path, encoding="utf-8") as f:
+        data = json.load(f)
+    return [IndicadorAnswer(**d) for d in data]

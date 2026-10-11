@@ -46,7 +46,7 @@ the registration/site panels:
 | 5 and 6 | Integrantes (one block per person) | CPF, name, nickname, sex, marital status, birth date, education, classification, contact, UFPA responsible party | **Integrantes** panel | Mapped, still needs detail |
 | 7 | Políticas Públicas (per member) | Federal public policy, year joined | — | **Out of scope** (user decision — the site's equivalent panel is also left unfilled) |
 | 8 | Proteção de Dados Pessoais (LGPD) | Consent text + signature | — | **Out of scope** (documentation, doesn't go to the site) |
-| 9 | Indicadores | ~140 Sim/Não/Não se aplica questions, organized by Eixo (SOCIAL, AMBIENTAL, ECONÔMICO) and Indicador | **Diagnóstico T0** | Mapped — answer format matches the site's, match considered reliable |
+| 9 | Indicadores | ~140 Sim/Não/Não se aplica questions, organized by Eixo (SOCIAL, AMBIENTAL, ECONÔMICO) and Indicador | **Diagnóstico T0** | Mapped — but see "Diagnóstico T0 question page" below: the Eixo labels and question counts do **not** match the site 1:1 (header rows, wrong Eixo), match by Indicador + question text, not by Eixo/position |
 
 ### Inconsistencies already observed during extraction
 
@@ -316,8 +316,10 @@ different, out-of-scope flow).
 ## Open points
 
 - [x] "Consultar UFPA" filter screen — mapped below
-- [ ] Diagnóstico T0 search screen and the ~140-question page — not yet
-      captured
+- [x] Diagnóstico T0 search screen + results table — mapped below (only
+      Estado is filled; Município/Status unused); Iniciar/Continuar button
+      markup still needs a capture
+- [ ] The ~140-question page — not yet captured
 
 ---
 
@@ -785,3 +787,270 @@ Eixo Fundiário
 
 4 fields, clean 1:1 structure, one cross-check rule (PA/município header
 match). Nothing left open.
+
+---
+
+# Consultar Diagnóstico T0 — search screen mapping
+
+Pulled from `examples/ANATER-diagnostico-T0-consulta-page.html` (blank
+form) and `examples/ANATER-diagnostico-T0-consulta-page-estado-filled.html`
+(Estado selected, Pesquisar already clicked, results table rendered). This
+is the page the sidebar's "Diagnóstico T0" link opens (step 4 of the
+flow). Form is `formularioDiagnostico`, action
+`/pages/manterDiagnostico/consultarDiagnostico.xhtml`. Unlike Consultar
+UFPA, **the Pesquisar/results step is part of the flow.**
+
+## Flow — simplified by Khalel: only Estado is needed
+
+1. Instrumento — already set (nothing to do).
+2. Estado — single option, select it.
+3. **Município and Status do Diagnóstico stay empty.** Without Município
+   the search lists every município of the Estado, so the bot only needs
+   the person's **name** — no município to carry over from the
+   registration step. Status is also left empty (see below).
+4. Click **Pesquisar** (full page reload).
+5. Type the person's name in the DataTables search box ("Buscar:").
+6. Look at the matching row's **Ações** and act on it:
+   - **Iniciar** / **Continuar** → click it, opens the question page
+     (mapped separately).
+   - **Finalizado** → nothing to do; stop and report "already finalized".
+   - 0 rows → pause (name typo or the registration didn't save).
+   - >1 rows → pause (low confidence) unless exactly one is
+     Iniciar/Continuar; confirm below.
+
+Leaving Status empty is what makes step 6 work for every state: the bot
+doesn't need to know whether the person is Iniciar or Continuar, it reads
+it off the row.
+
+## Filters
+
+| Field | Site field id | Type | Notes |
+| --- | --- | --- | --- |
+| Instrumento | `formularioDiagnostico:idInstrumento` | select | Single option `CTR.GTI.ASS.667.26`, **already selected**. `onchange` AJAX-re-renders `idPanelBeneficiario` (the span holding Estado/Município/Status) — don't touch it |
+| Estado | `formularioDiagnostico:idEstado` | select | Single option, value `51` = "Mato Grosso". Id differs from Consultar UFPA (`idUf` there). `onchange` AJAX-cascades `idMunicipio` (enables it) |
+| Município | `formularioDiagnostico:idMunicipio` | select | **Not used.** Disabled until Estado is picked; leave at `--Selecione--` |
+| Status do Diagnóstico | `formularioDiagnostico:idStatusDiagnostico` | select | **Not used.** Options `C` Continuar, `I` Iniciar, `F` Finalizado; leave empty |
+| Limpar | `j_idt182` (auto-generated) | button (`jsfcljs`) | **ignore** |
+| Pesquisar | `j_idt184` (auto-generated; locate by `title="Pesquisar"` / visible text) | button (`jsfcljs`) | **Full form submit (page reload), not AJAX** — wait for load, not for an AJAX overlay |
+
+## Results panel
+
+Container `formularioDiagnostico:idListagemResultado`, holding a
+DataTables table `#DataTables_Table_0` (`table.dataTable`).
+
+- **Columns:** Cód. UFPA · Nome da UFPA · Validade da DAP · Estado ·
+  Município · Evolução (progress bar, `aria-valuenow` = %) · Ações.
+- **Search box:** `#DataTables_Table_0_filter input[type=search]` (no id
+  on the input itself). It's DataTables' **client-side** filter: the
+  server renders every row once on Pesquisar, and typing only hides rows.
+  No request is sent, so no wait is needed beyond the table redraw.
+  Filters across all columns, case-insensitive substring.
+- **Paging:** "Exibir 10/25/50/100"; the sample had 194 results over 20
+  pages. With a search term applied only matching rows are listed, so the
+  bot never needs to page.
+- **Nome cell:** the name is followed by a `<br>` — read with stripped
+  text. Nome da UFPA is the registered person's name (case as typed, e.g.
+  `Maria Raimunda Da Silva`), so compare normalized (case/accents), like
+  the dropdown matching already in `src/fill/`.
+- **Row identity:** buttons carry `formularioDiagnostico:j_idt217:<N>:j_idtXXX`
+  where `<N>` is the row's index in the *unfiltered* list and
+  `j_idt217` is auto-generated. Neither is stable — **locate the row by
+  name text, then the button by its visible text/`title` inside that row.**
+
+### Ações — all three variants captured
+
+Captured from `...-iniciar-status.html` and `...-continuar-status.html`
+(Status filter set to Iniciar / Continuar just to get those rows; the
+bot itself leaves Status empty).
+
+| Button | Visible text | `title` | Markup | Notes |
+| --- | --- | --- | --- | --- |
+| Iniciar | `Iniciar` | `Iniciar/Continuar Diagnóstico` | `<a class="btn btn-success btn-info btn-xs">`, `jsfcljs` submit `...:j_idt217:N:j_idt250`, no `id` | row with Evolução `0.0%` |
+| Continuar | `Continuar` | `Iniciar/Continuar Diagnóstico` | `<a class="btn btn-info btn-info btn-xs">`, same `jsfcljs` submit `...:j_idt217:N:j_idt250` | row with partial Evolução (e.g. `58.14%`) |
+| Finalizado | `Finalizado` | `Diagnóstico Finalizado` | `<a class="btn btn-dark btn-xs">`, `jsfcljs` submit `...:j_idt217:N:j_idt253` | Evolução `100.00%` → bot stops |
+| Progresso | `Progresso` | `Progresso de Inserção de Dados` | `<a class="btn btn-primary btn-xs">`, AJAX, opens modal `modalProgressoBeneficiario` | **ignore** |
+
+Iniciar and Continuar are the **same action** (same `title`, same submit
+target `j_idt250`, only the label/colour differs) → the bot clicks
+whichever of the two is in the row; use `a[title="Iniciar/Continuar
+Diagnóstico"]` inside the matched row. Don't use `j_idt217`/`N`/`j_idt250`
+(auto-generated / row index). Finalizado has a different title, so it
+can't be clicked by mistake with that selector.
+
+Sample sizes: 12 Iniciar and 2 Continuar results for Mato Grosso in the
+test account — Evolução `0.0%` is how a freshly registered person shows.
+
+### Homonym rule — confirmed by Khalel
+
+Search the name; collect the matching rows (compare normalized
+case/accents on Nome da UFPA):
+- exactly 1 row → act on its Ações;
+- >1 rows → if exactly one has the `Iniciar/Continuar Diagnóstico`
+  button, use it; otherwise **pause** (low confidence, human picks);
+- 0 rows → pause.
+
+## Open points
+
+- [ ] Possible loading overlay after the Estado cascade — see the memory
+      note `conditional-field-loading-popup`.
+- [x] The question page itself — mapped below.
+
+---
+
+# Diagnóstico T0 question page — mapping
+
+Pulled from `examples/ANATER-diagnostico-T0-fill-page.html` (blank: nothing
+answered). This is the page Iniciar/Continuar opens. Form is
+`formDiagnostico`, action `/pages/manterDiagnostico/cadastrarDiagnostico.xhtml`.
+
+## Header (read-only context + one select)
+
+| Item | Where | Rule |
+| --- | --- | --- |
+| Instrumento, **UFPA**, Estado, Município | plain text at the top | **Safety check**: the UFPA name shown here must match the person we meant to open (normalized). Mismatch → stop, don't answer anything. Cheap guard against clicking the wrong row |
+| Instrumento Meta | `formDiagnostico:idInstrumentoMeta` (select) | Single real option, value `21367` = "Cod.: 21367 - UCM - Diagnóstico Individual T0 (P1) - 8/2026 a 10/2026" → **always select it**. `onchange` AJAX-re-renders `idPanelQuantidade` (Qtd. Prevista / Qtd. Disponível, empty read-only labels in the capture) — wait for that AJAX before answering |
+
+## Questions: 129 Sim/Não/Não se Aplica radios
+
+- **129 questions**, 11 indicadores, 3 eixos, all blank.
+- Each question is a `div` with a `<label>` containing the
+  `fa-hand-o-right` icon + the question text, followed by a 3-radio table.
+- Radios: `name="formDiagnostico:j_idtNNN"` (auto-generated, **unstable**),
+  ids `...:0/1/2`, values **`true`** = Sim, **`false`** = Não,
+  **`N-A`** = Não se Aplica; each radio has a `<label>` with the visible
+  text. Locate the question by its **label text**, then click the radio
+  whose label is Sim / Não / Não se Aplica **inside that row**. No
+  question lacks the third option, none has a default/checked radio, no
+  duplicate question text on the page.
+- Headings: Eixo = `label.fundoEixo` ("Eixo: Econômico"), Indicador =
+  `label.fundoIndicadorSanfona` ("Indicador: UCM - ..."), both flat in
+  the DOM (comments `foreach eixo / Resultado/Indicador / Variáveis`).
+  Not collapsed accordions despite the class name.
+
+| Eixo (site) | Indicador (site) | Questions |
+| --- | --- | --- |
+| Econômico | UCM - Regularização Fundiária | 17 |
+| Econômico | UCM - Políticas Públicas | 17 |
+| Ambiental | UCM - Recomposição Ambiental | 5 |
+| Ambiental | UCM - Situação do CAR | 17 |
+| Ambiental | UCM - Manejo Integrado do fogo | 14 |
+| Ambiental | UCM - Regularização Ambiental | 10 |
+| Ambiental | UCM - Propriedade com práticas sustentáveis | 28 |
+| Ambiental | UCM - Capacitação em recuperação ambiental e regularização ambiental | 3 |
+| Social | UCM - Capacitações em produção Sustentável | 6 |
+| Social | UCM - Capacitação em Ordenamento territorial e regularização fundiária | 4 |
+| Social | UCM - Segurança Alimentar e Nutricional | 8 |
+
+## `.docx` ↔ site: NOT a clean 1:1 (corrects the earlier assumption)
+
+Compared `examples/example.docx` Table 9 as extracted today (11 blocks,
+143 questions / 142 answers) with the site (129):
+
+1. **Eixo in the `.docx` is unreliable.** Same 11 Indicadores, but the
+   `.docx` files "Recomposição Ambiental" under SOCIAL and the two
+   "Capacitação..." ones under ECONÔMICO, vs Ambiental/Social on the
+   site. **Match by Indicador name only** (normalize: case, accents,
+   strip the `UCM - ` prefix). Also a `.docx` typo: "Capaciatção em
+   recuperação ambiental...".
+2. **The `.docx` has "header" rows the site doesn't.** Multi-part items
+   ("Se sim na questão 5, qual?" → a…m) are 1 header row + N option rows
+   in the `.docx`, but on the site each option is its own radio whose
+   label is `<parent text> <letter>. <option text>` (e.g. `5. Se sim na
+   questão 5, qual? a. Contrato de Compra e Venda`). So the `.docx` count
+   is higher by the number of header rows. **This means the current
+   "question count ≠ answer count → low confidence" rule in
+   `build_indicadores()` will fire on false positives** and the
+   header rows must be dropped/merged into their options before pairing.
+3. **Question text differs slightly** — numbering/tabs/letters
+   (`a.\t`, `b)`), `ou ou` typo on the site, one site label has a
+   stray trailing `b` (`Pronaf Custeio b`), one site label has two
+   questions glued together (Segurança Alimentar Q5 + Q6 in one label),
+   and one `.docx`-only option (`7. ... d) mais do que 3 (três)
+   mulheres`) has no site radio (site has only a, b, c).
+   → match by **normalized text + order within the Indicador**, fuzzy
+   (containment / similarity ≥ threshold), never by absolute position.
+4. Rule for the bot: a site question with no confident `.docx` match, or
+   a `.docx` answer with no site question, is **low confidence → pause**
+   (and a `.docx` answer for an option that doesn't exist on the site is
+   dropped with a note). Questions the `.docx` answers as blank → leave
+   unanswered and flag.
+
+## Buttons
+
+| Button | Site id | Type | Rule |
+| --- | --- | --- | --- |
+| Voltar | `j_idt745` (auto-generated) | `jsfcljs` | ignore |
+| Salvar | `j_idt747` (auto-generated; locate by `title="Salvar"`) | `jsfcljs` full submit | saves progress → person shows as **Continuar** until complete |
+| Finalizar | `formDiagnostico:j_idt749:j_idt750` (AJAX) | opens confirm modal `formConfirm` ("Confirmação", buttons "Agora não" / confirm) | marks the diagnostic **Finalizado**. **Confirmed by Khalel: the bot never clicks it — Finalizar is human input.** |
+
+**Confirmed by Khalel: the bot ends with Salvar only.** After Salvar the
+person shows as Continuar (or stays Iniciar if nothing was answered); the
+human reviews and clicks Finalizar manually.
+
+## Continuar version (partially answered) — `ANATER-diagnostico-T0-fill-page-half.html`
+
+Same DOM as the blank page (same 129 questions in the same order, same
+radio names/ids, same buttons), with the saved state rendered in:
+
+- Answered questions have the matching radio `checked`; unanswered have
+  none. Sample: 75 answered (12 Sim, 36 Não, 27 Não se Aplica), 54
+  unanswered — the unanswered ones are not necessarily at the end, so the
+  bot checks **each question's own state**, not "resume from N".
+- **Instrumento Meta already selected** (`21367`) and **Qtd. Prevista /
+  Qtd. Disponível already populated** (410 / 230 in the sample). Selecting
+  it again on a Continuar page is unnecessary; only select it if the
+  select is still on `--Selecione--`.
+- The UFPA name in the header is the safety-check target here too.
+- Radio `name`s were identical between the two captures, but they're
+  auto-generated, so keep locating by label text.
+
+Rule for Continuar (working default, tell me if you want otherwise):
+**fill only unanswered questions, never overwrite an existing answer.** If
+an existing answer differs from the `.docx` value, don't change it — list
+it in the end summary as a discrepancy for the human.
+
+## Answer rules for Diagnóstico T0 — confirmed by Khalel
+
+Implemented in `build_indicadores()` (`src/schema/build.py`):
+
+1. **Nothing marked → `Não se Aplica`** (high confidence), for every
+   question. (More than one option marked is still low confidence, pause.)
+2. **Propriedade com práticas sustentáveis, question 7** — ignore the
+   first `7. Mulheres na UFPA diretamente beneficiadas pelo projeto de
+   recuperação` row and the option `d) mais do que 3 (três) mulheres`;
+   the site only has the options a, b, c of `7.Se sim, quantas mulheres...`.
+3. **Políticas Públicas** (ECONÔMICO) **questions 2 and 6** — ignore the
+   `2. Se não, qual o motivo?` / `6. Se sim, qual?` rows' own answer and
+   use only their options (a–c, and a–i).
+
+Ignored rows produce no `IndicadorAnswer` at all.
+
+## Open points
+
+- [ ] Session ~20 min: 129 radio clicks is fast with Playwright, but
+      Salvar early if pausing for human review.
+- [ ] Update `src/schema/build.py` (`build_indicadores`) for header rows /
+      Indicador-based matching — a code change, not done here.
+- [x] `src/fill/diagnostico.py` + `scripts/run_diagnostico.py`: search
+      screen, question page, matching, Salvar. Verified offline against the
+      saved captures (`python -m tests.test_diagnostico`), **not yet run
+      against the live site**.
+- [x] **Source answers misaligned in the `.docx` extraction** — fixed in
+      `src/schema/build.py` (`_align_indicador()`). The question and answer
+      columns drift because header rows ("Se sim, qual?") get a
+      placeholder answer (`Qual`, `3. Motivo`) or none at all. Only lines
+      containing `( ) Sim` count as answers; each question line then takes
+      the next answer or is a header taking none, chosen by minimum cost
+      with the list markers inside the cells (`a)`, `4 .`, `7.`) as
+      anchors. Header rows produce no `IndicadorAnswer`. If markers can't
+      be reconciled the whole Indicador becomes one low-confidence record
+      (pause) instead of a guess. On `example.docx` every block aligns.
+      An answer with more than one option marked is low confidence; one
+      with none marked is high and simply left unanswered by the fill
+      layer (reported in the summary).
+- [x] Schema persistence for Diagnóstico T0: `scripts.extract_schema`
+      now also resolves the low-confidence answers and saves
+      `<schema>.diagnostico.json` next to the panels file;
+      `scripts.run_diagnostico --schema <schema>.json` reuses it (the
+      panels file only supplies the person's name). Panels file format is
+      unchanged, so `run_registration --schema` is unaffected.

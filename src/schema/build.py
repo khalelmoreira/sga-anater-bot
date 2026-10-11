@@ -10,8 +10,10 @@ real, live option list so ambiguous values can be upgraded from low to
 high confidence; without it, those fields are conservatively flagged low.
 """
 
+import re
+
 from src.schema.model import CanonicalField, IndicadorAnswer
-from src.schema.rules import bool_direct, dropdown_match, optional_text, required_text
+from src.schema.rules import bool_direct, dropdown_match, normalize, optional_text, read_choice, required_text
 
 
 def _index(records):
@@ -451,26 +453,155 @@ def build_acoes_potenciais(whatsapp_data, docx_idx):
 
 # ------------------------------------------------------------------ Indicadores
 
+_CHOICE_LINE = re.compile(r"\(\s*[xX]?\s*\)\s*Sim", re.IGNORECASE)
+_LABEL = re.compile(r"^\s*(?:(\d+)|([a-zA-Z]))\s*[.)]")
+_HEADER_HINT = re.compile(r"\b(se\s+(sim|n[ãa]o)|qual|quais|quantas?)\b", re.IGNORECASE)
+
+
+def _label(text):
+    """Leading list marker of a question/answer line: '4' for '4. ...' /
+    '4 .(  ) Sim', 'a' for 'a) ...'. None when the line has none."""
+    m = _LABEL.match(text.replace("\xa0", " "))
+    if not m:
+        return None
+    return m.group(1) or m.group(2).lower()
+
+
+def _header_cost(questions, i):
+    """How plausible it is that question line i is a header that takes no
+    answer: cheapest when it introduces lettered options ("a)", "b.", ...)
+    on the next line, cheap-ish when its wording looks like one ("Se sim,
+    qual?"), otherwise expensive."""
+    own, nxt = _label(questions[i]), _label(questions[i + 1]) if i + 1 < len(questions) else None
+    if nxt and nxt.isalpha() and not (own and own.isalpha()):
+        return 1
+    return 4 if _HEADER_HINT.search(questions[i]) else 8
+
+
+def _align_indicador(questions, answers):
+    """Pairs the question lines of one Indicador with its answer lines.
+
+    The .docx cell has one line per question and one per answer, but
+    multi-part items ("Se sim, qual?" followed by options a, b, c...) put a
+    header line in the question column that has either a placeholder
+    answer ("Qual", "3. Motivo") or no answer line at all — so the two
+    columns drift apart by a different amount in every block. Zipping them
+    pairs questions with the wrong answers.
+
+    Alignment: only lines that really are answers (contain "( ) Sim") are
+    answers; every question line either takes the next one or is a header
+    that takes none. Chosen by minimum cost, where a list marker that
+    disagrees between question and answer ("7." vs "a)") is almost
+    forbidden and agreeing markers are rewarded, so the answer cells'
+    own labels anchor the pairing.
+
+    Returns [(question, answer_or_None), ...] (None = header, nothing to
+    answer), or None when no consistent alignment exists.
+    """
+    ans = [a for a in answers if _CHOICE_LINE.search(a.replace("\xa0", " "))]
+    nq, na = len(questions), len(ans)
+    if na > nq:
+        return None
+    INF = float("inf")
+    # cost[i][j]: best cost having consumed i questions and j answers
+    cost = [[INF] * (na + 1) for _ in range(nq + 1)]
+    back = [[None] * (na + 1) for _ in range(nq + 1)]
+    cost[0][0] = 0
+    for i in range(nq + 1):
+        for j in range(na + 1):
+            if cost[i][j] == INF:
+                continue
+            if i < nq:  # question i is a header (no answer)
+                c = cost[i][j] + _header_cost(questions, i)
+                if c < cost[i + 1][j]:
+                    cost[i + 1][j], back[i + 1][j] = c, "skip"
+            if i < nq and j < na:  # question i takes answer j
+                lq, la = _label(questions[i]), _label(ans[j])
+                if lq and la:
+                    pair = -2 if lq == la else 20
+                else:
+                    pair = 0
+                c = cost[i][j] + pair
+                if c < cost[i + 1][j + 1]:
+                    cost[i + 1][j + 1], back[i + 1][j + 1] = c, "pair"
+    if cost[nq][na] == INF or cost[nq][na] >= 20:  # >= 20: a label conflict had to be accepted
+        return None
+    out, i, j = [], nq, na
+    while i > 0:
+        step = back[i][j]
+        if step == "pair":
+            out.append((questions[i - 1], ans[j - 1]))
+            i, j = i - 1, j - 1
+        else:
+            out.append((questions[i - 1], None))
+            i -= 1
+    return out[::-1]
+
+
+# .docx questions with no counterpart on the site's Diagnóstico T0 page —
+# dropped, never answered (confirmed by Khalel). Keyed by normalized
+# Indicador name; each rule is (kind, normalized question text), where the
+# question text is compared without its leading number/letter marker only
+# for "startswith" rules.
+#   Propriedade com práticas sustentáveis, question 7: the "7. Mulheres na
+#   UFPA ..." yes/no row (the site only has the "7.Se sim, quantas mulheres"
+#   options a, b, c) and its option "d) mais do que 3 (três) mulheres".
+#   Políticas Públicas, questions 2 and 6: the "Se não, qual o motivo?" /
+#   "Se sim, qual?" rows carry a stray answer; only their options a... matter.
+_IGNORED_QUESTIONS = {
+    "propriedade com praticas sustentaveis": [
+        ("startswith", "7 mulheres na ufpa diretamente beneficiadas"),
+        ("startswith", "d mais do que 3"),
+    ],
+    "politicas publicas": [
+        ("equals", "2 se nao qual o motivo"),
+        ("equals", "6 se sim qual"),
+    ],
+}
+
+
+def _is_ignored(indicador, question):
+    q = normalize(question)
+    for kind, text in _IGNORED_QUESTIONS.get(normalize(indicador), []):
+        if (kind == "equals" and q == text) or (kind == "startswith" and q.startswith(text)):
+            return True
+    return False
+
+
 def build_indicadores(records):
-    """Diagnóstico T0 (Table 9). A mismatched question/answer count inside
-    one eixo/indicador block means that block's per-question alignment
-    can't be trusted — emit one low-confidence summary record for it
-    rather than guessing a pairing. A clean 1:1 count is split into one
-    IndicadorAnswer per question."""
+    """Diagnóstico T0 (Table 9). Question and answer lines are aligned by
+    _align_indicador() (header rows dropped, list markers as anchors). One
+    IndicadorAnswer per real question; header rows produce nothing, nor do
+    the questions in _IGNORED_QUESTIONS. If no consistent alignment exists
+    for an Indicador, a single low-confidence summary record is emitted for
+    human review instead of guessing.
+
+    Rules on the answer itself (confirmed by Khalel):
+      - nothing marked -> "Não se Aplica" (high confidence);
+      - more than one option marked -> low confidence, a human decides."""
     out = []
     for r in [x for x in records if x["section"] == "indicadores"]:
         v = r["value"]
         eixo, indicador = v["eixo"], v["indicador"]
         questions, answers = v["questions"], v["answers"]
-        if len(questions) != len(answers):
+        pairs = _align_indicador(questions, answers)
+        if pairs is None:
             out.append(IndicadorAnswer(
                 eixo, indicador, "(all questions in this indicador)", None, "low",
-                f"question count ({len(questions)}) doesn't match answer count ({len(answers)}) "
-                f"in the source .docx — misalignment, needs human review before filling",
+                f"couldn't align the {len(questions)} question lines with the {len(answers)} answer lines "
+                f"in the source .docx — needs human review before filling",
             ))
             continue
-        for q, a in zip(questions, answers):
-            out.append(IndicadorAnswer(eixo, indicador, q, a, "high"))
+        for q, a in pairs:
+            if a is None or _is_ignored(indicador, q):
+                continue
+            choice, state = read_choice(a)
+            if state == "ambiguous":
+                out.append(IndicadorAnswer(eixo, indicador, q, a, "low", "more than one option marked (or unreadable) in the source answer"))
+            elif state == "blank":
+                out.append(IndicadorAnswer(eixo, indicador, q, "Não se Aplica", "high"))
+            else:
+                out.append(IndicadorAnswer(eixo, indicador, q, a, "high"))
     return out
 
 

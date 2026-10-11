@@ -97,3 +97,37 @@ def pick_option(field_label, wanted, options, show=8):
                 shown = found[:30]
             else:
                 print("  (nothing matches that)")
+
+
+@dataclass
+class _AnswerView:
+    """Lets the CLI review handler (written for CanonicalField) show an
+    IndicadorAnswer."""
+    panel: str
+    field: str
+    value: Any
+    review_reason: str | None
+
+
+def resolve_indicadores(answers, review_handler=cli_review):
+    """Same idea as resolve(), for Diagnóstico T0 answers: runs the handler
+    on every low-confidence IndicadorAnswer and returns a new list where a
+    reviewed answer is a clean 'Sim' / 'Não' / 'Não se Aplica' with high
+    confidence. Skipped answers — and reviews that don't come out as one of
+    the three options — are dropped, which leaves that question unanswered
+    on the site."""
+    from src.schema.rules import parse_choice
+
+    resolved = []
+    for a in answers:
+        if a.confidence != "low":
+            resolved.append(a)
+            continue
+        decision = review_handler(_AnswerView(f"diagnostico_t0 / {a.indicator}", a.question, a.value, a.review_reason))
+        choice = None if decision.value is SKIP else parse_choice(decision.value)
+        if choice is None:
+            print(f"  (left unanswered: {a.question[:70]})")
+            continue
+        a.value, a.confidence, a.review_reason = choice, "high", None
+        resolved.append(a)
+    return resolved

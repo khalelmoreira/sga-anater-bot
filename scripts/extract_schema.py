@@ -5,6 +5,9 @@ same way scripts/run_registration.py does it) + the pre-flight gate, then
 resolves every low-confidence field with cli_review() -- all before any
 browser opens -- and saves the fully-resolved schema to a JSON file.
 
+It also builds and resolves the Diagnóstico T0 answers and saves them next
+to it (<out stem>.diagnostico.json) for scripts/run_diagnostico.py --schema.
+
 This is entirely optional. scripts/run_registration.py works fine
 without ever running this: by default it extracts, builds, and reviews
 in memory, exactly as before. Use this script when you'd rather do that
@@ -24,10 +27,10 @@ import argparse
 import sys
 
 from src.extract import extract_docx, extract_whatsapp_text, find_pa_municipio, load_whatsapp_text
-from src.fill.review import cli_review, resolve
+from src.fill.review import cli_review, resolve, resolve_indicadores
 from src.schema import build_schema
 from src.schema.gate import check_blocking
-from src.schema.persist import save_panels
+from src.schema.persist import indicadores_path, save_indicadores, save_panels
 
 
 def main():
@@ -59,8 +62,15 @@ def main():
     resolved = resolve(schema["panels"], cli_review)
 
     path = save_panels(resolved, args.out)
+
+    print(f"\n{len(schema['indicadores'])} Diagnóstico T0 answers built. Resolving low-confidence ones (if any)...")
+    answers = resolve_indicadores(schema["indicadores"], cli_review)
+    answers_path = save_indicadores(answers, indicadores_path(path))
+
     print(f"\nSaved resolved schema: {path}")
-    print(f"Run it with: python -m scripts.run_registration --schema {path} --municipio \"<município>\"")
+    print(f"Saved Diagnóstico T0 answers: {answers_path}")
+    print(f"Register with:   python -m scripts.run_registration --schema {path} --municipio \"<município>\"")
+    print(f"Then diagnostic: python -m scripts.run_diagnostico --schema {path}")
 
 
 if __name__ == "__main__":

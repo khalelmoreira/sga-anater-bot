@@ -70,3 +70,36 @@ def required_text(value, field_label):
 
 def optional_text(value, field_label=None):
     return value, "high", None
+
+
+# ------------------------------------------------------- Sim/Não answers
+
+_CHOICE_RE = re.compile(r"\(\s*([xX]?)\s*\)\s*(N[ãa]o\s+se\s+aplica|N/?A|Sim|N[ãa]o)", re.IGNORECASE)
+
+
+def read_choice(raw):
+    """-> (choice, state). state is 'ok' (choice is 'Sim' / 'Não' / 'Não se
+    Aplica'), 'blank' (no option marked) or 'ambiguous' (more than one
+    marked, or unreadable text)."""
+    if raw is None:
+        return None, "blank"
+    text = str(raw).strip()
+    clean = {"sim": "Sim", "nao": "Não", "nao se aplica": "Não se Aplica", "na": "Não se Aplica"}
+    if normalize(text) in clean:
+        return clean[normalize(text)], "ok"
+    found = _CHOICE_RE.findall(text)
+    if not found:
+        return None, "ambiguous" if text else "blank"
+    marked = []
+    for mark, label in found:
+        if mark:
+            n = normalize(label)
+            marked.append("Não se Aplica" if n in ("na", "nao se aplica") else ("Sim" if n == "sim" else "Não"))
+    if len(marked) == 1:
+        return marked[0], "ok"
+    return None, "blank" if not marked else "ambiguous"
+
+
+def parse_choice(raw):
+    """'( x ) Sim ( ) Não' -> 'Sim'; None when blank or ambiguous."""
+    return read_choice(raw)[0]

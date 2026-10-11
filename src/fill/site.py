@@ -16,8 +16,8 @@ Grounding, honestly stated:
     Município and the real Cadastrar button. The one inferred (not
     directly captured) part is the sidebar's "UFPA" item expand — see
     that function's docstring.
-  - Diagnóstico T0 (search + the ~140-question page) is NOT in any saved
-    capture yet — no ids exist for it anywhere in this module.
+  - Diagnóstico T0 (search screen + question page) is grounded in its own
+    captures and lives in diagnostico.py, not here.
 """
 
 from src.fill import locators as loc
