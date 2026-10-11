@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:a4j="http://richfaces.org/a4j" class=" "><head id="j_idt2"><script type="text/javascript" src="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/jsf.js_X7AK.xhtml"></script><script type="text/javascript">if(window.PrimeFaces){PrimeFaces.settings.locale='en_US';}</script>
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="Charset" content="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta http-equiv="cache-control" content="max-age=0">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async="async" src="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/google-analytics_analytics_X7AK.js"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-169706711-1');
+	</script>
+	 
+	<script>
+		// block user back button to browser
+		history.pushState(null, null, location.href);
+	    window.onpopstate = function () {
+	        history.go(1);
+	    };
+	</script>
+	
+	
+	<!-- Inicio Pedido Leslier 02/08/2024
+	&lt;script 
+	  src="https://cdn.simonops.com/divedot-rum.prod.js" 
+	  type="text/javascript"&gt;
+	&lt;/script&gt;
+	&lt;script&gt;
+	    window.DD_RUM &amp;&amp; window.DD_RUM.init({
+	      applicationId: '2b4c8ca5-591b-45d9-bfff-290341225808',
+	      clientToken: 'pub478206535aa84012a40b6fda512d7a07',
+	      service: 'SGA',
+	      env: 'producao',
+	      // Especifique um n&uacute;mero de vers&atilde;o para identificar a vers&atilde;o implantada de sua aplica&ccedil;&atilde;o no Divedot,
+	      // version: '1.0.0',
+	      site: 'cloud.simonops.com',
+	      trackInteractions: true,
+	      sampleRate: 100,
+	    });
+	&lt;/script&gt;
+	 Fim  Pedido Leslier 02/08/2024 -->
+	
+	<link rel="stylesheet" href="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/ol_X7AK.css" type="text/css">
+	<link rel="stylesheet" href="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/ol3gm_X7AK.css" type="text/css">
+	
+	<style>
+      .map {
+        height: 750px;
+        width: 100%;
+      }
+    </style>
+	
+	<link rel="icon" href="https://sga.anater.org/resources/images/favicon-anater.png" type="image/x-icon">
+		
+	<!-- ########## IN&Iacute;CIO Imports de CSS ########## -->
+	<link href="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/styleUtil_X7AK.css" rel="stylesheet">
+    
+	
+	<!-- Bootstrap -->
+    <link href="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/bootstrap.min_X7AK.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link href="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/font-awesome.min_X7AK.css" rel="stylesheet">
+    
+    <!-- NProgress -->
+    <link href="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/nprogress_X7AK.css" rel="stylesheet">
+    
+    <!-- iCheck -->
+    <link href="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/green_X7AK.css" rel="stylesheet">
+    
+    <!-- bootstrap-progressbar -->
+    <link href="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/bootstrap-progressbar-3.3.4.min_X7AK.css" rel="stylesheet">
+    
+    <!-- JQVMap -->
+    <link href="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/jqvmap.min_X7AK.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <!-- &lt;link href="/resources/outros/build/css/custom.min.css" rel="stylesheet" /&gt; -->
+	
+	<link href="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/custom_X7AK.css" rel="stylesheet">
+	
+	<!-- Datatables -->
+    <link href="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/dataTables.bootstrap.min_X7AK.css" rel="stylesheet">
+    <link href="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/buttons.bootstrap.min_X7AK.css" rel="stylesheet">
+    <link href="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/fixedHeader.bootstrap.min_X7AK.css" rel="stylesheet">
+    <link href="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/responsive.bootstrap.min_X7AK.css" rel="stylesheet">
+    <link href="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/scroller.bootstrap.min_X7AK.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/fileinput_X7AK.css">
+    
+    <!-- API Select2 -->
+    
+    <link href="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/selectize_X7AK.css" rel="stylesheet">
+    
+    <!-- faces api -->
+    <link href="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/styles_X7AK.css" rel="stylesheet">
+   
+   <!-- fancybox --> 
+    <link href="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/jquery.fancybox_X7AK.css" rel="stylesheet">
+    
+ 
+    
+	<!-- ########## FIM Imports de CSS ########## -->
+	
+	<!-- ########## IN&Iacute;CIO Imposts de JavaScript ########## --><style>.lottie-animation-container{width:var(--lottie-animation-container-width);height:var(--lottie-animation-container-height);background-color:var(--lottie-animation-container-background-color);overflow:hidden;margin:var(--lottie-animation-margin)}.lottie-animation-container svg{transform:scale(var(--lottie-animation-scale))}</style><style>.lottie-animation-container{width:var(--lottie-animation-container-width);height:var(--lottie-animation-container-height);background-color:var(--lottie-animation-container-background-color);overflow:hidden;margin:var(--lottie-animation-margin)}.lottie-animation-container svg{transform:scale(var(--lottie-animation-scale))}</style><style type="text/css">.fancybox-margin{margin-right:0px;}</style></head><body class="nav-md"><span id="importLibsJsInicioBodyPanel">
+			<script type="text/javascript" src="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/jquery_X7AK.js"></script>
+			<script type="text/javascript" src="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/jquery.mask.min_X7AK.js"></script>
+			<script type="text/javascript" src="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/jquery.maskMoney.min_X7AK.js"></script>
+			<script type="text/javascript" src="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/scriptUtil_X7AK.js"></script>
+			<script type="text/javascript" src="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/scriptUtilsGEO_X7AK.js"></script>
+			
+			<!-- smartWizard -->
+	    	<script src="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/jquery.smartWizard_X7AK.js"></script></span>
+	
+	<!-- ########## FIM Imposts de JavaScript ########## -->
+	
+	<style>
+		table.dataTable thead>tr>th.sorting_asc, table.dataTable thead>tr>th.sorting_desc, table.dataTable thead>tr>th.sorting, table.dataTable thead>tr>td.sorting_asc, table.dataTable thead>tr>td.sorting_desc, table.dataTable thead>tr>td.sorting{
+			padding-right: 15px;
+		}
+	</style>
+	
+	<title>ANATER | Agência Nacional de Assistência Técnica e Extensão Rural</title>
+
+
+	<div class="container body">
+    
+      	<div class="main_container">
+<form id="menu" name="menu" method="post" action="/pages/manterDiagnostico/consultarDiagnostico.xhtml" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="menu" value="menu">
+
+
+	<div class="col-md-3 left_col">
+	
+		<div class="left_col scroll-view">
+
+			<div class="navbar nav_title" style="border: 0;"><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt10':'menu:j_idt10'},'');return false" class="site_title">
+				
+					<img height="50" src="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/logomarca-sga-2_X7AK.png" alt="ANATER"></a>
+				
+			</div>
+
+			<div class="clearfix"></div>
+			
+			<div class="h60"></div>
+			
+			<!-- sidebar menu -->
+			<div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+			
+				<div class="menu_section">
+								
+						 
+					
+					
+					
+					
+					
+					<ul class="nav side-menu">
+						<li><a href="https://sga.anater.org/pages/glossario.xhtml">
+								<i class="fa fa-book"></i>Glossário<!--span class="label label-success pull-right"&gt;Novo&lt;/span--></a>
+						</li>
+						
+						<li><a href="https://sga.anater.org/pages/boletimSga.xhtml">
+								<i class="fa fa-bullhorn"></i>Boletim SGA<!--span class="label label-success pull-right"&gt;Novo&lt;/span--></a>
+						</li>
+						
+						<li><a href="https://sga.anater.org/pages/videoAulaSga.xhtml">
+								<i class="fa fa-video-camera"></i>Vídeo Aula SGA <!--span class="label label-success pull-right"&gt;Novo&lt;/span--></a>
+						</li>
+						
+						
+						<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt24':'menu:j_idt24'},'');return false">
+								<i class="fa fa-question"></i>FAQ SGA <!--span class="label label-success pull-right"&gt;Novo&lt;/span--></a>
+							
+						</li>
+					
+						<!-- Se existir premise "MCREN, AN ou CO" para o usu&aacute;rio logado, mostrar&aacute; o Credenciamento-->
+							
+							<li>
+							
+								<a><i class="fa fa-indent"></i> Credenciamento<span class="fa fa-chevron-down"></span></a>
+								
+								<ul class="nav child_menu">
+											<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt30':'menu:j_idt30'},'');return false">Dados da Empresa</a>
+											</li>
+												<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt34':'menu:j_idt34'},'');return false">Documentos</a>
+												</li>
+										<li>
+											
+											<!-- If necess&aacute;rio para funcionamento de fiscaliza&ccedil;&atilde;o --><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt37':'menu:j_idt37'},'');return false">Equipe</a>
+											
+										</li>
+											<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt41':'menu:j_idt41'},'');return false">Infraestrutura</a>
+											</li>
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt44':'menu:j_idt44'},'');return false">Histórico</a>
+										</li>
+											<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt48':'menu:j_idt48'},'');return false">Certidão de Credenciamento</a>
+											</li>
+									
+								</ul>
+								
+							</li>						
+						<!-- MODULO COMUNIDADAE -->
+							<li>
+							
+								<a><i class="fa fa-users"></i>Comunidade<span class="fa fa-chevron-down"></span></a>
+								
+								<ul class="nav child_menu">								
+									
+									<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt53':'menu:j_idt53'},'');return false">Cadastro de Comunidade</a>
+									</li>
+									<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt55':'menu:j_idt55'},'');return false">Diagnóstico Com. T0</a>
+											
+									</li>
+									<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt57':'menu:j_idt57'},'');return false">Diagnóstico Com. T1</a>
+											
+									</li>
+									<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt59':'menu:j_idt59'},'');return false">Diagnóstico Com. T2</a>
+											
+									</li>
+								</ul>
+		
+							</li>
+						
+						<!--  M&oacute;dulo Fiscaliza&ccedil;&atilde;o -->
+						<!-- &lt;c:if test="false"&gt;
+						 -->
+						
+												
+	  
+	  
+						<!-- Se existir permiss&atilde;o "MMET" para o usu&aacute;rio logado, mostrar&aacute; o menu-->
+						
+							<li><a><i class="fa fa-male"></i> UFPA <span class="fa fa-chevron-down"></span></a>
+							
+								<ul class="nav child_menu">
+										<!-- li&gt;
+											&lt;h:commandLink 	action="/pages/manterBeneficiarioPf/consultarBeneficiarioPf"
+															actionListener=""
+															value="Benefici&aacute;rio" /&gt;
+												
+										&lt;/li&gt;
+										
+										&lt;li&gt;
+											&lt;h:commandLink 	action="/pages/manterGerenciarBeneficiarioPf/cadastrarBeneficiarioPf"
+															actionListener=""
+															value="Alocar Benefici&aacute;rio" /&gt;
+												
+										&lt;/li-->
+										
+											<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt65':'menu:j_idt65'},'');return false">Cadastro</a>
+											</li>
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt68':'menu:j_idt68'},'');return false">Diagnóstico T0</a>
+											
+										</li>
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt70':'menu:j_idt70'},'');return false">Diagnóstico T1</a>
+											
+										</li>
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt72':'menu:j_idt72'},'');return false">Diagnóstico T2</a>
+											
+										</li>
+								
+								
+								
+								</ul>
+							</li>
+						
+							<li><a><i class="fa fa-institution"></i> Empreendimentos <span class="fa fa-chevron-down"></span></a>
+							
+								<ul class="nav child_menu">
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt77':'menu:j_idt77'},'');return false">Cadastro</a>
+											
+										</li>
+									
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt80':'menu:j_idt80'},'');return false">Diagnóstico Emp. T0</a>
+											
+										</li>
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt82':'menu:j_idt82'},'');return false">Diagnóstico Emp. T1</a>
+											
+										</li>
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt84':'menu:j_idt84'},'');return false">Diagnóstico Emp. T2</a>
+											
+										</li>
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt86':'menu:j_idt86'},'');return false">Projeto de Gestão
+											<!-- span class="label label-success pull-right"&gt;Novo&lt;/span--></a>
+											
+										</li>
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt90':'menu:j_idt90'},'');return false">LPC Emp. T0</a>
+											
+										</li>
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt92':'menu:j_idt92'},'');return false">LPC Emp. T1</a>
+											
+										</li>
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt94':'menu:j_idt94'},'');return false">LPC Emp. T2</a>
+											
+										</li>
+								
+								
+								
+								</ul>
+							</li>
+						
+						
+						
+						<!-- In&iacute;cio Implementa&ccedil;&atilde;o Planejamento -->
+						
+							<li>
+							
+								<a><i class="fa fa-paper-plane"></i> Planejamento<span class="fa fa-chevron-down"></span></a>
+								
+								<ul class="nav child_menu">
+									
+									<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt99':'menu:j_idt99'},'');return false">Plano de Metas</a>
+									</li>
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt102':'menu:j_idt102'},'');return false">Planejamento Empreendimento
+												<!-- span class="label label-success pull-right"&gt;Novo&lt;/span--></a>
+										</li>
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt106':'menu:j_idt106'},'');return false">Planejamento Familiar</a></li>
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt108':'menu:j_idt108'},'');return false">Planejamento Comunitário</a></li>
+
+
+										<!-- Se tem permiss&atilde;o MPLAN ter&aacute; acesso a estes dois -->
+
+
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt110':'menu:j_idt110'},'');return false">Projeto Produtivo</a></li>
+
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt112':'menu:j_idt112'},'');return false">Projeto Produtivo Grupo</a></li>
+
+									
+									<!-- Fim Projeto Produtivo -->
+									
+								</ul>
+								
+							</li>
+						<!-- Fim Implementa&ccedil;&atilde;o Planejamento -->
+						
+							<li>
+								<a><i class="fa fa-rocket"></i> Execução<span class="fa fa-chevron-down"></span></a>
+								
+								<ul class="nav child_menu">
+									<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt118':'menu:j_idt118'},'');return false">Execução Individual</a>
+									</li>									
+									<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt120':'menu:j_idt120'},'');return false">Execução Empreendimento
+											<!-- span class="label label-success pull-right"&gt;Novo&lt;/span--></a>
+									</li>	
+									<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt124':'menu:j_idt124'},'');return false">Execução Controle Social</a>
+									</li>
+									<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt127':'menu:j_idt127'},'');return false">Execução Comunitária</a>
+									</li>
+									<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt129':'menu:j_idt129'},'');return false">Execução Coletiva Empreendimento						
+											<!-- span class="label label-success pull-right"&gt;Novo&lt;/span--></a>
+									</li>
+															
+								</ul>
+								
+							</li>
+								
+							<li>
+							
+								<a><i class="fa fa-database"></i> Business Intelligence<span class="fa fa-chevron-down"></span></a>
+								
+								<ul class="nav child_menu">
+									
+										<li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('menu'),{'menu:j_idt135':'menu:j_idt135'},'');return false">Painel Extensionista</a>
+											
+										</li>
+									
+								</ul>
+								
+							</li>
+						
+						
+						<!-- MODULO RELAT&Oacute;RIO ANATER -->
+						
+						
+						
+						<!-- MODULO RELAT&Oacute;RIO ENTIDADE -->
+						
+						
+						
+						
+						<!-- MODULO CHAMADA PUBLICA -->
+						
+						
+						
+						<!-- MODULO GERENCIADOR FINANCEIRO -->
+						
+						
+						
+						
+						<!-- MODULO FISCALIZACAO -->
+						
+						<!-- INICIO MODULO PARECER TECNICO -->
+						<!-- FIM MODULO PARECER TECNICO -->
+						
+						<!-- INICIO MODULO GESTOR MAPA -->
+						<!-- FIM MODULO GESTOR MAPA -->
+						
+
+												
+						
+
+						<!--li&gt;&lt;a&gt;&lt;i class="fa fa-edit"&gt;&lt;/i&gt; Forms &lt;span
+								class="fa fa-chevron-down"&gt;&lt;/span&gt;&lt;/a&gt;
+							&lt;ul class="nav child_menu"&gt;
+								&lt;li&gt;&lt;a href="form.html"&gt;General Form&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="form_advanced.html"&gt;Advanced Components&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="form_validation.html"&gt;Form Validation&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="form_wizards.html"&gt;Form Wizard&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="form_upload.html"&gt;Form Upload&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="form_buttons.html"&gt;Form Buttons&lt;/a&gt;&lt;/li&gt;
+							&lt;/ul&gt;&lt;/li&gt;
+
+						&lt;li&gt;&lt;a&gt;&lt;i class="fa fa-desktop"&gt;&lt;/i&gt; UI Elements &lt;span
+								class="fa fa-chevron-down"&gt;&lt;/span&gt;&lt;/a&gt;
+							&lt;ul class="nav child_menu"&gt;
+								&lt;li&gt;&lt;a href="general_elements.html"&gt;General Elements&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="media_gallery.html"&gt;Media Gallery&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="typography.html"&gt;Typography&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="icons.html"&gt;Icons&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="glyphicons.html"&gt;Glyphicons&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="widgets.html"&gt;Widgets&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="invoice.html"&gt;Invoice&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="inbox.html"&gt;Inbox&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="calendar.html"&gt;Calendar&lt;/a&gt;&lt;/li&gt;
+							&lt;/ul&gt;&lt;/li&gt;
+
+						&lt;li&gt;&lt;a&gt;&lt;i class="fa fa-table"&gt;&lt;/i&gt; Tables &lt;span
+								class="fa fa-chevron-down"&gt;&lt;/span&gt;&lt;/a&gt;
+							&lt;ul class="nav child_menu"&gt;
+								&lt;li&gt;&lt;a href="tables.html"&gt;Tables&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="tables_dynamic.html"&gt;Table Dynamic&lt;/a&gt;&lt;/li&gt;
+							&lt;/ul&gt;&lt;/li&gt;
+
+						&lt;li&gt;&lt;a&gt;&lt;i class="fa fa-bar-chart-o"&gt;&lt;/i&gt; Data
+								Presentation &lt;span class="fa fa-chevron-down"&gt;&lt;/span&gt;&lt;/a&gt;
+							&lt;ul class="nav child_menu"&gt;
+								&lt;li&gt;&lt;a href="chartjs.html"&gt;Chart JS&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="chartjs2.html"&gt;Chart JS2&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="morisjs.html"&gt;Moris JS&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="echarts.html"&gt;ECharts&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="other_charts.html"&gt;Other Charts&lt;/a&gt;&lt;/li&gt;
+							&lt;/ul&gt;&lt;/li&gt;
+
+						&lt;li&gt;&lt;a&gt;&lt;i class="fa fa-clone"&gt;&lt;/i&gt;Layouts &lt;span
+								class="fa fa-chevron-down"&gt;&lt;/span&gt;&lt;/a&gt;
+							&lt;ul class="nav child_menu"&gt;
+								&lt;li&gt;&lt;a href="fixed_sidebar.html"&gt;Fixed Sidebar&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="fixed_footer.html"&gt;Fixed Footer&lt;/a&gt;&lt;/li&gt;
+							&lt;/ul&gt;&lt;/li-->
+					</ul> 	 
+
+				</div>
+
+
+				<!--div class="menu_section"&gt;
+					&lt;h3&gt;Live On&lt;/h3&gt;
+					&lt;ul class="nav side-menu"&gt;
+						&lt;li&gt;&lt;a&gt;&lt;i class="fa fa-bug"&gt;&lt;/i&gt; Additional Pages &lt;span
+								class="fa fa-chevron-down"&gt;&lt;/span&gt;&lt;/a&gt;
+							&lt;ul class="nav child_menu"&gt;
+								&lt;li&gt;&lt;a href="e_commerce.html"&gt;E-commerce&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="projects.html"&gt;Projects&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="project_detail.html"&gt;Project Detail&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="contacts.html"&gt;Contacts&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="profile.html"&gt;Profile&lt;/a&gt;&lt;/li&gt;
+							&lt;/ul&gt;&lt;/li&gt;
+						&lt;li&gt;&lt;a&gt;&lt;i class="fa fa-windows"&gt;&lt;/i&gt; Extras &lt;span
+								class="fa fa-chevron-down"&gt;&lt;/span&gt;&lt;/a&gt;
+							&lt;ul class="nav child_menu"&gt;
+								&lt;li&gt;&lt;a href="page_403.html"&gt;403 Error&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="page_404.html"&gt;404 Error&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="page_500.html"&gt;500 Error&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="plain_page.html"&gt;Plain Page&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="login.html"&gt;Login Page&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a href="pricing_tables.html"&gt;Pricing Tables&lt;/a&gt;&lt;/li&gt;
+							&lt;/ul&gt;&lt;/li&gt;
+						&lt;li&gt;&lt;a&gt;&lt;i class="fa fa-sitemap"&gt;&lt;/i&gt; Multilevel Menu &lt;span
+								class="fa fa-chevron-down"&gt;&lt;/span&gt;&lt;/a&gt;
+							&lt;ul class="nav child_menu"&gt;
+								&lt;li&gt;&lt;a href="#level1_1"&gt;Level One&lt;/a&gt;
+									&lt;li&gt;&lt;a&gt;Level One&lt;span class="fa fa-chevron-down"&gt;&lt;/span&gt;&lt;/a&gt;
+										&lt;ul class="nav child_menu"&gt;
+											&lt;li class="sub_menu"&gt;&lt;a href="level2.html"&gt;Level Two&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a href="#level2_1"&gt;Level Two&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a href="#level2_2"&gt;Level Two&lt;/a&gt;&lt;/li&gt;
+										&lt;/ul&gt;&lt;/li&gt;
+									&lt;li&gt;&lt;a href="#level1_2"&gt;Level One&lt;/a&gt;&lt;/li&gt;&lt;/li&gt;
+							&lt;/ul&gt;&lt;/li&gt;
+						&lt;li&gt;&lt;a href="javascript:void(0)"&gt;&lt;i class="fa fa-laptop"&gt;&lt;/i&gt;
+								Landing Page &lt;span class="label label-success pull-right"&gt;Coming
+									Soon&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+					&lt;/ul&gt;
+				&lt;/div-->
+
+			</div>
+			<!-- /sidebar menu -->
+
+		</div>
+		
+	</div><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:0" value="anonymized" autocomplete="off">
+</form>
+
+
+
+	
+	
+	
+	<div class="top_nav">
+	<style>
+	 .fa-check:hover {
+	    color: green;
+	}
+	
+	.fa-trash:hover {
+	    color: red;
+	}
+	</style>
+
+	<div class="nav_menu">
+<form id="formNotificacao" name="formNotificacao" method="post" action="/pages/manterDiagnostico/consultarDiagnostico.xhtml" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="formNotificacao" value="formNotificacao">
+
+				
+			<nav>
+				
+				<div class="nav toggle">
+					<a id="menu_toggle"><i class="fa fa-bars"></i></a>
+				</div><div id="formNotificacao:testeNot">
+					
+					<ul class="nav navbar-nav navbar-right">
+						
+						<li class="">
+						
+							<a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+    
+   	 	USUARIO TESTE
+   	 	
+	 
+								<span class=" fa fa-angle-down"></span>
+							</a>
+							
+								
+
+	                  		
+	                  
+						</li>
+						
+						<li role="presentation" class="dropdown">
+							<a href="https://sga.anater.org/logout" class="dropdown-toggle info-number" aria-expanded="false">
+								<i class="fa fa-sign-out" title="Sair"></i>Sair
+							</a>
+						</li>	
+						
+						<li role="presentation" class="dropdown">
+						
+							<a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+								<i class="fa fa-envelope-o"></i>
+									<span class="badge bg-green">0</span>
+							</a>
+							
+							<ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">										
+									<li>
+										<a>
+											<span>
+												<span>GTI</span>
+												<span class="time">-</span>
+											</span>
+											<span class="message">
+												Não existem notificações
+											</span>
+										</a>
+									</li>
+							</ul>
+						</li>
+				
+						<h3>SGA - Sistema de Gestão de Ater</h3>
+						
+					</ul></div>
+			
+			</nav><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:1" value="anonymized" autocomplete="off">
+</form>
+	
+	</div>
+		
+	</div>
+	
+<!-- /top navigation -->
+
+<form id="formularioDiagnostico" name="formularioDiagnostico" method="post" action="/pages/manterDiagnostico/consultarDiagnostico.xhtml" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="formularioDiagnostico" value="formularioDiagnostico">
+
+
+			<div class="right_col" role="main" style="min-height: 1184px;">
+
+				<div class="page-title">
+
+					<div class="row">
+
+						<div class="col-md-12 col-sm-12 col-xs-12">
+
+							<!-- Mensagem global do sistema --><div id="formularioDiagnostico:msgContext"></div>
+
+							<div class="x_panel">
+
+								<div class="x_title">
+
+									<h2 class="titulo_modulo">
+										<i class="fa fa-clock-o" aria-hidden="true"></i> Consultar Diagnóstico T0
+									</h2>
+									
+									<div class="clearfix"></div>
+
+								</div>
+
+								<div class="x_content">
+
+									<div class="row">
+
+										<div class="form-group col-md-12 col-sm-6 col-xs-12">
+
+											<label class="control-label col-md-2 col-sm-3 col-xs-3" for="first-name">
+												Instrumento 
+											</label>
+
+											<div class="col-md-4 col-sm-6 col-xs-12"><select id="formularioDiagnostico:idInstrumento" name="formularioDiagnostico:idInstrumento" class="form-control" size="1" onchange="mojarra.ab(this,event,'change','@form','formularioDiagnostico:idPanelBeneficiario')">	<option value="">--Selecione--</option>
+	<option value="CTR.GTI.ASS.667.26" selected="selected">CTR.GTI.ASS.667.26</option>
+</select>
+												
+											</div>
+
+										</div>
+
+									</div><span id="formularioDiagnostico:idPanelBeneficiario">
+									
+									<div class="row">
+
+										<div class="form-group col-md-12 col-sm-6 col-xs-12">
+
+											<label class="control-label col-md-2 col-sm-3 col-xs-3" for="first-name">
+												Estado 
+											</label>
+
+											<div class="col-md-4 col-sm-6 col-xs-12"><select id="formularioDiagnostico:idEstado" name="formularioDiagnostico:idEstado" class="form-control" size="1" onchange="mojarra.ab(this,event,'change','@this','formularioDiagnostico:idMunicipio')">	<option value="">--Selecione--</option>
+	<option value="51" selected="selected">Mato Grosso</option>
+</select>
+												
+											</div>
+
+										</div>
+
+									</div>
+									
+									<div class="row">
+
+										<div class="form-group col-md-12 col-sm-6 col-xs-12">
+
+											<label class="control-label col-md-2 col-sm-3 col-xs-3" for="first-name">
+												Município 
+											</label>
+
+											<div class="col-md-4 col-sm-6 col-xs-12"><select id="formularioDiagnostico:idMunicipio" name="formularioDiagnostico:idMunicipio" class="form-control" size="1" title="Município Endereço">	<option value="" selected="selected">--Selecione--</option>
+	<option value="6980">Bom Jesus Do Araguaia</option>
+	<option value="6992">Claudia</option>
+	<option value="7005">Feliz Natal</option>
+	<option value="7040">Nova Ubiratã</option>
+	<option value="7049">Peixoto De Azevedo</option>
+	<option value="7061">Querencia</option>
+	<option value="7071">São Jose Do Xingu</option>
+</select>
+												
+											</div>
+
+										</div>
+
+									</div>
+									
+									<div class="row">
+
+										<div class="form-group col-md-12 col-sm-6 col-xs-12">
+
+											<label class="control-label col-md-2 col-sm-3 col-xs-3" for="first-name">
+												Status do Diagnóstico 
+											</label>
+
+											<div class="col-md-4 col-sm-6 col-xs-12"><select id="formularioDiagnostico:idStatusDiagnostico" name="formularioDiagnostico:idStatusDiagnostico" class="form-control" size="1" title="Status do Diagnóstico">	<option value="">--Selecione--</option>
+	<option value="C">Continuar</option>
+	<option value="I" selected="selected">Iniciar</option>
+	<option value="F">Finalizado</option>
+</select>
+												
+											</div>
+
+										</div>
+
+									</div></span>
+
+									<div class="ln_solid"></div>
+
+									<div class="form-group">
+										<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3"><a href="#" title="Limpar" onclick="mojarra.jsfcljs(document.getElementById('formularioDiagnostico'),{'formularioDiagnostico:j_idt182':'formularioDiagnostico:j_idt182'},'');return false" class="btn btn-default">
+        	 <i class="fa fa-eraser"></i> Limpar
+        </a><a href="#" title="Pesquisar" onclick="mojarra.jsfcljs(document.getElementById('formularioDiagnostico'),{'formularioDiagnostico:j_idt184':'formularioDiagnostico:j_idt184'},'');return false" class="btn btn-success">
+			<i class="fa fa-search"></i> Pesquisar
+        </a>
+										</div>
+									</div>
+
+								</div>
+
+							</div>
+
+						</div>
+
+					</div>
+
+						<div class="row">
+					
+							<div class="col-md-12 col-sm-12 col-xs-12">
+							
+								<div class="x_panel"><span id="formularioDiagnostico:idListagemResultado">
+		
+										<div class="x_title">
+		
+											<h2>Resultado</h2>
+		
+											<div class="clearfix"></div>
+		
+										</div>
+		
+										<div class="x_content"><div id="DataTables_Table_0_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer"><div class="row"><div class="col-sm-6"><div class="dataTables_length" id="DataTables_Table_0_length"><label>Exibir <select name="DataTables_Table_0_length" aria-controls="DataTables_Table_0" class="form-control input-sm"><option value="10" selected="selected">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> resultados</label></div></div><div class="col-sm-6"><div id="DataTables_Table_0_filter" class="dataTables_filter"><label>Buscar:<input type="search" class="form-control input-sm" placeholder="" aria-controls="DataTables_Table_0"></label></div></div></div><div class="row"><div class="col-sm-12"><table class="table table-striped table-bordered dataTable no-footer" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
+<thead>
+<tr role="row"><th scope="col" class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 151px;" aria-sort="ascending" aria-label="Cód. UFPA: activate to sort column descending">Cód. UFPA</th><th scope="col" class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 403px;" aria-label="Nome da UFPA: activate to sort column ascending">Nome da UFPA</th><th scope="col" class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 219px;" aria-label="Validade da DAP: activate to sort column ascending">Validade da DAP</th><th scope="col" class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 152px;" aria-label="Estado: activate to sort column ascending">Estado</th><th scope="col" class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 139px;" aria-label="Município: activate to sort column ascending">Município</th><th scope="col" class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 133px;" aria-label="Evolução: activate to sort column ascending">Evolução</th><th scope="col" class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 239px;" aria-label="Ações: activate to sort column ascending">Ações</th></tr>
+</thead>
+<tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+<tr role="row" class="odd">
+<td class="sorting_1">160654</td>
+<td>Beneficiária Teste 013
+													
+													<br></td>
+<td></td>
+<td>Mato Grosso</td>
+<td>Feliz Natal</td>
+<td>
+													
+														<div class="progress">
+														
+															<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0.0" aria-valuemin="0" aria-valuemax="100" style="width: 0.0%">0.0%
+															</div>
+															
+														</div></td>
+<td><a href="#" title="Iniciar/Continuar Diagnóstico" onclick="mojarra.jsfcljs(document.getElementById('formularioDiagnostico'),{'formularioDiagnostico:j_idt217:5:j_idt250':'formularioDiagnostico:j_idt217:5:j_idt250'},'');return false" class="btn btn-success btn-info btn-xs">Iniciar</a><a id="formularioDiagnostico:j_idt217:5:j_idt254" href="#" title="Progresso de Inserção de Dados" onclick="mojarra.ab(this,event,'action','@form','formularioDiagnostico:formModalProgressoBeneficiario:campos');return false" class="btn btn-primary btn-xs" data-target=".modalProgressoBeneficiario" data-toggle="modal">Progresso</a></td>
+</tr><tr role="row" class="even">
+<td class="sorting_1">160656</td>
+<td>Beneficiária Teste 015
+													
+													<br></td>
+<td></td>
+<td>Mato Grosso</td>
+<td>Feliz Natal</td>
+<td>
+													
+														<div class="progress">
+														
+															<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0.0" aria-valuemin="0" aria-valuemax="100" style="width: 0.0%">0.0%
+															</div>
+															
+														</div></td>
+<td><a href="#" title="Iniciar/Continuar Diagnóstico" onclick="mojarra.jsfcljs(document.getElementById('formularioDiagnostico'),{'formularioDiagnostico:j_idt217:8:j_idt250':'formularioDiagnostico:j_idt217:8:j_idt250'},'');return false" class="btn btn-success btn-info btn-xs">Iniciar</a><a id="formularioDiagnostico:j_idt217:8:j_idt254" href="#" title="Progresso de Inserção de Dados" onclick="mojarra.ab(this,event,'action','@form','formularioDiagnostico:formModalProgressoBeneficiario:campos');return false" class="btn btn-primary btn-xs" data-target=".modalProgressoBeneficiario" data-toggle="modal">Progresso</a></td>
+</tr><tr role="row" class="odd">
+<td class="sorting_1">160658</td>
+<td>Beneficiária Teste 016
+													
+													<br></td>
+<td></td>
+<td>Mato Grosso</td>
+<td>Feliz Natal</td>
+<td>
+													
+														<div class="progress">
+														
+															<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0.0" aria-valuemin="0" aria-valuemax="100" style="width: 0.0%">0.0%
+															</div>
+															
+														</div></td>
+<td><a href="#" title="Iniciar/Continuar Diagnóstico" onclick="mojarra.jsfcljs(document.getElementById('formularioDiagnostico'),{'formularioDiagnostico:j_idt217:9:j_idt250':'formularioDiagnostico:j_idt217:9:j_idt250'},'');return false" class="btn btn-success btn-info btn-xs">Iniciar</a><a id="formularioDiagnostico:j_idt217:9:j_idt254" href="#" title="Progresso de Inserção de Dados" onclick="mojarra.ab(this,event,'action','@form','formularioDiagnostico:formModalProgressoBeneficiario:campos');return false" class="btn btn-primary btn-xs" data-target=".modalProgressoBeneficiario" data-toggle="modal">Progresso</a></td>
+</tr><tr role="row" class="even">
+<td class="sorting_1">160670</td>
+<td>Beneficiária Teste 020
+													
+													<br></td>
+<td></td>
+<td>Mato Grosso</td>
+<td>Feliz Natal</td>
+<td>
+													
+														<div class="progress">
+														
+															<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0.0" aria-valuemin="0" aria-valuemax="100" style="width: 0.0%">0.0%
+															</div>
+															
+														</div></td>
+<td><a href="#" title="Iniciar/Continuar Diagnóstico" onclick="mojarra.jsfcljs(document.getElementById('formularioDiagnostico'),{'formularioDiagnostico:j_idt217:10:j_idt250':'formularioDiagnostico:j_idt217:10:j_idt250'},'');return false" class="btn btn-success btn-info btn-xs">Iniciar</a><a id="formularioDiagnostico:j_idt217:10:j_idt254" href="#" title="Progresso de Inserção de Dados" onclick="mojarra.ab(this,event,'action','@form','formularioDiagnostico:formModalProgressoBeneficiario:campos');return false" class="btn btn-primary btn-xs" data-target=".modalProgressoBeneficiario" data-toggle="modal">Progresso</a></td>
+</tr><tr role="row" class="odd">
+<td class="sorting_1">160673</td>
+<td>Beneficiária Teste 002
+													
+													<br></td>
+<td></td>
+<td>Mato Grosso</td>
+<td>Feliz Natal</td>
+<td>
+													
+														<div class="progress">
+														
+															<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0.0" aria-valuemin="0" aria-valuemax="100" style="width: 0.0%">0.0%
+															</div>
+															
+														</div></td>
+<td><a href="#" title="Iniciar/Continuar Diagnóstico" onclick="mojarra.jsfcljs(document.getElementById('formularioDiagnostico'),{'formularioDiagnostico:j_idt217:1:j_idt250':'formularioDiagnostico:j_idt217:1:j_idt250'},'');return false" class="btn btn-success btn-info btn-xs">Iniciar</a><a id="formularioDiagnostico:j_idt217:1:j_idt254" href="#" title="Progresso de Inserção de Dados" onclick="mojarra.ab(this,event,'action','@form','formularioDiagnostico:formModalProgressoBeneficiario:campos');return false" class="btn btn-primary btn-xs" data-target=".modalProgressoBeneficiario" data-toggle="modal">Progresso</a></td>
+</tr><tr role="row" class="even">
+<td class="sorting_1">160677</td>
+<td>Beneficiária Teste 014 
+													
+													<br></td>
+<td></td>
+<td>Mato Grosso</td>
+<td>Claudia</td>
+<td>
+													
+														<div class="progress">
+														
+															<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0.0" aria-valuemin="0" aria-valuemax="100" style="width: 0.0%">0.0%
+															</div>
+															
+														</div></td>
+<td><a href="#" title="Iniciar/Continuar Diagnóstico" onclick="mojarra.jsfcljs(document.getElementById('formularioDiagnostico'),{'formularioDiagnostico:j_idt217:6:j_idt250':'formularioDiagnostico:j_idt217:6:j_idt250'},'');return false" class="btn btn-success btn-info btn-xs">Iniciar</a><a id="formularioDiagnostico:j_idt217:6:j_idt254" href="#" title="Progresso de Inserção de Dados" onclick="mojarra.ab(this,event,'action','@form','formularioDiagnostico:formModalProgressoBeneficiario:campos');return false" class="btn btn-primary btn-xs" data-target=".modalProgressoBeneficiario" data-toggle="modal">Progresso</a></td>
+</tr><tr role="row" class="odd">
+<td class="sorting_1">160683</td>
+<td>Beneficiária Teste 021 
+													
+													<br></td>
+<td></td>
+<td>Mato Grosso</td>
+<td>Claudia</td>
+<td>
+													
+														<div class="progress">
+														
+															<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0.0" aria-valuemin="0" aria-valuemax="100" style="width: 0.0%">0.0%
+															</div>
+															
+														</div></td>
+<td><a href="#" title="Iniciar/Continuar Diagnóstico" onclick="mojarra.jsfcljs(document.getElementById('formularioDiagnostico'),{'formularioDiagnostico:j_idt217:11:j_idt250':'formularioDiagnostico:j_idt217:11:j_idt250'},'');return false" class="btn btn-success btn-info btn-xs">Iniciar</a><a id="formularioDiagnostico:j_idt217:11:j_idt254" href="#" title="Progresso de Inserção de Dados" onclick="mojarra.ab(this,event,'action','@form','formularioDiagnostico:formModalProgressoBeneficiario:campos');return false" class="btn btn-primary btn-xs" data-target=".modalProgressoBeneficiario" data-toggle="modal">Progresso</a></td>
+</tr><tr role="row" class="even">
+<td class="sorting_1">160686</td>
+<td>Beneficiária Teste 005 
+													
+													<br></td>
+<td></td>
+<td>Mato Grosso</td>
+<td>Claudia</td>
+<td>
+													
+														<div class="progress">
+														
+															<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0.0" aria-valuemin="0" aria-valuemax="100" style="width: 0.0%">0.0%
+															</div>
+															
+														</div></td>
+<td><a href="#" title="Iniciar/Continuar Diagnóstico" onclick="mojarra.jsfcljs(document.getElementById('formularioDiagnostico'),{'formularioDiagnostico:j_idt217:2:j_idt250':'formularioDiagnostico:j_idt217:2:j_idt250'},'');return false" class="btn btn-success btn-info btn-xs">Iniciar</a><a id="formularioDiagnostico:j_idt217:2:j_idt254" href="#" title="Progresso de Inserção de Dados" onclick="mojarra.ab(this,event,'action','@form','formularioDiagnostico:formModalProgressoBeneficiario:campos');return false" class="btn btn-primary btn-xs" data-target=".modalProgressoBeneficiario" data-toggle="modal">Progresso</a></td>
+</tr><tr role="row" class="odd">
+<td class="sorting_1">160691</td>
+<td>Beneficiária Teste 010
+													
+													<br></td>
+<td></td>
+<td>Mato Grosso</td>
+<td>Claudia</td>
+<td>
+													
+														<div class="progress">
+														
+															<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0.0" aria-valuemin="0" aria-valuemax="100" style="width: 0.0%">0.0%
+															</div>
+															
+														</div></td>
+<td><a href="#" title="Iniciar/Continuar Diagnóstico" onclick="mojarra.jsfcljs(document.getElementById('formularioDiagnostico'),{'formularioDiagnostico:j_idt217:3:j_idt250':'formularioDiagnostico:j_idt217:3:j_idt250'},'');return false" class="btn btn-success btn-info btn-xs">Iniciar</a><a id="formularioDiagnostico:j_idt217:3:j_idt254" href="#" title="Progresso de Inserção de Dados" onclick="mojarra.ab(this,event,'action','@form','formularioDiagnostico:formModalProgressoBeneficiario:campos');return false" class="btn btn-primary btn-xs" data-target=".modalProgressoBeneficiario" data-toggle="modal">Progresso</a></td>
+</tr><tr role="row" class="even">
+<td class="sorting_1">160695</td>
+<td>Beneficiária Teste 011
+													
+													<br></td>
+<td></td>
+<td>Mato Grosso</td>
+<td>Claudia</td>
+<td>
+													
+														<div class="progress">
+														
+															<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0.0" aria-valuemin="0" aria-valuemax="100" style="width: 0.0%">0.0%
+															</div>
+															
+														</div></td>
+<td><a href="#" title="Iniciar/Continuar Diagnóstico" onclick="mojarra.jsfcljs(document.getElementById('formularioDiagnostico'),{'formularioDiagnostico:j_idt217:4:j_idt250':'formularioDiagnostico:j_idt217:4:j_idt250'},'');return false" class="btn btn-success btn-info btn-xs">Iniciar</a><a id="formularioDiagnostico:j_idt217:4:j_idt254" href="#" title="Progresso de Inserção de Dados" onclick="mojarra.ab(this,event,'action','@form','formularioDiagnostico:formModalProgressoBeneficiario:campos');return false" class="btn btn-primary btn-xs" data-target=".modalProgressoBeneficiario" data-toggle="modal">Progresso</a></td>
+</tr></tbody>
+</table></div></div><div class="row"><div class="col-sm-5"><div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">Exibindo 1 até 10 de 12 resultados</div></div><div class="col-sm-7"><div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate"><ul class="pagination"><li class="paginate_button previous disabled" id="DataTables_Table_0_previous"><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="0" tabindex="0">Anterior</a></li><li class="paginate_button active"><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="1" tabindex="0">1</a></li><li class="paginate_button "><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="2" tabindex="0">2</a></li><li class="paginate_button next" id="DataTables_Table_0_next"><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="3" tabindex="0">Próxima</a></li></ul></div></div></div></div>
+
+		
+										</div></span>
+		
+								</div>
+								
+							</div>
+							
+						</div>
+					
+				</div>
+
+			</div>
+	<!-- modals -->
+	<!-- Large modal -->
+
+<input type="hidden" name="formularioDiagnostico:formModalProgressoBeneficiario" value="formularioDiagnostico:formModalProgressoBeneficiario">
+
+	
+		<div class="modal fade modalProgressoBeneficiario" tabindex="-1" role="dialog" aria-hidden="true">
+		
+			<div class="modal-dialog modal-lg">
+			
+				<div class="modal-content">
+				
+					<div class="modal-header">
+					
+						<button type="button" class="close" data-dismiss="modal">
+							<span aria-hidden="true">×</span>
+						</button>
+						
+						<h4 class="modal-title" id="myModalLabel">Progresso do Diagnóstico</h4>
+						
+					</div><span id="formularioDiagnostico:formModalProgressoBeneficiario:campos">
+					
+						<div class="modal-body">
+						
+							<div class="row">		
+							</div>
+							<br>
+						</div></span>
+					
+					<div class="modal-footer"><a id="formularioDiagnostico:formModalProgressoBeneficiario:j_idt195" href="#" onclick="mojarra.ab(this,event,'action',0,0);return false" class="btn btn-default" data-dismiss="modal">Fechar</a>
+							
+					</div>
+					
+				</div>
+				
+			</div>
+			
+		</div><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:2" value="anonymized" autocomplete="off">
+</form><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:3" value="anonymized" autocomplete="off">
+
+	    	<!-- Datatables -->
+		    <script>
+		      $(document).ready(function() {
+		    	  
+		        var handleDataTableButtons = function() {
+		          if ($("#datatable-buttons").length) {
+		            $("#datatable-buttons").DataTable({
+		              dom: "Bfrtip",
+		              buttons: [
+		                {
+		                  extend: "copy",
+		                  className: "btn-sm"
+		                },
+		                {
+		                  extend: "csv",
+		                  className: "btn-sm"
+		                },
+		                {
+		                  extend: "excel",
+		                  className: "btn-sm"
+		                },
+		                {
+		                  extend: "pdfHtml5",
+		                  className: "btn-sm"
+		                },
+		                {
+		                  extend: "print",
+		                  className: "btn-sm"
+		                },
+		              ],
+		              responsive: true
+		            });
+		          }
+		        };
+		
+		        TableManageButtons = function() {
+		          "use strict";
+		          return {
+		            init: function() {
+		              handleDataTableButtons();
+		            }
+		          };
+		        }();
+		
+		        $('.table').dataTable();
+		
+		        $('#datatable-keytable').DataTable({
+		          keys: true
+		        });
+		
+		        $('#datatable-responsive').DataTable();
+		
+		        $('#datatable-scroller').DataTable({
+		          ajax: "js/datatables/json/scroller-demo.json",
+		          deferRender: true,
+		          scrollY: 380,
+		          scrollCollapse: true,
+		          scroller: true
+		        });
+		
+		        $('#datatable-fixed-header').DataTable({
+		          fixedHeader: true
+		        });
+		
+		        var $datatable = $('#datatable-checkbox');
+		
+		        $datatable.dataTable({
+		          'order': [[ 1, 'asc' ]],
+		          'columnDefs': [
+		            { orderable: false, targets: [0] }
+		          ]
+		        });
+		        $datatable.on('draw.dt', function() {
+		          $('input').iCheck({
+		            checkboxClass: 'icheckbox_flat-green'
+		          });
+		        });
+		
+		        TableManageButtons.init();
+		      });
+		    </script>
+		    <!-- /Datatables -->
+    	<script>
+			  $(document).ready(function() {
+				  $('.calendario').daterangepicker({
+					  format: "DD/MM/YYYY",
+					  singleDatePicker: true,
+					  showDropdowns: true,
+					  autoUpdateInput: false,
+					  calender_style: "picker_4",
+					  locale: {
+			        	    "format": "DD/MM/YYYY",
+			        	    "separator": " - ",
+			        	    "applyLabel": "Aplicar",
+			        	    "cancelLabel": "Cancelar",
+			        	    "fromLabel": "De",
+			        	    "toLabel": "Até",
+			        	    "customRangeLabel": "Custom",
+			        	    "daysOfWeek": [
+			        	        "Dom",
+			        	        "Seg",
+			        	        "Ter",
+			        	        "Qua",
+			        	        "Qui",
+			        	        "Sex",
+			        	        "Sáb"
+			        	    ],
+			        	    "monthNames": [
+			        	        "Janeiro",
+			        	        "Fevereiro",
+			        	        "Março",
+			        	        "Abril",
+			        	        "Maio",
+			        	        "Junho",
+			        	        "Julho",
+			        	        "Agosto",
+			        	        "Setembro",
+			        	        "Outubro",
+			        	        "Novembro",
+			        	        "Dezembro"
+			        	    ],
+			        	    "firstDay": 0
+			        	}
+			          
+			        }, function(start, end, label) {
+			          console.log(start.toISOString(), end.toISOString(), label);
+			        });
+				  
+				  // Configuração específica para campos readonly
+				  $('.calendario').on('apply.daterangepicker', function(ev, picker) {
+					  var $this = $(this);
+					  var dateValue = picker.startDate.format('DD/MM/YYYY');
+					  
+					  // Atualiza o valor do campo
+					  $this.val(dateValue);
+					  
+					  // Remove o atributo readonly temporariamente para permitir a mudança
+					  $this.removeAttr('readonly');
+					  
+					  // Força o JSF a detectar a mudança
+					  $this.trigger('change');
+					  $this.trigger('blur');
+					  
+					  // Restaura o readonly após um breve delay
+					  setTimeout(function() {
+						  $this.attr('readonly', 'readonly');
+					  }, 100);
+					  
+					  // Dispara evento nativo do DOM
+					  var nativeEvent = new Event('change', { bubbles: true, cancelable: true });
+					  this.dispatchEvent(nativeEvent);
+				  });
+				  
+				  // Permite que campos readonly abram o calendário ao clicar
+				  $('.calendario[readonly]').on('click focus', function(e) {
+					  e.preventDefault();
+					  $(this).trigger('click.daterangepicker');
+				  });
+				  
+				  $('.date-pick').datepicker("option", $.datepicker.regional["pt-BR"]);
+				  });
+			  
+			</script>
+<form id="formConfirm" name="formConfirm" method="post" action="/pages/manterDiagnostico/consultarDiagnostico.xhtml" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="formConfirm" value="formConfirm">
+
+	
+		<div class="modal fade modalConfirmacao" tabindex="-1" role="dialog" aria-hidden="true">
+										
+            <div class="modal-dialog modal-md">
+            
+              	<div class="modal-content"><span id="formConfirm:campos">
+              	
+		             	<div class="modal-header">
+		             	   	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+		                 	<h4 class="titulo_modulo" id="myModalLabel2">Confirmação</h4>
+		                 </div>
+	                 
+		                <div class="modal-body"><span id="formConfirm:idModalMensagemConfirmacao">
+		                  		<h4> </h4></span>
+		                </div>
+	                 
+	                 	<div class="modal-footer">
+	                	       	<button type="button" class="btn btn-default" data-dismiss="modal">Agora não</button><a href="#" onclick="mojarra.jsfcljs(document.getElementById('formConfirm'),{'formConfirm:j_idt205':'formConfirm:j_idt205'},'');return false" class="btn btn-success">Sim
+									<i class="fa fa-play"></i></a>
+						</div></span>
+	                	
+        		</div>
+              
+			</div>
+            
+		</div><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:4" value="anonymized" autocomplete="off">
+</form>
+	    
+	    <!-- footer content -->
+		<footer>
+		
+        	ANATER | Agência Nacional de Assistência Técnica e Extensão Rural
+        	<br> 
+        	© Sistema desenvolvido e mantido por: Gerência de Tecnologia da Informação - GTI
+        
+          	<div class="pull-right">
+          		1.1.0.1 01/08/2026 14:30	
+          	</div>
+          	
+          <div class="clearfix"></div>
+          
+        </footer>
+        <!-- /footer content -->
+	  
+	  	</div>
+	  
+	</div>
+
+
+	<!-- ########## IN&Iacute;CIO Configura&ccedil;&atilde;o Default do Template ########## --><span id="idPanelConfigPadraoTemplate">
+    
+    	<!-- jQuery -->
+	    <script src="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/jquery.min_X7AK.js"></script>
+	    
+	    <!-- Bootstrap -->
+	    <script src="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/bootstrap.min_X7AK.js"></script>
+	    
+	    <!-- FastClick -->
+	    <script src="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/fastclick_X7AK.js"></script>
+	    
+	    <!-- NProgress -->
+	    <script src="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/nprogress_X7AK.js"></script>
+	    
+	   	
+	    <!-- Dropzone.js -->
+   		<script src="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/dropzone.min_X7AK.js"></script>
+	    
+	    <!-- Chart.js -->
+	    <script src="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/Chart.min_X7AK.js"></script>
+	    
+	    <!-- gauge.js -->
+	    <script src="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/gauge.min_X7AK.js"></script>
+	    
+	    <!-- bootstrap-progressbar -->
+	    <script src="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/bootstrap-progressbar.min_X7AK.js"></script>
+	    
+	    <!-- iCheck -->
+	    <script src="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/icheck.min_X7AK.js"></script>
+	    
+	    <!-- Skycons -->
+	    <script src="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/skycons_X7AK.js"></script>
+	    
+	    <!-- Flot -->
+	    <script src="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/jquery.flot_X7AK.js"></script>
+	    <script src="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/jquery.flot.pie_X7AK.js"></script>
+	    <script src="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/jquery.flot.time_X7AK.js"></script>
+	    <script src="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/jquery.flot.stack_X7AK.js"></script>
+	    <script src="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/jquery.flot.resize_X7AK.js"></script>
+	    
+	    <!-- Flot plugins -->
+	    <script src="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/jquery.flot.orderBars_X7AK.js"></script>
+	    <script src="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/jquery.flot.spline.min_X7AK.js"></script>
+	    <script src="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/curvedLines_X7AK.js"></script>
+	    
+	    <!-- DateJS -->
+	    <script src="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/date_X7AK.js"></script>
+	    
+	    <!-- JQVMap -->
+	    <script src="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/jquery.vmap_X7AK.js"></script>
+	    <script src="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/jquery.vmap.world_X7AK.js"></script>
+	    <script src="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/jquery.vmap.sampledata_X7AK.js"></script>
+	    
+	    <!-- bootstrap-daterangepicker -->
+	    <script src="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/moment.min_X7AK.js"></script>
+	    <script src="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/daterangepicker_X7AK.js"></script>
+	
+	    <!-- Custom Theme Scripts -->
+	    <!-- Modifica&ccedil;&atilde;o realizada dia 10/08/2018 Guilherme - Atendimento do componente jquery.smartWizard do cadastro de Empreendimento -->
+	   	<!-- &lt;script src="/resources/outros/build/js/custom.min.js"&gt;&lt;/script&gt; -->
+	    <script src="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/custom.min_X7AK.js"></script>
+	    
+	    <!-- Datatables -->
+	    <script src="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/jquery.dataTables.min_X7AK.js"></script> <!-- Este script mostra a label Exibir, Buscar e Exibindo -->
+	    <script src="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/dataTables.bootstrap.min_X7AK.js"></script>
+	    <script src="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/dataTables.buttons.min_X7AK.js"></script>
+	    <script src="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/buttons.bootstrap.min_X7AK.js"></script>
+	    <script src="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/buttons.flash.min_X7AK.js"></script>
+	    <script src="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/buttons.html5.min_X7AK.js"></script>
+	    <script src="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/buttons.print.min_X7AK.js"></script>
+	    <script src="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/dataTables.fixedHeader.min_X7AK.js"></script>
+	    <script src="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/dataTables.keyTable.min_X7AK.js"></script>
+	    <script src="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/dataTables.responsive.min_X7AK.js"></script>
+	    <script src="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/responsive.bootstrap_X7AK.js"></script>
+	    <script src="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/dataTables.scroller.min_X7AK.js"></script>
+	    <script src="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/jszip.min_X7AK.js"></script>
+	    <script src="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/pdfmake.min_X7AK.js"></script>
+	    <script src="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/vfs_fonts_X7AK.js"></script></span>
+	<!-- ########## FIM Configura&ccedil;&atilde;o Default do Template ########## --><span id="importLibsJsFinalBodyPanel">
+				<script type="text/javascript" src="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/jquery-ui.min_X7AK.js"></script>
+				<link href="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/jquery-ui.min_X7AK.css" rel="stylesheet">
+				<link href="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/jquery-ui.structure.min_X7AK.css" rel="stylesheet">
+				<link href="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/jquery-ui.theme.min_X7AK.css" rel="stylesheet">
+				
+				<script type="text/javascript" src="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/jquery.mask.min_X7AK.js"></script>
+				<script type="text/javascript" src="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/jquery.maskMoney.min_X7AK.js"></script>
+				<script type="text/javascript" src="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/scriptUtil_X7AK.js"></script>
+				<script type="text/javascript" src="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/scriptUtilsGEO_X7AK.js"></script>
+				<script type="text/javascript" src="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/selectize.min_X7AK.js"></script>
+				 <!-- Custom Theme Scripts -->
+	   			 <!-- Modifica&ccedil;&atilde;o realizada dia 10/08/2018 Guilherme - Atendimento do componente jquery.smartWizard do cadastro de Empreendimento -->
+				<script src="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/cadastrarEmpreendimento_X7AK.js"></script>
+				
+				<!-- smartWizard -->
+	    		<script src="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/jquery.smartWizard_X7AK.js"></script>
+	    		
+	    		<!-- WebCam -->
+	    		<script src="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/webcam_X7AK.js"></script>
+	    		
+	    		<!-- FileInput -->
+	    		<script type="text/javascript" src="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/fileinput_X7AK.js"></script>
+	    		<!-- fancybox -->
+	    		<script type="text/javascript" src="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/jquery.fancybox.pack_X7AK.js"></script>
+	    		
+	    		<!-- faces api -->
+	    		<script src="ANATER-diagnostico-T0-consulta-page-iniciar-status_files/face-api_X7AK.js"></script>
+	    		
+	    		<!-- OpenLayers - Google Maps integration-->
+	    		
+	    		<!-- &lt;script src="/resources/openlayers/js/ol3gm-debug.js"&gt;&lt;/script&gt; --></span> 
+</body></html>
+<!-- 
+		O banner est&aacute; configurado para n&atilde;o aparecer no modo celular
+		 hidden-xs:  Celular (largura de 0px at&eacute; 760px ser&aacute; oculto)
+		 visible-sm: Tablet  (largura de  765px at&eacute; 990 px ser&aacute; vis&iacute;vel)
+		 visible-md: Monitor menor (de 990px at&eacute; 1200px ser&aacute; vis&iacute;vel) 
+		 visible-lg: Monitor maior(a partir de 1200px ser&aacute; vis&iacute;vel)
+	-->
+<!-- top navigation -->

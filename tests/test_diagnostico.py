@@ -81,7 +81,7 @@ def test_match_answers(page):
     page.goto(_page_url("ANATER-diagnostico-T0-fill-page.html"), wait_until="domcontentloaded")
     questions = scrape_questions(page)
     assert len(questions) == 129
-    assert ufpa_name_on_page(page) == "Itajara Aparecida Lopes De Oliveira"
+    assert ufpa_name_on_page(page) == "Beneficiária Teste 013"
     answers = _docx_answers()
     m = match_answers(questions, answers)
     assert len(m.assigned) >= 128, len(m.assigned)

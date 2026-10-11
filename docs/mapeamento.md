@@ -850,7 +850,7 @@ DataTables table `#DataTables_Table_0` (`table.dataTable`).
   bot never needs to page.
 - **Nome cell:** the name is followed by a `<br>` — read with stripped
   text. Nome da UFPA is the registered person's name (case as typed, e.g.
-  `Maria Raimunda Da Silva`), so compare normalized (case/accents), like
+  `Maria Da Silva`), so compare normalized (case/accents), like
   the dropdown matching already in `src/fill/`.
 - **Row identity:** buttons carry `formularioDiagnostico:j_idt217:<N>:j_idtXXX`
   where `<N>` is the row's index in the *unfiltered* list and
