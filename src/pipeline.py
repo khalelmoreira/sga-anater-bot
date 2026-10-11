@@ -21,7 +21,7 @@ from src.extract import extract_docx, extract_whatsapp_text, find_pa_municipio, 
 from src.fill import register_ufpa
 from src.fill.action_gate import ActionGate
 from src.fill.credentials import load_credentials
-from src.fill.diagnostico import run_diagnostico_t0, salvar
+from src.fill.diagnostico import UfpaNotFound, run_diagnostico_t0, salvar
 from src.fill.review import resolve, resolve_indicadores
 from src.fill.site import login, submit
 from src.schema import build_schema
@@ -46,6 +46,7 @@ class RunInputs:
     do_diagnostico: bool = True
     auto_submit: bool = False       # click the registration Salvar without asking
     auto_save: bool = False         # click the Diagnóstico Salvar without asking
+    dry_run: bool = False           # fill everything, never click either Salvar (and don't ask)
 
     headless: bool = False
     auto_allow: bool = False
@@ -161,8 +162,10 @@ def run_ufpa(inputs, ui, *, gate=None) -> dict:
                     page, schema_panels=prepared.panels, municipio=inputs.municipio,
                     review_handler=ui.review, gate=gate, picker=ui.pick_option, logged_in=True,
                 )
-                saved = inputs.auto_submit or ui.confirm_save(
-                    "registration", "Review the filled registration page in the browser.")
+                saved = not inputs.dry_run and (inputs.auto_submit or ui.confirm_save(
+                    "registration", "Review the filled registration page in the browser."))
+                if inputs.dry_run:
+                    ui.progress("Dry run", "registration filled, NOT saved")
                 if saved:
                     submit(page, gate)
                 summary["registration"] = {
@@ -172,16 +175,24 @@ def run_ufpa(inputs, ui, *, gate=None) -> dict:
 
             if inputs.do_diagnostico:
                 ui.progress("Filling Diagnóstico T0")
-                diag = run_diagnostico_t0(
-                    page, prepared.nome, prepared.answers,
-                    review_handler=ui.review, gate=gate, picker=ui.pick_option,
-                )
-                saved = inputs.auto_save or ui.confirm_save(
-                    "diagnostico", "Review the Diagnóstico T0 page in the browser.")
-                if saved:
-                    salvar(page, gate)
-                diag["saved"] = bool(saved)
-                summary["diagnostico"] = diag
+                try:
+                    diag = run_diagnostico_t0(
+                        page, prepared.nome, prepared.answers,
+                        review_handler=ui.review, gate=gate, picker=ui.pick_option,
+                    )
+                except UfpaNotFound as e:
+                    if not (inputs.dry_run and inputs.do_registration):
+                        raise
+                    # expected: the registration above was never saved
+                    ui.progress("Dry run", f"Diagnóstico skipped -- person not registered on the site ({e})")
+                    diag = None
+                if diag is not None:
+                    saved = not inputs.dry_run and (inputs.auto_save or ui.confirm_save(
+                        "diagnostico", "Review the Diagnóstico T0 page in the browser."))
+                    if saved:
+                        salvar(page, gate)
+                    diag["saved"] = bool(saved)
+                    summary["diagnostico"] = diag
         finally:
             browser.close()
 
