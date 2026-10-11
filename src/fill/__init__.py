@@ -16,7 +16,7 @@ scripts.run_diagnostico (see docs/mapeamento.md).
 from src.extract import extract_docx
 from src.fill.action_gate import ActionGate
 from src.fill.credentials import load_credentials
-from src.fill.review import cli_review, pick_option
+from src.fill.review import SKIP, cli_review, pick_option
 from src.fill.site import fill_cadastro_ufpa, login, open_cadastrar_ufpa, submit
 from src.schema import build_schema
 from src.schema.gate import MissingKeyDataError, check_blocking
@@ -64,6 +64,22 @@ def register_ufpa(page, docx_path=None, *, municipio, whatsapp_text=None, review
     """
     gate = gate or ActionGate()
 
+    # count what a person had to decide during the fill (fields reviewed at
+    # fill time, dropdown picks, and how many of those ended up skipped)
+    stats = {"reviewed": 0, "picked": 0, "skipped": 0}
+
+    def counting_review(field):
+        decision = review_handler(field)
+        stats["reviewed"] += 1
+        stats["skipped"] += decision.value is SKIP
+        return decision
+
+    def counting_picker(*args, **kwargs):
+        choice = picker(*args, **kwargs)
+        stats["picked"] += 1
+        stats["skipped"] += choice is SKIP
+        return choice
+
     if schema_panels is not None:
         panels = schema_panels
     elif docx_path is not None:
@@ -83,12 +99,33 @@ def register_ufpa(page, docx_path=None, *, municipio, whatsapp_text=None, review
         usuario, senha = load_credentials()
         login(page, usuario, senha, gate)
     open_cadastrar_ufpa(page, municipio=municipio, gate=gate)
-    fill_cadastro_ufpa(page, panels, review_handler, gate, picker)
+    fill_cadastro_ufpa(page, panels, counting_review, gate, counting_picker)
 
     if auto_submit:
         submit(page, gate)
 
-    return {"panels": panels}
+    return {"panels": panels, "summary": summarize_panels(panels, **stats)}
+
+
+def summarize_panels(panels, *, reviewed=0, picked=0, skipped=0):
+    """What a registration run did, per panel: field count, and rows for the
+    repeatable panels / people for Integrantes. `reviewed`/`picked`/`skipped`
+    are what a person decided while filling."""
+    per_panel = {}
+    rows = {}
+    for f in panels:
+        base = f.panel.split("[")[0]
+        per_panel[base] = per_panel.get(base, 0) + 1
+        if "[" in f.panel:
+            rows.setdefault(base, set()).add(f.panel)
+    return {
+        "fields": len(panels),
+        "per_panel": per_panel,
+        "rows": {k: len(v) for k, v in rows.items()},
+        "reviewed_at_fill": reviewed,
+        "options_picked": picked,
+        "skipped_at_fill": skipped,
+    }
 
 
 __all__ = ["register_ufpa"]

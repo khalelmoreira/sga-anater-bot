@@ -67,7 +67,11 @@ class CliUI:
         reg = summary.get("registration")
         if reg:
             print(f"\nRegistration: {reg['fields']} fields, {reg['reviewed']} reviewed by hand, "
-                  f"{reg['skipped']} skipped, saved={reg['saved']}")
+                  f"{reg['options_picked']} dropdown picks, {reg['skipped']} skipped, "
+                  f"{'SAVED' if reg['saved'] else 'NOT saved'}")
+            for panel, n in reg["per_panel"].items():
+                rows = reg["rows"].get(panel)
+                print(f"  - {panel}: {n} fields" + (f" in {rows} row(s)" if rows else ""))
         diag = summary.get("diagnostico")
         if diag:
             _print_diagnostico(diag)
@@ -91,5 +95,4 @@ def _print_diagnostico(s):
             print(f"  - {label[:90]}: site={have}, docx={wanted}")
     if s["unused_answers"]:
         print(f"\n.docx rows that matched no site question (headers/extra options): {len(s['unused_answers'])}")
-    if s.get("saved"):
-        print("\nSaved. Finalizar is yours to click.")
+    print("\nSaved. Finalizar is yours to click." if s.get("saved") else "\nNot saved.")

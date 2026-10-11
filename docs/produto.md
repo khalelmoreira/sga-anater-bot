@@ -95,7 +95,7 @@ and **`WebUI`** (below).
       `fill_field`, `_select`, `find_and_open_diagnostico`).
 - [x] `ActionGate` takes a `ui` instead of calling `input()`; keep the
       log/screenshot/`auto_allow_until` logic as is.
-- [ ] `register_ufpa` returns a structured summary (M1 only has counts at pipeline level: fields / reviewed / skipped / saved) (fields filled
+- [x] `register_ufpa` returns a structured summary (`summarize_panels`: fields and rows per panel, reviewed at fill time, dropdown picks, skipped) (fields filled
       automatically vs reviewed vs skipped, rows added per panel, whether
       Salvar happened).
 - [x] Lift the end-of-run Salvar prompts out of the scripts into the pipeline.
@@ -179,7 +179,7 @@ never costs the user. Nothing else in the pipeline knows about payment.
 
 - [x] **M1** — `src/pipeline.py` + `UI` Protocol + `CliUI`; scripts become thin
       wrappers; no behaviour change. Refactors listed above.
-- [ ] **M2** — structured registration summary; registration + Diagnóstico in
+- [x] **M2** — structured registration summary; registration + Diagnóstico in
       one run, one login.
 - [ ] **M3** — `WebUI` and the six screens.
 - [ ] **M4** — `entitlement` stub, settings and credentials storage

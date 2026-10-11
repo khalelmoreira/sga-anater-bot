@@ -115,7 +115,7 @@ def prepare(inputs, ui) -> Prepared:
             ui.progress("Reviewing fields that need a person", f"{low}")
         n_panels, n_answers = len(panels), len(answers)
         panels = resolve(panels, ui.review)
-        answers = resolve_indicadores(answers, ui.review)
+        answers = resolve_indicadores(answers, ui.review, notify=ui.progress)
         reviewed = low
         skipped = (n_panels - len(panels)) + (n_answers - len(answers))
 
@@ -133,7 +133,7 @@ def prepare(inputs, ui) -> Prepared:
 def run_ufpa(inputs, ui, *, gate=None) -> dict:
     """Runs the selected phases for one family and returns the summary
     handed to `ui.report`:
-        {"registration": {fields, reviewed, skipped, saved} | None,
+        {"registration": {fields, per_panel, rows, reviewed, options_picked, skipped, saved} | None,
          "diagnostico": <fill_questions summary + opened_as, saved> | None,
          "log": <action log path>}
     """
@@ -158,7 +158,7 @@ def run_ufpa(inputs, ui, *, gate=None) -> dict:
 
             if inputs.do_registration:
                 ui.progress("Registering the UFPA")
-                register_ufpa(
+                reg = register_ufpa(
                     page, schema_panels=prepared.panels, municipio=inputs.municipio,
                     review_handler=ui.review, gate=gate, picker=ui.pick_option, logged_in=True,
                 )
@@ -169,8 +169,10 @@ def run_ufpa(inputs, ui, *, gate=None) -> dict:
                 if saved:
                     submit(page, gate)
                 summary["registration"] = {
-                    "fields": len(prepared.panels), "reviewed": prepared.reviewed,
-                    "skipped": prepared.skipped, "saved": bool(saved),
+                    **reg["summary"],
+                    "reviewed": prepared.reviewed + reg["summary"]["reviewed_at_fill"],
+                    "skipped": prepared.skipped + reg["summary"]["skipped_at_fill"],
+                    "saved": bool(saved),
                 }
 
             if inputs.do_diagnostico:

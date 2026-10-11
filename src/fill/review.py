@@ -109,7 +109,7 @@ class _AnswerView:
     review_reason: str | None
 
 
-def resolve_indicadores(answers, review_handler=cli_review):
+def resolve_indicadores(answers, review_handler=cli_review, notify=print):
     """Same idea as resolve(), for Diagnóstico T0 answers: runs the handler
     on every low-confidence IndicadorAnswer and returns a new list where a
     reviewed answer is a clean 'Sim' / 'Não' / 'Não se Aplica' with high
@@ -126,7 +126,7 @@ def resolve_indicadores(answers, review_handler=cli_review):
         decision = review_handler(_AnswerView(f"diagnostico_t0 / {a.indicator}", a.question, a.value, a.review_reason))
         choice = None if decision.value is SKIP else parse_choice(decision.value)
         if choice is None:
-            print(f"  (left unanswered: {a.question[:70]})")
+            notify(f"  (left unanswered: {a.question[:70]})")
             continue
         a.value, a.confidence, a.review_reason = choice, "high", None
         resolved.append(a)

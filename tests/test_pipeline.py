@@ -9,7 +9,8 @@ import os
 import tempfile
 
 from src.fill.action_gate import AbortRun, ActionGate
-from src.fill.review import SKIP, ReviewDecision
+from src.fill import summarize_panels
+from src.fill.review import SKIP, ReviewDecision, resolve_indicadores
 import src.pipeline as pipeline
 from src.pipeline import RunInputs, prepare
 from src.schema.persist import indicadores_path, load_indicadores, load_panels
@@ -116,7 +117,34 @@ def test_auto_allow_until_does_not_prompt():
     assert [e for e in ui.events if e[0] == "action"] == [("action", 3)]
 
 
+def test_summarize_panels_counts_rows():
+    from src.schema.model import CanonicalField
+    import inspect
+    names = [p for p in inspect.signature(CanonicalField).parameters]
+    def f(panel):
+        kw = {n: None for n in names}
+        kw.update(panel=panel, field="x", value="v", confidence="high")
+        return CanonicalField(**kw)
+    panels = [f("ufpa"), f("ufpa"), f("plantel[0]"), f("plantel[0]"), f("plantel[1]"), f("integrantes[0]")]
+    s = summarize_panels(panels, reviewed=2, picked=1, skipped=1)
+    assert s["fields"] == 6 and s["per_panel"] == {"ufpa": 2, "plantel": 3, "integrantes": 1}
+    assert s["rows"] == {"plantel": 2, "integrantes": 1}
+    assert (s["reviewed_at_fill"], s["options_picked"], s["skipped_at_fill"]) == (2, 1, 1)
+
+
+def test_resolve_indicadores_notifies_instead_of_printing():
+    from src.schema.model import IndicadorAnswer
+    import inspect
+    kw = {n: None for n in inspect.signature(IndicadorAnswer).parameters}
+    kw.update(indicator="i", question="q?", value="???", confidence="low", review_reason="r")
+    msgs = []
+    out = resolve_indicadores([IndicadorAnswer(**kw)], lambda f: ReviewDecision(SKIP), notify=msgs.append)
+    assert out == [] and msgs and "q?" in msgs[0]
+
+
 if __name__ == "__main__":
+    test_summarize_panels_counts_rows()
+    test_resolve_indicadores_notifies_instead_of_printing()
     test_gate_blocks_before_any_review()
     test_prepare_reviews_only_low_confidence_and_saves()
     test_input_validation()
