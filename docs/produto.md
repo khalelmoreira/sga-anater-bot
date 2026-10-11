@@ -156,6 +156,26 @@ Tkinter/Qt (more UI code for the same screens, poorer dropdown/search UX).
 - Logs and screenshots under `%APPDATA%`, not the install folder.
 - Unpinned `requirements.txt` needs pinning before building releases.
 
+### M5 as built (not yet verified on Windows)
+
+- `python packaging/build.py` → PyInstaller one-folder app with Chromium
+  bundled (`PLAYWRIGHT_BROWSERS_PATH=0`); entry point is `scripts/run_web.py`.
+  PyInstaller doesn't cross-compile: the Windows build must run on Windows
+  (`.github/workflows/build-windows.yml`, manual trigger, also runs the self-test).
+- `SGA-ANATER-Bot.exe --selftest` checks the page, Chromium, the credential
+  store, `.docx` support and writable folders. Give it to the first tester.
+- `src/paths.py`: logs, screenshots and WhatsApp templates live under
+  `%APPDATA%\SGA-ANATER-Bot` when packaged (`SGA_BOT_HOME` overrides); from
+  source nothing changed.
+- Checked on Linux with a native build run from another directory: page,
+  Chromium, `.docx` and folders pass. The keyring check failed there only
+  because the container has no secret service; **Windows Credential Manager
+  is still unverified.** The build is ~900 MB unpacked / ~375 MB zipped.
+- Open: console window stays visible (deliberate, shows errors; windowed
+  mode needs stdout guards), no installer or icon, no code signing
+  (Windows SmartScreen will warn), WhatsApp templates need a UI
+  (today: drop `.txt` files in the folder above).
+
 ## Payment and licensing — decision pending
 
 The billing unit decides whether a server is needed at all:
@@ -196,7 +216,7 @@ never costs the user. Nothing else in the pipeline knows about payment.
 - [x] **M3** — `WebUI` and the six screens.
 - [ ] **M4** — `entitlement` stub, settings and credentials storage
       (`keyring`), per-account config for the fixed values.
-- [ ] **M5** — Windows packaging, tested on a clean machine.
+- [~] **M5** — Windows packaging, tested on a clean machine.
 - [ ] **M6** — real billing, once the model is chosen.
 
 ## Open points

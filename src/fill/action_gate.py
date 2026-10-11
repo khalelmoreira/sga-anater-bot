@@ -29,7 +29,8 @@ import json
 import re
 from pathlib import Path
 
-DEFAULT_LOG_DIR = "logs"
+from src.paths import logs_dir
+
 
 # Field names that hold personally identifiable data, per the field-by-
 # field tables in docs/mapeamento.md. Matched case-insensitively against
@@ -93,13 +94,13 @@ class ActionGate:
         self.action_count = 0
         stamp = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
         if log_path is None:
-            log_path = f"{DEFAULT_LOG_DIR}/run-{stamp}.jsonl"
+            log_path = logs_dir() / f"run-{stamp}.jsonl"
         self.path = Path(log_path)
         self.path.parent.mkdir(parents=True, exist_ok=True)
 
         self.page = None
         self._shot_count = 0
-        self.screenshot_dir = Path(DEFAULT_LOG_DIR) / "screenshots" / stamp if screenshot else None
+        self.screenshot_dir = logs_dir() / "screenshots" / stamp if screenshot else None
         if self.screenshot_dir is not None:
             self.screenshot_dir.mkdir(parents=True, exist_ok=True)
 

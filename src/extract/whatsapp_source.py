@@ -31,7 +31,6 @@ _AXES = ["Eixo Produtivo", "Eixo Social", "Eixo Ambiental", "Eixo Fundiário"]
 # across every family registered there) rather than written per family,
 # so it's kept as one .txt file per template here instead of being pasted
 # in fresh for every registration run.
-DEFAULT_WHATSAPP_DIR = "data/acoes_potenciais"
 
 
 def extract_whatsapp_text(text: str) -> dict:
@@ -71,7 +70,7 @@ def extract_whatsapp_text(text: str) -> dict:
     return {"pa_nome": pa_nome, "municipio": municipio, "eixos": eixos}
 
 
-def load_whatsapp_text(pa_nome, municipio, base_dir=DEFAULT_WHATSAPP_DIR):
+def load_whatsapp_text(pa_nome, municipio, base_dir=None):
     """Finds the standardized WhatsApp template for this family's PA/município
     among the .txt files in `base_dir` (one file per template, dropped in by
     hand — see data/acoes_potenciais/README.md) and returns its raw text, or
@@ -83,8 +82,10 @@ def load_whatsapp_text(pa_nome, municipio, base_dir=DEFAULT_WHATSAPP_DIR):
     header against the family's actual UFPA data — so file naming is just
     for humans, not load-bearing.
     """
+    from src.paths import templates_dir
     from src.schema.rules import normalize
 
+    base_dir = base_dir or templates_dir()
     if not os.path.isdir(base_dir):
         return None
 

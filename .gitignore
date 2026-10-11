@@ -11,3 +11,8 @@ data/acoes_potenciais/*
 !data/acoes_potenciais/README.md
 !data/acoes_potenciais/.gitkeep
 logs/
+
+# PyInstaller output
+dist/
+build/
+*.spec
