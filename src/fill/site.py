@@ -154,7 +154,7 @@ def _resolve_value(field, review_handler):
     return decision.value, True
 
 
-def fill_field(page, field, review_handler=cli_review, gate=None):
+def fill_field(page, field, review_handler=cli_review, gate=None, picker=pick_option):
     """Fills one CanonicalField on the currently-open Cadastrar UFPA page."""
     gate = gate or ActionGate.noop()
     value, should_fill = _resolve_value(field, review_handler)
@@ -175,16 +175,14 @@ def fill_field(page, field, review_handler=cli_review, gate=None):
     elif field.field_type == "select":
         # no schema field currently uses the "label:" scheme for a <select>
         if loc.select_is_already_set(page, site_id, value):
-            print(f"[SKIP] '{where}' already set on the site -- nothing to select")
-            return
+            return  # already set on the site -- nothing to select
         def _select():
             try:
                 loc.select_dropdown_if_needed(page, site_id, value)
             except loc.OptionNotFound as e:
-                choice = pick_option(where, value, e.options)
+                choice = picker(where, value, e.options)
                 if choice is SKIP:
-                    print(f"[SKIP] '{where}' left unfilled")
-                    return
+                    return  # left unfilled
                 loc.select_dropdown_if_needed(page, site_id, choice)
             _settle()
 
@@ -208,15 +206,15 @@ def fill_field(page, field, review_handler=cli_review, gate=None):
         raise ValueError(f"unknown field_type {field.field_type!r} for {field.panel}/{field.field}")
 
 
-def fill_simple_panel(page, panel_fields, review_handler=cli_review, gate=None):
+def fill_simple_panel(page, panel_fields, review_handler=cli_review, gate=None, picker=pick_option):
     """UFPA, Diversos, Ações Potenciais — no repeatable rows, just fill
     every field."""
     gate = gate or ActionGate.noop()
     for field in panel_fields:
-        fill_field(page, field, review_handler, gate)
+        fill_field(page, field, review_handler, gate, picker)
 
 
-def fill_repeatable_panel(page, panel_name, rows_by_index, review_handler=cli_review, gate=None):
+def fill_repeatable_panel(page, panel_name, rows_by_index, review_handler=cli_review, gate=None, picker=pick_option):
     """Atividade Produtiva, Patrimônio, Plantel, Tipo Área: fill one row's
     inputs, click Adicionar, repeat for the next row (confirmed pattern —
     see docs/mapeamento.md, each panel's "Structure" note)."""
@@ -228,11 +226,11 @@ def fill_repeatable_panel(page, panel_name, rows_by_index, review_handler=cli_re
 
     for idx, row_fields in sorted(rows_by_index.items()):
         for field in row_fields:
-            fill_field(page, field, review_handler, gate)
+            fill_field(page, field, review_handler, gate, picker)
         gate.confirm(f"Click 'Adicionar' ({panel_name} row {idx})", _add_row)
 
 
-def fill_integrantes_panel(page, rows_by_index, review_handler=cli_review, gate=None):
+def fill_integrantes_panel(page, rows_by_index, review_handler=cli_review, gate=None, picker=pick_option):
     """One modal submission per person (see docs/mapeamento.md)."""
     def _open_modal():
         loc.inserir_integrante_button(page).click()
@@ -246,7 +244,7 @@ def fill_integrantes_panel(page, rows_by_index, review_handler=cli_review, gate=
     for idx, person_fields in sorted(rows_by_index.items()):
         gate.confirm(f"Click 'Inserir Integrante' (person {idx})", _open_modal)
         for field in person_fields:
-            fill_field(page, field, review_handler, gate)
+            fill_field(page, field, review_handler, gate, picker)
         gate.confirm(f"Click modal 'Salvar' (person {idx})", _save_modal)
 
 
@@ -271,7 +269,7 @@ def submit(page, gate=None):
 
 # --------------------------------------------------------------- orchestrator
 
-def fill_cadastro_ufpa(page, schema_panels, review_handler=cli_review, gate=None):
+def fill_cadastro_ufpa(page, schema_panels, review_handler=cli_review, gate=None, picker=pick_option):
     """Fills every panel of an already-open Cadastrar UFPA page from the
     canonical schema (src.schema.build_schema()["panels"]). Does NOT
     submit — call submit(page) once satisfied."""
@@ -284,15 +282,15 @@ def fill_cadastro_ufpa(page, schema_panels, review_handler=cli_review, gate=None
     for panel_name in ("ufpa", "diversos", "acoes_potenciais"):
         if by_panel.get(panel_name):
             open_panel(page, panel_name, gate)
-            fill_simple_panel(page, by_panel[panel_name], review_handler, gate)
+            fill_simple_panel(page, by_panel[panel_name], review_handler, gate, picker)
 
     for panel_name in ("atividade_produtiva", "patrimonio", "plantel", "tipo_area"):
         fields = [f for f in schema_panels if f.panel.startswith(panel_name)]
         if fields:
             open_panel(page, panel_name, gate)
-            fill_repeatable_panel(page, panel_name, group_by_panel_index(fields), review_handler, gate)
+            fill_repeatable_panel(page, panel_name, group_by_panel_index(fields), review_handler, gate, picker)
 
     integrantes_fields = [f for f in schema_panels if f.panel.startswith("integrantes")]
     if integrantes_fields:
         open_panel(page, "integrantes", gate)
-        fill_integrantes_panel(page, group_by_panel_index(integrantes_fields), review_handler, gate)
+        fill_integrantes_panel(page, group_by_panel_index(integrantes_fields), review_handler, gate, picker)

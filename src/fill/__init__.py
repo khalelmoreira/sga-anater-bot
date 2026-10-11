@@ -16,14 +16,14 @@ scripts.run_diagnostico (see docs/mapeamento.md).
 from src.extract import extract_docx
 from src.fill.action_gate import ActionGate
 from src.fill.credentials import load_credentials
-from src.fill.review import cli_review
+from src.fill.review import cli_review, pick_option
 from src.fill.site import fill_cadastro_ufpa, login, open_cadastrar_ufpa, submit
 from src.schema import build_schema
 from src.schema.gate import MissingKeyDataError, check_blocking
 
 
 def register_ufpa(page, docx_path=None, *, municipio, whatsapp_text=None, review_handler=cli_review,
-                   auto_submit=False, gate=None, schema_panels=None):
+                   auto_submit=False, gate=None, schema_panels=None, picker=pick_option, logged_in=False):
     """Runs one family's registration end to end on an already-launched
     Playwright `page`. Pauses (via `review_handler`) only on fields the
     schema layer flagged low confidence — everything else fills
@@ -57,6 +57,10 @@ def register_ufpa(page, docx_path=None, *, municipio, whatsapp_text=None, review
     afterward. Defaults to a fresh, prompting ActionGate (one real,
     timestamped log file per run) — pass ActionGate.noop() to run
     unattended (e.g. mock-page smoke tests).
+
+    `picker` answers dropdowns with no matching option (a UI's
+    pick_option); `logged_in=True` skips the login step when the caller
+    (src.pipeline) already logged in on this `page`.
     """
     gate = gate or ActionGate()
 
@@ -75,10 +79,11 @@ def register_ufpa(page, docx_path=None, *, municipio, whatsapp_text=None, review
     if blocking:
         raise MissingKeyDataError(blocking)
 
-    usuario, senha = load_credentials()
-    login(page, usuario, senha, gate)
+    if not logged_in:
+        usuario, senha = load_credentials()
+        login(page, usuario, senha, gate)
     open_cadastrar_ufpa(page, municipio=municipio, gate=gate)
-    fill_cadastro_ufpa(page, panels, review_handler, gate)
+    fill_cadastro_ufpa(page, panels, review_handler, gate, picker)
 
     if auto_submit:
         submit(page, gate)

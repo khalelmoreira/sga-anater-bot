@@ -49,17 +49,9 @@ yourself; don't hand them to Claude. Pass --no-screenshots to skip.
 """
 
 import argparse
-import sys
 
-from dotenv import load_dotenv
-from playwright.sync_api import sync_playwright
-
-from src.extract import find_pa_municipio, load_whatsapp_text
-from src.fill import register_ufpa
-from src.fill.action_gate import AbortRun, ActionGate
-from src.fill.site import submit
-from src.schema.gate import MissingKeyDataError
-from src.schema.persist import load_panels
+from scripts._common import run_cli
+from src.pipeline import RunInputs
 
 
 def main():
@@ -78,63 +70,12 @@ def main():
     if bool(args.docx_path) == bool(args.schema):
         parser.error("pass exactly one of docx_path or --schema")
 
-    load_dotenv()
-    gate = ActionGate(auto_allow=args.auto_allow, screenshot=not args.no_screenshots, auto_allow_until=args.auto_allow_until)
-    print(f"Action log: {gate.path}")
-    if gate.screenshot_dir:
-        print(f"Screenshots: {gate.screenshot_dir}/ (not sanitized -- real data, review yourself)")
-
-    schema_panels = None
-    whatsapp_text = None
-    if args.schema:
-        schema_panels = load_panels(args.schema)
-        print(f"Loaded {len(schema_panels)} fields from {args.schema} -- skipping extraction/review.")
-    elif not args.no_whatsapp:
-        pa_nome, municipio = find_pa_municipio(args.docx_path)
-        if pa_nome and municipio:
-            whatsapp_text = load_whatsapp_text(pa_nome, municipio)
-            if whatsapp_text is None:
-                print(f"No WhatsApp template found for '{pa_nome} - {municipio}' in data/acoes_potenciais/ "
-                      "-- Ações Potenciais will be left for a low-confidence pause.", file=sys.stderr)
-
-    with sync_playwright() as p:
-        browser = p.chromium.launch(headless=args.headless)
-        page = browser.new_page()
-        gate.attach_page(page)
-        try:
-            register_ufpa(
-                page,
-                args.docx_path,
-                municipio=args.municipio,
-                whatsapp_text=whatsapp_text,
-                auto_submit=args.auto_submit,
-                gate=gate,
-                schema_panels=schema_panels,
-            )
-        except MissingKeyDataError as e:
-            print(f"Pre-flight gate failed -- fix the .docx before trying again:\n{e}", file=sys.stderr)
-            browser.close()
-            sys.exit(1)
-        except AbortRun as e:
-            print(f"\nRun aborted by user at: {e}\nSee {gate.path} for the full action log.", file=sys.stderr)
-            browser.close()
-            sys.exit(1)
-
-        if not args.auto_submit:
-            if args.headless and gate.screenshot_dir:
-                print(f"\nReview the latest screenshot in {gate.screenshot_dir}/ before continuing.")
-            else:
-                print("\nReview the filled page in the browser before continuing.")
-            input("Press Enter to Salvar (Ctrl+C to abort without submitting): ")
-            try:
-                submit(page, gate)
-            except AbortRun as e:
-                print(f"\nSubmit denied/aborted: {e}\nSee {gate.path} for the full action log.", file=sys.stderr)
-                browser.close()
-                sys.exit(1)
-
-        browser.close()
-        print(f"\nDone. Full action log: {gate.path}")
+    run_cli(RunInputs(
+        docx_path=args.docx_path, schema_path=args.schema, municipio=args.municipio,
+        use_whatsapp=not args.no_whatsapp, do_diagnostico=False, auto_submit=args.auto_submit,
+        headless=args.headless, auto_allow=args.auto_allow, auto_allow_until=args.auto_allow_until,
+        screenshots=not args.no_screenshots,
+    ))
 
 
 if __name__ == "__main__":

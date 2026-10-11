@@ -26,11 +26,10 @@ to Claude.
 import argparse
 import sys
 
-from src.extract import extract_docx, extract_whatsapp_text, find_pa_municipio, load_whatsapp_text
-from src.fill.review import cli_review, resolve, resolve_indicadores
-from src.schema import build_schema
-from src.schema.gate import check_blocking
-from src.schema.persist import indicadores_path, save_indicadores, save_panels
+from src.pipeline import RunInputs, prepare
+from src.schema.gate import MissingKeyDataError
+from src.schema.persist import indicadores_path
+from src.ui import CliUI
 
 
 def main():
@@ -40,37 +39,16 @@ def main():
     parser.add_argument("--no-whatsapp", action="store_true", help="skip the Ações Potenciais WhatsApp template lookup")
     args = parser.parse_args()
 
-    whatsapp_text = None
-    if not args.no_whatsapp:
-        pa_nome, municipio = find_pa_municipio(args.docx_path)
-        if pa_nome and municipio:
-            whatsapp_text = load_whatsapp_text(pa_nome, municipio)
-            if whatsapp_text is None:
-                print(f"No WhatsApp template found for '{pa_nome} - {municipio}' in data/acoes_potenciais/ "
-                      "-- Ações Potenciais will be left for a low-confidence pause.", file=sys.stderr)
-
-    records = extract_docx(args.docx_path)
-    whatsapp_data = extract_whatsapp_text(whatsapp_text) if whatsapp_text else None
-    schema = build_schema(records, whatsapp_data=whatsapp_data)
-
-    blocking = check_blocking(schema["panels"])
-    if blocking:
-        print(f"Pre-flight gate failed -- fix the .docx before trying again:\n{blocking}", file=sys.stderr)
+    try:
+        prepare(RunInputs(docx_path=args.docx_path, use_whatsapp=not args.no_whatsapp,
+                          do_registration=False, save_schema_to=args.out), CliUI())
+    except MissingKeyDataError as e:
+        print(f"Pre-flight gate failed -- fix the .docx before trying again:\n{e}", file=sys.stderr)
         sys.exit(1)
 
-    print(f"{len(schema['panels'])} fields built. Resolving low-confidence fields (if any)...")
-    resolved = resolve(schema["panels"], cli_review)
-
-    path = save_panels(resolved, args.out)
-
-    print(f"\n{len(schema['indicadores'])} Diagnóstico T0 answers built. Resolving low-confidence ones (if any)...")
-    answers = resolve_indicadores(schema["indicadores"], cli_review)
-    answers_path = save_indicadores(answers, indicadores_path(path))
-
-    print(f"\nSaved resolved schema: {path}")
-    print(f"Saved Diagnóstico T0 answers: {answers_path}")
-    print(f"Register with:   python -m scripts.run_registration --schema {path} --municipio \"<município>\"")
-    print(f"Then diagnostic: python -m scripts.run_diagnostico --schema {path}")
+    print(f"\nSaved Diagnóstico T0 answers: {indicadores_path(args.out)}")
+    print(f"Register with:   python -m scripts.run_registration --schema {args.out} --municipio \"<município>\"")
+    print(f"Then diagnostic: python -m scripts.run_diagnostico --schema {args.out}")
 
 
 if __name__ == "__main__":

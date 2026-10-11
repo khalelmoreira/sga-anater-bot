@@ -56,3 +56,6 @@ This is a scaffold. The modules in `src/` are only stubs
 field-by-field mapping of the site's panels (UFPA, Atividade Produtiva,
 Diversos, Patrimônio, Plantel, Tipo Área, Ações Potenciais, Integrantes)
 is in progress; what's already closed is in `docs/mapeamento.md`.
+
+**Product stage (UI, one wired pipeline, Windows packaging, payment hook):**
+see `docs/produto.md` before changing entrypoints or the pause/review code.

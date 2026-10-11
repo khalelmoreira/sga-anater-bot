@@ -76,7 +76,13 @@ class AbortRun(Exception):
 class ActionGate:
     """Call confirm() before every state-changing Playwright action."""
 
-    def __init__(self, log_path=None, *, auto_allow=False, screenshot=False, auto_allow_until=0):
+    def __init__(self, log_path=None, *, auto_allow=False, screenshot=False, auto_allow_until=0, ui=None):
+        # `ui` answers the per-action prompt (src.ui.UI.confirm_action);
+        # defaults to the terminal one
+        if ui is None:
+            from src.ui import CliUI
+            ui = CliUI()
+        self.ui = ui
         self.auto_allow = auto_allow
         # actions numbered 1..auto_allow_until run without a prompt (still
         # logged); the prompt shows each action's number so a retry after a
@@ -100,6 +106,7 @@ class ActionGate:
         """No prompting, no log file, no screenshots — for mock-page
         smoke tests / CI."""
         gate = cls.__new__(cls)
+        gate.ui = None  # never prompts: auto_allow is on
         gate.auto_allow = True
         gate.auto_allow_until = 0
         gate.action_count = 0
@@ -164,11 +171,8 @@ class ActionGate:
             answer = "y"
         else:
             if n == self.auto_allow_until + 1 and self.auto_allow_until:
-                print(f"\n--- auto-allow window ended after action {self.auto_allow_until}; prompting from here ---")
-            prompt = f"\n[ACTION {n}] {description}"
-            if label is not None:
-                prompt += f"  (field={label!r}, value={safe_value!r})"
-            answer = input(prompt + "\n  allow? [Y/n/q/a=allow remaining]: ").strip().lower()
+                self.ui.progress(f"--- auto-allow window ended after action {self.auto_allow_until}; prompting from here ---")
+            answer = self.ui.confirm_action(n, description, label, safe_value)
 
         if answer == "a":
             self.auto_allow = True

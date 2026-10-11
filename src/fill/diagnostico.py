@@ -224,7 +224,7 @@ def _search_rows(page):
     return out
 
 
-def find_and_open_diagnostico(page, nome, *, gate=None):
+def find_and_open_diagnostico(page, nome, *, gate=None, picker=pick_option):
     """Search screen: Estado -> Pesquisar -> search box by name -> click
     Iniciar/Continuar on the person's row. Returns the button's label
     ('Iniciar' | 'Continuar'). Raises UfpaNotFound / UfpaAlreadyFinalized.
@@ -269,7 +269,7 @@ def find_and_open_diagnostico(page, nome, *, gate=None):
         row, data = actionable[0]
     else:
         options = [f'{d["cod"]} | {d["nome"]} | {d["municipio"]} | {d["evolucao"]} | {d["action"]}' for _, d in actionable]
-        choice = pick_option("Diagnóstico T0 row (homonyms)", nome, options)
+        choice = picker("Diagnóstico T0 row (homonyms)", nome, options)
         if choice is SKIP:
             raise UfpaNotFound(f"{nome!r}: several rows matched and none was picked")
         row, data = actionable[options.index(choice)]
@@ -428,7 +428,7 @@ def salvar(page, gate=None):
     gate.confirm("Click page 'Salvar' -- saves the Diagnóstico T0 answers (does NOT finalize)", _salvar)
 
 
-def run_diagnostico_t0(page, nome, answers, *, review_handler=cli_review, gate=None, auto_save=False):
+def run_diagnostico_t0(page, nome, answers, *, review_handler=cli_review, gate=None, auto_save=False, picker=pick_option):
     """Search screen -> question page -> answer -> (optionally) Salvar.
     Expects an already logged-in `page`. Returns the fill_questions()
     summary plus 'opened_as' ('Iniciar' | 'Continuar').
@@ -437,7 +437,7 @@ def run_diagnostico_t0(page, nome, answers, *, review_handler=cli_review, gate=N
     `nome`, otherwise nothing is answered (WrongUfpa).
     """
     gate = gate or ActionGate.noop()
-    opened_as = find_and_open_diagnostico(page, nome, gate=gate)
+    opened_as = find_and_open_diagnostico(page, nome, gate=gate, picker=picker)
     shown = ufpa_name_on_page(page)
     if normalize(shown) != normalize(nome):
         raise WrongUfpa(f"opened the diagnostic for {shown!r}, expected {nome!r}")
