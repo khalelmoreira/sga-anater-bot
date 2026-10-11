@@ -3,3 +3,7 @@ playwright
 openpyxl
 pandas
 python-dotenv
+fastapi
+uvicorn
+keyring
+httpx

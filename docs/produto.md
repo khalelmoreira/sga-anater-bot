@@ -135,6 +135,18 @@ in the default browser. Reasons: fastest to iterate; Playwright already needs
 a browser; easy to run the review card as normal web forms. Rejected for now:
 Tkinter/Qt (more UI code for the same screens, poorer dropdown/search UX).
 
+### M3 as built
+
+- `python -m scripts.run_web` starts FastAPI on `127.0.0.1:8765` and opens the
+  browser (`src/web/app.py`, page in `src/web/static/index.html`, UI strings in pt-BR).
+- `src/web/ui.py` `WebUI`: pipeline runs in a worker thread and blocks in
+  `review` / `pick_option` / `confirm_save` until `POST /api/answer`; the page polls `/api/state`.
+- **Web runs don't ask per click** (`auto_allow=True`; every action is still
+  logged and screenshotted). Cancel works through `ActionGate(cancel_check=...)`.
+- Credentials: `src/web/creds.py` (`keyring`, env fallback); the password is never sent to the page.
+- Every `/api` call needs a per-process token embedded in the served page.
+- Not done: the "Test login" button, an update channel, and a Windows-tested build.
+
 ## Windows packaging
 
 - Double-click `.exe` via **PyInstaller**; the app starts the local server and
@@ -181,7 +193,7 @@ never costs the user. Nothing else in the pipeline knows about payment.
       wrappers; no behaviour change. Refactors listed above.
 - [x] **M2** — structured registration summary; registration + Diagnóstico in
       one run, one login.
-- [ ] **M3** — `WebUI` and the six screens.
+- [x] **M3** — `WebUI` and the six screens.
 - [ ] **M4** — `entitlement` stub, settings and credentials storage
       (`keyring`), per-account config for the fixed values.
 - [ ] **M5** — Windows packaging, tested on a clean machine.

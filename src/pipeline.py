@@ -143,6 +143,7 @@ def run_ufpa(inputs, ui, *, gate=None) -> dict:
     gate = gate or ActionGate(
         auto_allow=inputs.auto_allow, screenshot=inputs.screenshots,
         auto_allow_until=inputs.auto_allow_until, ui=ui,
+        cancel_check=getattr(ui, "cancelled", None),
     )
     ui.progress("Action log", str(gate.path))
 

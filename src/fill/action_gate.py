@@ -76,13 +76,15 @@ class AbortRun(Exception):
 class ActionGate:
     """Call confirm() before every state-changing Playwright action."""
 
-    def __init__(self, log_path=None, *, auto_allow=False, screenshot=False, auto_allow_until=0, ui=None):
+    def __init__(self, log_path=None, *, auto_allow=False, screenshot=False, auto_allow_until=0, ui=None, cancel_check=None):
         # `ui` answers the per-action prompt (src.ui.UI.confirm_action);
         # defaults to the terminal one
         if ui is None:
             from src.ui import CliUI
             ui = CliUI()
         self.ui = ui
+        # called before every action; returning True aborts the run (a GUI's Cancel button)
+        self.cancel_check = cancel_check
         self.auto_allow = auto_allow
         # actions numbered 1..auto_allow_until run without a prompt (still
         # logged); the prompt shows each action's number so a retry after a
@@ -107,6 +109,7 @@ class ActionGate:
         smoke tests / CI."""
         gate = cls.__new__(cls)
         gate.ui = None  # never prompts: auto_allow is on
+        gate.cancel_check = None
         gate.auto_allow = True
         gate.auto_allow_until = 0
         gate.action_count = 0
@@ -162,6 +165,9 @@ class ActionGate:
         every remaining action for the rest of the run, without further
         prompting — still logged, just not interactively confirmed.
         """
+        if self.cancel_check is not None and self.cancel_check():
+            self._write(event="aborted", description=description)
+            raise AbortRun("cancelled")
         safe_value = sanitize(label, value) if label is not None else None
         self.action_count += 1
         n = self.action_count
