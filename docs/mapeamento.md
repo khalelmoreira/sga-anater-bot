@@ -131,7 +131,7 @@ discovering issues one login at a time.
 - [x] Extraction layer (`src/extract/`) implemented and verified against `examples/example.docx` — both `docx_source.py` (10-table walker) and `whatsapp_source.py` (4-paragraph parser)
 - [x] Schema layer (`src/schema/`) implemented and verified — `build.py` turns raw records into per-panel `CanonicalField`s (+ `IndicadorAnswer` for Diagnóstico T0), applying every confidence rule documented above. Dropdown-heavy fields (Atividade, Unidade de Medida, Município, Comunidade/Grupo, Estado Civil, Classificação da Pessoa, Escolaridade) accept an optional live option catalog from `src/fill/` to upgrade low→high confidence just-in-time; without one they default to low rather than guessing
 - [x] `src/fill/` (Playwright) implemented for the 8 Cadastrar UFPA panels — locators and fill logic are grounded directly in `examples/anater-signup-page-1.html` (real stable ids, real radio/select DOM structure, real "Adicionar"/"Salvar"/modal button behavior) and smoke-tested with a mock page against the full canonical schema (correct accordion/panel/row ordering, correct number of "Adicionar" clicks per repeatable panel, low-confidence fields correctly held for review instead of blindly filled). Login (`examples/ANATER-login.html`), the UFPA sidebar menu (`examples/ANATER -home.html`), and the "Consultar UFPA" filter screen + its Cadastrar button (`examples/ANATER -ufpa-cadastro.html` / `...-ufpa-cadastro-filled.html`) are all mapped and now also implemented in `src/fill/site.py` (`login()`, `open_cadastrar_ufpa()`) with the real, confirmed ids. The one inferred (not directly captured) step is the sidebar's "UFPA" item expand, flagged in `open_cadastrar_ufpa()`'s docstring. **Still not grounded or implemented**: Diagnóstico T0 (search screen + the ~140-question page) — no saved HTML capture exists yet
-- [ ] Diagnóstico T0 fill-in (the ~140 Indicador questions, already mapped into `IndicadorAnswer` by the schema layer) — not implemented in `src/fill/` yet, only the 8 Cadastrar UFPA panels
+- [x] Diagnóstico T0 fill-in — implemented in `src/fill/diagnostico.py` + `scripts/run_diagnostico.py` (search screen, 129-question page, Salvar only); verified offline, not yet run live
 
 ---
 
@@ -319,7 +319,7 @@ different, out-of-scope flow).
 - [x] Diagnóstico T0 search screen + results table — mapped below (only
       Estado is filled; Município/Status unused); Iniciar/Continuar button
       markup still needs a capture
-- [ ] The ~140-question page — not yet captured
+- [x] The 129-question page — captured (blank + partially answered) and mapped below
 
 ---
 
@@ -409,7 +409,7 @@ review** — don't guess which unit `45` was supposed to mean.
 
 ## Open points
 
-- [ ] Confirm whether more than one activity can be marked "Atividade Principal" at once, or if the site enforces a single selection (matters for how `src/fill/` should validate before submitting)
+- [x] **Confirmed by Khalel: more than one activity can be marked "Atividade Principal"** — no single-selection validation needed, check the box for every activity marked Sim in the `.docx`
 - [ ] No blank capture of this panel with an activity already added (i.e. an existing table row) was available — the real ids/structure of an **already-submitted** activity row (for a future edit/remove flow) are still unknown, though not needed for the write-only registration flow this bot performs
 
 ---
@@ -891,8 +891,17 @@ case/accents on Nome da UFPA):
 
 ## Open points
 
-- [ ] Possible loading overlay after the Estado cascade — see the memory
-      note `conditional-field-loading-popup`.
+- [ ] Loading overlay after AJAX fields — **not specific to this screen**:
+      per Khalel it appears after every field that reveals or refreshes
+      other fields (the conditional radios, and the Estado/Instrumento/
+      Município cascades). Those fields are the ones wired with
+      `mojarra.ab(this, event, 'change', '<execute>', '<render ids>')`,
+      e.g. `onchange="mojarra.ab(this,event,'change','formularioUpf:idInstrumento','formularioUpf:idUf formularioUpf:idClassificacaoUpf formularioUpf:idInstrumentoMeta')"`
+      — the last argument lists the elements the AJAX call re-renders.
+      So the robust wait is "the AJAX round-trip finished and the
+      re-rendered ids are attached", not a fixed delay. Not implemented
+      yet (noted only, per Khalel); `diagnostico.py` already waits on the
+      re-rendered element for Estado/Município and Instrumento Meta.
 - [x] The question page itself — mapped below.
 
 ---
@@ -1027,10 +1036,10 @@ Ignored rows produce no `IndicadorAnswer` at all.
 
 ## Open points
 
-- [ ] Session ~20 min: 129 radio clicks is fast with Playwright, but
-      Salvar early if pausing for human review.
-- [ ] Update `src/schema/build.py` (`build_indicadores`) for header rows /
-      Indicador-based matching — a code change, not done here.
+- [ ] Session timeout: the ~20 min figure is **unconfirmed** (Khalel
+      doesn't know the exact value). 129 radio clicks is fast with
+      Playwright, but pausing for review during a run could outlast it —
+      if the site ever bounces to the login page mid-run, that's why.
 - [x] `src/fill/diagnostico.py` + `scripts/run_diagnostico.py`: search
       screen, question page, matching, Salvar. Verified offline against the
       saved captures (`python -m tests.test_diagnostico`), **not yet run
