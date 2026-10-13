@@ -7,7 +7,7 @@ Run it ON Windows to get a Windows build (PyInstaller doesn't cross-compile);
 on Linux/macOS it builds a native binary, which is only useful to check the
 bundling. Output: dist/SGA-ANATER-Bot/ (and dist/SGA-ANATER-Bot.zip).
 
-Requires: pip install -r requirements.txt pyinstaller
+Requires: pip install -r requirements-dev.txt
 Then check the build with:  dist/SGA-ANATER-Bot/SGA-ANATER-Bot --selftest
 """
 

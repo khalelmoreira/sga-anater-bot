@@ -237,4 +237,4 @@ never costs the user. Nothing else in the pipeline knows about payment.
 - [ ] Headed vs headless default for non-technical users (headed lets them
       watch and trust it).
 - [ ] How updates are delivered, and how support receives logs.
-- [ ] Pin dependency versions and add pytest before packaging.
+- [x] Pin dependency versions and add pytest before packaging (`requirements.txt` pinned; `requirements-dev.txt` adds pyinstaller, pytest, httpx2; `tests/conftest.py` gives pytest its `page` fixture).

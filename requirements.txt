@@ -1,9 +1,8 @@
-python-docx
-playwright
-openpyxl
-pandas
-python-dotenv
-fastapi
-uvicorn
-keyring
-httpx
+python-docx==1.2.0
+playwright==1.63.0
+openpyxl==3.1.5
+pandas==3.0.6
+python-dotenv==1.2.4
+fastapi==0.143.0
+uvicorn==0.54.0
+keyring==25.7.0

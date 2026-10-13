@@ -11,10 +11,11 @@ logs, screenshots or real `.docx` files (see `CLAUDE.md`).
    ```powershell
    python -m venv .venv
    .venv\Scripts\Activate.ps1      # if blocked: Set-ExecutionPolicy -Scope Process Bypass
-   pip install -r requirements.txt pyinstaller
+   pip install -r requirements-dev.txt
    python -m playwright install chromium
    ```
-2. **Tests from source** — each must print `ok`:
+2. **Tests from source** — `python -m pytest -q tests` must pass, or run each
+   module on its own; each must print `ok`:
    ```powershell
    python -m tests.test_pipeline
    python -m tests.test_web
