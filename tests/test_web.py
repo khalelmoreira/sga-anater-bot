@@ -182,7 +182,24 @@ def test_cancel_check_stops_the_gate():
     raise AssertionError("cancel_check must abort")
 
 
+def test_not_entitled_shows_the_message():
+    from src.entitlement import NotEntitled
+
+    class Deny:
+        def check(self, inputs):
+            raise NotEntitled("Seus créditos acabaram.")
+
+    app = create_app(runner=lambda inputs, ui, entitlement=None: entitlement.check(inputs),
+                     work_dir=tempfile.mkdtemp(), credentials=MemCreds(("12345678900", "pw")), entitlement=Deny())
+    c = TestClient(app)
+    c.headers["X-Token"] = c.get("/").text.split('const TOKEN = "')[1].split('"')[0]
+    c.post("/api/run", json={"upload_id": _upload(c)["upload_id"], "municipio": "Claudia"})
+    s = _wait(c, lambda s: s["status"] == "error")
+    assert s["error"] == {"kind": "not_entitled", "message": "Seus créditos acabaram."}
+
+
 if __name__ == "__main__":
+    test_not_entitled_shows_the_message()
     test_token_required_and_credentials()
     test_upload_reads_pa_and_rejects_non_docx()
     test_full_run_with_prompts()

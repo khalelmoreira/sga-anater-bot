@@ -191,6 +191,15 @@ before the browser opens, next to `check_blocking`. Stubbed to always allow.
 Consume the credit **only after the UFPA saves successfully**, so a failed run
 never costs the user. Nothing else in the pipeline knows about payment.
 
+### M4 as built
+
+- `src/entitlement.py`: `Entitlement` protocol (`check`, `consume`), `NotEntitled`, and `AlwaysAllow` (the only implementation).
+- `run_ufpa(..., entitlement=...)` calls `check` first (before review and browser), and `consume(run_id, ...)` only after a registration was **really saved**: never on dry runs, unsaved or failed runs, or Diagnóstico-only runs. `run_id` is unique per run so a real implementation can be idempotent.
+- A failure inside `consume` doesn't abort the run (the UFPA is already saved); it is reported in `summary["entitlement_error"]`.
+- `NotEntitled` shows its message in the web page.
+- Credentials storage was already done in M3 (`keyring`). The fixed values (Classificação, Fomento, ...) stay hardcoded, per Khalel; per-account config is deferred.
+- Not decided: what a real implementation charges for (see the options table below).
+
 ## Cross-cutting concerns
 
 - **LGPD:** personal data of rural families (CPF, names, birth dates) flows
@@ -214,7 +223,7 @@ never costs the user. Nothing else in the pipeline knows about payment.
 - [x] **M2** — structured registration summary; registration + Diagnóstico in
       one run, one login.
 - [x] **M3** — `WebUI` and the six screens.
-- [ ] **M4** — `entitlement` stub, settings and credentials storage
+- [x] **M4** — `entitlement` stub, settings and credentials storage
       (`keyring`), per-account config for the fixed values.
 - [~] **M5** — Windows packaging, tested on a clean machine.
 - [ ] **M6** — real billing, once the model is chosen.

@@ -12,11 +12,13 @@ Failures propagate as the same exceptions the fill layer raises
 WrongUfpa, MissingCredentialsError) — the caller decides how to show them.
 """
 
+import uuid
 from dataclasses import dataclass
 from pathlib import Path
 
 from playwright.sync_api import sync_playwright
 
+from src.entitlement import AlwaysAllow
 from src.extract import extract_docx, extract_whatsapp_text, find_pa_municipio, load_whatsapp_text
 from src.fill import register_ufpa
 from src.fill.action_gate import ActionGate
@@ -130,13 +132,21 @@ def prepare(inputs, ui) -> Prepared:
     return Prepared(panels, answers, nome, reviewed, skipped)
 
 
-def run_ufpa(inputs, ui, *, gate=None) -> dict:
+def run_ufpa(inputs, ui, *, gate=None, entitlement=None) -> dict:
     """Runs the selected phases for one family and returns the summary
     handed to `ui.report`:
         {"registration": {fields, per_panel, rows, reviewed, options_picked, skipped, saved} | None,
          "diagnostico": <fill_questions summary + opened_as, saved> | None,
-         "log": <action log path>}
+         "run_id": <unique per run>, "log": <action log path>}
+
+    `entitlement` (src.entitlement) is the payment seam: checked first,
+    consumed only after a registration was saved for real (never on a dry
+    run or a failed run). Default: always allow.
     """
+    entitlement = entitlement or AlwaysAllow()
+    run_id = uuid.uuid4().hex
+    inputs.validate()
+    entitlement.check(inputs)
     prepared = prepare(inputs, ui)
     usuario, senha = inputs.credentials or load_credentials()
 
@@ -147,7 +157,7 @@ def run_ufpa(inputs, ui, *, gate=None) -> dict:
     )
     ui.progress("Action log", str(gate.path))
 
-    summary = {"registration": None, "diagnostico": None, "log": str(gate.path) if gate.path else None}
+    summary = {"run_id": run_id, "registration": None, "diagnostico": None, "log": str(gate.path) if gate.path else None}
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=inputs.headless)
         try:
@@ -175,6 +185,12 @@ def run_ufpa(inputs, ui, *, gate=None) -> dict:
                     "skipped": prepared.skipped + reg["summary"]["skipped_at_fill"],
                     "saved": bool(saved),
                 }
+                if saved and not inputs.dry_run:
+                    try:
+                        entitlement.consume(run_id, inputs, summary)
+                    except Exception as e:  # the UFPA IS saved: don't abort the rest of the run over billing
+                        summary["entitlement_error"] = str(e)
+                        ui.progress("Could not record this registration for billing", str(e))
 
             if inputs.do_diagnostico:
                 ui.progress("Filling Diagnóstico T0")

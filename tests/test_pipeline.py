@@ -142,6 +142,123 @@ def test_resolve_indicadores_notifies_instead_of_printing():
     assert out == [] and msgs and "q?" in msgs[0]
 
 
+# ------------------------------------------------------------ entitlement
+class _FakePlaywright:
+    class _Browser:
+        def new_page(self):
+            return object()
+
+        def close(self):
+            pass
+
+    class chromium:
+        @staticmethod
+        def launch(headless=False):
+            return _FakePlaywright._Browser()
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *a):
+        return False
+
+
+class _Recorder:
+    def __init__(self, deny=None, consume_fails=False):
+        self.calls, self.deny, self.consume_fails = [], deny, consume_fails
+
+    def check(self, inputs):
+        self.calls.append("check")
+        if self.deny:
+            from src.entitlement import NotEntitled
+            raise NotEntitled(self.deny)
+
+    def consume(self, run_id, inputs, summary):
+        self.calls.append(("consume", run_id, summary["registration"]["saved"]))
+        if self.consume_fails:
+            raise RuntimeError("billing server down")
+
+
+def _run(ent, *, dry_run=False, save=True, do_registration=True, do_diagnostico=False, register_raises=None):
+    """run_ufpa with Playwright and the site steps faked out."""
+    from src.fill.action_gate import ActionGate
+    import src.pipeline as pl
+
+    saved_calls = []
+    originals = {k: getattr(pl, k) for k in ("sync_playwright", "login", "register_ufpa", "submit", "prepare", "run_diagnostico_t0")}
+    pl.sync_playwright = _FakePlaywright
+    pl.login = lambda *a, **k: None
+    pl.submit = lambda *a, **k: saved_calls.append("submit")
+
+    def fake_register(*a, **k):
+        if register_raises:
+            raise register_raises
+        return {"summary": {"fields": 1, "per_panel": {"ufpa": 1}, "rows": {}, "reviewed_at_fill": 0,
+                            "options_picked": 0, "skipped_at_fill": 0}}
+
+    pl.register_ufpa = fake_register
+    pl.prepare = lambda inputs, ui: pl.Prepared([], [], "Maria", 0, 0)
+    pl.run_diagnostico_t0 = lambda *a, **k: {"opened_as": "Iniciar", "filled": 0, "already_answered": 0,
+                                             "discrepancies": [], "left_blank": [], "unmatched_site": [],
+                                             "unused_answers": []}
+    ui = ScriptedUI()
+    ui.confirm_save = lambda kind, message: save
+    try:
+        inputs = RunInputs(docx_path=DOCX, municipio="Claudia", do_registration=do_registration,
+                           do_diagnostico=do_diagnostico, dry_run=dry_run, credentials=("1", "2"))
+        return pl.run_ufpa(inputs, ui, gate=ActionGate.noop(), entitlement=ent), saved_calls
+    finally:
+        for k, v in originals.items():
+            setattr(pl, k, v)
+
+
+def test_entitlement_denied_stops_before_anything():
+    from src.entitlement import NotEntitled
+    ent = _Recorder(deny="Sem créditos")
+    try:
+        _run(ent)
+    except NotEntitled as e:
+        assert str(e) == "Sem créditos"
+    else:
+        raise AssertionError("expected NotEntitled")
+    assert ent.calls == ["check"]
+
+
+def test_entitlement_consumed_once_after_a_real_save():
+    ent = _Recorder()
+    summary, submitted = _run(ent)
+    assert submitted == ["submit"]
+    assert ent.calls[0] == "check" and len(ent.calls) == 2
+    kind, run_id, saved = ent.calls[1]
+    assert kind == "consume" and saved is True and run_id == summary["run_id"]
+
+
+def test_entitlement_not_consumed_for_dry_run_unsaved_or_failed():
+    for kw in ({"dry_run": True}, {"save": False}, {"do_registration": False, "do_diagnostico": True, "save": False}):
+        ent = _Recorder()
+        _run(ent, **kw)
+        assert ent.calls == ["check"], (kw, ent.calls)
+
+    ent = _Recorder()
+    try:
+        _run(ent, register_raises=RuntimeError("site changed"))
+    except RuntimeError:
+        pass
+    assert ent.calls == ["check"]
+
+
+def test_billing_failure_does_not_abort_after_save():
+    ent = _Recorder(consume_fails=True)
+    summary, submitted = _run(ent)
+    assert submitted == ["submit"] and summary["registration"]["saved"]
+    assert "billing server down" in summary["entitlement_error"]
+
+
+def test_default_entitlement_allows():
+    summary, submitted = _run(None)
+    assert submitted == ["submit"]
+
+
 if __name__ == "__main__":
     test_summarize_panels_counts_rows()
     test_resolve_indicadores_notifies_instead_of_printing()
@@ -150,4 +267,10 @@ if __name__ == "__main__":
     test_input_validation()
     test_gate_asks_the_ui()
     test_auto_allow_until_does_not_prompt()
+
+    test_entitlement_denied_stops_before_anything()
+    test_entitlement_consumed_once_after_a_real_save()
+    test_entitlement_not_consumed_for_dry_run_unsaved_or_failed()
+    test_billing_failure_does_not_abort_after_save()
+    test_default_entitlement_allows()
     print("ok")

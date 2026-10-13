@@ -18,6 +18,7 @@ from pathlib import Path
 from fastapi import Depends, FastAPI, Header, HTTPException, Request
 from fastapi.responses import HTMLResponse
 
+from src.entitlement import NotEntitled
 from src.fill.action_gate import AbortRun
 from src.fill.credentials import MissingCredentialsError
 from src.fill.diagnostico import UfpaAlreadyFinalized, UfpaNotFound, WrongUfpa
@@ -43,6 +44,8 @@ def _error_payload(exc):
             "message": "O arquivo está incompleto. Corrija o .docx e tente de novo — nada foi aberto no navegador.",
             "issues": [f"{i.panel} / {i.field}: {i.reason}" for i in exc.issues],
         }
+    if isinstance(exc, NotEntitled):
+        return {"kind": "not_entitled", "message": str(exc)}
     if isinstance(exc, AbortRun):
         return {"kind": "cancelled", "message": "Execução cancelada."}
     if isinstance(exc, MissingCredentialsError):
@@ -64,7 +67,7 @@ class Job:
         self.thread = None
 
 
-def create_app(runner=run_ufpa, work_dir=None, credentials=creds):
+def create_app(runner=run_ufpa, work_dir=None, credentials=creds, entitlement=None):
     """`runner(inputs, ui)` and `credentials` (load/save/clear) are injectable
     so tests don't need a browser or the OS keyring."""
     token = secrets.token_urlsafe(24)
@@ -143,10 +146,10 @@ def create_app(runner=run_ufpa, work_dir=None, credentials=creds):
 
         def work_fn():
             try:
-                runner(inputs, job.ui)
+                runner(inputs, job.ui) if entitlement is None else runner(inputs, job.ui, entitlement=entitlement)
                 job.status = "done"
             except Exception as e:  # shown to the person; details stay in the server console
-                if not isinstance(e, (AbortRun, MissingKeyDataError, UfpaNotFound,
+                if not isinstance(e, (AbortRun, NotEntitled, MissingKeyDataError, UfpaNotFound,
                                       UfpaAlreadyFinalized, WrongUfpa, MissingCredentialsError)):
                     traceback.print_exc()
                 job.error = _error_payload(e)
