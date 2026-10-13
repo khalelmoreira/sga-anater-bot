@@ -59,3 +59,14 @@ is in progress; what's already closed is in `docs/mapeamento.md`.
 
 **Product stage (UI, one wired pipeline, Windows packaging, payment hook):**
 see `docs/produto.md` before changing entrypoints or the pause/review code.
+
+## Cross-environment workflow (devcontainer <-> Windows VM)
+
+Work happens in two Claude Code sessions: the Linux devcontainer (main
+development) and a Windows VM (packaging and Windows testing). They talk
+through git and GitHub issues, not copy/paste.
+
+- **Test steps:** `docs/windows-test.md`. The VM session follows it and stops at the first failure.
+- **Findings:** one GitHub issue per finding, label `windows` (template: "Windows test finding"). Create with `gh issue create --label windows`; read with `gh issue list --label windows` / `gh issue view <n>`. The devcontainer session only checks issues when Khalel says so.
+- **Who fixes what:** Windows-only problems (packaging, keyring, paths, the build) are fixed on the VM, on a `windows/<topic>` branch, then opened as a PR to `main`. Problems in the pipeline, schema or fill code get an issue and are fixed from the devcontainer, so two sessions never edit the same code.
+- **Never** put `logs/`, screenshots, real `.docx` files or real names/CPFs in an issue, PR or commit. `--selftest` output is safe.
