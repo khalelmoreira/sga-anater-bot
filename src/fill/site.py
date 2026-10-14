@@ -222,7 +222,7 @@ def fill_repeatable_panel(page, panel_name, rows_by_index, review_handler=cli_re
     panel_span_id = _REPEATABLE_ROW_PANEL[panel_name]
     def _add_row():
         loc.add_row_button(page, panel_span_id).click()
-        page.wait_for_timeout(300)
+        loc.wait_ajax_idle(page)  # the response re-renders the input row
 
     for idx, row_fields in sorted(rows_by_index.items()):
         for field in row_fields:
@@ -234,11 +234,11 @@ def fill_integrantes_panel(page, rows_by_index, review_handler=cli_review, gate=
     """One modal submission per person (see docs/mapeamento.md)."""
     def _open_modal():
         loc.inserir_integrante_button(page).click()
-        page.wait_for_timeout(300)
+        loc.wait_ajax_idle(page)
 
     def _save_modal():
         loc.modal_salvar_button(page).click()
-        page.wait_for_timeout(300)
+        loc.wait_ajax_idle(page)
 
     gate = gate or ActionGate.noop()
     for idx, person_fields in sorted(rows_by_index.items()):

@@ -26,6 +26,22 @@ from src.schema.rules import normalize
 FORM = "formularioUpf"
 
 
+def wait_ajax_idle(page, timeout=15000):
+    """Waits for the site's own "Aguardando..." overlay (`#sgaAjaxLoading`,
+    shown while any JSF AJAX call is in flight) to go away. Call it after an
+    AJAX click (Adicionar, modal Salvar): the response re-renders the input
+    row and wipes whatever was selected in the meantime, so a fixed sleep
+    loses rows whenever the site answers slower than the sleep. The short
+    wait for the overlay to appear covers the gap between the click and the
+    request starting; if it never shows, the call was already done."""
+    overlay = page.locator("#sgaAjaxLoading")
+    try:
+        overlay.wait_for(state="visible", timeout=500)
+    except Exception:
+        pass
+    overlay.wait_for(state="hidden", timeout=timeout)
+
+
 def by_business_id(page, site_id):
     """Exact, stable id — formularioUpf:<site_id>."""
     return page.locator(f'#{FORM}\\:{site_id}')
@@ -91,9 +107,13 @@ def select_is_already_set(page, site_id, wanted):
         return False
     cur_label = sel.evaluate("el => el.options[el.selectedIndex].text").strip()
     wanted = str(wanted).strip()
+    # `cur_value in wanted` is only for coded values (Meta: value "21100",
+    # wanted "Cod.: 21100 - ..."); on a plain word it would take "unidade"
+    # as already set for "unidade animal".
+    coded = cur_value.isascii() and any(c.isdigit() for c in cur_value)
     return (
         wanted in (cur_value, cur_label)
-        or cur_value in wanted
+        or (coded and cur_value in wanted)
         or normalize(wanted) == normalize(cur_label)
     )
 
