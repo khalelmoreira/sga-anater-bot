@@ -158,6 +158,7 @@ def run_ufpa(inputs, ui, *, gate=None, entitlement=None) -> dict:
     ui.progress("Action log", str(gate.path))
 
     summary = {"run_id": run_id, "registration": None, "diagnostico": None, "log": str(gate.path) if gate.path else None}
+    reported = False
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=inputs.headless)
         try:
@@ -167,6 +168,7 @@ def run_ufpa(inputs, ui, *, gate=None, entitlement=None) -> dict:
             ui.progress("Logging in to SGA")
             login(page, usuario, senha, gate)
 
+            saved_reg = False
             if inputs.do_registration:
                 ui.progress("Registering the UFPA")
                 reg = register_ufpa(
@@ -185,6 +187,7 @@ def run_ufpa(inputs, ui, *, gate=None, entitlement=None) -> dict:
                     "skipped": prepared.skipped + reg["summary"]["skipped_at_fill"],
                     "saved": bool(saved),
                 }
+                saved_reg = bool(saved)
                 if saved and not inputs.dry_run:
                     try:
                         entitlement.consume(run_id, inputs, summary)
@@ -192,7 +195,15 @@ def run_ufpa(inputs, ui, *, gate=None, entitlement=None) -> dict:
                         summary["entitlement_error"] = str(e)
                         ui.progress("Could not record this registration for billing", str(e))
 
-            if inputs.do_diagnostico:
+            go_on = True
+            if saved_reg and inputs.do_diagnostico and not inputs.headless:
+                go_on = ui.confirm_continue(
+                    "after_registration",
+                    "UFPA saved. Review it in the browser, then continue to the Diagnóstico.")
+                if not go_on:
+                    ui.progress("Stopped after the registration", "Diagnóstico skipped at your request")
+
+            if inputs.do_diagnostico and go_on:
                 ui.progress("Filling Diagnóstico T0")
                 try:
                     diag = run_diagnostico_t0(
@@ -212,8 +223,17 @@ def run_ufpa(inputs, ui, *, gate=None, entitlement=None) -> dict:
                         salvar(page, gate)
                     diag["saved"] = bool(saved)
                     summary["diagnostico"] = diag
+
+            # keep the browser open so the person can check the site; errors and
+            # cancels skip this and still close it in `finally`
+            ui.report(summary)
+            reported = True
+            if not inputs.headless:
+                ui.confirm_continue(
+                    "finish", "The browser stays open so you can check the site. Close it here when you're done.")
         finally:
             browser.close()
 
-    ui.report(summary)
+    if not reported:
+        ui.report(summary)
     return summary

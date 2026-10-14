@@ -33,6 +33,10 @@ class UI(Protocol):
         """Before the final Salvar of 'registration' / 'diagnostico'.
         False = leave the page unsaved."""
 
+    def confirm_continue(self, kind: str, message: str) -> bool:
+        """Pause so the person can look at the browser. kind: 'after_registration'
+        (False = skip the Diagnóstico) or 'finish' (browser closes after)."""
+
     def report(self, summary: dict) -> None:
         """End-of-run summary (see src.pipeline.run_ufpa)."""
 
@@ -58,6 +62,14 @@ class CliUI:
     def confirm_save(self, kind, message):
         try:
             input(f"\n{message}\nPress Enter to Salvar (Ctrl+C to leave without saving): ")
+        except KeyboardInterrupt:
+            print()
+            return False
+        return True
+
+    def confirm_continue(self, kind, message):
+        try:
+            input(f"\n{message}\nPress Enter to continue (Ctrl+C to stop here): ")
         except KeyboardInterrupt:
             print()
             return False

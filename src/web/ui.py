@@ -89,6 +89,9 @@ class WebUI:
     def confirm_save(self, kind, message):
         return self._ask("save", save_kind=kind, message=message).get("action") == "save"
 
+    def confirm_continue(self, kind, message):
+        return self._ask("continue", continue_kind=kind, message=message).get("action") == "continue"
+
     def report(self, summary):
         with self._lock:
             self.summary = summary

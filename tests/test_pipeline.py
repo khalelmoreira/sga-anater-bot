@@ -45,6 +45,10 @@ class ScriptedUI:
     def confirm_save(self, kind, message):
         return True
 
+    def confirm_continue(self, kind, message):
+        self.events.append(("continue", kind))
+        return True
+
     def report(self, summary):
         self.events.append(("report",))
 
@@ -144,12 +148,14 @@ def test_resolve_indicadores_notifies_instead_of_printing():
 
 # ------------------------------------------------------------ entitlement
 class _FakePlaywright:
+    closed = []
+
     class _Browser:
         def new_page(self):
             return object()
 
         def close(self):
-            pass
+            _FakePlaywright.closed.append(("close",))
 
     class chromium:
         @staticmethod
@@ -179,15 +185,16 @@ class _Recorder:
             raise RuntimeError("billing server down")
 
 
-def _run(ent, *, dry_run=False, save=True, do_registration=True, do_diagnostico=False, register_raises=None):
+def _run(ent, *, dry_run=False, save=True, do_registration=True, do_diagnostico=False, register_raises=None, ui_out=None, go_on=True, headless=False):
     """run_ufpa with Playwright and the site steps faked out."""
     from src.fill.action_gate import ActionGate
     import src.pipeline as pl
 
     saved_calls = []
-    originals = {k: getattr(pl, k) for k in ("sync_playwright", "login", "register_ufpa", "submit", "prepare", "run_diagnostico_t0")}
+    originals = {k: getattr(pl, k) for k in ("sync_playwright", "login", "register_ufpa", "submit", "prepare", "run_diagnostico_t0", "salvar")}
     pl.sync_playwright = _FakePlaywright
     pl.login = lambda *a, **k: None
+    pl.salvar = lambda *a, **k: saved_calls.append("salvar")
     pl.submit = lambda *a, **k: saved_calls.append("submit")
 
     def fake_register(*a, **k):
@@ -203,9 +210,13 @@ def _run(ent, *, dry_run=False, save=True, do_registration=True, do_diagnostico=
                                              "unused_answers": []}
     ui = ScriptedUI()
     ui.confirm_save = lambda kind, message: save
+    ui.confirm_continue = lambda kind, message: (ui.events.append(("continue", kind)), go_on or kind == "finish")[1]
+    if ui_out is not None:
+        ui_out.append(ui)
+        _FakePlaywright.closed = ui.events
     try:
         inputs = RunInputs(docx_path=DOCX, municipio="Claudia", do_registration=do_registration,
-                           do_diagnostico=do_diagnostico, dry_run=dry_run, credentials=("1", "2"))
+                           do_diagnostico=do_diagnostico, dry_run=dry_run, headless=headless, credentials=("1", "2"))
         return pl.run_ufpa(inputs, ui, gate=ActionGate.noop(), entitlement=ent), saved_calls
     finally:
         for k, v in originals.items():
@@ -274,3 +285,23 @@ if __name__ == "__main__":
     test_billing_failure_does_not_abort_after_save()
     test_default_entitlement_allows()
     print("ok")
+
+
+def test_gates_and_browser_stays_open_until_finish():
+    out = []
+    _run(None, do_diagnostico=True, ui_out=out)
+    seq = [e for e in out[0].events if e[0] in ("continue", "report", "close")]
+    assert seq == [("continue", "after_registration"), ("report",), ("continue", "finish"), ("close",)]
+
+
+def test_declining_after_registration_skips_diagnostico():
+    out = []
+    summary, _ = _run(None, do_diagnostico=True, ui_out=out, go_on=False)
+    assert summary["diagnostico"] is None and summary["registration"]["saved"]
+    assert ("close",) in out[0].events
+
+
+def test_headless_has_no_holds():
+    out = []
+    _run(None, do_diagnostico=True, ui_out=out, headless=True)
+    assert not [e for e in out[0].events if e[0] == "continue"]

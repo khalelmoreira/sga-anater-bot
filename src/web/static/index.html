@@ -238,11 +238,20 @@ function renderPrompt(p) {
   } else if (p.kind === "save") {
     const what = p.save_kind === "registration" ? "o cadastro da UFPA" : "o Diagnóstico T0";
     card.append(el("h2", {}, "Revise e salve"));
-    card.append(el("p", {}, p.message + " Confira a janela do navegador. Se estiver certo, salve " + what + "."));
+    card.append(el("p", {}, p.message + " Nada foi salvo ainda. Confira a janela do navegador. Se estiver certo, salve " + what + "."));
     if (p.save_kind === "diagnostico") card.append(el("p", { class: "hint" }, "Depois de salvar, finalizar o diagnóstico continua sendo com você, no site."));
     card.append(el("div", { class: "row" },
       el("button", { class: "primary", onclick: () => answer(p.id, { action: "save" }) }, "Salvar"),
       el("button", { onclick: () => answer(p.id, { action: "nosave" }) }, "Não salvar")));
+  } else if (p.kind === "continue") {
+    const fin = p.continue_kind === "finish";
+    card.append(el("h2", {}, fin ? "Confira o site" : "Cadastro salvo"));
+    card.append(el("p", {}, fin
+      ? "O navegador continua aberto para você conferir. Finalizar o diagnóstico continua sendo com você, no site. Quando terminar, clique em Concluir (isso fecha o navegador)."
+      : "Confira o cadastro no navegador. Quando estiver tudo certo, continue para o Diagnóstico."));
+    card.append(el("div", { class: "row" },
+      el("button", { class: "primary", onclick: () => answer(p.id, { action: "continue" }) }, fin ? "Concluir" : "Continuar para o Diagnóstico"),
+      ...(fin ? [] : [el("button", { onclick: () => answer(p.id, { action: "stop" }) }, "Parar aqui")])));
   }
 }
 

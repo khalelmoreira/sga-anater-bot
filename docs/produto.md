@@ -84,6 +84,7 @@ One Protocol the pipeline talks to; the pipeline never touches the terminal.
 | `pick_option(label, wanted, options) -> str \| SKIP` | `review.pick_option` |
 | `confirm_action(n, description) -> allow/deny/abort/allow_rest` | `ActionGate.confirm` prompt |
 | `confirm_save(kind)` | the two end-of-run `input()` calls |
+| `confirm_continue(kind)` | pause to look at the browser: `after_registration` (False = skip Diagnóstico) and `finish` (browser stays open until the person confirms; skipped when headless) |
 | `report(summary)` | `_print_summary` and the "Done." print |
 
 Two implementations: **`CliUI`** (today's behaviour, keeps `--auto-allow*`)
