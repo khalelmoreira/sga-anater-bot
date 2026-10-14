@@ -1,7 +1,8 @@
 name: Build Windows app
 
-# Manual only. Builds the PyInstaller app on Windows, runs its self-test and
-# uploads the zip as an artifact.
+# Manual only (see docs/build-exe.md). Builds the PyInstaller app on a Windows
+# runner and uploads the zip as an artifact. No tests or --selftest here: the
+# Windows VM runs --selftest on the downloaded exe.
 on:
   workflow_dispatch:
 
@@ -14,11 +15,7 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install -r requirements-dev.txt
-      - run: python -m tests.test_pipeline
-      - run: python -m tests.test_web
       - run: python packaging/build.py
-      - name: Self-test the packaged app
-        run: dist\SGA-ANATER-Bot\SGA-ANATER-Bot.exe --selftest
       - uses: actions/upload-artifact@v4
         with:
           name: SGA-ANATER-Bot-windows
