@@ -191,8 +191,20 @@ def modal_salvar_button(page):
     both of which also live under formularioUpf (see src/fill/site.py
     docstring for how these were disambiguated)."""
     return page.locator(
-        'a[title="Salvar"][onclick*="idPanelIntegrantes formularioUpf:formularioBeneficiarioPf"]'
+        'a[title="Salvar"][onclick*="idPanelIntegrantes formularioUpf:formularioBeneficiarioPf"]:visible'
     )
+
+
+def integrante_modal(page):
+    """The 'Cadastrar Pessoa' modal that wraps the person form."""
+    return page.locator(".modal", has=page.locator(f"#{FORM}\\:formularioBeneficiarioPf"))
+
+
+def modal_errors(modal):
+    """Visible validation messages inside the modal (e.g. "Este campo é
+    obrigatório."), for telling the person why a Salvar was rejected."""
+    texts = modal.locator(":text('obrigatório'):visible, .has-error:visible, .alert:visible").all_inner_texts()
+    return list(dict.fromkeys(t.strip() for t in texts if t.strip()))
 
 
 def dropdown_options(page, site_id):

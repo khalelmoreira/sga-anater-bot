@@ -8,10 +8,11 @@ A fixed 300 ms sleep fills the next row too early and loses it. Run with:
     python -m tests.test_fill_ajax
 """
 
+import pytest
 from playwright.sync_api import sync_playwright
 
 from src.fill.locators import select_is_already_set
-from src.fill.site import fill_repeatable_panel, group_by_panel_index
+from src.fill.site import IntegranteNotSaved, fill_integrantes_panel, fill_repeatable_panel, group_by_panel_index
 from src.schema.model import CanonicalField
 
 PAGE = """
@@ -69,10 +70,49 @@ def test_already_set_is_not_a_prefix_match(page):
     assert not select_is_already_set(page, "idUpfPatrimonioUnidMedidaAd", "unidade animal")
 
 
+MODAL_PAGE = """
+<form id="formularioUpf"><div id="sgaAjaxLoading" style="display:none">Aguardando...</div>
+<label>Inserir Integrante:</label><a href="#" onclick="document.getElementById('m').style.display='block'; return false">+</a>
+<span id="formularioUpf:idPanelIntegrantes"></span>
+<div id="m" class="modal" style="display:none"><span id="formularioUpf:formularioBeneficiarioPf">
+  <div id="err" class="has-error" style="display:none">Este campo é obrigatório.</div>
+  <a href="#" title="Limpar">Limpar</a>
+  <a href="#" title="Salvar" onclick="save(); return false; /* idPanelIntegrantes formularioUpf:formularioBeneficiarioPf */">Salvar</a>
+</span></div></form>
+<script>
+const ACCEPT = %s;
+function save() {
+  document.getElementById('sgaAjaxLoading').style.display = 'block';
+  setTimeout(() => {
+    document.getElementById('sgaAjaxLoading').style.display = 'none';
+    if (ACCEPT) document.getElementById('m').style.display = 'none';
+    else document.getElementById('err').style.display = 'block';
+  }, 600);
+}
+</script>
+"""
+
+
+def test_integrante_salvar_closes_modal(page):
+    page.set_content(MODAL_PAGE % "true")
+    fill_integrantes_panel(page, {1: []})
+    assert not page.locator("#m").is_visible()
+
+
+def test_integrante_rejected_by_site_raises(page):
+    page.set_content(MODAL_PAGE % "false")
+    with pytest.raises(IntegranteNotSaved) as e:
+        fill_integrantes_panel(page, {1: []})
+    assert "Este campo é obrigatório." in e.value.errors, e.value.errors
+
+
 if __name__ == "__main__":
     with sync_playwright() as p:
         browser = p.chromium.launch()
-        for test in (test_rows_survive_slow_ajax, test_already_set_is_not_a_prefix_match):
+        for test in (
+            test_rows_survive_slow_ajax, test_already_set_is_not_a_prefix_match,
+            test_integrante_salvar_closes_modal, test_integrante_rejected_by_site_raises,
+        ):
             test(browser.new_page())
         browser.close()
     print("ok")

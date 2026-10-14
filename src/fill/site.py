@@ -230,22 +230,41 @@ def fill_repeatable_panel(page, panel_name, rows_by_index, review_handler=cli_re
         gate.confirm(f"Click 'Adicionar' ({panel_name} row {idx})", _add_row)
 
 
+class IntegranteNotSaved(RuntimeError):
+    """The site kept the 'Cadastrar Pessoa' modal open after Salvar, i.e. it
+    rejected the person (usually a required field left empty, like
+    Parentesco). `.errors` holds the validation messages shown, if any."""
+
+    def __init__(self, idx, errors):
+        self.idx, self.errors = idx, errors
+        why = "; ".join(errors) if errors else "a required field is probably empty (e.g. Parentesco)"
+        super().__init__(f"Integrante {idx} was not saved: the site kept the form open. {why}")
+
+
 def fill_integrantes_panel(page, rows_by_index, review_handler=cli_review, gate=None, picker=pick_option):
     """One modal submission per person (see docs/mapeamento.md)."""
     def _open_modal():
         loc.inserir_integrante_button(page).click()
         loc.wait_ajax_idle(page)
 
-    def _save_modal():
-        loc.modal_salvar_button(page).click()
-        loc.wait_ajax_idle(page)
+    def _save_modal(idx):
+        def _run():
+            modal = loc.integrante_modal(page)
+            loc.modal_salvar_button(page).click()
+            loc.wait_ajax_idle(page)
+            # the site closes the modal only when it accepted the person
+            try:
+                modal.wait_for(state="hidden", timeout=5000)
+            except Exception:
+                raise IntegranteNotSaved(idx, loc.modal_errors(modal)) from None
+        return _run
 
     gate = gate or ActionGate.noop()
     for idx, person_fields in sorted(rows_by_index.items()):
         gate.confirm(f"Click 'Inserir Integrante' (person {idx})", _open_modal)
         for field in person_fields:
             fill_field(page, field, review_handler, gate, picker)
-        gate.confirm(f"Click modal 'Salvar' (person {idx})", _save_modal)
+        gate.confirm(f"Click modal 'Salvar' (person {idx})", _save_modal(idx))
 
 
 def group_by_panel_index(fields):
