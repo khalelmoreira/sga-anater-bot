@@ -67,6 +67,7 @@ development) and a Windows VM (packaging and Windows testing). They talk
 through git and GitHub issues, not copy/paste.
 
 - **Test steps:** `docs/windows-test.md`. The VM session follows it and stops at the first failure.
+- **Building the .exe:** done on GitHub Actions, triggered from the devcontainer, not on the VM. Steps in `docs/build-exe.md`. The VM only downloads the zip and runs `--selftest`.
 - **Findings:** one GitHub issue per finding, label `windows` (template: "Windows test finding"). Create with `gh issue create --label windows`; read with `gh issue list --label windows` / `gh issue view <n>`. The devcontainer session only checks issues when Khalel says so.
 - **Who fixes what:** Windows-only problems (packaging, keyring, paths, the build) are fixed on the VM, on a `windows/<topic>` branch, then opened as a PR to `main`. Problems in the pipeline, schema or fill code get an issue and are fixed from the devcontainer, so two sessions never edit the same code.
 - **Never** put `logs/`, screenshots, real `.docx` files or real names/CPFs in an issue, PR or commit. `--selftest` output is safe.

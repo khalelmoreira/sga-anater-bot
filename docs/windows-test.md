@@ -26,7 +26,9 @@ logs, screenshots or real `.docx` files (see `CLAUDE.md`).
    ```powershell
    python -m scripts.run_web --selftest
    ```
-4. **Build** (several minutes, ~900 MB):
+4. **Build** — normally skip this: the exe is built on GitHub Actions
+   (`docs/build-exe.md`); download the zip and go to step 5. Local build
+   (several minutes, ~900 MB), only if debugging the build itself:
    ```powershell
    python packaging\build.py
    ```
